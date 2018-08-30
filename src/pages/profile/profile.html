@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Min profil
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,9 +9,10 @@
 <ion-content>
   <ion-list>
     <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+    <ion-item (click)="unsetFylke();">
+      <ion-icon name="star-outline" item-start></ion-icon>
+      Dette er ikke min festival
     </ion-item>
+
   </ion-list>
 </ion-content>

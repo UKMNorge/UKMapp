@@ -1,0 +1,19 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Hendelse
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list *ngIf="programProvider.innslag">
+		<ion-item *ngFor="let innslag of programProvider.innslag.innslag">
+			<ion-label (click)="visInnslag(innslag.id);">
+				<h2>
+					{{ innslag.navn }}
+				</h2>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-content>

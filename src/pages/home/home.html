@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>UKM </ion-title>
-  </ion-navbar>
+    <ion-title *ngIf="!monstring.navn">UKM </ion-title>
+		<ion-title *ngIf="monstring.navn">{{ monstring.navn }}</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
 	<div *ngIf="this.monstring">
 		
 		<ion-list>
-			<ion-list-header>{{ monstring.navn }}</ion-list-header>
 			<ion-item (click)="visKart();">
 				<ion-icon name="pin" item-start></ion-icon>
 				<small>

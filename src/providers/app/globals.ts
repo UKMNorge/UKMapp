@@ -29,6 +29,7 @@ export class Globals {
 	}
 	
 	init() {
+		this.load( 'fylke' );
 		this.load( 'monstring_id' );
 	}
 	

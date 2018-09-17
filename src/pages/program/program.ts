@@ -29,13 +29,12 @@ export class HendelsePage {
 	}
 	
 	visInnslag( id ) {
-		
-		var url = 'https://ukm.no/nord-trondelag/pameldte/146404/';
+		let url = 'https://ukm.no/'+ this.globals.get('fylke').link +'/pameldte/'+ id +'/';
 
 		this.browserTab.isAvailable()
 		.then(isAvailable => {
 			if (isAvailable) {
-				this.browserTab.openUrl('https://ionic.io');
+				this.browserTab.openUrl( url );
 			} else {
 			// open URL with InAppBrowser instead or SafariViewController
 			console.log('bah');

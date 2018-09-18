@@ -17,25 +17,29 @@ import { MonstringProvider } from '../providers/ukmnorge/monstring';
 })
 export class MyApp {
 	rootPage:any = LoadingPage;
-		
+
 	constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, public globals: Globals, public monstringProvider: MonstringProvider ) {
-		
+
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
 			statusBar.styleDefault();
 			splashScreen.hide();
-			
+
 			// Når fylke oppdateres, oppdater mønstrings-id
 			this.globals.subscribe('fylke', (fylke) => {
+
 				if( fylke == null || fylke == undefined ) {
 					this.globals.set('monstring_id', null);
+					//Må sende SelectPage-viewet for å komme seg forbi loading-screen.
+					this.rootPage = SelectPage;
 					return;
 				}
 				this.globals.set('monstring_id', 'fylke-'+fylke.id);
+
 			});
-			
-			
+
+
 			/**
 			 * On update globals[ monstring_id ]
 			 *

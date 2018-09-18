@@ -12,14 +12,14 @@ import { Fylker } from '../../providers/ukmnorge/fylker';
   templateUrl: 'select.html'
 })
 export class SelectPage {
-	
+
 	fylker: Fylker;
 	loading = false;
 
 	constructor(public navCtrl: NavController, public events: Events, public alertCtrl: AlertController, public globals: Globals ) {
 		this.fylker = new Fylker();
 	}
-	
+
 	brukPosisjon() {
 		let alert = this.alertCtrl.create({
 			title: 'Oh nooo!',

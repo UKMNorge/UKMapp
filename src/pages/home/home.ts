@@ -14,23 +14,24 @@ import { MapPage } from '../map/map';
 
 export class HomePage {
 	public monstring = null;
-	
+
 	constructor(public navCtrl: NavController, private monstringProvider: MonstringProvider, public globals: Globals ) {
-		this.loadMonstring( this.globals.get('monstring_id') );
+    console.log('Entered constructor of home.ts')
+    this.loadMonstring( this.globals.get('monstring_id') );
 	}
-	
+
 	visKart() {
 		this.navCtrl.push( MapPage );
 	}
-	
+
 	loadMonstring( monstring_id ) {
-		console.log('HomePage:loadMonstring( '+ monstring_id +' )');
-		
+		  console.log('HomePage:loadMonstring( '+ monstring_id +' )');
+
 		if( monstring_id == null ) {
 			this.monstring = null;
 			return;
 		}
-		
+
 		this.monstringProvider.getMonstring( monstring_id )
 			.then( data => {
 				console.log('THEN: HomePage:loadMonstring( '+ monstring_id +' ) => ');

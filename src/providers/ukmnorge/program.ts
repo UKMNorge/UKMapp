@@ -7,9 +7,10 @@ import { Globals } from '../../providers/app/globals';
 export class ProgramProvider {
 	private monstring_id:number = 0;
 	private data = null;
-	
+
 	public innslag = null;
-	
+	public innslagData = null;
+
 	constructor(private api: ApiProvider, public globals: Globals ) {
 	}
 
@@ -18,7 +19,7 @@ export class ProgramProvider {
 			// already loaded data
 			return Promise.resolve( this.data );
 		}
-		
+
 		this.monstring_id = this.globals.get('monstring').id;
 		return new Promise(resolve => {
 			this.api.getProgram( this.monstring_id ).subscribe( (data) => {
@@ -27,7 +28,7 @@ export class ProgramProvider {
 			})
 		});
 	}
-	
+
 	getProgram( hendelse_id ) {
 		console.info('GetProgram');
 		return new Promise(resolve => {
@@ -35,6 +36,17 @@ export class ProgramProvider {
 				console.log('Got program');
 				console.log( data );
 				this.innslag = data;
+				resolve( this.data );
+			})
+		});
+	}
+	getInnslagDetalj( innslag_id ) {
+		console.info('GetInnslag');
+		return new Promise(resolve => {
+			this.api.getInnslag( this.monstring_id, innslag_id ).subscribe( (data) => {
+				console.log('Got innslagDetalj');
+				console.log( data );
+				this.innslagData = data;
 				resolve( this.data );
 			})
 		});

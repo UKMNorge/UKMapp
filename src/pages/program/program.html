@@ -22,15 +22,12 @@
 			<p *ngSwitchCase="'public'">
 				Programmet for hele festivalen.
 			</p>
-	
 			<p *ngSwitchCase="'mine'">
 				Ditt eget festivalprogram.
 			</p>
-	
 		</div>
 
 	</div>
-	
 
 	<ion-list *ngFor="let dag of programProvider.data">
 		<ion-list-header>{{ dag.dato|date:'EEEE d. MMM' }}</ion-list-header>

@@ -16,7 +16,7 @@ import { MapPage } from '../pages/map/map';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SelectPage } from '../pages/select/select';
 import { LoadingPage } from '../pages/loading/loading';
-import { ProgramPage, HendelsePage } from '../pages/program/program';
+import { ProgramPage, HendelsePage, InnslagPage } from '../pages/program/program';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,6 +40,7 @@ import { Globals } from '../providers/app/globals';
     LoadingPage,
     HendelsePage,
     ProgramPage,
+    InnslagPage,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +60,7 @@ import { Globals } from '../providers/app/globals';
     LoadingPage,
     HendelsePage,
     ProgramPage,
+    InnslagPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ programProvider.innslagData?.navn }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-content>
+  <ion-card>
+    <img src="{{ programProvider.innslagData?.bilde.url }}"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{ programProvider.innslagData?.navn }}
+      </ion-card-title>
+      <p>
+        {{ programProvider.innslagData?.beskrivelse }}
+      </p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-badge>{{ programProvider.innslagData?.type.navn }}</ion-badge>
+      <ion-badge>{{ programProvider.innslagData?.kommune.navn }}</ion-badge>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
+</ion-content>

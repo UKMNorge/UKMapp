@@ -8,7 +8,16 @@
 <ion-content>
   <ion-content>
   <ion-card>
-    <img src="{{ programProvider.innslagData?.bilde.url }}"/>
+    <div *ngIf=" programProvider.innslagData?.bilder[0]">
+      <ion-slides #slider (ionWillChange)="slideWillChange()">
+        <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of programProvider.innslagData?.bilder;" #slide>
+          <img src="{{ bilde.url }}"/>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div *ngIf="!programProvider.innslagData?.bilder[0]">
+      <img src="{{ programProvider.innslagData?.bilde.url }}"/>
+    </div>
 
     <ion-card-content>
       <ion-card-title>
@@ -18,11 +27,25 @@
         {{ programProvider.innslagData?.beskrivelse }}
       </p>
     </ion-card-content>
-
+    <ion-card-content>
     <ion-item>
       <ion-badge>{{ programProvider.innslagData?.type.navn }}</ion-badge>
       <ion-badge>{{ programProvider.innslagData?.kommune.navn }}</ion-badge>
     </ion-item>
+    <div *ngIf=" programProvider.innslagData?.filmer[0]">
+        <ion-card-title>
+          <h1>Videoer av {{ programProvider.innslagData?.navn }}</h1>
+        </ion-card-title>
+          <div *ngFor="let video of programProvider.innslagData?.filmer;" #slide>
+          <ion-item>
+            <img src="{{video.bilde.url}}" (click)="spillFilm(video.bilde.url, video.navn)">
+          </ion-item>
+      </div>
+    </div>
+    <div *ngIf="!programProvider.innslagData?.bilder[0]">
+      <img src="{{ programProvider.innslagData?.bilde.url }}"/>
+    </div>
+  </ion-card-content>
   </ion-card>
 
 </ion-content>

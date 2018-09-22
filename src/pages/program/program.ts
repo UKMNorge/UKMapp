@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 
+import { BrowserTab } from '@ionic-native/browser-tab';
+import { StreamingMedia } from '@ionic-native/streaming-media';
+
 import { Globals } from '../../providers/app/globals';
 
 import { ProgramProvider } from '../../providers/ukmnorge/program';
@@ -44,12 +47,62 @@ export class InnslagPage {
 		private navParams: NavParams,
 		public navCtrl: NavController,
 		public globals: Globals,
+		public browserTab: BrowserTab,
+		private streamingMedia: StreamingMedia,
 		public programProvider: ProgramProvider
 	) {
 		let innslagId = this.navParams.get('innslagId');
 		this.programProvider.getInnslagDetalj( innslagId ).then( (data) => {
 			console.log("Got innslag: " + data);
 		});
+	}
+	spillFilm( url ) {
+		let film_url = url.replace('.jpg', '_720p.mp4');
+
+		this.streamingMedia.playVideo(film_url);
+
+		// FOR USING BROWSERTAB -> Opens in app -> not in native web-browser.
+		/*
+		this.browserTab.isAvailable()
+    .then(isAvailable => {
+      if (isAvailable) {
+        this.browserTab.openUrl(film_url);
+      } else {
+        // open URL with InAppBrowser instead or SafariViewController
+      }
+    });
+		*/
+
+		// FOR USING NATIVE WEB-BROWSER
+		//const browser = this.iab.create(film_url, '_blank');
+
+		//browser.on('loadstop').subscribe(event => {
+		// 	browser.insertCSS({ code: "#UKMheader{display:none;}" });
+		//});
+
+		//browser.close();
+		/*this.navCtrl.push(
+			FilmPage,
+			{
+				film_url: film_url,
+			}
+		);*/
+	}
+}
+
+@Component({
+  selector: 'page-video',
+  templateUrl: 'video.html'
+})
+export class FilmPage {
+	constructor(
+		private navParams: NavParams,
+		public navCtrl: NavController,
+		public globals: Globals,
+		public programProvider: ProgramProvider
+	) {
+		let film_url = this.navParams.get('film_url');
+		console.log(film_url);
 	}
 }
 

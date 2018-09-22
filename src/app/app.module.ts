@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserTab } from '@ionic-native/browser-tab';
+import { StreamingMedia } from '@ionic-native/streaming-media';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,7 +17,7 @@ import { MapPage } from '../pages/map/map';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SelectPage } from '../pages/select/select';
 import { LoadingPage } from '../pages/loading/loading';
-import { ProgramPage, HendelsePage, InnslagPage } from '../pages/program/program';
+import { ProgramPage, HendelsePage, InnslagPage, FilmPage } from '../pages/program/program';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,6 +41,7 @@ import { Globals } from '../providers/app/globals';
     LoadingPage,
     HendelsePage,
     ProgramPage,
+    FilmPage,
     InnslagPage,
   ],
   imports: [
@@ -60,6 +62,7 @@ import { Globals } from '../providers/app/globals';
     LoadingPage,
     HendelsePage,
     ProgramPage,
+    FilmPage,
     InnslagPage
   ],
   providers: [
@@ -71,7 +74,8 @@ import { Globals } from '../providers/app/globals';
     MonstringProvider,
     ProgramProvider,
     Globals,
-    BrowserTab
+    BrowserTab,
+    StreamingMedia
   ]
 })
 export class AppModule {}

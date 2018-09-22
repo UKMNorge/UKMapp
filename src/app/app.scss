@@ -22,3 +22,16 @@
     align-items: center;
   }
 }
+
+
+// Må gjøres responsive, quick fix der altså.
+.innslag_video_play {
+  position: absolute;
+  bottom: 43%;
+  left: 48%;
+  color: white;
+  font-size: 2em;
+  &:hover {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}

@@ -13,7 +13,6 @@ import { MonstringInterface } from './models/monstring';
 @Injectable()
 export class ApiProvider {
 	UKM_URL = 'https://api.ukm.no/2.0/';
-	TV_URL = 'https://video.ukm.no/';
 	WP_URL = 'https://ukm.no/%blog_path/wp-json/wp/v2/';
 
 	constructor(public http: HttpClient) {

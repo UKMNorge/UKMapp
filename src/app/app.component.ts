@@ -18,7 +18,14 @@ import { MonstringProvider } from '../providers/ukmnorge/monstring';
 export class MyApp {
 	rootPage:any = LoadingPage;
 
-	constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, public globals: Globals, public monstringProvider: MonstringProvider ) {
+	constructor(
+		platform: Platform,
+		statusBar: StatusBar,
+		splashScreen: SplashScreen,
+		public events: Events,
+		public globals: Globals,
+		public monstringProvider: MonstringProvider,
+	){
 
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.

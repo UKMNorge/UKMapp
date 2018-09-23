@@ -38,7 +38,7 @@
         </ion-card-title>
           <div *ngFor="let video of programProvider.innslagData?.filmer;" #slide>
           <ion-item>
-            <img src="{{video.bilde.url}}" (click)="spillFilm(video.bilde.url, video.navn)">
+            <img src="{{video.bilde.url}}" (click)="spillFilm(video.fil.mobil, video.navn)">
             <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon>
           </ion-item>
       </div>

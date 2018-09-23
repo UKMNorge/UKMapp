@@ -8,6 +8,7 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
 import { Globals } from '../../providers/app/globals';
 
 import { ProgramProvider } from '../../providers/ukmnorge/program';
+import { ApiProvider } from '../../providers/ukmnorge/api';
 
 @Component({
 	selector: 'page-hendelse',
@@ -49,7 +50,8 @@ export class InnslagPage {
 		public globals: Globals,
 		public browserTab: BrowserTab,
 		private streamingMedia: StreamingMedia,
-		public programProvider: ProgramProvider
+		public programProvider: ProgramProvider,
+		public apiProvider: ApiProvider
 	) {
 		let innslagId = this.navParams.get('innslagId');
 		this.programProvider.getInnslagDetalj( innslagId ).then( (data) => {
@@ -57,9 +59,8 @@ export class InnslagPage {
 		});
 	}
 	spillFilm( url ) {
-		let film_url = url.replace('.jpg', '_720p.mp4');
-
-		this.streamingMedia.playVideo(film_url);
+		console.log(this.apiProvider.TV_URL + url);
+		this.streamingMedia.playVideo(this.apiProvider.TV_URL + url);
 
 		// FOR USING BROWSERTAB -> Opens in app -> not in native web-browser.
 		/*

@@ -1,8 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { StreamingMedia } from '@ionic-native/streaming-media';
+import { Shake } from '@ionic-native/shake';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -75,7 +77,8 @@ import { Globals } from '../providers/app/globals';
     ProgramProvider,
     Globals,
     BrowserTab,
-    StreamingMedia
+    StreamingMedia,
+    Shake
   ]
 })
 export class AppModule {}

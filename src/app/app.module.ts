@@ -12,7 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { AboutPage, SidePage } from '../pages/about/about';
 import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
@@ -28,6 +28,7 @@ import { ApiProvider } from '../providers/ukmnorge/api';
 import { WPApiProvider } from '../providers/ukmnorge/apiwp';
 import { MonstringProvider } from '../providers/ukmnorge/monstring';
 import { ProgramProvider } from '../providers/ukmnorge/program';
+import { InfoProvider } from '../providers/ukmnorge/info';
 
 import { Globals } from '../providers/app/globals';
 
@@ -35,6 +36,7 @@ import { Globals } from '../providers/app/globals';
   declarations: [
     MyApp,
     AboutPage,
+    SidePage,
     ProfilePage,
     HomePage,
     TabsPage,
@@ -56,6 +58,7 @@ import { Globals } from '../providers/app/globals';
   entryComponents: [
     MyApp,
     AboutPage,
+    SidePage,
     ProfilePage,
     HomePage,
     TabsPage,
@@ -75,6 +78,7 @@ import { Globals } from '../providers/app/globals';
     WPApiProvider,
     MonstringProvider,
     ProgramProvider,
+    InfoProvider,
     Globals,
     BrowserTab,
     StreamingMedia,

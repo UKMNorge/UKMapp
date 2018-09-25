@@ -13,7 +13,7 @@ import { MonstringInterface } from './models/monstring';
 @Injectable()
 export class ApiProvider {
 	UKM_URL = 'https://api.ukm.no/2.0/';
-	WP_URL = 'https://ukm.no/%blog_path/wp-json/wp/v2/';
+	WP_URL = 'https://ukm.no/%blog_path/wp-json/';
 
 	constructor(public http: HttpClient) {
 	}
@@ -40,6 +40,14 @@ export class ApiProvider {
 
 	getPosts( blog_path, options=null ) {
 		return this.http.get( this.getWP_URL( blog_path )+'posts' );
+	}
+
+	getMenuItems( blog_path ) {
+		return this.http.get( this.getWP_URL( blog_path )+'UKM/informasjon/' );
+	}
+	getSideMarkup( url ) {
+		console.log("url: " + url)
+		return this.http.get(url);
 	}
 
 	getWP_URL( blog_path ) {

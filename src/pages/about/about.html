@@ -7,5 +7,11 @@
 </ion-header>
 
 <ion-content padding>
-	<p>UKMappen er en app utviklet av UKM Norge for å gjøre informasjon rundt mønstringene lettere tilgjengelig for deg som deltaker og publikummer.</p>
+  <ion-list *ngIf="infoProvider?.menu">
+		<ion-item *ngFor="let item of infoProvider?.menu">
+			<h2>{{ item.title }}</h2>
+      <h3>{{ item.lead }}</h3>
+			<h3  (click)="visSide(item.url)">{{ item.url }}</h3>
+		</ion-item>
+	</ion-list>
 </ion-content>

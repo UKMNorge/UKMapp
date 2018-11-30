@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title *ngIf="!monstring.navn">UKM </ion-title>
-		<ion-title *ngIf="monstring.navn">{{ monstring.navn }}</ion-title>
+    <ion-title *ngIf="!this.monstring">UKM</ion-title>
+		<ion-title *ngIf="this.monstring">{{ monstring.navn }}</ion-title>
 	</ion-navbar>
 </ion-header>
 

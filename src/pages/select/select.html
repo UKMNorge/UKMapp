@@ -19,9 +19,11 @@
 				<div *ngIf="!loading">
 					<ion-list>
 						<ion-list-header>eller velg ditt fylke</ion-list-header>
-						<ion-item *ngFor="let fylke of fylker.getAll()" (click)="valgtFylke( fylke )">
-							{{ fylke.name }}
-						</ion-item>
+						<ion-list>
+							<ion-item *ngFor="let monstring of monstringerProvider.getAll()" (click)="velgMonstring( monstring )">
+							  {{ monstring.navn }}
+							</ion-item>  
+						  </ion-list>
 					</ion-list>
 				</div>
 			

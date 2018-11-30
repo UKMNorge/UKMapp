@@ -21,12 +21,11 @@ import { ProgramPage, HendelsePage } from '../pages/program/program';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { ApiProvider } from '../providers/ukmnorge/api';
-import { WPApiProvider } from '../providers/ukmnorge/apiwp';
-import { MonstringProvider } from '../providers/ukmnorge/monstring';
-import { ProgramProvider } from '../providers/ukmnorge/program';
+import { MonstringProvider } from '../providers/ukm/monstring';
+import { MonstringerProvider } from '../providers/ukm/monstringer';
 
 import { Globals } from '../providers/app/globals';
+import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
   declarations: [
@@ -45,7 +44,7 @@ import { Globals } from '../providers/app/globals';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,10 +63,9 @@ import { Globals } from '../providers/app/globals';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider,
-    WPApiProvider,
+    StorageProvider,
     MonstringProvider,
-    ProgramProvider,
+    MonstringerProvider,
     Globals,
     BrowserTab
   ]

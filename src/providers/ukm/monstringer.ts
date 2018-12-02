@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DateTime } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectProvider, ObjectCollectionProvider } from './object';
+import { ObjectCollectionProvider } from '../object/collection';
 import { Monstring, MonstringProvider } from './monstring';
 
 @Injectable()
 export class MonstringerProvider extends ObjectCollectionProvider {
   private url = 'https://api.ukm.no/2.0/monstringer/';
 
-  constructor( monstringProvider: MonstringProvider, _http:HttpClient, StorageProvider:StorageProvider ) {
+  constructor( 
+    monstringProvider: MonstringProvider, 
+    _http:HttpClient, 
+    StorageProvider:StorageProvider
+  ) {
     super( 'Monstringer', monstringProvider, _http, StorageProvider );
     console.log('Hello, I\'m MonstringerProvider');
   }
-
-  init() {}
 
   public validate( data:Monstring ) {
     return data;
@@ -27,5 +28,5 @@ export class MonstringerProvider extends ObjectCollectionProvider {
 
   public set(id, data) {
   }
-  
+
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { StorageProvider } from '../../providers/storage';
 
-import { Globals } from '../../providers/app/globals';
 
 @Component({
   selector: 'page-profile',
@@ -9,11 +9,13 @@ import { Globals } from '../../providers/app/globals';
 })
 export class ProfilePage {
 
-	constructor(public navCtrl: NavController, public globals: Globals ) {
-	
+	constructor(
+		public navCtrl: NavController,
+		private storageProvider: StorageProvider
+	) {
 	}
 	
 	unsetFylke() {
-		this.globals.set('fylke',null);
+		this.storageProvider.unit('APP').remove('monstring');
 	}
 }

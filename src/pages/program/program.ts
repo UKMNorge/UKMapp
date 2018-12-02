@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 
-import { Globals } from '../../providers/app/globals';
-
 import { ProgramProvider } from '../../providers/ukmnorge/program';
 
 import { BrowserTab } from '@ionic-native/browser-tab';
@@ -17,7 +15,6 @@ export class HendelsePage {
 	constructor(
 		private navParams: NavParams,
 		public navCtrl: NavController,
-		public globals: Globals,
 		public programProvider: ProgramProvider,
 		private browserTab: BrowserTab
 	) {
@@ -29,8 +26,9 @@ export class HendelsePage {
 	}
 	
 	visInnslag( id ) {
-		let url = 'https://ukm.no/'+ this.globals.get('fylke').link +'/pameldte/'+ id +'/';
 
+		//let url = 'https://ukm.no/'+ this.globals.get('fylke').link +'/pameldte/'+ id +'/';
+		/*
 		this.browserTab.isAvailable()
 		.then(isAvailable => {
 			if (isAvailable) {
@@ -41,6 +39,8 @@ export class HendelsePage {
 			alert('dooo something');
 			}
 		});
+		*/
+		alert('uh-oh');
 	}
 
 }
@@ -56,7 +56,6 @@ export class ProgramPage {
 
 	constructor(
 		public navCtrl: NavController,
-		public globals: Globals,
 		public programProvider: ProgramProvider
 	) {
 		console.info('Program-load');

@@ -24,7 +24,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MonstringProvider } from '../providers/ukm/monstring';
 import { MonstringerProvider } from '../providers/ukm/monstringer';
 
-import { Globals } from '../providers/app/globals';
 import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
@@ -66,7 +65,6 @@ import { StorageProvider } from '../providers/storage/storage';
     StorageProvider,
     MonstringProvider,
     MonstringerProvider,
-    Globals,
     BrowserTab
   ]
 })

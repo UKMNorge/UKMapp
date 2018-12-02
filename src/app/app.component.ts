@@ -38,11 +38,17 @@ export class MyApp {
 			this.app_storage = this.storageProvider.create('APP');
 			
 			this.app_storage.subscribe(
-				'monstring', 
+				'set:monstring', 
 				(id) => {
 					this._selectBasePage( id );
 				}
 			);
+			this.app_storage.subscribe(
+				'remove:monstring',
+				( id ) => {
+					this._selectBasePage( null );
+				}
+			)
 
 			this.app_storage.get('monstring').then(
 				(id) => {

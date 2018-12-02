@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Globals } from '../../providers/app/globals';
-
 import { MapPage } from '../map/map';
 import { StorageProvider } from '../../providers/storage';
 import { MonstringProvider } from '../../providers/ukm/monstring';
@@ -21,8 +19,6 @@ export class HomePage {
 		private monstringProvider: MonstringProvider
 	) {
 		let self = this;
-		
-		console.error('GET MONSTRING ID');
 		this.storageProvider.unit('APP').get('monstring').then(
 			( monstring_id ) => {
 				self.setMonstringId( monstring_id );
@@ -31,14 +27,13 @@ export class HomePage {
 	}
 
 	public setMonstringId( monstring_id ) {
-		console.error('SET MONSTRING: '+ monstring_id );
-
 		let self = this;
+		this.monstringProvider.subscribe('update', (_monstring) => {
+			self.monstring=_monstring
+		});
 		this.monstringProvider.get( monstring_id ).then( 
 			( monstring ) =>
 			{
-				console.error('SET MONSTRING.THEN == GOT MONSTRING BACK');
-				console.log( monstring );
 				self.monstring = monstring;
 			}
 		).catch( (error) => {

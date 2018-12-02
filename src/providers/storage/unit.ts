@@ -1,17 +1,29 @@
 import { Storage } from '@ionic/storage';
+import { Screamer } from '../object/screamer';
 import { Events } from 'ionic-angular';
 
-export class StorageUnit {
+/**
+ * Storage unit
+ * 
+ * Wrapper for @ionic/storage, prefixing (automatically) all values
+ * by storage unit ID
+ */
+export class StorageUnit extends Screamer {
+
+    /**
+     * 
+     * @param id 
+     * @param storage 
+     */
     constructor( 
       private id: string, 
       private storage: Storage,
-      public events: Events
+      events: Events
     ) {
-      console.log('Hi there! I\'m StorageProvider '+ this.id +', and I\'m here to safeguard your stuff');
+      super( 'Storage:'+ id, events );
+      console.log('Hi there! I\'m StorageUnit '+ this.id +', and I\'m here to safeguard your stuff');
     }
-  
-    init() {}
-    
+      
     /**
      * Store the value of key
      * Internally, storage unit id prefixes storage key
@@ -23,8 +35,9 @@ export class StorageUnit {
     public set( key: string, value: any ) {
       this._debug('SET', key);
       console.info(' -> TO: '+ value);
+      
       this.storage.set( this._key( key ), value );
-      this.publish(key, [value]);
+      this._publish( 'set:'+ key, value );
     }
   
     /**
@@ -40,28 +53,43 @@ export class StorageUnit {
 
       return new Promise( function( resolve ) {
         storage.get( key ).then( (val) => {
+          
+          // Value not in storage, resolve null
           if( null == val || undefined == val ) {
             console.log(' - resolve null');
             resolve( null );
           }
           try {
+            // Value is JSON, resolve as object
             let jsondata = JSON.parse( val );
             console.log(' - resolve JSON-parsed object');
             console.log( jsondata );
             resolve( jsondata );
           } catch {
-            console.log(' - resolve string', val);
+            // Value was not JSON-data, resolve string, object, whatevva
+            console.log(' - resolve '+ typeof( val ), val);
             resolve( val );
           }
         });
       });
     }
   
+    /**
+     * Remove (delete) value from storage unit
+     * @param key 
+     */
     public remove( key: string ) {
       this._debug('REMOVE', key, 'warn');
+      this._publish( 'remove:'+ key, null );
       return this.storage.remove( this._key(key) );
     }
   
+    /**
+     * Wrapper of console.log to simply (de/)activate debugging
+     * @param action 
+     * @param key 
+     * @param level 
+     */
     private _debug( action, key, level='log' ) {
       console[level]( action +':'+ this._key(key) );
     }
@@ -74,13 +102,4 @@ export class StorageUnit {
     private _key( key: string ) {
       return this.id+'|'+key;
     }
-
-
-    public subscribe( event, callback ) {
-      this.events.subscribe( this.id +':'+ event, callback );
-    }
-    public publish( event, args ) {
-      this.events.publish( this.id +':'+ event, args );
-    }
-
   }

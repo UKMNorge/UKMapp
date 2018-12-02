@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DateTime } from 'ionic-angular';
+import { DateTime, Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectProvider } from './object';
+import { ObjectProvider } from '../object/object';
 
 export interface Monstring {
   id: number;
@@ -18,8 +18,12 @@ export interface Monstring {
 export class MonstringProvider extends ObjectProvider {
   private url = 'https://api.ukm.no/2.0/monstringer/';
 
-  constructor( _http:HttpClient, StorageProvider:StorageProvider ) {
-    super( 'Monstring', _http, StorageProvider );
+  constructor( 
+    _http:HttpClient, 
+    StorageProvider:StorageProvider, 
+    Events: Events 
+  ) {
+    super( 'Monstring', _http, StorageProvider, Events );
     console.log('Hello, I\'m MonstringProvider');
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiProvider } from './api';
-import { Globals } from '../../providers/app/globals';
+import { StorageProvider } from '../storage';
 
 @Injectable()
 export class ProgramProvider {
@@ -10,16 +10,20 @@ export class ProgramProvider {
 	
 	public innslag = null;
 	
-	constructor(private api: ApiProvider, public globals: Globals ) {
+	constructor(
+		private api: ApiProvider,
+		private storageProvider: StorageProvider
+	) {
 	}
 
 	get() {
-		if ( this.monstring_id == this.globals.get('monstring').id && this.data ) {
+		let monstring_id = this.storageProvider.unit('APP').get('monstring');
+		if ( this.monstring_id == monstring_id && this.data ) {
 			// already loaded data
 			return Promise.resolve( this.data );
 		}
 		
-		this.monstring_id = this.globals.get('monstring').id;
+		this.monstring_id = monstring_id;
 		return new Promise(resolve => {
 			this.api.getProgram( this.monstring_id ).subscribe( (data) => {
 				this.data = data;

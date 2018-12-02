@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 
-//import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 import { ApiProviderResponse } from './response';
 import { ApiProviderResult } from './result';
 import { StorageProvider, StorageUnit } from '../storage/';
-//import { isDifferent } from '@angular/core/src/render3/util';
-/*
-  Generated class for the ApiProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-
+/**
+ * APIProvider
+ * 
+ * 
+ */
 @Injectable()
 export class ApiProvider {
   

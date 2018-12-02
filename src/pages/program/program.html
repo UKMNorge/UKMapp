@@ -9,7 +9,7 @@
 <ion-content>
 
 	<div padding>
-		<ion-segment [(ngModel)]="test">
+		<ion-segment [(ngModel)]="valgtProgramModus">
 			<ion-segment-button value="public">
 				Program
 			</ion-segment-button>
@@ -18,7 +18,7 @@
 			</ion-segment-button>
 		</ion-segment>
 
-		<div [ngSwitch]="test">
+		<div [ngSwitch]="valgtProgramModus">
 			<p *ngSwitchCase="'public'">
 				Programmet for hele festivalen.
 			</p>
@@ -32,7 +32,7 @@
 	</div>
 	
 
-	<ion-list *ngFor="let dag of programProvider.data">
+	<ion-list *ngFor="let dag of programProvider.getAll()">
 		<ion-list-header>{{ dag.dato|date:'EEEE d. MMM' }}</ion-list-header>
 		<ion-item *ngFor="let hendelse of dag.hendelser">
 			<ion-toggle checked="false"></ion-toggle>

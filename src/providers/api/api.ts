@@ -17,10 +17,14 @@ export class ApiProvider {
   public data;
   private storage:StorageUnit;
 
-  constructor( private id:string, public http:HttpClient, StorageProvider:StorageProvider ) {
-    this.storage = StorageProvider.create('cache');
+  constructor( 
+    private id:string, 
+    public http:HttpClient, 
+    private storageProvider:StorageProvider
+  ) {
+    this.storage = this.storageProvider.create('cache');
     this.data = new Map();
-    console.log('Hello ApiProvider Provider');
+    console.log('Hello ApiProvider '+ id );
   }
 
 

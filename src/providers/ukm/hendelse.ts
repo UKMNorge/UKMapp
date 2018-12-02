@@ -5,31 +5,32 @@ import { DateTime, Events } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage';
 import { ObjectProvider } from '../object/object';
 
-export interface Monstring {
+export interface Hendelse {
   id: number;
   navn: string;
   sted: string;
   start: DateTime; 
-  stop: DateTime;
   type: string;
+  intern: boolean;
+  detaljer: boolean;
+  post_id: number;
+  category_id: number;
 }
 
 @Injectable()
-export class MonstringProvider extends ObjectProvider {
-  private url = 'https://api.ukm.no/2.0/monstringer/#id';
+export class HendelseProvider extends ObjectProvider {
+  private url = 'https://api.ukm.no/2.0/hendelse/#id';
 
   constructor( 
     _http:HttpClient, 
     StorageProvider:StorageProvider, 
     Events: Events 
   ) {
-    super( 'Monstring', _http, StorageProvider, Events );
-    console.log('Hello, I\'m MonstringProvider');
+    super( 'Hendelse', _http, StorageProvider, Events );
+    console.log('Hi! I\'m HendelseProvider');
   }
-
-  init() {}
   
-  public validate( data:Monstring ) {
+  public validate( data:Hendelse ) {
     return data;
   }
 

@@ -16,7 +16,7 @@ import { MapPage } from '../pages/map/map';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SelectPage } from '../pages/select/select';
 import { LoadingPage } from '../pages/loading/loading';
-import { ProgramPage, HendelsePage } from '../pages/program/program';
+import { ProgramPage } from '../pages/program/program';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,6 +25,8 @@ import { MonstringProvider } from '../providers/ukm/monstring';
 import { MonstringerProvider } from '../providers/ukm/monstringer';
 
 import { StorageProvider } from '../providers/storage/storage';
+import { ProgramProvider } from '../providers/ukm/program';
+import { HendelseProvider } from '../providers/ukm/hendelse';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,7 @@ import { StorageProvider } from '../providers/storage/storage';
     SelectPage,
     MapPage,
     LoadingPage,
-    HendelsePage,
-    ProgramPage,
+    ProgramPage
   ],
   imports: [
     BrowserModule,
@@ -55,8 +56,7 @@ import { StorageProvider } from '../providers/storage/storage';
     SelectPage,
     MapPage,
     LoadingPage,
-    HendelsePage,
-    ProgramPage,
+    ProgramPage
   ],
   providers: [
     StatusBar,
@@ -65,6 +65,8 @@ import { StorageProvider } from '../providers/storage/storage';
     StorageProvider,
     MonstringProvider,
     MonstringerProvider,
+    ProgramProvider,
+    HendelseProvider,
     BrowserTab
   ]
 })

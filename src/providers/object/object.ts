@@ -18,7 +18,7 @@ export abstract class ObjectProvider extends Screamer {
   public apiProvider: ApiProvider;
   private storage: StorageUnit;
   
-  abstract getUrl();
+  abstract getUrl( id );
   
   /**
    * 
@@ -108,7 +108,7 @@ export abstract class ObjectProvider extends Screamer {
     // Request from API
     return this.apiProvider.get(
         id, 
-        this.getUrl() + id,
+        this.getUrl( id ),
         this
       ).then(
         (result: ApiProviderResult) => {

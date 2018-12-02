@@ -19,11 +19,15 @@ export class HomePage {
 		private monstringProvider: MonstringProvider
 	) {
 		let self = this;
-		this.storageProvider.unit('APP').get('monstring').then(
-			( monstring_id ) => {
-				self.setMonstringId( monstring_id );
-			}
-		)
+		let storage = this.storageProvider.unit('APP');
+		console.log( storage );
+		if( storage != null ) {
+			storage.get('monstring').then(
+				( monstring_id ) => {
+					self.setMonstringId( monstring_id );
+				}
+			)
+		}
 	}
 
 	public setMonstringId( monstring_id ) {

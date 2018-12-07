@@ -34,10 +34,10 @@ export abstract class ObjectCollectionProvider {
    * @return Array collection if loaded
    */
   public getAll() {
+    console.info('ObjectCollectionProvider('+ this.title +')::getAll()');
     if( !this.loaded ) {
       return [];
     }
-    console.info('ObjectCollectionProvider('+ this.title +')::getAll()');
     return this.data;
   }
 
@@ -52,7 +52,7 @@ export abstract class ObjectCollectionProvider {
     this.loaded = false;
 
     this.loadFromStorage();
-   // this.loadFromAPI();
+    this.loadFromAPI();
    this.loaded = true;
   }
 
@@ -60,7 +60,7 @@ export abstract class ObjectCollectionProvider {
     let self = this;
     
     self.storage.get('IDs').then( 
-      (id_list:[]) => {
+      (id_list:any = []) => {
         if( id_list != null ) { 
           id_list.forEach( 
             ( id ) => {
@@ -116,7 +116,6 @@ export abstract class ObjectCollectionProvider {
         self.data = temp_data;
 
         // Store a list of IDs
-        console.error( temp_ids );
         this.storage.set('IDs', temp_ids);
 
         // Set internal loaded indicator = true

@@ -31,17 +31,17 @@
 
 	</div>
 	
-
-	<ion-list *ngFor="let dag of programProvider.getAll()">
-		<ion-list-header>{{ dag.dato|date:'EEEE d. MMM' }}</ion-list-header>
-		<ion-item *ngFor="let hendelse of dag.hendelser">
-			<ion-toggle checked="false"></ion-toggle>
-			<ion-label (click)="visDetaljProgram(hendelse.id);">
-			  <h2>
-			    {{ hendelse.navn }}
-			  </h2>
-			  <p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
-			</ion-label>
-		</ion-item>
-	</ion-list>
+	<div *ngIf="program != null">
+		<ion-list>
+			<ion-item *ngFor="let hendelse of program.getAll()">
+				<ion-toggle checked="false"></ion-toggle>
+				<ion-label (click)="visDetaljProgram(hendelse.id);">
+					<h2>
+						{{ hendelse.navn }}
+					</h2>
+					<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
+				</ion-label>
+			</ion-item>
+		</ion-list>
+	</div>
 </ion-content>

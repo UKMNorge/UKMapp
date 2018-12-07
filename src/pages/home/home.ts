@@ -33,9 +33,9 @@ export class HomePage {
 	public setMonstringId( monstring_id ) {
 		let self = this;
 		this.monstringProvider.subscribe('update', (_monstring) => {
-			self.monstring=_monstring
+			self.monstring=_monstring;
 		});
-		this.monstringProvider.get( monstring_id ).then( 
+		self.monstringProvider.get( monstring_id ).then( 
 			( monstring ) =>
 			{
 				self.monstring = monstring;

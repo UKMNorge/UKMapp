@@ -2,33 +2,43 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectCollectionProvider } from '../object/collection';
-import { HendelseProvider, Hendelse } from './hendelse';
+import { HendelseProvider } from './hendelse';
+import { MonstringProgramProvider } from './monstringprogram';
 
 /**
  * Henter ut en oversikt over programmet (collection av Hendelser)
  */
 @Injectable()
-export class ProgramProvider extends ObjectCollectionProvider {
-    private url: string = 'https://api.ukm.no/2.0/monstring-#id/program/listByDay/'; 
-
+export class ProgramProvider {
+    private data = new Map();
+    
     constructor(
-        monstring_id: number, 
-        hendelseProvider: HendelseProvider,
-        _http:HttpClient, 
-        StorageProvider:StorageProvider
+        private hendelseProvider: HendelseProvider,
+        private http:HttpClient, 
+        private storageProvider:StorageProvider
     ) {
-        super( 'Hendelser', hendelseProvider, _http, StorageProvider );
-        console.log('Howdy! I\'m ProgramProvider');
-        console.log( monstring_id );
-        this.url.replace('#id', monstring_id.toString() );
+        console.log('Howdy! I\'m Generic ProgramProvider');
     }
 
-    public validate( data ) {
-        return data;
-    }
-
-    public getUrl() {
-        return this.url;
+    public getMonstring( monstring_id ) {
+        console.log('ProgramProvider::getMonstring( '+ monstring_id +' )');
+        if( !this.data.has( monstring_id ) ) {
+            console.log('Not previously set. Initiating now');
+            let collection = new MonstringProgramProvider( 
+                monstring_id, 
+                this.hendelseProvider, 
+                this.http, 
+                this.storageProvider 
+            );
+            collection.load();
+            this.data.set( 
+                monstring_id, 
+                collection
+            );
+        }
+        let variable = this.data.get( monstring_id );
+        console.log('ProgramProvider::getMonstring( '+ monstring_id +' ) returns');
+        console.log( variable );
+        return variable;
     }
 }

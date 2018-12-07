@@ -18,6 +18,8 @@ import { SelectPage } from '../pages/select/select';
 import { LoadingPage } from '../pages/loading/loading';
 import { ProgramPage } from '../pages/program/program';
 import { InfoPage } from '../pages/info/info';
+import { SingleInfoPage } from '../pages/info/single';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,6 +33,8 @@ import { HendelseProvider } from '../providers/ukm/hendelse';
 import { HendelsePage } from '../pages/program/hendelse';
 import { InnslagProvider } from '../providers/ukm/innslag';
 import { PostProvider } from '../providers/wordpress/post';
+import { PostContentProvider } from '../providers/wordpress/postcontent';
+
 import { CategoriesProvider } from '../providers/wordpress/categories';
 
 @NgModule({
@@ -45,7 +49,8 @@ import { CategoriesProvider } from '../providers/wordpress/categories';
     LoadingPage,
     HendelsePage,
     ProgramPage,
-    InfoPage
+    InfoPage,
+    SingleInfoPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,8 @@ import { CategoriesProvider } from '../providers/wordpress/categories';
     LoadingPage,
     HendelsePage,
     ProgramPage,
-    InfoPage
+    InfoPage,
+    SingleInfoPage
   ],
   providers: [
     StatusBar,
@@ -79,6 +85,7 @@ import { CategoriesProvider } from '../providers/wordpress/categories';
     InnslagProvider,
     CategoriesProvider,
     PostProvider,
+    PostContentProvider,
     BrowserTab
   ]
 })

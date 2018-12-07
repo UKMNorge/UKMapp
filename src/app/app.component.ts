@@ -11,6 +11,7 @@ import { Events } from 'ionic-angular';
 import { StorageUnit, StorageProvider } from '../providers/storage';
 import { MonstringProvider } from '../providers/ukm/monstring';
 import { MonstringerProvider } from '../providers/ukm/monstringer';
+import { InfoPage } from '../pages/info/info';
 
 @Component({
 	templateUrl: 'app.html'
@@ -60,9 +61,12 @@ export class MyApp {
 
 	private _selectBasePage( id ) {
 		if( null === id ) {
+			//Bytt om disse for å få appen i fungerende stand igjen.
 			this.rootPage = SelectPage;
+			//this.rootPage = InfoPage;
 		} else {
 			this.rootPage = TabsPage;
+			//this.rootPage = InfoPage;
 		}
 	}
 }

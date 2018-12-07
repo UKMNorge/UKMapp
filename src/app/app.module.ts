@@ -17,6 +17,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SelectPage } from '../pages/select/select';
 import { LoadingPage } from '../pages/loading/loading';
 import { ProgramPage } from '../pages/program/program';
+import { InfoPage } from '../pages/info/info';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +44,8 @@ import { CategoriesProvider } from '../providers/wordpress/categories';
     MapPage,
     LoadingPage,
     HendelsePage,
-    ProgramPage
+    ProgramPage,
+    InfoPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { CategoriesProvider } from '../providers/wordpress/categories';
     MapPage,
     LoadingPage,
     HendelsePage,
-    ProgramPage
+    ProgramPage,
+    InfoPage
   ],
   providers: [
     StatusBar,

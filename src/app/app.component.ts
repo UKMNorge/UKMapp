@@ -10,7 +10,7 @@ import { LoadingPage } from '../pages/loading/loading';
 import { Events } from 'ionic-angular';
 import { StorageUnit, StorageProvider } from '../providers/storage';
 import { MonstringProvider } from '../providers/ukm/monstring';
-import { MonstringerProvider } from '../providers/ukm/monstringer';
+import { MonstringerProvider } from '../providers/ukm/monstringer.collection';
 
 @Component({
 	templateUrl: 'app.html'

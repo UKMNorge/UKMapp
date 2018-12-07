@@ -3,7 +3,7 @@ import { NavController, Events } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
 
-import { MonstringerProvider } from '../../providers/ukm/monstringer';
+import { MonstringerProvider } from '../../providers/ukm/monstringer.collection';
 import { StorageProvider } from "../../providers/storage/storage";
 
 @Component({

@@ -31,7 +31,7 @@ export class HomePage {
 			)
 		}
 
-		this.categoriesProvider.getCategory('informasjon');
+		this.categoriesProvider.getCategory('nyheter');
 
 	}
 

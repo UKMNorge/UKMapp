@@ -5,9 +5,12 @@ import { StorageProvider } from '../../providers/storage';
 import { ObjectCollectionProvider } from '../object/collection';
 import { PostProvider, Post } from '../wordpress/post';
 
+/**
+ * Henter ut en oversikt over kategorien (collection av Post)
+ */
 @Injectable()
 export class CategoryProvider extends ObjectCollectionProvider {
-  private url = 'https://ukm.no/testfylke/wp-json/UKM/#id';
+  private url:string = 'https://ukm.no/testfylke/wp-json/UKM/#id';
 
   constructor(
     category_id,
@@ -27,8 +30,4 @@ export class CategoryProvider extends ObjectCollectionProvider {
   public getUrl() {
     return this.url;
   }
-
-  public set(id, data) {
-  }
-
 }

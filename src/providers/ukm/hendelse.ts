@@ -4,6 +4,7 @@ import { DateTime, Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
 import { ObjectProvider } from '../object/object';
+import { InnslagProvider } from './innslag';
 
 export interface Hendelse {
   id: number;
@@ -21,11 +22,14 @@ export interface Hendelse {
 export class HendelseProvider extends ObjectProvider {
   private url = 'https://api.ukm.no/2.0/monstring-#monstring/program/#id'
   private monstring_id = false;
+  private innslag = [];
+  public innslag_objects = [];
 
   constructor( 
     _http:HttpClient, 
     storageProvider:StorageProvider, 
-    Events: Events 
+    Events: Events,
+    private innslagProvider: InnslagProvider
   ) {
     super( 'Hendelse', _http, storageProvider, Events );
     
@@ -35,7 +39,7 @@ export class HendelseProvider extends ObjectProvider {
       {
         self.monstring_id = monstring_id;
         this.url = this.url.replace('#monstring', monstring_id);
-        //this.innslag = new InnslagIHendelseCollection( 'Hendelse'+ id );
+        //this.innslagColl = new InnslagIHendelseCollection( 'Hendelse'+ id );
       }
     );
     console.log('Hi! I\'m HendelseProvider');
@@ -54,10 +58,26 @@ export class HendelseProvider extends ObjectProvider {
   }
   
   public filterLoadData( data ) {
+    let self = this;
 
     data.innslag.forEach( 
-      (innslag) => {
-        innslag = innslag.id
+      (innslag ) => {
+        self.innslagProvider.set( innslag.id, innslag );
+        
+        // Subscribe to object updates
+        // TODO: MOVE TO OBJECT, NOT ANON FUNCT
+        self.innslagProvider.subscribe( 
+          'update:'+innslag.id, 
+          (object) => {
+            self.data.forEach( 
+              (list_object, list_placement) => {
+                if( object.id == list_object.id ) {
+                  self.data[ list_placement ] = object;
+                }
+              }
+            );
+          }
+        );
       }
     )
 

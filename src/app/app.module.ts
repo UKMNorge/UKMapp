@@ -22,7 +22,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MonstringProvider } from '../providers/ukm/monstring';
-import { MonstringerProvider } from '../providers/ukm/monstringer';
+import { MonstringerProvider } from '../providers/ukm/monstringer.collection';
 
 import { StorageProvider } from '../providers/storage/storage';
 import { ProgramProvider } from '../providers/ukm/program';

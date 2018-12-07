@@ -52,7 +52,10 @@ export abstract class ObjectProvider extends Screamer {
     return new Promise( function( resolve ) {
       // If already in collection, return
       if( self.data.has( id ) ) {
+        console.info('IS in collection');
         resolve( self.data.get( id ) );
+      } else {
+        console.info('IS NOT in collection');
       }
 
       // Fetch object not in collection from database or API
@@ -64,7 +67,8 @@ export abstract class ObjectProvider extends Screamer {
               // Initiate API load request
               self.load( id ).then( ( object ) => {
                 // Add API return data to collection and resolve
-                self.set( id, object );
+                //self.set( id, object );
+                self.data.set( id, object );
                 resolve( object );
               });
             } else {

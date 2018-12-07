@@ -7,16 +7,13 @@
 </ion-header>
 
 <ion-content>
-	Hello there
-	<!--
 	<ion-list *ngIf="hendelse">
-		<ion-item *ngFor="let innslag of hendelse.innslag" (click)="visInnslag( innslag.id )">
+		<ion-item *ngFor="let innslag of hendelse.innslag" (click)="visInnslag( innslag )">
 			<ion-avatar item-start>
 				<img src="{{ innslag.bilde.url }}">
 			</ion-avatar>
 			<h2>{{ innslag.navn }}</h2>
-			<h3>{{ innslag.sjanger }}</h3>
+			<h3>{{ innslag.type.navn }}</h3>
 		</ion-item>
 	</ion-list>
-	-->
 </ion-content>

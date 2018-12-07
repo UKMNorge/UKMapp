@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
-import { PostContentProvider, PostProvider } from '../../providers/wordpress';
+import { Post, PostProvider } from '../../providers/wordpress';
 
 
 @Component({
@@ -20,8 +20,11 @@ export class SingleInfoPage {
         public postProvider: PostProvider,
 	) {
         this.post = this.navParams.get('post');
-        this.postProvider.get(this.post.id).then(data => {
-            this.title = data.title;
-        });
+        this.postProvider.get(this.post.id).then( 
+            (data:Post) => 
+            {
+                this.title = data.title;
+            }
+        );
     }
 }

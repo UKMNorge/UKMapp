@@ -30,8 +30,7 @@ import { HendelseProvider } from '../providers/ukm/hendelse';
 import { HendelsePage } from '../pages/program/hendelse';
 import { InnslagProvider } from '../providers/ukm/innslag';
 import { PostProvider } from '../providers/wordpress/post';
-import { PostsProvider } from '../providers/wordpress/posts';
-import { CategoryProvider } from '../providers/wordpress/category';
+import { CategoriesProvider } from '../providers/wordpress/categories';
 
 @NgModule({
   declarations: [
@@ -75,7 +74,7 @@ import { CategoryProvider } from '../providers/wordpress/category';
     ProgramProvider,
     HendelseProvider,
     InnslagProvider,
-    PostsProvider,
+    CategoriesProvider,
     PostProvider,
     BrowserTab
   ]

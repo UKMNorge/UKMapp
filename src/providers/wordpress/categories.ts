@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { StorageProvider } from '../../providers/storage';
+import { StorageProvider } from '../storage';
 import { CategoryProvider } from './category';
 import { PostProvider } from './post';
 
@@ -9,7 +9,7 @@ import { PostProvider } from './post';
  * Henter ut en oversikt over programmet (collection av Hendelser)
  */
 @Injectable()
-export class PostsProvider {
+export class CategoriesProvider {
     private data = new Map();
     
     constructor(
@@ -21,7 +21,7 @@ export class PostsProvider {
     }
 
     public getCategory( category_id ) {
-        console.log('PostsProvider::getCategory( '+ category_id +' )');
+        console.log('CategoriesProvider::getCategory( '+ category_id +' )');
         if( !this.data.has( category_id ) ) {
             console.log('Not previously set. Initiating now');
             let collection = new CategoryProvider( 
@@ -37,7 +37,7 @@ export class PostsProvider {
             );
         }
         let variable = this.data.get( category_id );
-        console.log('PostsProvider::getCategory( '+ category_id +' ) returns');
+        console.log('CategoriesProvider::getCategory( '+ category_id +' ) returns');
         console.log( variable );
         return variable;
     }

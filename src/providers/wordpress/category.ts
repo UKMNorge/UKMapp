@@ -15,7 +15,7 @@ export class CategoryProvider extends ObjectCollectionProvider {
     _http:HttpClient, 
     StorageProvider:StorageProvider
   ) {
-    super( 'Posts|'+category_id, postProvider, _http, StorageProvider );
+    super( 'Category|'+category_id, postProvider, _http, StorageProvider );
     console.log('Peek-a-boo!, I\'m CategoryProvider for '+ category_id);
     this.url = this.url.replace('#id', category_id );
   }

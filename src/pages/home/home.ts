@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 import { StorageProvider } from '../../providers/storage';
 import { MonstringProvider } from '../../providers/ukm/monstring';
-import { PostsProvider } from '../../providers/wordpress/posts';
+import { CategoriesProvider } from '../../providers/wordpress/categories';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +18,7 @@ export class HomePage {
 		public navCtrl: NavController,
 		private storageProvider: StorageProvider,
 		private monstringProvider: MonstringProvider,
-		private postsProvider: PostsProvider
+		private categoriesProvider: CategoriesProvider
 	) {
 		let self = this;
 		let storage = this.storageProvider.unit('APP');
@@ -31,7 +31,7 @@ export class HomePage {
 			)
 		}
 
-		this.postsProvider.getCategory('informasjon');
+		this.categoriesProvider.getCategory('informasjon');
 
 	}
 

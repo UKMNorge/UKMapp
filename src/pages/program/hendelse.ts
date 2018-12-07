@@ -3,8 +3,9 @@ import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 
 import { BrowserTab } from '@ionic-native/browser-tab';
-import { StorageProvider } from '../../providers/storage';
 import { HendelseProvider } from '../../providers/ukm/hendelse';
+import { InnslagProvider } from '../../providers/ukm/innslag';
+import { StorageProvider } from '../../providers/storage';
 
 @Component({
 	selector: 'page-hendelse',
@@ -17,8 +18,10 @@ export class HendelsePage {
 	constructor(
         private navParams: NavParams,
         public navCtrl: NavController,
+        private hendelseProvider: HendelseProvider,
+        public innslagProvider: InnslagProvider,
         private storageProvider: StorageProvider,
-        private hendelseProvider: HendelseProvider
+        private browserTab: BrowserTab
 	) {
         let id = this.navParams.get('id');
         
@@ -31,7 +34,7 @@ export class HendelsePage {
         );
     }
 	
-    /*
+    
     visInnslag( id ) {
         let self = this;
         this.storageProvider.unit('APP').get('monstring').then( 
@@ -47,10 +50,14 @@ export class HendelsePage {
                     console.log('bah');
                     alert('dooo something');
                     }
-                });
+                }).catch(
+                    (err) =>
+                    {
+                        alert('Beklager, fikk ikke til å hente inn detaljer om innslaget');
+                    }
+                );
             }
         );
     }
-    */
 
 }

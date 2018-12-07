@@ -50,7 +50,7 @@ export class ApiProvider {
 
     return new Promise( function( resolve, reject ) {
       self.http.get(url).subscribe( (data) => {
-        self.storage.set( url, JSON.stringify(data) );
+        self.storage.set( url, data );
         resolve(new ApiProviderResponse( url, true, false, data ));
       });
     });

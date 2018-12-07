@@ -8,7 +8,7 @@ import { StorageProvider, StorageUnit } from '../storage';
  */
 @Injectable()
 export abstract class ObjectCollectionProvider {
-  private loaded = false;
+  public loaded = false;
   private id: string;
   private storage: StorageUnit;
   public data = [];

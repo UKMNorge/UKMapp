@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { StorageProvider } from '../../providers/storage';
+import { StorageProvider } from '../storage';
 import { ObjectCollectionProvider } from '../object/collection';
 import { Monstring, MonstringProvider } from './monstring';
 

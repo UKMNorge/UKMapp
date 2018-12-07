@@ -30,7 +30,9 @@ export class ProgramProvider {
                 this.http, 
                 this.storageProvider 
             );
-            collection.load();
+            if( !collection.loaded ) {
+                collection.load();
+            }
             this.data.set( 
                 monstring_id, 
                 collection

@@ -5,7 +5,6 @@ import { AlertController } from 'ionic-angular';
 
 import { MonstringerProvider } from '../../providers/ukm/monstringer';
 import { StorageProvider } from "../../providers/storage/storage";
-import { MonstringProvider } from '../../providers/ukm/monstring';
 
 @Component({
   selector: 'page-select',
@@ -20,7 +19,6 @@ export class SelectPage {
 		public events: Events, 
 		public alertCtrl: AlertController, 
 		public monstringerProvider: MonstringerProvider,
-		private monstringProvider: MonstringProvider,
 		private storageProvider: StorageProvider
 	) {
 		this.monstringerProvider.load();

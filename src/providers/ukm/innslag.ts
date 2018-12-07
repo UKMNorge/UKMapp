@@ -36,4 +36,7 @@ export class InnslagProvider extends ObjectProvider {
   public getUrl( id ) {
     return this.url.replace('#id', id);
   }
+  public filterLoadData( data ) {
+    return data;
+  }
 }

@@ -1,17 +1,16 @@
 <ion-header>
 	<ion-navbar>	
-		<ion-title *ngIf="programProvider.innslag">
-			{{ programProvider.innslag.navn }}
-		</ion-title>
-		<ion-title *ngIf="!programProvider.innslag">
-			Hendelse
+		<ion-title *ngIf="hendelse">
+			{{ hendelse.navn }}
 		</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content>
-	<ion-list *ngIf="programProvider.innslag">
-		<ion-item *ngFor="let innslag of programProvider.innslag.innslag" (click)="visInnslag( innslag.id )">
+	Hello there
+	<!--
+	<ion-list *ngIf="hendelse">
+		<ion-item *ngFor="let innslag of hendelse.innslag" (click)="visInnslag( innslag.id )">
 			<ion-avatar item-start>
 				<img src="{{ innslag.bilde.url }}">
 			</ion-avatar>
@@ -19,4 +18,5 @@
 			<h3>{{ innslag.sjanger }}</h3>
 		</ion-item>
 	</ion-list>
+	-->
 </ion-content>

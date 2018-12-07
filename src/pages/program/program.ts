@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { MonstringProgramProvider } from '../../providers/ukm/monstringprogram';
 import { ProgramProvider } from '../../providers/ukm/program';
 import { StorageProvider } from '../../providers/storage';
+import { HendelsePage } from './hendelse';
 
 @Component({
   selector: 'page-program',
@@ -27,7 +28,24 @@ export class ProgramPage {
 		console.info('Program-load');
 	}
 
+	visHendelse( id ) {
+		this.navCtrl.push(
+			HendelsePage,
+			{
+				id: id
+			}
+		)
+	}
+
 	visDetaljProgram( id ) {
-		alert('hei ' + id);
+		/*
+		this.navCtrl.push(
+			InnslagPage,
+			{
+				id: id,
+			}
+		);
+		*/
+		alert('Show InnslagPage( '+ id +' )');
 	}
 }

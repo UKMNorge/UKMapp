@@ -19,14 +19,25 @@ export interface Hendelse {
 
 @Injectable()
 export class HendelseProvider extends ObjectProvider {
-  private url = 'https://api.ukm.no/2.0/hendelse/#id';
+  private url = 'https://api.ukm.no/2.0/monstring-#monstring/program/#id'
+  private monstring_id = false;
 
   constructor( 
     _http:HttpClient, 
-    StorageProvider:StorageProvider, 
+    storageProvider:StorageProvider, 
     Events: Events 
   ) {
-    super( 'Hendelse', _http, StorageProvider, Events );
+    super( 'Hendelse', _http, storageProvider, Events );
+    
+    let self = this;
+    storageProvider.unit('APP').get('monstring').then(
+      (monstring_id) =>
+      {
+        self.monstring_id = monstring_id;
+        this.url = this.url.replace('#monstring', monstring_id);
+        //this.innslag = new InnslagIHendelseCollection( 'Hendelse'+ id );
+      }
+    );
     console.log('Hi! I\'m HendelseProvider');
   }
   
@@ -40,5 +51,16 @@ export class HendelseProvider extends ObjectProvider {
 
   public sayHello() {
     console.warn('HELLOOOOOOO');
+  }
+  
+  public filterLoadData( data ) {
+
+    data.innslag.forEach( 
+      (innslag) => {
+        innslag = innslag.id
+      }
+    )
+
+    return data;
   }
 }

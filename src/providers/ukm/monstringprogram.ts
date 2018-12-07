@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { StorageProvider } from '../../providers/storage';
 import { ObjectCollectionProvider } from '../object/collection';
-import { HendelseProvider, Hendelse } from './hendelse';
+import { HendelseProvider } from './hendelse';
 
 /**
  * Henter ut en oversikt over programmet (collection av Hendelser)

@@ -19,6 +19,7 @@ export abstract class ObjectProvider extends Screamer {
   private storage: StorageUnit;
   
   abstract getUrl( id );
+  abstract filterLoadData( data );
   
   /**
    * 
@@ -112,8 +113,10 @@ export abstract class ObjectProvider extends Screamer {
         (result: ApiProviderResult) => {
           // TEMP FIX TO SHOW LOADED 
           let data = result.getData();
+          data = self.filterLoadData( data );
           data.navn =  nameExtra + data.navn;
           self.data.set(result.getId(), data);
+
           console.log('SHOULD BE');
           console.log( data );
           return self.data.get( result.getId() );

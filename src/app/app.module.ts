@@ -27,6 +27,11 @@ import { MonstringerProvider } from '../providers/ukm/monstringer';
 import { StorageProvider } from '../providers/storage/storage';
 import { ProgramProvider } from '../providers/ukm/program';
 import { HendelseProvider } from '../providers/ukm/hendelse';
+import { HendelsePage } from '../pages/program/hendelse';
+import { InnslagProvider } from '../providers/ukm/innslag';
+import { PostProvider } from '../providers/wordpress/post';
+import { PostsProvider } from '../providers/wordpress/posts';
+import { CategoryProvider } from '../providers/wordpress/category';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,7 @@ import { HendelseProvider } from '../providers/ukm/hendelse';
     SelectPage,
     MapPage,
     LoadingPage,
+    HendelsePage,
     ProgramPage
   ],
   imports: [
@@ -56,6 +62,7 @@ import { HendelseProvider } from '../providers/ukm/hendelse';
     SelectPage,
     MapPage,
     LoadingPage,
+    HendelsePage,
     ProgramPage
   ],
   providers: [
@@ -67,6 +74,9 @@ import { HendelseProvider } from '../providers/ukm/hendelse';
     MonstringerProvider,
     ProgramProvider,
     HendelseProvider,
+    InnslagProvider,
+    PostsProvider,
+    PostProvider,
     BrowserTab
   ]
 })

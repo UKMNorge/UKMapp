@@ -35,7 +35,7 @@
 		<ion-list>
 			<ion-item *ngFor="let hendelse of program.getAll()">
 				<ion-toggle checked="false"></ion-toggle>
-				<ion-label (click)="visDetaljProgram(hendelse.id);">
+				<ion-label (click)="visHendelse( hendelse.id );">
 					<h2>
 						{{ hendelse.navn }}
 					</h2>

@@ -53,7 +53,7 @@ export abstract class ObjectCollectionProvider {
 
     this.loadFromStorage();
     this.loadFromAPI();
-   this.loaded = true;
+    this.loaded = true;
   }
 
   public loadFromStorage() {

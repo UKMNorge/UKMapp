@@ -36,4 +36,8 @@ export abstract class Screamer {
         console.warn('SCREAMING '+ this.scream_id +':'+ event);
         this.events.publish( this.scream_id +':'+ event, args );
     }
+
+    public getEvents() {
+    return this.events;
+    }
 }

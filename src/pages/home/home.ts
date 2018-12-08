@@ -5,6 +5,7 @@ import { MapPage } from '../map/map';
 import { StorageProvider } from '../../providers/storage';
 import { MonstringProvider } from '../../providers/ukm/monstring';
 import { CategoriesProvider } from '../../providers/wordpress/categories';
+import { KontaktCollectionProvider } from '../../providers/ukm/kontakt.collection';
 
 @Component({
   selector: 'page-home',
@@ -27,11 +28,29 @@ export class HomePage {
 			storage.get('monstring').then(
 				( monstring_id ) => {
 					self.setMonstringId( monstring_id );
+
+					// 
+					self.monstringProvider.getKontaktCollectionProvider().then(
+						(kontaktCollectionProvider:KontaktCollectionProvider) => 
+						{
+							console.group('KONTAKTPERSONER');
+							kontaktCollectionProvider.load();
+							kontaktCollectionProvider.getAll().forEach(
+								(kontakt) =>
+								{	
+									console.log( kontakt );
+								}
+							);
+							console.groupEnd();
+						}
+					);
 				}
 			)
 		}
 
 		this.categoriesProvider.getCategory('nyheter');
+
+		
 
 	}
 

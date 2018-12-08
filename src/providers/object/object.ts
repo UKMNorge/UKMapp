@@ -24,18 +24,18 @@ export abstract class ObjectProvider extends Screamer {
   /**
    * 
    * @param title Type of object
-   * @param _http 
+   * @param http 
    * @param storageProvider 
    * @param events 
    */
   constructor( 
     private title, 
-    _http: HttpClient, 
+    private http: HttpClient, 
     private storageProvider: StorageProvider,
     events: Events
   ) {
     super( title, events );
-    this.apiProvider = new ApiProvider( this.title, _http, this.storageProvider);
+    this.apiProvider = new ApiProvider( this.title, http, this.storageProvider);
     this.storage = this.storageProvider.create('Object'+this.title);
   }
   
@@ -126,5 +126,14 @@ export abstract class ObjectProvider extends Screamer {
           return self.data.get( result.getId() );
         }
       );
+  }
+
+
+  public getStorageProvider() {
+    return this.storageProvider;
+  }
+
+  public getHttp() {
+    return this.http;
   }
 }

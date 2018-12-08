@@ -26,12 +26,12 @@ export class HendelseProvider extends ObjectProvider {
   public innslag_objects = [];
 
   constructor( 
-    _http:HttpClient, 
+    http:HttpClient, 
     storageProvider:StorageProvider, 
     Events: Events,
     private innslagProvider: InnslagProvider
   ) {
-    super( 'Hendelse', _http, storageProvider, Events );
+    super( 'Hendelse', http, storageProvider, Events );
     
     let self = this;
     storageProvider.unit('APP').get('monstring').then(
@@ -51,10 +51,6 @@ export class HendelseProvider extends ObjectProvider {
 
   public getUrl( id ) {
     return this.url.replace('#id', id);
-  }
-
-  public sayHello() {
-    console.warn('HELLOOOOOOO');
   }
   
   public filterLoadData( data ) {

@@ -51,7 +51,7 @@ export class WordpressProvider {
      * @param category_id
      * @return CategoryProvider() for category_id
      */
-    public getCategoryProvider( category_id:string ) {
+    public getCategoryProvider( category_id:string|number ) {
         console.group('getCategoryProvider('+ category_id +')');
         this._checkRequisites('getCategoryProvider');
         console.groupEnd();

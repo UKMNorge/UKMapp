@@ -5,13 +5,16 @@ import { DateTime, Events } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage';
 import { ObjectProvider } from '../object/object';
 
-export interface Monstring {
+export interface Innslag {
   id: number;
   navn: string;
-  sted: string;
-  start: DateTime; 
-  stop: DateTime;
   type: string;
+  beskrivelse: string;
+  kommune:any; // TODO spesifiser kommune
+  kategori: string;
+  sjanger: string;
+  kategori_og_sjanger: string;
+  bilde: any; // TODO spesifiser bilde
 }
 
 @Injectable()
@@ -29,7 +32,7 @@ export class InnslagProvider extends ObjectProvider {
 
   init() {}
   
-  public validate( data:Monstring ) {
+  public validate( data:Innslag ) {
     return data;
   }
 

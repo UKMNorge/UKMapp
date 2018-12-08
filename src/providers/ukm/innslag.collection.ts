@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { StorageProvider } from '../../providers/storage';
 import { ObjectCollectionProvider } from '../object/collection';
-import { PostProvider, Post } from '../wordpress/post';
+import { Innslag, InnslagProvider } from './innslag';
 
 /**
  * Henter ut en oversikt over kategorien (collection av Post)
@@ -14,16 +14,16 @@ export class InnslagCollectionProvider extends ObjectCollectionProvider {
 
     constructor(
         parent_id,
-        postProvider: PostProvider, 
+        innslagProvider: InnslagProvider,
         _http:HttpClient, 
         StorageProvider:StorageProvider
     ) {
-        super( 'Innslag|'+parent_id, postProvider, _http, StorageProvider );
+        super( 'Innslag|'+parent_id, innslagProvider, _http, StorageProvider );
         console.log('Whaddup?, I\'m InnslagCollectionProvider for '+ parent_id);
         this.url = this.url.replace('#id', parent_id );
     }
 
-    public validate( data:Post ) {
+    public validate( data:Innslag ) {
         return data;
     }
 

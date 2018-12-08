@@ -51,7 +51,7 @@ export class HomePage {
 			)
 		}
 
-		this.nyheter = this.wordpressProvider.getCategoryProvider('nyheter');
+	 	this.nyheter = this.wordpressProvider.getCategoryProvider('nyheter');
 	}
 
 	public setMonstringId( monstring_id ) {

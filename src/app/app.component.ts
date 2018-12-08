@@ -57,15 +57,24 @@ export class MyApp {
 					this._selectBasePage( id );
 				}
 			);
+
+			this.app_storage.subscribe(
+				'remove:monstring',
+				( id ) => {
+					this.storageProvider.clear();
+				}
+			)
 		});
 	}
 
 	private _selectBasePage( id ) {
+		console.warn('SELECT BASE PAGE: '+ id );
 		if( null == id ) {
 			console.warn('ROOTPAGE == SelectPage');
 			//Bytt om disse for å få appen i fungerende stand igjen.
 			this.rootPage = SelectPage;
-			//this.rootPage = InfoPage
+			this.wordpressProvider.setMonstringId( null );
+			this.wordpressProvider.setMonstringUrl( null );
 		} else {
 			this.monstringProvider.get( id ).then( 
 				(monstring:Monstring) => 

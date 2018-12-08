@@ -49,4 +49,13 @@ export class StorageProvider {
   public unit( id: string ) {
     return this.units.get(id);
   }
+
+  public clear() {
+    
+    this.units.forEach(
+      (unit:StorageUnit) => {
+        unit.clear();
+      }
+    )
+  }
 }

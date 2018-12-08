@@ -23,7 +23,7 @@ export class CategoryProvider extends ObjectMonstringAwareCollectionProvider {
     let endpoint_url = monstring_url;
     
     // Hvis numerisk kategori, hent fra kategori-endpoint
-    if( typeof category_id == 'number' ) {
+    if( typeof(category_id) == 'number' ) {
       endpoint_url += ('wp-json/UKM/kategori/#id').replace('#id', category_id.toString() );
     } 
     // Hvis tekst-id, er dette custom-endpoint

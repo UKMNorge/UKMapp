@@ -7,7 +7,11 @@ export class ApiProviderResponse {
     constructor( _url: string, _success:boolean, _cached:boolean, _data ) {
       this.success = _success;
       this.cached = _cached;
-      this.data = _data;
+      if( typeof(_data) == 'string' && _data == 'false' ) {
+        this.data = false;
+      } else {
+        this.data = _data;
+      }
       this.url = _url;
     }
   

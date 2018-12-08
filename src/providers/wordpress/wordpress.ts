@@ -109,6 +109,13 @@ export class WordpressProvider {
         return this.postContentProvider;
     }
 
+
+    public clear() {
+        this.postContentProvider = null;
+        this.postProvider = null;
+        this.categoryProviders = new Map();
+    }
+
     private _checkRequisites( callback ) {
         if( this.monstring_url == null ) {
             console.log('ABORT: Missing monstringUrl');

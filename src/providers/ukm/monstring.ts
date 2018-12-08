@@ -69,4 +69,9 @@ export class MonstringProvider extends ObjectProvider {
       }
     );
   }
+
+  public clear() {
+    this.kontaktCollectionProvider = null;
+    super.clear();
+  }
 }

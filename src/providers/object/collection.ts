@@ -106,11 +106,11 @@ export abstract class ObjectCollectionProvider {
     ).then(
       (result: ApiProviderResult) => {
         // Iterate data returned from apiProvider
-        console.error('THIS SHIT IS THE RESULT');
-        console.log( result );
+        console.group(self.id +' got ApiProviderResult: ', result);
+        console.log('Iterate over result.getData()');
         result.getData().forEach(
           (data) => {
-            console.log('THIS IS DATA', data);
+             console.log( data );
             // First add, then subscribe to updates
             // Set data in object provider and add to internal collection (via temp)
             temp_data.push( this.objectProvider.set( data.id, data ) );
@@ -131,6 +131,7 @@ export abstract class ObjectCollectionProvider {
             );
           }
         );
+        console.groupEnd();
         // Set internal collection to array of result data
         self.data = temp_data;
 
@@ -159,6 +160,10 @@ export abstract class ObjectCollectionProvider {
 
   public update( object ) {
     console.warn('HOA! Updated');
+  }
+
+  public clear() {
+    this.data = [];
   }
 
 }

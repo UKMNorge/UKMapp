@@ -121,7 +121,6 @@ export abstract class ObjectProvider extends Screamer {
           data.navn =  nameExtra + data.navn;
           self.data.set(result.getId(), data);
 
-          console.log('SHOULD BE');
           console.log( data );
           return self.data.get( result.getId() );
         }
@@ -135,5 +134,9 @@ export abstract class ObjectProvider extends Screamer {
 
   public getHttp() {
     return this.http;
+  }
+
+  public clear() {
+    this.data = new Map();
   }
 }

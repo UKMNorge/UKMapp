@@ -49,6 +49,9 @@ export class MyApp {
 				'remove:monstring',
 				( id ) => {
 					this._selectBasePage( null );
+					this.storageProvider.clear();
+					this.wordpressProvider.clear();
+					this.monstringProvider.clear();
 				}
 			)
 
@@ -57,13 +60,6 @@ export class MyApp {
 					this._selectBasePage( id );
 				}
 			);
-
-			this.app_storage.subscribe(
-				'remove:monstring',
-				( id ) => {
-					this.storageProvider.clear();
-				}
-			)
 		});
 	}
 

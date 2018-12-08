@@ -1,16 +1,18 @@
 <ion-header>
 	<ion-navbar>	
-		<ion-title *ngIf="hendelse">
+		<ion-title *ngIf='hendelse'>
 			{{ hendelse.navn }}
+			<span *ngIf='hendelse.type == "category"'> - er en kategori</span>
+			<span *ngIf='hendelse.type == "post"'> - er en post</span>
+			<span *ngIf='hendelse.type == "default"'> - er en vanlig forestilling</span>
 		</ion-title>
 	</ion-navbar>
 </ion-header>
-
 <ion-content>
-	<ion-list *ngIf="hendelse">
-		<ion-item *ngFor="let innslag of hendelse.innslag" (click)="visInnslag( innslag )">
+	<ion-list *ngIf='hendelse'>
+		<ion-item *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
 			<ion-avatar item-start>
-				<img src="{{ innslag.bilde.url }}">
+				<img src='{{ innslag.bilde.url }}'>
 			</ion-avatar>
 			<h2>{{ innslag.navn }}</h2>
 			<h3>{{ innslag.type.navn }}</h3>

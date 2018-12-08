@@ -20,10 +20,8 @@ export interface Hendelse {
 
 @Injectable()
 export class HendelseProvider extends ObjectProvider {
-  private url = 'https://api.ukm.no/2.0/monstring-#monstring/program/#id'
-  private monstring_id = false;
-  private innslag = [];
-  public innslag_objects = [];
+  private url = 'https://api.ukm.no/2.0/monstring-#monstring_id/program/#id'
+  private monstring_id:number;
 
   constructor( 
     http:HttpClient, 
@@ -38,7 +36,7 @@ export class HendelseProvider extends ObjectProvider {
       (monstring_id) =>
       {
         self.monstring_id = monstring_id;
-        this.url = this.url.replace('#monstring', monstring_id);
+        self.url = self.url.replace('#monstring_id', monstring_id);
         //this.innslagColl = new InnslagIHendelseCollection( 'Hendelse'+ id );
       }
     );

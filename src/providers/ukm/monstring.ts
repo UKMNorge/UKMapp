@@ -13,6 +13,7 @@ export interface Monstring {
   start: DateTime; 
   stop: DateTime;
   type: string;
+  url: string;
 }
 
 @Injectable()

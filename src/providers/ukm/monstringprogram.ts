@@ -19,7 +19,7 @@ export class MonstringProgramProvider extends ObjectMonstringAwareCollectionProv
     ) {
         super( 
             'Hendelser',
-            'https://api.ukm.no/2.0/monstring-#id/program/',
+            'https://api.ukm.no/2.0/monstring-#monstring_id/program/',
             monstring_id,
             hendelseProvider, 
             _http, 

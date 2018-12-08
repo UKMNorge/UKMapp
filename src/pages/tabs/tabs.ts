@@ -5,7 +5,7 @@ import { ProfilePage } from '../profile/profile';
 import { HomePage } from '../home/home';
 import { ProgramPage } from '../program/program';
 import { InfoPage } from '../info/info';
-import { CategoriesProvider } from '../../providers/wordpress';
+import { WordpressProvider } from '../../providers/wordpress';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -21,9 +21,9 @@ export class TabsPage {
   private info = null;
 
   constructor(
-    private categoriesProvider: CategoriesProvider
+    private wordpressProvider:WordpressProvider
   ) {
-    this.info =  this.categoriesProvider.getCategory('informasjon').getAll();
+    this.info = this.wordpressProvider.getCategoryProvider('informasjon');
 
   }
 

@@ -4,9 +4,8 @@ import { NavController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 import { StorageProvider } from '../../providers/storage';
 import { MonstringProvider } from '../../providers/ukm/monstring';
-import { CategoriesProvider } from '../../providers/wordpress/categories';
 import { KontaktCollectionProvider } from '../../providers/ukm/kontakt.collection';
-import { PostProvider } from '../../providers/wordpress';
+import { WordpressProvider } from '../../providers/wordpress';
 import { SingleInfoPage } from '../info/single';
 
 @Component({
@@ -23,8 +22,7 @@ export class HomePage {
 		public navCtrl: NavController,
 		private storageProvider: StorageProvider,
 		private monstringProvider: MonstringProvider,
-		private categoriesProvider: CategoriesProvider,
-		public postProvider: PostProvider
+		public wordpressProvider: WordpressProvider
 		) {
 		let self = this;
 		let storage = this.storageProvider.unit('APP');
@@ -53,11 +51,7 @@ export class HomePage {
 			)
 		}
 
-		this.nyheter = this.categoriesProvider.getCategory('nyheter').getAll();
-		
-
-		
-
+		this.nyheter = this.wordpressProvider.getCategoryProvider('nyheter');
 	}
 
 	public setMonstringId( monstring_id ) {

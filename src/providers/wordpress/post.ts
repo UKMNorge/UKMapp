@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectProvider } from '../object/object';
+import { ObjectMonstringAwareProvider } from '../object/object_monstringaware';
 
 export interface Post {
   id: number;
@@ -14,29 +14,38 @@ export interface Post {
   contentpath: string;
 }
 
+/**
+ * PostProvider
+ * Brukes for å hente ut enkeltposts fra API/storage/memory
+ */
 @Injectable()
-export class PostProvider extends ObjectProvider {
-  private url = 'https://ukm.no/testfylke/wp-json/UKM/post/#id';
-
-  constructor( 
-    _http:HttpClient, 
-    StorageProvider:StorageProvider, 
-    Events: Events 
+export class PostProvider extends ObjectMonstringAwareProvider {
+  
+  constructor(
+    monstring_id,
+    monstring_url,
+    http:HttpClient, 
+    StorageProvider:StorageProvider,
+    events: Events
   ) {
-    super( 'Post', _http, StorageProvider, Events );
+    let endpoint_url = monstring_url + 'wp-json/UKM/post/#id';
+
+    super(
+      'Post',
+      endpoint_url,
+      monstring_id,
+      http,
+      StorageProvider,
+      events
+    );
+    
+    this.setUrl( endpoint_url );
     console.log('How\'s it goin\'? I\'m PostProvider');
   }
 
-  init() {}
-  
   public validate( data:Post ) {
     return data;
   }
-
-  public getUrl( id ) {
-    return this.url.replace('#id', id);
-  }
-
   public filterLoadData( data ) {
     return data;
   }

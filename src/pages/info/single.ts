@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
-import { Post, PostContentProvider } from '../../providers/wordpress';
-
+import { PostContent, WordpressProvider } from '../../providers/wordpress';
 
 @Component({
 	selector: 'page-single-info',
@@ -17,16 +16,19 @@ export class SingleInfoPage {
 	constructor(
         private navParams: NavParams,
         public navCtrl: NavController,
-        public postContentProvider: PostContentProvider,
+        public wordpressProvider: WordpressProvider
 	) {
         let item = this.navParams.get('item');
-        //console.error('Logging ITEM from navParams: ', item);
         this.title = item.title;
-        this.postContentProvider.get(item.id).then(
-            (content:Post) => 
+        
+        let self = this;
+        self.wordpressProvider.getPostContentProvider().get(item.id).then(
+            (content:PostContent) => 
             {
-                this.post = content;
-                this.loading = false;
+                console.log('SINGLE.ts got postcontent');
+                console.log( content );
+                self.post = content;
+                self.loading = false;
             }
         );
     }

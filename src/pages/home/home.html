@@ -27,7 +27,7 @@
 	</div>
 	<div *ngIf="nyheter">
 		<ion-list> 
-			<ion-item *ngFor="let nyhet of nyheter" (click)="visNyhet(nyhet)">
+			<ion-item *ngFor="let nyhet of nyheter.getAll()" (click)="visNyhet(nyhet)">
 				<ion-thumbnail item-start>
 					<img src="{{nyhet.image}}">
 				</ion-thumbnail>

@@ -9,8 +9,9 @@ import { LoadingPage } from '../pages/loading/loading';
 
 import { Events } from 'ionic-angular';
 import { StorageUnit, StorageProvider } from '../providers/storage';
-import { MonstringProvider } from '../providers/ukm/monstring';
+import { MonstringProvider, Monstring } from '../providers/ukm/monstring';
 import { MonstringerProvider } from '../providers/ukm/monstringer.collection';
+import { WordpressProvider } from '../providers/wordpress';
 
 @Component({
 	templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class MyApp {
 		public events: Events, 
 		public monstringProvider: MonstringProvider,
 		public monstringerProvider: MonstringerProvider,
-		private storageProvider: StorageProvider
+		private storageProvider: StorageProvider,
+		private wordpressProvider: WordpressProvider
 	) {
 		
 		platform.ready().then(() => {
@@ -59,13 +61,29 @@ export class MyApp {
 	}
 
 	private _selectBasePage( id ) {
-		if( null === id ) {
+		if( null == id ) {
+			console.warn('ROOTPAGE == SelectPage');
 			//Bytt om disse for å få appen i fungerende stand igjen.
 			this.rootPage = SelectPage;
-			//this.rootPage = InfoPage;
+			//this.rootPage = InfoPage
 		} else {
-			this.rootPage = TabsPage;
-			//this.rootPage = InfoPage;
-		}
+			this.monstringProvider.get( id ).then( 
+				(monstring:Monstring) => 
+				{
+					console.error( monstring );
+					if( monstring == null || monstring == undefined ) {
+						console.error('HELLOOOOOOO');
+						throw new Error('Beklager, klarte ikke å hente mønstringens url');
+					}
+					console.log( this.wordpressProvider );
+					this.wordpressProvider.setMonstringUrl( monstring.url );
+					this.wordpressProvider.setMonstringId( id );
+					console.log( this.wordpressProvider );
+					
+					console.warn('ROOTPAGE == TabsPage');
+					this.rootPage = TabsPage;
+				}
+			);
+			}
 	}
 }

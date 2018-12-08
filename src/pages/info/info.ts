@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CategoriesProvider } from '../../providers/wordpress/categories';
 import { SingleInfoPage } from './single';
+import { WordpressProvider } from '../../providers/wordpress';
 
 
 /**
@@ -23,9 +23,9 @@ export class InfoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private categoriesProvider: CategoriesProvider
+    private wordpressProvider: WordpressProvider
   ) {
-    this.info = this.categoriesProvider.getCategory('informasjon');
+    this.info = this.wordpressProvider.getCategoryProvider('informasjon');
   }
 
   visInfo( item ) {

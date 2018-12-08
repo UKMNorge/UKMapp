@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DateTime, Events } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectProvider } from '../object/object';
 import { ObjectMonstringAwareProvider } from '../object/object_monstringaware';
 
 export interface Kontakt {

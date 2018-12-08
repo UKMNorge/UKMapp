@@ -28,4 +28,8 @@ export class ObjectMonstringAwareCollectionProvider extends ObjectCollectionProv
     public getUrl() {
         return this.url;
     }
+
+    public setUrl( url ) {
+        this.url = url;
+    }
 }

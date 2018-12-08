@@ -1,39 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DateTime, Events } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectProvider } from '../object/object';
-import { Post } from './post';
+import { ObjectMonstringAwareProvider } from '../object/object_monstringaware';
 
 export interface PostContent {
   id: number;
   content: string;
 }
 
+/**
+ * PostProvider
+ * Brukes for å hente ut enkeltposts fra API/storage/memory
+ */
 @Injectable()
-export class PostContentProvider extends ObjectProvider {
-  private url = 'https://ukm.no/testfylke/wp-json/UKM/content/#id';
-
-  constructor( 
-    _http:HttpClient, 
-    StorageProvider:StorageProvider, 
-    Events: Events 
+export class PostContentProvider extends ObjectMonstringAwareProvider {
+  
+  constructor(
+    monstring_id,
+    monstring_url,
+    http:HttpClient, 
+    StorageProvider:StorageProvider,
+    events: Events
   ) {
-    super( 'PostContent', _http, StorageProvider, Events );
-    console.log('I\'m Batman! Sorry, no, I\'m PostContentProvider');
+    let endpoint_url = monstring_url + 'wp-json/UKM/content/#id';
+
+    super(
+      'PostContent',
+      endpoint_url,
+      monstring_id,
+      http,
+      StorageProvider,
+      events
+    );
+    
+    this.setUrl( endpoint_url );
+    console.log('How\'s it goin\'? I\'m PostContentProvider');
   }
 
-  init() {}
-  
-  public validate( data:Post ) {
+  public validate( data:PostContent ) {
     return data;
   }
-
-  public getUrl( id ) {
-    return this.url.replace('#id', id);
-  }
-
   public filterLoadData( data ) {
     return data;
   }

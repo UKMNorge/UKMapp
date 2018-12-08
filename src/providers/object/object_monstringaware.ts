@@ -9,10 +9,6 @@ export abstract class ObjectMonstringAwareProvider extends ObjectProvider {
     private url:string;
 
     abstract filterLoadData( data );
-    
-    public getUrl( id:string ) {
-        return this.url.replace('#id', id);
-    }
 
     constructor(
         title,
@@ -31,5 +27,13 @@ export abstract class ObjectMonstringAwareProvider extends ObjectProvider {
          );
 
          this.url = endpoint_url.replace('#monstring_id', monstring_id.toString() );
+    }
+
+    public getUrl( id:string ) {
+        return this.url.replace('#id', id);
+    }
+
+    public setUrl( url ) {
+        this.url = url;
     }
 }

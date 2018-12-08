@@ -17,7 +17,7 @@
 
   <div *ngIf="info != null">
     <ion-list>
-      <ion-item *ngFor="let item of info.getAll()" (click)="visInfo( item.id )">
+      <ion-item *ngFor="let item of info.getAll()" (click)="visInfo( item )">
           <ion-thumbnail item-start>
               <img src="{{item.image}}">
             </ion-thumbnail>

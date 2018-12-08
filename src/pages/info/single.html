@@ -1,14 +1,18 @@
 <ion-header>
 
     <ion-navbar>
-      <ion-title>{{this.title}}</ion-title>
+      <ion-title *ngIf="loading">Informasjonen laster</ion-title>
+      <ion-title *ngIf="!loading">{{ this.title }}</ion-title>
     </ion-navbar>
   
   </ion-header>
   
   
   <ion-content padding>
-   <div [innerHTML]="this.post.content">
+   <div *ngIf="loading">
+     <h1>Laster inn sak</h1>
+   </div>
+   <div *ngIf="this.post" [innerHTML]="this.post.content">
    </div>
   </ion-content>
   

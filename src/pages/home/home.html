@@ -25,4 +25,15 @@
 			</ion-item>
 		</ion-list>
 	</div>
+	<div *ngIf="nyheter">
+		<ion-list> 
+			<ion-item *ngFor="let nyhet of nyheter" (click)="visNyhet(nyhet)">
+				<ion-thumbnail item-start>
+					<img src="{{nyhet.image}}">
+				</ion-thumbnail>
+				<h1>{{ nyhet.title }}</h1>
+				<p>{{ nyhet.lead}}</p>
+			</ion-item>
+		</ion-list>
+	</div>
 </ion-content>

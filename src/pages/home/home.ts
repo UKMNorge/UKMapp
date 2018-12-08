@@ -5,6 +5,8 @@ import { MapPage } from '../map/map';
 import { StorageProvider } from '../../providers/storage';
 import { MonstringProvider } from '../../providers/ukm/monstring';
 import { CategoriesProvider } from '../../providers/wordpress/categories';
+import { PostProvider, PostContentProvider } from '../../providers/wordpress';
+import { SingleInfoPage } from '../info/single';
 
 @Component({
   selector: 'page-home',
@@ -13,13 +15,16 @@ import { CategoriesProvider } from '../../providers/wordpress/categories';
 
 export class HomePage {
 	public monstring = null;
-	
+	public nyheter = null;
+	public singlenyhet = null;
+
 	constructor(
 		public navCtrl: NavController,
 		private storageProvider: StorageProvider,
 		private monstringProvider: MonstringProvider,
-		private categoriesProvider: CategoriesProvider
-	) {
+		private categoriesProvider: CategoriesProvider,
+		public postProvider: PostProvider
+		) {
 		let self = this;
 		let storage = this.storageProvider.unit('APP');
 		console.log( storage );
@@ -31,7 +36,8 @@ export class HomePage {
 			)
 		}
 
-		this.categoriesProvider.getCategory('nyheter');
+		this.nyheter = this.categoriesProvider.getCategory('nyheter').getAll();
+		
 
 	}
 
@@ -53,5 +59,14 @@ export class HomePage {
 	
 	visKart() {
 		this.navCtrl.push( MapPage );
+	}
+
+	visNyhet( item ) {
+		this.navCtrl.push(
+			SingleInfoPage,
+			{
+				item: item
+			}
+		)
 	}
 }

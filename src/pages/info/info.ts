@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CategoriesProvider } from '../../providers/wordpress/categories';
-import { PostProvider } from '../../providers/wordpress/post';
-import { PostContentProvider } from '../../providers/wordpress';
 import { SingleInfoPage } from './single';
 
 
@@ -25,22 +23,17 @@ export class InfoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private categoriesProvider: CategoriesProvider,
-    private postContentProvider: PostContentProvider,
+    private categoriesProvider: CategoriesProvider
   ) {
     this.info = this.categoriesProvider.getCategory('informasjon');
   }
 
-  visInfo( info_id ) {
-    this.post = this.postContentProvider.get(info_id).then(data => {
-    console.log(data);
-
+  visInfo( item ) {
     this.navCtrl.push(
 			SingleInfoPage,
 			{
-				post: data
+        item: item
 			}
 		)
-    })
   }
 }

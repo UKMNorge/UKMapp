@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
-import { Post, PostProvider } from '../../providers/wordpress';
+import { Post, PostContentProvider } from '../../providers/wordpress';
 
 
 @Component({
@@ -10,20 +10,23 @@ import { Post, PostProvider } from '../../providers/wordpress';
 })
 export class SingleInfoPage {
 
-
+    public loading = true;
     public post = null;
     public title = null;
 
 	constructor(
         private navParams: NavParams,
         public navCtrl: NavController,
-        public postProvider: PostProvider,
+        public postContentProvider: PostContentProvider,
 	) {
-        this.post = this.navParams.get('post');
-        this.postProvider.get(this.post.id).then( 
-            (data:Post) => 
+        let item = this.navParams.get('item');
+        //console.error('Logging ITEM from navParams: ', item);
+        this.title = item.title;
+        this.postContentProvider.get(item.id).then(
+            (content:Post) => 
             {
-                this.title = data.title;
+                this.post = content;
+                this.loading = false;
             }
         );
     }

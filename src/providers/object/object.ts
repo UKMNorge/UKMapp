@@ -46,7 +46,7 @@ export abstract class ObjectProvider extends Screamer {
    * @return Promise Requested Object
    */
   public get(id) {
-    console.info('ObjectProvider('+ this.title +')::get('+ id +')');
+    //console.info('ObjectProvider('+ this.title +')::get('+ id +')');
     let self = this;
 
     return new Promise( function( resolve ) {
@@ -88,7 +88,7 @@ export abstract class ObjectProvider extends Screamer {
    * @param data 
    */
   public set(id, data) {
-    console.info('ObjectProvider('+ this.title +')::set('+ id +')');
+    //console.info('ObjectProvider('+ this.title +')::set('+ id +')');
     // Send to permanent storage
     this.storage.set( id, data );
     // Add / update in collection

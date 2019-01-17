@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Program
-    </ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>
+			Program
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content>
@@ -22,25 +22,28 @@
 			<p *ngSwitchCase="'public'">
 				Programmet for hele festivalen.
 			</p>
-	
+
 			<p *ngSwitchCase="'mine'">
 				Ditt eget festivalprogram.
 			</p>
-	
+
 		</div>
 
 	</div>
-	
 	<div *ngIf="program != null">
 		<ion-list>
 			<ion-item *ngFor="let hendelse of program.getAll()">
-				<ion-toggle checked="false"></ion-toggle>
 				<ion-label (click)="visHendelse( hendelse.id );">
 					<h2>
 						{{ hendelse.navn }}
+						{{hendelse.id}}
+
 					</h2>
 					<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
+					<ion-checkbox *ngIf="mittprogram.indexOf( hendelse.id ) != -1" checked=true (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
+					<ion-checkbox *ngIf="mittprogram.indexOf( hendelse.id ) == -1" checked=false (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
 				</ion-label>
+
 			</ion-item>
 		</ion-list>
 	</div>

@@ -9,13 +9,24 @@
 	</ion-navbar>
 </ion-header>
 <ion-content>
-	<ion-list *ngIf='hendelse'>
-		<ion-item *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
-			<ion-avatar item-start>
-				<img src='{{ innslag.bilde.url }}'>
-			</ion-avatar>
-			<h2>{{ innslag.navn }}</h2>
-			<h3>{{ innslag.type.navn }}</h3>
-		</ion-item>
-	</ion-list>
+
+	<!-- Fiks dette -> egen component for hendelser av type post. Sjekk binding. -->
+	<div *ngIf='hendelse'>
+		<h4>{{hendelse.post_id}}</h4>
+		<post *ngIf='hendelse.type == "post"' pid="{{hendelse.post_id}}"></post>
+
+
+		<ion-list *ngIf='hendelse.type == "default"'>
+			<ion-item *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
+				<ion-avatar item-start>
+					<img src='{{ innslag.bilde.url }}'>
+				</ion-avatar>
+				<h2>{{ innslag.navn }}</h2>
+				<h3>{{ innslag.type.navn }}</h3>
+			</ion-item>
+		</ion-list>
+	</div>
+	<!-- 
+	
+	-->
 </ion-content>

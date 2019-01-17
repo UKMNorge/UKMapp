@@ -8,14 +8,14 @@ import { HendelseProvider } from '../../providers/ukm/hendelse';
 import { InnslagProvider } from '../../providers/ukm/innslag';
 import { StorageProvider } from '../../providers/storage';
 
-
 @Component({
 	selector: 'page-hendelse',
-	templateUrl: 'hendelse.html',
+    templateUrl: 'hendelse.html'
 })
 export class HendelsePage {
 
     public hendelse = null;
+
 
 	constructor(
         private navParams: NavParams,

@@ -35,6 +35,15 @@ import { HendelseProvider } from '../providers/ukm/hendelse';
 import { InnslagProvider } from '../providers/ukm/innslag';
 import { WordpressProvider } from '../providers/wordpress';
 
+import { ComponentsModule } from '../components/components.module';
+
+
+
+//CUSTOM PIPES
+
+
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -49,13 +58,14 @@ import { WordpressProvider } from '../providers/wordpress';
     InnslagPage,
     ProgramPage,
     InfoPage,
-    SingleInfoPage
+    SingleInfoPage,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +81,7 @@ import { WordpressProvider } from '../providers/wordpress';
     InnslagPage,
     ProgramPage,
     InfoPage,
-    SingleInfoPage
+    SingleInfoPage,
   ],
   providers: [
     StatusBar,

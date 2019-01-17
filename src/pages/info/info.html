@@ -14,13 +14,26 @@
 
 
 <ion-content padding>
-
+  <div *ngIf="kontaktpersoner == null">
+    <h1>Laster inn kontaktpersoner</h1>
+  </div>
+  <div *ngIf="kontaktpersoner != null">
+    <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()">
+      <ion-item>
+        <ion-thumbnail *ngIf="kontakt.bilde"><img src="{{kontakt.bilde.url}}"></ion-thumbnail>
+        {{kontakt.fornavn}}
+        {{kontakt.etternavn}}
+        {{kontakt.telefon}}
+        {{kontakt.epost}}
+      </ion-item>
+    </ion-list>
+  </div>
   <div *ngIf="info != null">
     <ion-list>
       <ion-item *ngFor="let item of info.getAll()" (click)="visInfo( item )">
-          <ion-thumbnail item-start>
-              <img src="{{item.image}}">
-            </ion-thumbnail>
+        <ion-thumbnail item-start>
+          <img src="{{item.image}}">
+        </ion-thumbnail>
         <h1>{{ item.title }}</h1>
         <p>{{ item.lead }}</p>
         <ion-icon name="copy"></ion-icon><span> Kopier linkadressen</span>

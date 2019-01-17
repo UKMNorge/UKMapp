@@ -7,7 +7,8 @@ import { PostContent } from '../../providers/wordpress/postcontent';
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
-@Component({
+
+ @Component({
   selector: 'post',
   templateUrl: 'post.html'
 })
@@ -16,7 +17,9 @@ export class PostComponent{
 
   @Input()
   set pid(pid) {
-    this._pid = (pid) || 'Har ikke ID';
+    this._pid = (pid) || -1;
+    console.error(pid, typeof(pid));
+    
   }
   
   get pid(): Number { return this._pid}
@@ -27,12 +30,15 @@ export class PostComponent{
   constructor(
     private wordpressProvider: WordpressProvider
   ) {
+  }
+  ngOnInit() {
+
     console.log('Hello PostComponent Component');
     let self = this;
     console.log(self._pid, typeof(self._pid));
     console.log(self.post, typeof(self.post));
     
-    self.wordpressProvider.getPostContentProvider().get(Number(self._pid)).then(
+    self.wordpressProvider.getPostContentProvider().get(parseInt(self._pid)).then(
       (content:PostContent) => 
       {
           console.group('POST.ts');
@@ -45,3 +51,5 @@ export class PostComponent{
     );
   }
 }
+
+

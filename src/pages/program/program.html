@@ -19,30 +19,49 @@
 		</ion-segment>
 
 		<div [ngSwitch]="valgtProgramModus">
-			<p *ngSwitchCase="'public'">
-				Programmet for hele festivalen.
-			</p>
+			<div *ngSwitchCase="'public'">
+				<div *ngIf="program != null">
+					<h2>Rammeprogram</h2>
+					<ion-list>
+						<ion-item *ngFor="let hendelse of program.getAll()">
+							<ion-label (click)="visHendelse( hendelse.id );">
+								<h2>
+									{{ hendelse.navn }}
+								</h2>
+								<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
+								<ion-item-divider>
+									<ion-checkbox item-end *ngIf="mittprogram.has( hendelse.id )" checked=true (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
+									<ion-checkbox item-end *ngIf="!mittprogram.has( hendelse.id )" checked=false (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
+								</ion-item-divider>
+							</ion-label>
 
-			<p *ngSwitchCase="'mine'">
-				Ditt eget festivalprogram.
-			</p>
+						</ion-item>
+					</ion-list>
+				</div>
+			</div>
+
+			<div *ngSwitchCase="'mine'">
+				<div *ngIf="program != null">
+					<h2>Mitt Program</h2>
+					<ion-list>
+						<div *ngFor="let hendelse of program.getAll()">
+							<div *ngIf="mittprogram.has( hendelse.id )">
+								<ion-item>
+									<ion-label (click)="visHendelse( hendelse.id );">
+										<h2>
+											{{ hendelse.navn }}
+										</h2>
+										<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
+									</ion-label>
+								</ion-item>
+							</div>
+						</div>
+					</ion-list>
+				</div>
+			</div>
 
 		</div>
 
 	</div>
-	<div *ngIf="program != null">
-		<ion-list>
-			<ion-item *ngFor="let hendelse of program.getAll()">
-				<ion-label (click)="visHendelse( hendelse.id );">
-					<h2>
-						{{ hendelse.navn }}
-					</h2>
-					<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
-					<ion-checkbox *ngIf="mittprogram.has( hendelse.id )" checked=true (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
-					<ion-checkbox *ngIf="!mittprogram.has( hendelse.id )" checked=false (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
-				</ion-label>
 
-			</ion-item>
-		</ion-list>
-	</div>
 </ion-content>

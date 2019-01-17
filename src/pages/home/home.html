@@ -10,7 +10,7 @@
 	<div *ngIf="this.monstring">
 		
 		<ion-list>
-			<ion-item (click)="visKart();">
+			<ion-item>
 				<ion-icon name="pin" item-start></ion-icon>
 				<small>
 					{{ monstring.sted }}
@@ -26,14 +26,7 @@
 		</ion-list>
 	</div>
 	<hr>
-	<div *ngIf="kontaktpersoner == null">
-		<h1>Laster inn kontaktpersoner</h1>
-	</div>
-	<div *ngIf="kontaktpersoner != null">
-		<ion-list *ngFor="let kontakt of kontaktpersoner.getAll()">
-			<ion-item>{{kontakt.fornavn}}</ion-item>
-		</ion-list>
-	</div>
+	
 	<hr>
 	<div *ngIf="!nyheter">
 			<h1>Laster inn nyhetssaker</h1>

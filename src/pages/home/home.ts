@@ -17,7 +17,6 @@ export class HomePage {
 	public monstring = null;
 	public nyheter = null;
 	public singlenyhet = null;
-	public kontaktpersoner = null;
 
 	constructor(
 		public navCtrl: NavController,

@@ -14,6 +14,8 @@ export class ProgramPage {
 
 	//public mittprogram = ['12908', '12909', '12910', '12922', '12920'];//, 12921];
 
+	public valgtProgramModus = 'public';
+
 	public program: MonstringProgramProvider = null;
 
 	constructor(

@@ -37,6 +37,8 @@ import { WordpressProvider } from '../providers/wordpress';
 import { MittProgramProvider } from '../providers/app/mittprogram';
 
 import { ComponentsModule } from '../components/components.module';
+import { Calendar } from '@ionic-native/calendar';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 
@@ -98,6 +100,8 @@ import { ComponentsModule } from '../components/components.module';
     WordpressProvider,
     BrowserTab,
     MittProgramProvider,
+    Calendar,
+    InAppBrowser,
   ]
 })
 export class AppModule {}

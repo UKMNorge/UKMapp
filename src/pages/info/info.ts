@@ -29,55 +29,54 @@ export class InfoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private storageProvider: StorageProvider,
-		private monstringProvider: MonstringProvider,
-		public wordpressProvider: WordpressProvider
-		) {
-		let self = this;
-		let storage = this.storageProvider.unit('APP');
-		console.log( storage );
-		if( storage != null ) {
-			storage.get('monstring').then(
-				( monstring_id ) => {
-					self.setMonstringId( monstring_id );
+    private monstringProvider: MonstringProvider,
+    public wordpressProvider: WordpressProvider
+  ) {
+    let self = this;
+    let storage = this.storageProvider.unit('APP');
+    console.log(storage);
+    if (storage != null) {
+      storage.get('monstring').then(
+        (monstring_id) => {
+          self.setMonstringId(monstring_id);
 
-					// 
-					self.monstringProvider.getKontaktCollectionProvider().then(
-						(kontaktCollectionProvider:KontaktCollectionProvider) => 
-						{
-							console.group('KONTAKTPERSONER');
-							kontaktCollectionProvider.load();
-							self.kontaktpersoner = kontaktCollectionProvider;	
-							console.info("Logging self.kontaktpersoner: ", self);
-							
-						}
-					);
-				}
-			)
-		}
+          // 
+          self.monstringProvider.getKontaktCollectionProvider().then(
+            (kontaktCollectionProvider: KontaktCollectionProvider) => {
+              console.group('KONTAKTPERSONER');
+              kontaktCollectionProvider.load();
+              self.kontaktpersoner = kontaktCollectionProvider;
+              console.info("Logging self.kontaktpersoner: ", self);
+
+            }
+          );
+
+        }
+      )
+    }
     this.info = this.wordpressProvider.getCategoryProvider('informasjon');
   }
-  public setMonstringId( monstring_id ) {
-		let self = this;
-		this.monstringProvider.subscribe('update', (_monstring) => {
-			self.monstring=_monstring;
-		});
-		self.monstringProvider.get( monstring_id ).then( 
-			( monstring ) =>
-			{
-				self.monstring = monstring;
-			}
-		).catch( (error) => {
-			console.error('WTF');
-			console.error( error );
-		} );
-	}
+  public setMonstringId(monstring_id) {
+    let self = this;
+    this.monstringProvider.subscribe('update', (_monstring) => {
+      self.monstring = _monstring;
+    });
+    self.monstringProvider.get(monstring_id).then(
+      (monstring) => {
+        self.monstring = monstring;
+      }
+    ).catch((error) => {
+      console.error('WTF');
+      console.error(error);
+    });
+  }
 
-  visInfo( item ) {
+  visInfo(item) {
     this.navCtrl.push(
-			SingleInfoPage,
-			{
+      SingleInfoPage,
+      {
         item: item
-			}
-		)
+      }
+    )
   }
 }

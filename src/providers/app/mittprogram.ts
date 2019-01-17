@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { StorageProvider, StorageUnit } from '../storage';
 import { Events } from 'ionic-angular';
 import { Screamer } from '../object/screamer'

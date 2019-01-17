@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { StorageProvider, StorageUnit } from '../storage';
 import { Events } from 'ionic-angular';
 import { Screamer } from '../object/screamer'
@@ -24,8 +23,7 @@ export abstract class ObjectWithoutApiProvider extends Screamer {
    * @param events 
    */
   constructor( 
-    private title, 
-    _http: HttpClient, 
+    public title, 
     private storageProvider: StorageProvider,
     events: Events
   ) {
@@ -63,8 +61,7 @@ export abstract class ObjectWithoutApiProvider extends Screamer {
     );
   }
 
-
-  /**
+   /**
    * 
    * @param id 
    * @param data 
@@ -79,7 +76,14 @@ export abstract class ObjectWithoutApiProvider extends Screamer {
     this._publish( 'update:'+id, data );
     return data;
   }
- 
+  
+  public getStorage() {
+    return this.storage;
+  }
+  public getStorageProvider() {
+    return this.storageProvider;
+  }
+
   public clear() {
     this.data = new Map();
   }

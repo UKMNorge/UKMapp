@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiProvider, ApiProviderResult } from '../api';
-import { StorageProvider, StorageUnit } from '../storage';
+import { StorageProvider } from '../storage';
 import { Events } from 'ionic-angular';
-import { Screamer } from '../object/screamer'
+import { ObjectWithoutApiProvider } from './object_noapi';
 
 /**
  * Object Provider
@@ -13,10 +13,9 @@ import { Screamer } from '../object/screamer'
  * requests and persists, and fetches from API.
  */
 @Injectable()
-export abstract class ObjectProvider extends Screamer {
+export abstract class ObjectProvider extends ObjectWithoutApiProvider {
   public data = new Map();
   public apiProvider: ApiProvider;
-  private storage: StorageUnit;
   
   abstract getUrl( id );
   abstract filterLoadData( data );
@@ -29,14 +28,17 @@ export abstract class ObjectProvider extends Screamer {
    * @param events 
    */
   constructor( 
-    private title, 
+    title, 
     private http: HttpClient, 
-    private storageProvider: StorageProvider,
+    storageProvider: StorageProvider,
     events: Events
   ) {
-    super( title, events );
-    this.apiProvider = new ApiProvider( this.title, http, this.storageProvider);
-    this.storage = this.storageProvider.create('Object'+this.title);
+    super( 
+      title,
+      storageProvider,
+      events
+    );
+    this.apiProvider = new ApiProvider( this.title, http, storageProvider);
   }
   
   /**
@@ -59,7 +61,7 @@ export abstract class ObjectProvider extends Screamer {
       }
 
       // Fetch object not in collection from database or API
-      self.storage.get( id )
+      self.getStorage().get( id )
         .then(
           ( object ) => {
             // Did not find object in database
@@ -80,24 +82,6 @@ export abstract class ObjectProvider extends Screamer {
       }
     );
   }
-
-
-  /**
-   * 
-   * @param id 
-   * @param data 
-   */
-  public set(id, data) {
-    console.info('ObjectProvider('+ this.title +')::set('+ id +')');
-    // Send to permanent storage
-    this.storage.set( id, data );
-    // Add / update in collection
-    this.data.set( id, data );
-    // Notify the world of the great updated new object
-    this._publish( 'update:'+id, data );
-    return data;
-  }
-  
   
   /**
    * Load object from API
@@ -127,16 +111,7 @@ export abstract class ObjectProvider extends Screamer {
       );
   }
 
-
-  public getStorageProvider() {
-    return this.storageProvider;
-  }
-
   public getHttp() {
     return this.http;
-  }
-
-  public clear() {
-    this.data = new Map();
   }
 }

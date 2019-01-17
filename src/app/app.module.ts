@@ -17,6 +17,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SelectPage } from '../pages/select/select';
 import { LoadingPage } from '../pages/loading/loading';
 import { ProgramPage } from '../pages/program/program';
+import { HendelsePage } from '../pages/program/hendelse';
+import { InnslagPage } from '../pages/program/hendelse';
 import { InfoPage } from '../pages/info/info';
 import { SingleInfoPage } from '../pages/info/single';
 
@@ -30,9 +32,17 @@ import { MonstringerProvider } from '../providers/ukm/monstringer.collection';
 import { StorageProvider } from '../providers/storage/storage';
 import { ProgramProvider } from '../providers/ukm/program';
 import { HendelseProvider } from '../providers/ukm/hendelse';
-import { HendelsePage } from '../pages/program/hendelse';
 import { InnslagProvider } from '../providers/ukm/innslag';
 import { WordpressProvider } from '../providers/wordpress';
+
+import { ComponentsModule } from '../components/components.module';
+
+
+
+//CUSTOM PIPES
+
+
+
 
 @NgModule({
   declarations: [
@@ -45,15 +55,17 @@ import { WordpressProvider } from '../providers/wordpress';
     MapPage,
     LoadingPage,
     HendelsePage,
+    InnslagPage,
     ProgramPage,
     InfoPage,
-    SingleInfoPage
+    SingleInfoPage,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,9 +78,10 @@ import { WordpressProvider } from '../providers/wordpress';
     MapPage,
     LoadingPage,
     HendelsePage,
+    InnslagPage,
     ProgramPage,
     InfoPage,
-    SingleInfoPage
+    SingleInfoPage,
   ],
   providers: [
     StatusBar,

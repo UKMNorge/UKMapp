@@ -34,7 +34,7 @@ export abstract class ObjectCollectionProvider {
    * @return Array collection if loaded
    */
   public getAll() {
-    console.info('ObjectCollectionProvider('+ this.title +')::getAll()');
+    //console.info('ObjectCollectionProvider('+ this.title +')::getAll()');
     if( !this.loaded ) {
       return [];
     }
@@ -47,7 +47,7 @@ export abstract class ObjectCollectionProvider {
    * @return void
    */
   public load() {
-    console.info('ObjectCollectionProvider('+ this.title +')::load()');
+    //console.info('ObjectCollectionProvider('+ this.title +')::load()');
     // Set internal loaded indicator = false to indicate loading
     this.loaded = false;
 
@@ -61,20 +61,20 @@ export abstract class ObjectCollectionProvider {
     
     self.storage.get('IDs').then( 
       (id_list:any = []) => {
-        console.error('COLLECTION '+ self.id +' GOT FROM STORAGE:', id_list);
+        //console.error('COLLECTION '+ self.id +' GOT FROM STORAGE:', id_list);
         // Gitt id_list som int (som skjer...), skal det fortsatt være tuple
         if( typeof( id_list ) == 'number' ) {
-          console.log('God number, convert to tuple', id_list);
+          //console.log('God number, convert to tuple', id_list);
           id_list = [ id_list ];
-          console.log( id_list );
+          //console.log( id_list );
         }
         if( id_list == null ) {
-          console.log( self.title +' found no ID-list');
+          //console.log( self.title +' found no ID-list');
         }
         else if( id_list.constructor !== Array ) {
-          console.error('Given ID list is not Array ('+ self.title +')', id_list )
+          //console.error('Given ID list is not Array ('+ self.title +')', id_list )
         } else {
-          console.log('id_list.forEach(', id_list ); 
+          //console.log('id_list.forEach(', id_list ); 
           /*
           id_list.forEach( 
             ( id ) => {
@@ -106,11 +106,11 @@ export abstract class ObjectCollectionProvider {
     ).then(
       (result: ApiProviderResult) => {
         // Iterate data returned from apiProvider
-        console.group(self.id +' got ApiProviderResult: ', result);
-        console.log('Iterate over result.getData()');
+        //console.group(self.id +' got ApiProviderResult: ', result);
+        //console.log('Iterate over result.getData()');
         result.getData().forEach(
           (data) => {
-             console.log( data );
+             //console.log( data );
             // First add, then subscribe to updates
             // Set data in object provider and add to internal collection (via temp)
             temp_data.push( this.objectProvider.set( data.id, data ) );
@@ -154,7 +154,7 @@ export abstract class ObjectCollectionProvider {
    * @param data 
    */
   public set(id, data) {
-    console.info('ObjectCollectionProvider('+ this.title +')::set('+ id +')');
+    //console.info('ObjectCollectionProvider('+ this.title +')::set('+ id +')');
     this.data.push( data );
   }
 

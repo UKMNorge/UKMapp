@@ -29,8 +29,7 @@ export class TabsPage {
   hasInfo() {
     if (this.info == false) {
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 }

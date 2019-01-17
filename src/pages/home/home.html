@@ -25,7 +25,20 @@
 			</ion-item>
 		</ion-list>
 	</div>
-	<div *ngIf="nyheter">
+	<hr>
+	<div *ngIf="kontaktpersoner == null">
+		<h1>Laster inn kontaktpersoner</h1>
+	</div>
+	<div *ngIf="kontaktpersoner != null">
+		<ion-list *ngFor="let kontakt of kontaktpersoner.getAll()">
+			<ion-item>{{kontakt.fornavn}}</ion-item>
+		</ion-list>
+	</div>
+	<hr>
+	<div *ngIf="!nyheter">
+			<h1>Laster inn nyhetssaker</h1>
+		</div>
+	<div *ngIf="nyheter != null">
 		<ion-list> 
 			<ion-item *ngFor="let nyhet of nyheter.getAll()" (click)="visNyhet(nyhet)">
 				<ion-thumbnail item-start>

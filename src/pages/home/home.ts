@@ -17,6 +17,7 @@ export class HomePage {
 	public monstring = null;
 	public nyheter = null;
 	public singlenyhet = null;
+	public kontaktpersoner = null;
 
 	constructor(
 		public navCtrl: NavController,
@@ -38,13 +39,9 @@ export class HomePage {
 						{
 							console.group('KONTAKTPERSONER');
 							kontaktCollectionProvider.load();
-							kontaktCollectionProvider.getAll().forEach(
-								(kontakt) =>
-								{	
-									console.log( kontakt );
-								}
-							);
-							console.groupEnd();
+							self.kontaktpersoner = kontaktCollectionProvider;	
+							console.info("Logging self.kontaktpersoner: ", self);
+							
 						}
 					);
 				}

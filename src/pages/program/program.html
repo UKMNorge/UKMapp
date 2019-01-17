@@ -36,12 +36,10 @@
 				<ion-label (click)="visHendelse( hendelse.id );">
 					<h2>
 						{{ hendelse.navn }}
-						{{hendelse.id}}
-
 					</h2>
 					<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
-					<ion-checkbox *ngIf="mittprogram.indexOf( hendelse.id ) != -1" checked=true (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
-					<ion-checkbox *ngIf="mittprogram.indexOf( hendelse.id ) == -1" checked=false (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
+					<ion-checkbox *ngIf="mittprogram.has( hendelse.id )" checked=true (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
+					<ion-checkbox *ngIf="!mittprogram.has( hendelse.id )" checked=false (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
 				</ion-label>
 
 			</ion-item>

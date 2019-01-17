@@ -11,7 +11,7 @@ import { Screamer } from '../object/screamer'
  * requests and persists, and fetches from API.
  */
 @Injectable()
-export abstract class MittProgramProvider extends Screamer {
+export class MittProgramProvider extends Screamer {
   private hendelser = new Map();
   private storage:StorageUnit = null;
 
@@ -31,12 +31,14 @@ export abstract class MittProgramProvider extends Screamer {
     this.storage.get('hendelser').then(
         (hendelser:any) =>
         {
-            hendelser.forEach( 
-                (hendelse) =>
-                {
-                    self.hendelser.set( hendelse, true );
-                }
-            );
+            if(null != hendelser) {
+                hendelser.forEach( 
+                    (hendelse) =>
+                    {
+                        self.hendelser.set( hendelse, true );
+                    }
+                );
+            }
         }
     )
   }
@@ -71,6 +73,7 @@ export abstract class MittProgramProvider extends Screamer {
    * @return bool
    */
   public has( event_id ) {
+      console.error(event_id);
       return this.hendelser.has( event_id );
   }
 
@@ -82,7 +85,7 @@ export abstract class MittProgramProvider extends Screamer {
   private _store() {
       let lagre = [];
       this.hendelser.forEach(
-          (hendelse) => {
+          (data, hendelse)=> {
             lagre.push( hendelse );
           }
       )

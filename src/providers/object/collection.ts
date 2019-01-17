@@ -61,9 +61,24 @@ export abstract class ObjectCollectionProvider {
     
     self.storage.get('IDs').then( 
       (id_list:any = []) => {
-        if( id_list != null ) { 
+        console.error('COLLECTION '+ self.id +' GOT FROM STORAGE:', id_list);
+        // Gitt id_list som int (som skjer...), skal det fortsatt være tuple
+        if( typeof( id_list ) == 'number' ) {
+          console.log('God number, convert to tuple', id_list);
+          id_list = [ id_list ];
+          console.log( id_list );
+        }
+        if( id_list == null ) {
+          console.log( self.title +' found no ID-list');
+        }
+        else if( id_list.constructor !== Array ) {
+          console.error('Given ID list is not Array ('+ self.title +')', id_list )
+        } else {
+          console.log('id_list.forEach(', id_list ); 
+          /*
           id_list.forEach( 
             ( id ) => {
+              console.error(this.title + ' FIND ID ', id );
               self.objectProvider.get( id ).then(
                 ( object ) => {
                   //self.set( object.id, object );
@@ -72,6 +87,7 @@ export abstract class ObjectCollectionProvider {
               )
             }
           )
+          */
         }
       }
     );
@@ -90,8 +106,11 @@ export abstract class ObjectCollectionProvider {
     ).then(
       (result: ApiProviderResult) => {
         // Iterate data returned from apiProvider
+        console.group(self.id +' got ApiProviderResult: ', result);
+        console.log('Iterate over result.getData()');
         result.getData().forEach(
           (data) => {
+             console.log( data );
             // First add, then subscribe to updates
             // Set data in object provider and add to internal collection (via temp)
             temp_data.push( this.objectProvider.set( data.id, data ) );
@@ -112,6 +131,7 @@ export abstract class ObjectCollectionProvider {
             );
           }
         );
+        console.groupEnd();
         // Set internal collection to array of result data
         self.data = temp_data;
 
@@ -120,6 +140,10 @@ export abstract class ObjectCollectionProvider {
 
         // Set internal loaded indicator = true
         this.loaded = true;
+      }
+    ).catch(
+      (reason) => {
+        console.error('COULD NOT LOAD FROM API. MOVING ON')
       }
     );
   }
@@ -136,6 +160,10 @@ export abstract class ObjectCollectionProvider {
 
   public update( object ) {
     console.warn('HOA! Updated');
+  }
+
+  public clear() {
+    this.data = [];
   }
 
 }

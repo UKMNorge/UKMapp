@@ -24,7 +24,6 @@ export class TabsPage {
     private wordpressProvider:WordpressProvider
   ) {
     this.info = this.wordpressProvider.getCategoryProvider('informasjon');
-
   }
 
   hasInfo() {

@@ -37,7 +37,6 @@ export class HendelseProvider extends ObjectProvider {
       {
         self.monstring_id = monstring_id;
         self.url = self.url.replace('#monstring_id', monstring_id);
-        //this.innslagColl = new InnslagIHendelseCollection( 'Hendelse'+ id );
       }
     );
     console.log('Hi! I\'m HendelseProvider');

@@ -80,4 +80,7 @@ export abstract class ObjectWithoutApiProvider extends Screamer {
     return data;
   }
  
+  public clear() {
+    this.data = new Map();
+  }
 }

@@ -56,6 +56,7 @@ export class StorageUnit extends Screamer {
 
     return new Promise( function( resolve ) {
       if( self.data.has( key ) ) {
+        console.warn('StorageUnit('+self.id+')::get #hasInMap resolve:', self.data.get( key ) );
         resolve( self.data.get( key ) );
       }
   
@@ -64,18 +65,18 @@ export class StorageUnit extends Screamer {
         
         // Value not in storage, resolve null
         if( null == val || undefined == val ) {
-          console.log(' - resolve null');
+          console.log('StorageUnit('+self.id+')::get #notInStorage resolve:', null );
           resolve( null );
         }
         try {
           // Value is JSON, resolve as object
           let jsondata = JSON.parse( val );
-          console.log(' - resolve JSON-parsed object');
-          console.log( jsondata );
+          console.log('StorageUnit('+self.id+')::get #JSONsuccess resolve:', jsondata );
           resolve( jsondata );
         } catch {
           // Value was not JSON-data, resolve string, object, whatevva
           console.log(' - resolve '+ typeof( val ), val);
+          console.log('StorageUnit('+self.id+')::get #JSONerror resolve:', val );
           resolve( val );
         }
       });
@@ -90,6 +91,11 @@ export class StorageUnit extends Screamer {
     this._debug('REMOVE', key, 'warn');
     this._publish( 'remove:'+ key, null );
     return this.storage.remove( this._key(key) );
+  }
+
+  public clear() {
+    this._debug('CLEAR ALL STORAGE', 'error');
+    return this.storage.clear();
   }
 
   /**

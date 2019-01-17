@@ -61,55 +61,71 @@ export class ApiProvider {
     
     let self = this;
     let Result = new ApiProviderResult( id, url );
+    
     return new Promise( function( resolve, reject ) {
       self.loadFromClosest( url ).then( (result:ApiProviderResponse) => {
-        console.log('API.GET loadFromClosest().result' );
-        if( result.isSuccess() ) {      
-          console.log(' - success');
+        console.group('API.GET('+ url + ') loadFromClosest().result:' );
+        if( result.isSuccess() ) {     
+          console.log(' - result is success');
           // TODO: data = parent::validate( result.getData() )
           // TODO: alt: validate byttes med convertToObject( result.getData() )
+          console.log(' - validate data', result.getData() );
           let data = parent.validate( result.getData() );
-          if( data == false ) {
-            console.log(' - failed validation');
+          console.log(' - data after validation: ', data );
+          if( data === false ) {
+            console.log(' - data === false');
+            console.groupEnd();
             reject({
               message: 'Parent did not validata data (follows)',
               parent: parent,
               data: result.getData()
             });
+            return;
           }
-          console.log(' - passed validation');
+          console.log(' - data passed validation');
 
           Result.setData( data );
-          console.log(' - pass on to parent (follows)');
-          console.log( data );
-          console.log( Result );
+          console.log(' - pass following data to parent:', data);
+          console.log(Result);
           parent.set( Result.getId(), Result.getData() );
                     
           if( !result.isCached() ) {
-            console.log('API.GET: Fetched from origin');
-            console.log('resolving');
+            console.log(' - result was fetched from API');
+            console.log('resolve Result', Result);
+            console.groupEnd();
             resolve( Result );
           }
           // If it was a cached result - reload from live server
           else {
-            console.log('API.GET: Fetched from cache');
+            console.log(' - result was fetched from cache. Reload. Result will follow outside current console.group');
+            console.groupEnd();
+            
             self.loadFromApi( result.getUrl() ).then( (result:ApiProviderResponse) => {
-              console.log('API.GET: Now fetched from origin');
+              console.group('API.GET('+ url + '): Re-fetched from API');
               if( result.isSuccess() ) {
-                console.log(' - success');
+                console.log(' - result is success');
                 Result.setData( data );
                 // Update cache
                 self.data.set( Result );
-                console.log('API.GET.END: data was fetched from API.');
-                console.log('resolving');
-                data.navn = 'LIVE: '+ data.navn;
-                Result.setData( data );
-                console.warn('DATA før resolve');
-                console.log( Result.getData() );
+                console.log(' - data was fetched from API.');
+                console.log(' - got following data:', data, Result);
+                
+                // Hvis det er et objekt, vis at info nå kommer fra LIVE (API)
+                /*
+                if( typeof( data ) == 'object' && data != undefined ) {
+                  console.log( typeof( data ) ) ;
+                  console.log(data);
+                  data.navn = data.navn + '(fresh from API)';
+                  Result.setData( data );
+                }
+                */
+                console.log(' - resolving');
+                console.groupEnd();
                 resolve( Result );
                 return;
               }
-              console.log('REJECT: Result returned failure');
+              console.log(' - REJECT: Result returned failure');
+              console.groupEnd();
               reject({
                 message: 'Result returned failure',
                 parent: parent,
@@ -118,7 +134,9 @@ export class ApiProvider {
             });
           }
         } else {
-          reject('AUCH, FAILED');// console.warn('Auch, request failed:', result.getData());
+          console.warn('Auch, request failed:', result.getData());
+          console.groupEnd();
+          reject('AUCH, FAILED');
         }
       }).catch( (result) => {
         reject('AUCH, ERROR');

@@ -49,6 +49,9 @@ export class MyApp {
 				'remove:monstring',
 				( id ) => {
 					this._selectBasePage( null );
+					this.storageProvider.clear();
+					this.wordpressProvider.clear();
+					this.monstringProvider.clear();
 				}
 			)
 
@@ -61,26 +64,22 @@ export class MyApp {
 	}
 
 	private _selectBasePage( id ) {
+		console.warn('SELECT BASE PAGE: '+ id );
 		if( null == id ) {
 			console.warn('ROOTPAGE == SelectPage');
-			//Bytt om disse for å få appen i fungerende stand igjen.
 			this.rootPage = SelectPage;
-			//this.rootPage = InfoPage
+			this.wordpressProvider.setMonstringId( null );
+			this.wordpressProvider.setMonstringUrl( null );
 		} else {
 			this.monstringProvider.get( id ).then( 
 				(monstring:Monstring) => 
 				{
-					console.error( monstring );
 					if( monstring == null || monstring == undefined ) {
-						console.error('HELLOOOOOOO');
 						throw new Error('Beklager, klarte ikke å hente mønstringens url');
 					}
-					console.log( this.wordpressProvider );
-					this.wordpressProvider.setMonstringUrl( monstring.url );
-					this.wordpressProvider.setMonstringId( id );
-					console.log( this.wordpressProvider );
-					
 					console.warn('ROOTPAGE == TabsPage');
+					this.wordpressProvider.setMonstringUrl( monstring.url );
+					this.wordpressProvider.setMonstringId( id );					
 					this.rootPage = TabsPage;
 				}
 			);

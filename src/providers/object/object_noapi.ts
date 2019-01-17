@@ -13,7 +13,7 @@ import { Screamer } from '../object/screamer'
 @Injectable()
 export abstract class ObjectWithoutApiProvider extends Screamer {
   public data = new Map();
-  private storage: StorageUnit;
+  public storage: StorageUnit;
     
   /**
    * 

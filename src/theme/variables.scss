@@ -12,7 +12,8 @@
 
 //Variables
 $ukm_blaa:  rgba(0, 0, 76, 1);
-$ukm_blaa_light: lighten( $ukm_blaa, 10 );
+$ukm_blaa_light: rgba(107,189,249,1);
+$ukm_blaa_light_opac_2: rgba(107,189,249, .2);// lighten( $ukm_blaa, 10 );
 $ukm_rosa:  rgba(255, 18, 139, 1);
 $ukm_gul:   rgba(255, 240, 86, 1);
 $ukm_gronn: rgba(0, 255, 137, 1);
@@ -103,25 +104,27 @@ $background-wp-color: $ukm_blaa;
 
 $list-background-color: $ukm_blaa;
 
-@import "ionic.theme.dark";
+$tabs-background: $ukm_blaa;
+$tabs-tab-color-active: $ukm_rosa;
+$tabs-tab-color-inactive: $ukm_gul;
 
-.list-ios .item {
-  margin-top: 1em;
-  background: rgb(0, 0, 129);
-  border-radius: 0.5em;
-  padding: .5em 1em;
-  border: none;
-}
-.list-ios .item-block .item-inner {
-  border: none !important;
-}
+@import "ionic.theme.dark";
 
 .tabs .tabbar,
 .tabs-ios .tabbar {
-  background-color: $ukm_blaa !important;
-  border-top: 2px solid $ukm_blaa_light !important;
+  //background-color: $ukm_blaa !important;
+  border-top: 2px solid $ukm_blaa_light_opac_2 !important;
   padding-top: 4px;
   padding-bottom: 6px;
+}
+
+.tabs-md ion-icon.tab-button-icon,
+.tab-button .tab-button-text {
+    color: #ccc;//$ukm_blaa_light;
+}
+
+.tab-button[aria-selected="true"] .tab-button-text {
+  color: $ukm_rosa;
 }
 // Ionicons
 // --------------------------------------------------

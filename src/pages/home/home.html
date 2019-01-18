@@ -1,13 +1,13 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title *ngIf="!this.monstring">UKM</ion-title>
 		<ion-title *ngIf="this.monstring">{{ monstring.navn }}</ion-title>
 	</ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content padding>
 
-	<div *ngIf="this.monstring">
+	<!-- <div *ngIf="this.monstring">
 		
 		<ion-list>
 			<ion-item>
@@ -24,15 +24,76 @@
 				</small>
 			</ion-item>
 		</ion-list>
-	</div>
-	<hr>
-	
-	<hr>
+	</div> -->
 	<div *ngIf="!nyheter">
-			<h1>Laster inn nyhetssaker</h1>
-		</div>
+		<h1>Laster inn nyhetssaker</h1>
+	</div>
 	<div *ngIf="nyheter != null">
-		<ion-list> 
+		<div class="home-top-nyhet">
+			<img src="http://via.placeholder.com/400x400.png?text=STOR,+FEIT+TOPPSAK" alt="">
+		</div>
+		<div class="home-innslag-scroll">
+			<br>
+			<h5>Navn Innslag</h5>
+			
+		</div>
+		<br>
+		<br>
+		<div class="home-dual-spot">
+			<div class="home-dual-spot-one">
+				<img src="http://via.placeholder.com/200x150.png?text=OVERSKRIFT" alt="" width="50%" style="float:left">
+			</div>
+			<div class="home-dual-spot-two">
+				<img src="http://via.placeholder.com/200x150.png?text=OVERSKRIFT" alt="" width="50%" style="float:left">
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="home-video-spot">
+			<img src="http://via.placeholder.com/1920x1080.png?text=VIDEO" alt="">
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<ion-grid>
+			<ion-row>
+				<ion-col col-3>
+					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+				</ion-col>
+				<ion-col col-6>
+					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+				</ion-col>
+				<ion-col col-3>
+					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col col-2>
+					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+				</ion-col>
+				<ion-col col-4>
+					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+				</ion-col>
+				<ion-col col-6>
+					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- <ion-list> 
 			<ion-item *ngFor="let nyhet of nyheter.getAll()" (click)="visNyhet(nyhet)">
 				<ion-thumbnail item-start>
 					<img src="{{nyhet.image}}">
@@ -40,6 +101,6 @@
 				<h1>{{ nyhet.title }}</h1>
 				<p>{{ nyhet.lead}}</p>
 			</ion-item>
-		</ion-list>
+		</ion-list> -->
 	</div>
 </ion-content>

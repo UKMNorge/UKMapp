@@ -1,56 +1,43 @@
-
-.ukm-knapp-gul {
+ukm-knapp {
     margin: 0 auto;
     display: block;
     width: 200px;
-    background: linear-gradient(-30deg, $ukm_gul, $ukm_blaa, $ukm_gul);
-    border-radius: 5px;
-    padding: 4px;
-    
-    color: $ukm_gul;
-}
-
-
-.ukm-knapp-rosa {
-    margin: 0 auto;
-    display: block;
-    width: 200px;
-    background: linear-gradient(-30deg, $ukm_rosa, $ukm_blaa, $ukm_rosa);
     border-radius: 5px;
     padding: 4px;
 
-    color: $ukm_rosa;
+    .text-container {
+        background: $ukm_blaa;
+        border-radius: .25em;
+    }
+
+    .text {
+        padding: .62em 1.24em;
+        text-transform: uppercase;
+        font-family: 'AvantGardeBold';
+    }
 }
 
-.ukm-knapp-gronn {
-    margin: 0 auto;
-    display: block;
-    width: 200px;
-    background: linear-gradient(-30deg, $ukm_gronn, $ukm_blaa, $ukm_gronn);
-    border-radius: 5px;
-    padding: 4px;
 
-    color: $ukm_gronn;
-}
+@each $color_left in $ukm_farger {
+    $index: index($ukm_farger, $color_left);
+    $navn_left: nth($ukm_farger_navn, $index); 
+    // Ensfarget
+    ukm-knapp.#{$navn_left} {
+        background: linear-gradient(-30deg, $color_left, $ukm_blaa, $color_left);
+        color: $color_left;
+    }
 
-.ukm-knapp-blaa {
-    margin: 0 auto;
-    display: block;
-    width: 200px;
-    background: linear-gradient(-30deg, $ukm_blaa, transparent, $ukm_blaa);
-    border-radius: 5px;
-    padding: 4px;
-
-    color: $ukm_blaa;
-}
-
-.ukm-knapp-text-container {
-    background: $ukm_blaa;
-    border-radius: 5px;
-}
-
-.ukm-knapp-text {
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-family: 'AvantGardeBold';
+    // Gradients
+    @each $color_right in $ukm_farger {
+        $index: index($ukm_farger, $color_right);
+        $navn_right: nth($ukm_farger_navn, $index);
+        ukm-knapp.#{$navn_left}-#{$navn_right} {
+            background: linear-gradient(-30deg, $color_left, $ukm_blaa, $color_right);
+            color: $color_left;
+        } 
+        ukm-knapp.#{$navn_right}-#{$navn_left} {
+            background: linear-gradient(-30deg, $color_right, $ukm_blaa, $color_left);
+            color: $color_right;
+        } 
+    }
 }

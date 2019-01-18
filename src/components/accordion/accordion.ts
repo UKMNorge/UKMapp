@@ -25,20 +25,20 @@ export class AccordionComponent {
     this._isShowing = (isShowing) || false;
 
   }
+
+
+
+
   get visibleText(): Number { return this._visibleText }
   get isShowing(): boolean { return this._isShowing }
-  
-  constructor() {
-    console.log('Hello AccordionComponent Component');
-  }
+
+  constructor() { }
 
   toggleContent() {
-    if(this.isShowing) {
+    if (this.isShowing) {
       this.isShowing = false;
     } else {
       this.isShowing = true;
     }
   }
-
-
 }

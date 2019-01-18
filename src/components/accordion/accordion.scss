@@ -1,2 +1,9 @@
-accordion {
+.accordion {
+    background: $ukm_blaa;
+    border: 2px solid $ukm_rosa;
+    margin: 2vh;
+    padding: .1vh 3vh .7vh 3vh;
+    color: white;
+
+    transition: all 4s ease-in-out;
 }

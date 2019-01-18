@@ -32,6 +32,7 @@ export class InfoPage {
     private monstringProvider: MonstringProvider,
     public wordpressProvider: WordpressProvider
   ) {
+
     let self = this;
     let storage = this.storageProvider.unit('APP');
     console.log(storage);

@@ -1,0 +1,9 @@
+<!-- Generated template for the AccordionComponent component -->
+<div (click)="toggleContent()">
+  <h4>{{visibleText}}</h4>
+  <div *ngIf="!isShowing">
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="isShowing">
+  </div>
+</div>

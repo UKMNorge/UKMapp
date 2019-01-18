@@ -4,6 +4,7 @@ import { MonstringProgramProvider } from '../../providers/ukm/monstringprogram';
 import { ProgramProvider } from '../../providers/ukm/program';
 import { StorageProvider } from '../../providers/storage';
 import { HendelsePage } from './hendelse';
+import { MittProgramProvider } from '../../providers/app/mittprogram';
 
 @Component({
 	selector: 'page-program',
@@ -11,14 +12,17 @@ import { HendelsePage } from './hendelse';
 })
 export class ProgramPage {
 
-	public mittprogram = ['12908', '12909', '12910', '12922', '12920'];//, 12921];
+	//public mittprogram = ['12908', '12909', '12910', '12922', '12920'];//, 12921];
+
+	public valgtProgramModus = 'public';
 
 	public program: MonstringProgramProvider = null;
 
 	constructor(
 		public navCtrl: NavController,
 		private programProvider: ProgramProvider,
-		private storageProvider: StorageProvider
+		private storageProvider: StorageProvider,
+		private mittprogram: MittProgramProvider
 	) {
 
 		this.storageProvider.unit('APP').get('monstring').then(
@@ -55,9 +59,9 @@ export class ProgramPage {
 	updateMittprogram(hendelse_id, e) {
 		var isChecked = e.checked;
 		if(isChecked == true) {
-			this.mittprogram.push(hendelse_id)
+			this.mittprogram.add(hendelse_id)
 		} else if(isChecked == false) {
-			this.mittprogram = this.mittprogram.filter(function(el){return el !== hendelse_id})
+			this.mittprogram.remove(hendelse_id);
 		}
 		console.log(this.mittprogram);
 		

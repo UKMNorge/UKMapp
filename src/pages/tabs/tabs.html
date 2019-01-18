@@ -1,7 +1,7 @@
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Program" tabIcon="calendar"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="Profil" tabIcon="person"></ion-tab>
+  <!-- <ion-tab [root]="tab3Root" tabTitle="About" tabIcon="information-circle"></ion-tab> -->
   <ion-tab *ngIf="hasInfo()" [root]="tab5Root" tabTitle="Info" tabIcon="star"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Innstillinger" tabIcon="cog"></ion-tab>
 </ion-tabs>

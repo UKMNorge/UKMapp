@@ -34,8 +34,12 @@ import { ProgramProvider } from '../providers/ukm/program';
 import { HendelseProvider } from '../providers/ukm/hendelse';
 import { InnslagProvider } from '../providers/ukm/innslag';
 import { WordpressProvider } from '../providers/wordpress';
+import { MittProgramProvider } from '../providers/app/mittprogram';
 
 import { ComponentsModule } from '../components/components.module';
+import { Calendar } from '@ionic-native/calendar';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 
 
@@ -94,7 +98,10 @@ import { ComponentsModule } from '../components/components.module';
     HendelseProvider,
     InnslagProvider,
     WordpressProvider,
-    BrowserTab
+    BrowserTab,
+    MittProgramProvider,
+    Calendar,
+    InAppBrowser,
   ]
 })
 export class AppModule {}

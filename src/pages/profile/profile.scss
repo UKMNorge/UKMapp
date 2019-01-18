@@ -8,8 +8,11 @@
 .boble-container {
     position: relative;
     margin: 0 auto;
-    width: 320px;
+    width: 85vw;
+    margin-top: 10vh;
+    margin-bottom: 8vh;
 }
+
 
 .boble-container #monstring_navn {
     position: absolute;
@@ -18,7 +21,6 @@
     color: $ukm_blaa;
 
 }
-
 
 #monstring_navn_container {
     width: 100vw;
@@ -32,14 +34,15 @@
     color: $ukm_blaa;
 }
 
+
 #logg_inn {
-    margin: 10px auto;
+    margin: 1em auto;
 }
 
 #bytt_monstring {
-    margin: 10px auto;
+    margin: 1em auto;
 }
 
 #knappetest {
-    margin: 10px auto;
+    margin: 1em auto;
 }

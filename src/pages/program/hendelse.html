@@ -1,27 +1,32 @@
-<ion-header>
-	<ion-navbar>	
-		<ion-title *ngIf='hendelse'>
+<ion-content>
+
+	<img src="assets/imgs/bolgetopp.png" id="bolgetopp" />
+	<div *ngIf='hendelse' class="header">
+		<h1>
 			{{ hendelse.navn }}
+		</h1>
+		<p class="lead">
 			<span *ngIf='hendelse.type == "category"'> - er en kategori</span>
 			<span *ngIf='hendelse.type == "post"'> - er en post</span>
 			<span *ngIf='hendelse.type == "default"'> - er en vanlig forestilling</span>
-		</ion-title>
-	</ion-navbar>
-</ion-header>
-<ion-content>
-
+		</p>
+	</div>
+	
 	<!-- Fiks dette -> egen component for hendelser av type post. Sjekk binding. -->
 	<div *ngIf='hendelse'>
 		<post *ngIf='hendelse.type == "post"' pid="{{hendelse.post_id}}"></post>
 
 
-		<ion-list *ngIf='hendelse.type == "default"'>
-			<ion-item *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
-				<ion-avatar item-start>
-					<img src='{{ innslag.bilde.url }}'>
-				</ion-avatar>
-				<h3>{{ innslag | json}}</h3>
-			</ion-item>
-		</ion-list>
+		<ion-grid *ngIf='hendelse.type == "default"'>
+			<ion-row>
+				<ion-col col-6 *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
+					<div class="innslag">
+						<h3>
+							<span>{{ innslag.navn}}</span>
+						</h3>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 	</div>
 </ion-content>

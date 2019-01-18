@@ -1,3 +1,43 @@
-page-profile {
+page-program {
 
+}
+
+page-hendelse {
+    .header {
+        margin-top: 28vh;
+        margin-bottom: 14vh;
+        font-size: 1.5em;
+        text-align: center;
+
+        h1 {
+            font-size: 2.2em;
+            text-transform: uppercase;
+            margin-bottom: 1em;
+        }
+    }
+
+    .innslag {
+        background: rgba(255, 18, 139, 1);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: rgba(0, 0, 76, 1);
+        margin: .05em;
+        padding: .8em;
+        padding-top: 6em;
+
+        .h3 {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            font-size: 2.2rem;
+            padding: .1em;
+            line-height: 1.2em;
+        }
+    }
+    .innslag.hasImage {
+        h3 > span {
+            background: rgba(255, 18, 139, .8);
+        }
+    }
 }

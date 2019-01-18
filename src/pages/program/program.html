@@ -10,20 +10,18 @@
 		</ion-segment>
 
 		<div *ngIf="program != null">
-			<ion-list>
-				<ion-item *ngFor="let hendelse of program.getAll()">
-					<ion-label (click)="visHendelse( hendelse.id );">
-						<div float-right>
-							<morph-icon startIcon="plus" stopIcon="check" (click)="updateMittprogram(hendelse.id)"></morph-icon>
-						</div>
-						<h2>
-							{{ hendelse.navn }}
-						</h2>
-						<p>kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}</p>
-					</ion-label>
-
-				</ion-item>
-			</ion-list>
+			<div *ngFor="let hendelse of program.getAll()">
+				<ukm-knapp class="wide rosa-gul">
+					<div float-right>
+						<morph-icon startIcon="plus" stopIcon="check"></morph-icon>
+						 <!-- (click)="updateMittprogram(hendelse.id)" -->
+					</div>
+					<h2 (click)="visHendelse( hendelse.id );">
+						{{ hendelse.navn }}
+					</h2>
+					<p>kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}</p>
+				</ukm-knapp>
+			</div>
 		</div>
 	</div>
 </ion-content>

@@ -11,12 +11,12 @@ import { MorphIconComponent } from './morph-icon/morph-icon';
         UkmBoblaHvitComponent,
         UkmKnappComponent,
         MorphIconComponent,
-    AccordionComponent],
+        AccordionComponent],
     imports: [CommonModule],
     exports: [PostComponent,
         UkmBoblaHvitComponent,
         UkmKnappComponent,
         MorphIconComponent,
-    AccordionComponent]
+        AccordionComponent]
 })
 export class ComponentsModule { }

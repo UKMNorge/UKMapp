@@ -12,19 +12,45 @@
 
 </ion-header> -->
 
-  <ion-content class="page-info-content">
-    <ion-list>
-      <accordion visibleText="Testing testing Again" isShowing=false>
-        Testing Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Natus alias dignissimos dolore, at cum illum totam deserunt voluptatem molestiae aliquam. Illum laudantium
-        error
-        dignissimos quo libero nesciunt maxime, eveniet neque.
+<ion-content class="page-info-content">
+  <div *ngIf="kontaktpersoner == null">
+    <h1>Laster inn kontaktpersoner</h1>
+  </div>
+  <div *ngIf="kontaktpersoner != null">
+    <accordion visibleText="Kontaktpersoner" isShowing=false>
+      <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()" class="kontakt-personer-list">
+        <ukm-bobla-hvit></ukm-bobla-hvit>
+        <div class="kontakt-info">
+          <h1>{{kontakt.fornavn}} {{kontakt.etternavn}}</h1>
+          <h3>{{kontakt.telefon}}</h3>
+          <h4>{{kontakt.epost}}</h4>
+          <hr>
+        </div>
+      </ion-list>
+    </accordion>
+  </div>
+  <div *ngIf="info != null">
+    <ion-list *ngFor="let item of info.getAll()" class="info-list">
+      <accordion visibleText="{{item.title}}" isShowing=false class="ukm-gradient-rosa-gul">
+        <div class="item-info">
+          <h4>{{item.lead}}</h4>
+          <h5 class="ukm-text-gul" (click)="visInfo( item )">Les mer...</h5>
+        </div>
       </accordion>
     </ion-list>
+  </div>
 
 
+  <!-- <ion-list>
+    <accordion visibleText="Testing testing Again" isShowing=false>
+      Testing Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Natus alias dignissimos dolore, at cum illum totam deserunt voluptatem molestiae aliquam. Illum laudantium
+      error
+      dignissimos quo libero nesciunt maxime, eveniet neque.
+    </accordion>
+  </ion-list> -->
 
-    <!-- <div *ngIf="kontaktpersoner == null">
+  <!-- <div *ngIf="kontaktpersoner == null">
     <h1>Laster inn kontaktpersoner</h1>
   </div>
   <div *ngIf="kontaktpersoner != null">
@@ -49,4 +75,4 @@
       </ion-item>
     </ion-list>
   </div> -->
-  </ion-content>
+</ion-content>

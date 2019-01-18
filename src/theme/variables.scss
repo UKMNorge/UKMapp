@@ -23,7 +23,7 @@ $ukm_farger: $ukm_blaa, $ukm_rosa, $ukm_gul, $ukm_gronn;
 
 
 //Gradients
-$ukm_rosa_gradient: linear-gradient($ukm_blaa, $ukm_rosa, 30deg);
+$ukm_rosa_gradient: linear-gradient(30deg, $ukm_blaa, $ukm_rosa);
 
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/

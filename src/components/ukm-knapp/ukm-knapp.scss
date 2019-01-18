@@ -1,7 +1,7 @@
 ukm-knapp {
     margin: 0 auto;
     display: block;
-    width: 200px;
+    width: 60vw;
     border-radius: 5px;
     padding: 4px;
 
@@ -21,6 +21,7 @@ ukm-knapp {
 @each $color_left in $ukm_farger {
     $index: index($ukm_farger, $color_left);
     $navn_left: nth($ukm_farger_navn, $index); 
+    
     // Ensfarget
     ukm-knapp.#{$navn_left} {
         background: linear-gradient(-30deg, $color_left, $ukm_blaa, $color_left);
@@ -31,12 +32,14 @@ ukm-knapp {
     @each $color_right in $ukm_farger {
         $index: index($ukm_farger, $color_right);
         $navn_right: nth($ukm_farger_navn, $index);
-        ukm-knapp.#{$navn_left}-#{$navn_right} {
+        ukm-knapp.#{$navn_left}-#{$navn_right},
+        .ukm-gradient.#{$navn_left}-#{$navn_right} {
             background: linear-gradient(-30deg, $color_left, $ukm_blaa, $color_right);
             color: $color_left;
         } 
-        ukm-knapp.#{$navn_right}-#{$navn_left} {
-            background: linear-gradient(-30deg, $color_right, $ukm_blaa, $color_left);
+        ukm-knapp.#{$navn_right}-#{$navn_left},
+        .ukm-gradient.#{$navn_right}-#{$navn_left} {
+                background: linear-gradient(-30deg, $color_right, $ukm_blaa, $color_left);
             color: $color_right;
         } 
     }

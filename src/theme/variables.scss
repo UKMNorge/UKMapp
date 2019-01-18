@@ -1,3 +1,27 @@
+// UKM SPECIFICS
+@font-face {
+  font-family: 'AvantGardeBold';
+  src: url("../assets/fonts/ag-bold.otf") format("opentype");
+}
+@font-face {
+  font-family: 'AvantGarde';
+  src: url("../assets/fonts/ag-regular.otf") format("opentype");
+}
+
+
+
+//Variables
+$ukm_blaa:  rgba(0, 0, 76, 1);
+$ukm_blaa_light: lighten( $ukm_blaa, 10 );
+$ukm_rosa:  rgba(255, 18, 139, 1);
+$ukm_gul:   rgba(255, 240, 86, 1);
+$ukm_gronn: rgba(0, 255, 137, 1);
+
+
+
+//Gradients
+$ukm_rosa_gradient: linear-gradient($ukm_blaa, $ukm_rosa, 30deg);
+
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
@@ -34,11 +58,12 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #010260,
-  secondary:  #ff1485,
-  danger:     #f53d3d,
+  primary:    $ukm_rosa,
+  secondary:  $ukm_gul,
+  danger:     $ukm_gronn,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       $ukm_blaa,
+  lightdark:  $ukm_gul,
 );
 
 
@@ -68,11 +93,34 @@ $colors: (
 // Ionic apps can have different themes applied, which can
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
-// default are overridden.
+// default are overridden
 
-@import "ionic.theme.default";
+$background-ios-color: $ukm_blaa;
+$background-md-color: $ukm_blaa;
+$background-wp-color: $ukm_blaa;
 
+$list-background-color: $ukm_blaa;
 
+@import "ionic.theme.dark";
+
+.list-ios .item {
+  margin-top: 1em;
+  background: rgb(0, 0, 129);
+  border-radius: 0.5em;
+  padding: .5em 1em;
+  border: none;
+}
+.list-ios .item-block .item-inner {
+  border: none !important;
+}
+
+.tabs .tabbar,
+.tabs-ios .tabbar {
+  background-color: $ukm_blaa !important;
+  border-top: 2px solid $ukm_blaa_light !important;
+  padding-top: 4px;
+  padding-bottom: 6px;
+}
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:

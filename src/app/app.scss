@@ -14,27 +14,3 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
-
-
-@font-face {
-    font-family: 'AvantGardeBold';
-    src: url("../assets/fonts/ag-bold.otf") format("opentype");
-}
-@font-face {
-    font-family: 'AvantGarde';
-    src: url("../assets/fonts/ag-regular.otf") format("opentype");
-}
-
-
-
-//Variables
-$ukm_blaa:  rgba(0, 0, 76, 1);
-$ukm_rosa:  rgba(255, 18, 139, 1);
-$ukm_gul:   rgba(255, 240, 86, 1);
-$ukm_gronn: rgba(0, 255, 137, 1);
-
-
-
-//Gradients
-$ukm_rosa_gradient: linear-gradient($ukm_blaa, $ukm_rosa, 30deg);

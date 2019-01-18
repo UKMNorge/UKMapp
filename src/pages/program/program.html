@@ -1,15 +1,6 @@
-<ion-header>
-	<ion-navbar>
-		<ion-title>
-			Program
-		</ion-title>
-	</ion-navbar>
-</ion-header>
-
 <ion-content>
-
 	<div padding>
-		<ion-segment [(ngModel)]="valgtProgramModus">
+		<ion-segment [(ngModel)]="valgtProgramModus" style="    margin-top: 1.5em; margin-bottom: 3em;">
 			<ion-segment-button value="public">
 				Program
 			</ion-segment-button>
@@ -18,50 +9,21 @@
 			</ion-segment-button>
 		</ion-segment>
 
-		<div [ngSwitch]="valgtProgramModus">
-			<div *ngSwitchCase="'public'">
-				<div *ngIf="program != null">
-					<h2>Rammeprogram</h2>
-					<ion-list>
-						<ion-item *ngFor="let hendelse of program.getAll()">
-							<ion-label (click)="visHendelse( hendelse.id );">
-								<h2>
-									{{ hendelse.navn }}
-								</h2>
-								<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
-								<ion-item-divider>
-									<ion-checkbox item-end *ngIf="mittprogram.has( hendelse.id )" checked=true (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
-									<ion-checkbox item-end *ngIf="!mittprogram.has( hendelse.id )" checked=false (ionChange)='updateMittprogram(hendelse.id, $event)'></ion-checkbox>
-								</ion-item-divider>
-							</ion-label>
-
-						</ion-item>
-					</ion-list>
-				</div>
-			</div>
-
-			<div *ngSwitchCase="'mine'">
-				<div *ngIf="program != null">
-					<h2>Mitt Program</h2>
-					<ion-list>
-						<div *ngFor="let hendelse of program.getAll()">
-							<div *ngIf="mittprogram.has( hendelse.id )">
-								<ion-item>
-									<ion-label (click)="visHendelse( hendelse.id );">
-										<h2>
-											{{ hendelse.navn }}
-										</h2>
-										<p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
-									</ion-label>
-								</ion-item>
-							</div>
+		<div *ngIf="program != null">
+			<ion-list>
+				<ion-item *ngFor="let hendelse of program.getAll()">
+					<ion-label (click)="visHendelse( hendelse.id );">
+						<div float-right>
+							<morph-icon startIcon="plus" stopIcon="check" (click)="updateMittprogram(hendelse.id)"></morph-icon>
 						</div>
-					</ion-list>
-				</div>
-			</div>
+						<h2>
+							{{ hendelse.navn }}
+						</h2>
+						<p>kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}</p>
+					</ion-label>
 
+				</ion-item>
+			</ion-list>
 		</div>
-
 	</div>
-
 </ion-content>

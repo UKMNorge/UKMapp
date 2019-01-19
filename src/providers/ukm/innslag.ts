@@ -4,6 +4,7 @@ import { Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
 import { ObjectProvider } from '../object/object';
+import { ObjectWithoutApiProvider } from '../object/object_noapi';
 
 export interface Innslag {
   id: number;
@@ -20,15 +21,17 @@ export interface Innslag {
 }
 
 @Injectable()
-export class InnslagProvider extends ObjectProvider {
-  private url = 'https://api.ukm.no/2.0/innslag/#id';
-
+export class InnslagProvider extends ObjectWithoutApiProvider {
   constructor( 
     _http:HttpClient, 
     StorageProvider:StorageProvider, 
     Events: Events 
   ) {
-    super( 'Innslag', _http, StorageProvider, Events );
+    super(
+      'Innslag',
+      StorageProvider,
+      Events
+    );
     console.log('Morning! I\'m InnslagProvider');
   }
 
@@ -38,9 +41,6 @@ export class InnslagProvider extends ObjectProvider {
     return data;
   }
 
-  public getUrl( id ) {
-    return this.url.replace('#id', id);
-  }
   public filterLoadData( data ) {
     return data;
   }

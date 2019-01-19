@@ -22,6 +22,16 @@
     <!-- <div *ngIf="innslag.bilder">
         <div class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;">
             <img src="{{ bilde.url }}" />
+    <ion-card *ngIf="innslag">
+        <div *ngIf="innslag.bilder">
+            <ion-slides #slider (ionWillChange)="slideWillChange()">
+                <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>
+                <img src="{{ bilde.url }}"/>
+                </ion-slide>
+            </ion-slides>
+        </div>
+        <div *ngIf="!innslag.bilder">
+            <img src="{{ innslag.bilde.url }}"/>
         </div>
     </div>
     <div *ngIf="!innslag.bilder">

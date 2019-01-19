@@ -10,7 +10,7 @@
     <p id='description'>
         {{ innslag.beskrivelse }}
     </p>
-    <div class="filmer" *ngIf="innslag.filmer != []">
+    <div class="filmer" *ngIf="innslag.filmer">
         <ion-content overflow-scroll="true" *ngFor="let film of innslag.filmer">
             <video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline"
                 class="videoPlayer">
@@ -18,11 +18,6 @@
             </video>
         </ion-content>
     </div>
-    <ion-content overflow-scroll="true">
-        <video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-            <source [src]="innslag.film.url" type="video/mp4" />
-        </video>
-    </ion-content>
 
     <!-- <div *ngIf="innslag.bilder">
         <div class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;">

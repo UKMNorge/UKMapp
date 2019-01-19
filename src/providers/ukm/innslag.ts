@@ -15,6 +15,8 @@ export interface Innslag {
   sjanger: string;
   kategori_og_sjanger: string;
   bilde: any; // TODO spesifiser bilde
+  bilder: any;
+  filmer: any;
 }
 
 @Injectable()

@@ -71,3 +71,35 @@ page-hendelse {
         line-height: 1.35em;
     }
 }
+
+page-innslag {
+
+    .header {
+        font-size: 1.2em;
+        text-align: center;
+        //background-color: $ukm_rosa;
+        height: 33vh;
+    }
+    .headerimg {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    h1 {
+        text-align: center;
+        padding-top: 10rem;
+        font-size: 2.2em;
+        text-transform: uppercase;
+    }
+    p#description {
+        padding-top: 10rem;
+        width: 90vw;
+        font-size: 1.6rem;
+        margin: 0 auto;
+        display: block;
+        text-align: justify;
+    }
+
+}

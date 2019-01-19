@@ -2,43 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiProvider, ApiProviderResult } from '../api';
 import { StorageProvider, StorageUnit } from '../storage';
+import { ObjectCollectionWithoutApiProvider } from './collection_noapi';
 
 /**
  * Object Collection Provider contains a list of objects
  */
 @Injectable()
-export abstract class ObjectCollectionProvider {
+export abstract class ObjectCollectionProvider extends ObjectCollectionWithoutApiProvider {
   public loaded = false;
-  private id: string;
-  private storage: StorageUnit;
   public data = [];
   public apiProvider: ApiProvider;
   
   abstract getUrl();
   
   constructor( 
-    private title, 
+    private _title, 
     public objectProvider, 
-    _http: HttpClient, 
-    private storageProvider: StorageProvider
+    private _http: HttpClient,
+    _storageProvider: StorageProvider,
   ) {
-    this.apiProvider = new ApiProvider(this.title, _http, this.storageProvider);
-    this.id = 'ObjectCollection'+this.title;
-    this.storage = this.storageProvider.create( this.id );
-  }
- 
-  /**
-   * Get all elements of collection.
-   * Requires this.load() before returning
-   * 
-   * @return Array collection if loaded
-   */
-  public getAll() {
-    //console.info('ObjectCollectionProvider('+ this.title +')::getAll()');
-    if( !this.loaded ) {
-      return [];
-    }
-    return this.data;
+    super(
+      _title,
+      objectProvider,
+      _storageProvider
+    )
+    this.apiProvider = new ApiProvider(_title, _http, _storageProvider);
   }
 
   /**
@@ -56,43 +44,6 @@ export abstract class ObjectCollectionProvider {
     this.loaded = true;
   }
 
-  public loadFromStorage() {
-    let self = this;
-    
-    self.storage.get('IDs').then( 
-      (id_list:any = []) => {
-        //console.error('COLLECTION '+ self.id +' GOT FROM STORAGE:', id_list);
-        // Gitt id_list som int (som skjer...), skal det fortsatt være tuple
-        if( typeof( id_list ) == 'number' ) {
-          //console.log('God number, convert to tuple', id_list);
-          id_list = [ id_list ];
-          //console.log( id_list );
-        }
-        if( id_list == null ) {
-          //console.log( self.title +' found no ID-list');
-        }
-        else if( id_list.constructor !== Array ) {
-          //console.error('Given ID list is not Array ('+ self.title +')', id_list )
-        } else {
-          //console.log('id_list.forEach(', id_list ); 
-          /*
-          id_list.forEach( 
-            ( id ) => {
-              console.error(this.title + ' FIND ID ', id );
-              self.objectProvider.get( id ).then(
-                ( object ) => {
-                  //self.set( object.id, object );
-                  self.data.push( object );
-                }
-              )
-            }
-          )
-          */
-        }
-      }
-    );
-  }
-
   public loadFromAPI() {
     let self = this;
     let temp_data = [];
@@ -100,7 +51,7 @@ export abstract class ObjectCollectionProvider {
     
     // Fetch from API (via provider)
     return this.apiProvider.get(
-      this.id, 
+      this.getId(), 
       this.getUrl(),
       this
     ).then(
@@ -136,7 +87,7 @@ export abstract class ObjectCollectionProvider {
         self.data = temp_data;
 
         // Store a list of IDs
-        this.storage.set('IDs', temp_ids);
+        this.getStorage().set('IDs', temp_ids);
 
         // Set internal loaded indicator = true
         this.loaded = true;
@@ -146,24 +97,6 @@ export abstract class ObjectCollectionProvider {
         console.error('COULD NOT LOAD FROM API. MOVING ON')
       }
     );
-  }
-
-  /**
-   * Add / update object in collection
-   * @param id 
-   * @param data 
-   */
-  public set(id, data) {
-    //console.info('ObjectCollectionProvider('+ this.title +')::set('+ id +')');
-    this.data.push( data );
-  }
-
-  public update( object ) {
-    console.warn('HOA! Updated');
-  }
-
-  public clear() {
-    this.data = [];
   }
 
 }

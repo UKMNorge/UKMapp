@@ -53,7 +53,7 @@ export class HendelseProvider extends ObjectProvider {
   public filterLoadData( data ) {
     let self = this;
 
-    if( data.isArray() ) {
+    if( Array.isArray( data.innslag ) ) {
       data.innslag.forEach( 
         (innslag ) => {
           self.innslagProvider.set( innslag.id, innslag );

@@ -20,7 +20,6 @@ export class HendelsePage {
 
     public hendelse = null;
 
-
 	constructor(
         private navParams: NavParams,
         public navCtrl: NavController,
@@ -34,9 +33,7 @@ export class HendelsePage {
         this.hendelseProvider.load( id ).then(
             (hendelse) => 
             {
-                self.hendelse = hendelse;
-                console.error(hendelse);
-                
+                self.hendelse = hendelse;                
             }
         );
     }
@@ -68,7 +65,6 @@ export class InnslagPage {
         private streamingMedia: StreamingMedia,
     ) {
         this.innslag_id = this.navParams.get('id');
-        console.error('Logging innslag_id', this.innslag_id);
     }
 
     ngOnInit() {
@@ -78,7 +74,6 @@ export class InnslagPage {
             (innslagDataCollectionProvider: InnslagDataCollectionProvider) => {
                 innslagDataCollectionProvider.get( self.innslag_id ).then(
                     (data) => {
-                        console.error('Logging data from innslagPage', data);
                         self.innslag = data;
                     }
                 )

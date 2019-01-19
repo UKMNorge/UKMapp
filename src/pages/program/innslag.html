@@ -1,5 +1,4 @@
-<ion-content>
-    <!-- <img src="assets/imgs/bolgetopp.png" id="bolgetopp" /> -->
+<ion-content *ngIf="innslag">
     <div *ngIf='innslag.bilde' class="header">
         <div class="headerimg" [style.background-image]="'url(' + innslag.bilde.url + ')'"></div>
     </div>
@@ -19,57 +18,33 @@
         </ion-content>
     </div>
 
-    <!-- <div *ngIf="innslag.bilder">
-        <div class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;">
-            <img src="{{ bilde.url }}" />
-    <ion-card *ngIf="innslag">
-        <div *ngIf="innslag.bilder">
+    <ion-card *ngIf="innslag.bilder">
+        <div>
             <ion-slides #slider (ionWillChange)="slideWillChange()">
                 <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>
                 <img src="{{ bilde.url }}"/>
                 </ion-slide>
             </ion-slides>
         </div>
-        <div *ngIf="!innslag.bilder">
-            <img src="{{ innslag.bilde.url }}"/>
-        </div>
-    </div>
-    <div *ngIf="!innslag.bilder">
-        Fant ikke bilder, laster inn enkeltbilde...
-        <img src="{{ innslag.bilde.url }}" />
-    </div> -->
-
-
-
-
-    <!-- <ion-card>
-        <ion-card-content>
-            <ion-card-title>
-                {{ innslag.navn }}
-            </ion-card-title>
-            <p>
-                {{ innslag.beskrivelse }}
-            </p>
-        </ion-card-content>
+    </ion-card>
+    <ion-card>
         <ion-card-content>
             <ion-item>
                 <ion-badge>{{ innslag.type.navn }}</ion-badge>
                 <ion-badge>{{ innslag.kommune.navn }}</ion-badge>
             </ion-item>
-            <div *ngIf="innslag.filmer">
-                <ion-card-title>
-                    <h1>Videoer av {{ innslag.navn }}</h1>
-                </ion-card-title>
-                <div *ngFor="let video of innslag.filmer;" #slide>
-                    <ion-item>
-                        <img src="{{video.bilde.url}}" (click)="spillFilm(video.fil.mobil, video.navn)">
-                        <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon>
-                    </ion-item>
-                </div>
-            </div>
-            <div *ngIf="!innslag.bilder">
-                <img src="{{ innslag.bilde.url }}" />
-            </div>
         </ion-card-content>
-    </ion-card> -->
+    </ion-card>
+
+    <ion-card *ngIf="innslag.filmer">
+        <ion-card-title>
+            <h1>Videoer av {{ innslag.navn }}</h1>
+        </ion-card-title>
+        <div *ngFor="let video of innslag.filmer;" #slide>
+            <ion-item>
+                <img src="{{video.bilde.url}}" (click)="spillFilm(video.fil.mobil, video.navn)">
+                <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon>
+            </ion-item>
+        </div>
+    </ion-card>
 </ion-content>

@@ -73,7 +73,7 @@
 		<br>
 		<br>
 		<br>
-		<div class="video-spot">
+		<div class="video-spot" *ngIf="film">
 			<img [src]="film.bilde.url" alt="" (click)='spillVideo(film.fil.mobil)'>
 		</div>
 		<br>

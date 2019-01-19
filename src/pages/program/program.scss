@@ -38,6 +38,10 @@ page-hendelse {
         }
     }
 
+    .header.post {
+        margin-bottom: 3vh;
+    }
+
     .innslag {
         background: rgba(255, 18, 139, 1);
         background-position: center center;
@@ -63,13 +67,5 @@ page-hendelse {
         h3 > span {
             background: rgba(255, 18, 139, .8);
         }
-    }
-
-
-    post > div {
-        padding: 1.5em;
-        font-size: 1.2em;
-        margin-top: -10vh;
-        line-height: 1.35em;
     }
 }

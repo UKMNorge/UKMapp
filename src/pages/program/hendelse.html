@@ -1,7 +1,7 @@
 <ion-content>
 
 	<img src="assets/imgs/bolgetopp.png" id="bolgetopp" />
-	<div *ngIf='hendelse' class="header">
+	<div *ngIf='hendelse' class="header {{ hendelse ? hendelse.type : '' }}">
 		<h1>
 			{{ hendelse.navn }}
 		</h1>
@@ -12,29 +12,25 @@
 		</p>
 	</div>
 	
-	<!-- Fiks dette -> egen component for hendelser av type post. Sjekk binding. -->
-	<div *ngIf='hendelse'>
-		<post *ngIf='hendelse.type == "post"' pid="{{hendelse.post_id}}"></post>
+	<post *ngIf='hendelse && hendelse.type == "post"' pid="{{hendelse.post_id}}" [style.margin-top]="'-10vh'"></post>
+	<ion-grid *ngIf='hendelse && hendelse.type == "default"'>
+		<ion-row align-items-stretch>
+			<ion-col col-6 *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
+				
+				<div *ngIf="innslag.bilde.isPlaceholder" class="innslag">
+					<h3>
+						<span>{{ innslag.navn}}</span>
+					</h3>
+				</div>
+				<div *ngIf="!innslag.bilde.isPlaceholder" class="innslag hasImage" [style.background-image]="'url('+ innslag.bilde.url + ')'">
+					<h3>
+						<span>{{ innslag.navn}}</span>
+					</h3>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 
+	<div style="margin-bottom: 4em;"></div>
 
-		<ion-grid *ngIf='hendelse.type == "default"'>
-			<ion-row align-items-stretch>
-				<ion-col col-6 *ngFor='let innslag of hendelse.innslag' (click)='visInnslag( innslag.id )'>
-					
-					<div *ngIf="innslag.bilde.isPlaceholder" class="innslag">
-						<h3>
-							<span>{{ innslag.navn}}</span>
-						</h3>
-					</div>
-					<div *ngIf="!innslag.bilde.isPlaceholder" class="innslag hasImage" [style.background-image]="'url('+ innslag.bilde.url + ')'">
-						<h3>
-							<span>{{ innslag.navn}}</span>
-						</h3>
-					</div>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-		<div style="margin-bottom: 4em;">
-		</div>
-	</div>
 </ion-content>

@@ -32,7 +32,7 @@ page-hendelse {
         text-align: center;
 
         h1 {
-            font-size: 2.2em;
+            font-size: 2.1em;
             text-transform: uppercase;
             margin-bottom: 1em;
         }
@@ -45,8 +45,10 @@ page-hendelse {
         background-size: cover;
         color: rgba(0, 0, 76, 1);
         margin: .05em;
+        margin-bottom: -.5em; // For å hindre rosa strek i bunn (but whyyy?)
         padding: .8em;
         padding-top: 6em;
+        height: 100%;
 
         .h3 {
             position: relative;

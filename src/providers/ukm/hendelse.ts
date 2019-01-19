@@ -53,27 +53,28 @@ export class HendelseProvider extends ObjectProvider {
   public filterLoadData( data ) {
     let self = this;
 
-    data.innslag.forEach( 
-      (innslag ) => {
-        self.innslagProvider.set( innslag.id, innslag );
-        
-        // Subscribe to object updates
-        // TODO: MOVE TO OBJECT, NOT ANON FUNCT
-        self.innslagProvider.subscribe( 
-          'update:'+innslag.id, 
-          (object) => {
-            self.data.forEach( 
-              (list_object, list_placement) => {
-                if( object.id == list_object.id ) {
-                  self.data[ list_placement ] = object;
+    if( Array.isArray( data.innslag ) ) {
+      data.innslag.forEach( 
+        (innslag ) => {
+          self.innslagProvider.set( innslag.id, innslag );
+          
+          // Subscribe to object updates
+          // TODO: MOVE TO OBJECT, NOT ANON FUNCT
+          self.innslagProvider.subscribe( 
+            'update:'+innslag.id, 
+            (object) => {
+              self.data.forEach( 
+                (list_object, list_placement) => {
+                  if( object.id == list_object.id ) {
+                    self.data[ list_placement ] = object;
+                  }
                 }
-              }
-            );
-          }
-        );
-      }
-    )
-
+              );
+            }
+          );
+        }
+      );
+    }
     return data;
   }
 }

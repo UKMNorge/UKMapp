@@ -67,7 +67,7 @@ export class InnslagPage {
         let innslag_id = this.navParams.get('id');
         console.error('Logging innslag_id', innslag_id);
 
-        this.innslagProvider.get(innslag_id).then(data => {
+        this.innslagProvider.load(innslag_id).then(data => {
             this.innslag = data;
             console.error('Logging data from innslagPage', data);
         })

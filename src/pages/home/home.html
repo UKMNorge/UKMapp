@@ -5,7 +5,7 @@
 	</ion-navbar>
 </ion-header> -->
 
-<ion-content padding>
+<ion-content>
 
 	<!-- <div *ngIf="this.monstring">
 		
@@ -29,56 +29,70 @@
 		<h1>Laster inn nyhetssaker</h1>
 	</div>
 	<div *ngIf="nyheter != null">
-		<div class="home-top-nyhet">
-			<img src="http://via.placeholder.com/400x400.png?text=STOR,+FEIT+TOPPSAK" alt="">
+		<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
+			<div class="home-top-nyhet">
+				<div class="top-nyhet-image" *ngIf="i == 0" [style.background-image]="'url(' + nyhet.image + ')'" (click)='visNyhet(nyhet)'>
+					<h2>
+						<span>
+							{{nyhet.title}}
+						</span>
+					</h2>
+				</div>
+			</div>
 		</div>
+
+		<br>
+		<br>
+		<br>
 		<div class="home-innslag-scroll">
 			<br>
 			<h5>Navn Innslag</h5>
-			
-		</div>
-		<br>
-		<br>
-		<div class="home-dual-spot">
-			<div class="home-dual-spot-one">
-				<img src="http://via.placeholder.com/200x150.png?text=OVERSKRIFT" alt="" width="50%" style="float:left">
-			</div>
-			<div class="home-dual-spot-two">
-				<img src="http://via.placeholder.com/200x150.png?text=OVERSKRIFT" alt="" width="50%" style="float:left">
-			</div>
 		</div>
 		<br>
 		<br>
 		<br>
+
+
+
+		<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
+			<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+				<h3>
+					<span>{{ nyhet.title}}</span>
+				</h3>
+			</div>
+		</div>
+		<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
+			<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+				<h3>
+					<span id="sakto">{{ nyhet.title}}</span>
+				</h3>
+			</div>
+		</div>
+
 		<br>
-		<div class="home-video-spot">
-			<img src="http://via.placeholder.com/1920x1080.png?text=VIDEO" alt="">
+		<br>
+		<br>
+		<br>
+		<div class="video-spot">
+			<img [src]="film.bilde.url" alt="" (click)='spillVideo(film.fil.mobil)'>
 		</div>
 		<br>
 		<br>
 		<br>
 		<br>
 		<ion-grid>
-			<ion-row>
-				<ion-col col-3>
-					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
-				</ion-col>
-				<ion-col col-6>
-					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
-				</ion-col>
-				<ion-col col-3>
-					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-col col-2>
-					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
-				</ion-col>
-				<ion-col col-4>
-					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
-				</ion-col>
-				<ion-col col-6>
-					<img src="http://via.placeholder.com/400x200.png?text=BILDE" alt="" height="100%">
+			<ion-row align-items-stretch>
+				<ion-col col-6 *ngFor='let nyhet of nyheter.getAll(); index as i' (click)='visNyhet( nyhet)'>
+					<div *ngIf="!nyhet.image" class="nyhetsrute">
+						<h3>
+							<span>{{ nyhet.title}}</span>
+						</h3>
+					</div>
+					<div *ngIf="nyhet.image" class="nyhetsrute hasImage" [style.background-image]="'url('+ nyhet.image + ')'">
+						<h3>
+							<span>{{ nyhet.title}}</span>
+						</h3>
+					</div>
 				</ion-col>
 			</ion-row>
 		</ion-grid>

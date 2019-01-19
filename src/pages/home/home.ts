@@ -6,6 +6,7 @@ import { StorageProvider } from '../../providers/storage';
 import { MonstringProvider } from '../../providers/ukm/monstring';
 import { WordpressProvider } from '../../providers/wordpress';
 import { SingleInfoPage } from '../info/single';
+import { StreamingMedia } from '@ionic-native/streaming-media';
 
 @Component({
 	selector: 'page-home',
@@ -16,6 +17,14 @@ export class HomePage {
 	public monstring = null;
 	public nyheter = null;
 	public singlenyhet = null;
+	public film = {
+		fil: {
+			mobil: 'https://video.ukm.no/ukmno/videos/2019/5493/innslag/2019_5493_innslag_157165_cron_17643_mobile.mp4'
+		},
+		bilde: {
+			url: 'https://video.ukm.no/ukmno/videos/2019/5493/innslag/2019_5493_innslag_157165_cron_17643.jpg'
+		}
+	}
 
 	constructor(
 		public navCtrl: NavController,
@@ -23,6 +32,7 @@ export class HomePage {
 		private monstringProvider: MonstringProvider,
 		public wordpressProvider: WordpressProvider,
 		private calendar: Calendar,
+		private sm: StreamingMedia,
 	) {
 		let self = this;
 		let storage = this.storageProvider.unit('APP');
@@ -36,6 +46,7 @@ export class HomePage {
 		}
 
 		this.nyheter = this.wordpressProvider.getCategoryProvider('nyheter');
+
 	}
 
 	public setMonstringId(monstring_id) {
@@ -67,5 +78,9 @@ export class HomePage {
 				item: item
 			}
 		)
+	}
+
+	spillVideo(url) {
+		this.sm.playVideo(url);
 	}
 }

@@ -110,6 +110,7 @@ $tabs-tab-color-inactive: $ukm_gul;
 
 @import "ionic.theme.dark";
 
+/* BOTTOM TAB BAR */
 .tabs .tabbar,
 .tabs-ios .tabbar {
   //background-color: $ukm_blaa !important;
@@ -126,6 +127,25 @@ $tabs-tab-color-inactive: $ukm_gul;
 .tab-button[aria-selected="true"] .tab-button-text {
   color: $ukm_rosa;
 }
+
+/* LISTS */
+ion-list-header,
+ion-list-header.list-header {
+  color: #ff128b;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+ion-list.list ion-item.item > .item-inner {
+  border: none;
+  margin: .33em auto;
+}
+ion-list.list-ios > .item-block:first-child {
+  border: none;
+}
+
+//.list-ios .item-block .item-inner
+
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:

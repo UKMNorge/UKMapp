@@ -106,7 +106,14 @@ page-innslag {
         font-size: 1.2rem;
         margin: 0 auto;
         display: block;
-        text-align: justify;
+
+        .visible {
+            display: initial;
+        }
+
+        .hidden {
+            display: none;
+        }
     }
 
     .center-div {

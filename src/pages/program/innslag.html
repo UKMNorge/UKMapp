@@ -10,8 +10,8 @@
         <ion-badge><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
     </div>
     <p id='description' (click)="showRest()">
-        {{innslag.beskrivelse | shorten: 90}}<span id="followingdots">...</span>
-        <span id="restofdescription" style="display: none">
+        {{innslag.beskrivelse | shorten: 90}}<span id="followingdots" class="visible">...</span>
+        <span id="restofdescription" class="hidden">
             {{ innslag.beskrivelse | showrest: 90 }}
         </span>
     </p>

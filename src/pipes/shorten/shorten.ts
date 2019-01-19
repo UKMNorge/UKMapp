@@ -12,8 +12,8 @@ export class ShortenPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
    */
-  transform(value: string, length: Number) {
-    return value.substr(0, length);
+  transform(value: string, len: number) {
+    return value.substr(0, len);
   }
 }
 
@@ -24,7 +24,7 @@ export class ShowRestPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
    */
-  transform(value: string, length: Number) {
-    return value.substr(length, value.length - 1);
+  transform(value: string, len: number) {
+    return value.substr(len, value.length - 1);
   }
 }

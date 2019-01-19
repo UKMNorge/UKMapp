@@ -29,7 +29,7 @@ export class SelectPage {
 		//this.monstringProvider.load(4897, 'TEST ME');
 		let alert = this.alertCtrl.create({
 			title: 'Oh nooo!',
-			subTitle: 'Denne funksjonen finnes ikke enda',
+			subTitle: 'Denne funksjonen finnes ikke enda 🤫',
 			buttons: ['OK']
 		});
 		alert.present();

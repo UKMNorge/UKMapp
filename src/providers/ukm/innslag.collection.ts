@@ -9,8 +9,8 @@ import { Innslag, InnslagProvider } from './innslag';
  * Henter ut en oversikt over kategorien (collection av Post)
  */
 @Injectable()
-export class InnslagCollectionProvider extends ObjectCollectionProvider {
-    private url:string = 'https://api.ukm.no/2.0/monstring-#monstring/program/#id/'; 
+export class InnslagDataCollectionProvider extends ObjectCollectionProvider {
+    private url:string = 'https://api.ukm.no/2.0/monstring-#monstring/innslag/#id/'; 
 
     constructor(
         parent_id,

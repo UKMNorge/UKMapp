@@ -40,11 +40,7 @@ import { ComponentsModule } from '../components/components.module';
 import { Calendar } from '@ionic-native/calendar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StreamingMedia } from '@ionic-native/streaming-media';
-
-
-
-
-//CUSTOM PIPES
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -70,7 +66,8 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    PipesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

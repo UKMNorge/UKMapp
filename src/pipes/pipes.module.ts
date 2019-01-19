@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
+import { ShortenPipe, ShowRestPipe } from './shorten/shorten';
 
 @NgModule({
-	declarations: [],
+	declarations: [ShortenPipe, ShowRestPipe],
 	imports: [],
-	exports: []
+	exports: [ShortenPipe, ShowRestPipe]
 })
 export class PipesModule {}

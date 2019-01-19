@@ -5,9 +5,15 @@
     <h1>
         {{ innslag.navn }}
     </h1>
-
-    <p id='description'>
-        {{ innslag.beskrivelse }}
+    <div class="center-div">
+        <ion-badge><span class="blueback">{{ innslag.type.navn }}</span></ion-badge>
+        <ion-badge><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
+    </div>
+    <p id='description' (click)="showRest()">
+        {{innslag.beskrivelse | shorten: 90}}<span id="followingdots">...</span>
+        <span id="restofdescription" style="display: none">
+            {{ innslag.beskrivelse | showrest: 90 }}
+        </span>
     </p>
     <div class="filmer" *ngIf="innslag.filmer">
         <ion-content overflow-scroll="true" *ngFor="let film of innslag.filmer">
@@ -22,7 +28,7 @@
         <div>
             <ion-slides #slider (ionWillChange)="slideWillChange()">
                 <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>
-                <img src="{{ bilde.url }}"/>
+                    <img src="{{ bilde.url }}" />
                 </ion-slide>
             </ion-slides>
         </div>
@@ -30,8 +36,7 @@
     <ion-card>
         <ion-card-content>
             <ion-item>
-                <ion-badge>{{ innslag.type.navn }}</ion-badge>
-                <ion-badge>{{ innslag.kommune.navn }}</ion-badge>
+
             </ion-item>
         </ion-card-content>
     </ion-card>

@@ -12,13 +12,13 @@
 
 </ion-header> -->
 
-<ion-content class="page-info-content">
+<ion-content>
   <div *ngIf="kontaktpersoner == null">
     <h1>Laster inn kontaktpersoner</h1>
   </div>
   <div *ngIf="kontaktpersoner != null">
     <accordion visibleText="Kontaktpersoner" isShowing=false>
-      <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()" class="kontakt-personer-list">
+      <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()" class="kontaktpersoner">
         <ukm-bobla-hvit></ukm-bobla-hvit>
         <div class="kontakt-info">
           <h1>{{kontakt.fornavn}} {{kontakt.etternavn}}</h1>

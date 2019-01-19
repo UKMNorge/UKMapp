@@ -1,12 +1,14 @@
-.page-info-content {
-    background: $ukm_blaa !important;
-    min-height: 100vh;
-}
+page-info {
+    ion-content {
+        background: $ukm_blaa !important;
+        min-height: 100vh;
+    }
 
-.kontakt-personer-list {
-    margin-top: 3vh;
-}
+    .kontaktpersoner {
+        margin-top: 3vh;
+    }
 
-.kontakt-personer-list .kontakt-info {
-    text-align: center;
+    .kontaktpersoner .kontakt-info {
+        text-align: center;
+    }
 }

@@ -38,6 +38,10 @@ page-hendelse {
         }
     }
 
+    .header.post {
+        margin-bottom: 3vh;
+    }
+
     .innslag {
         background: rgba(255, 18, 139, 1);
         background-position: center center;
@@ -66,7 +70,7 @@ page-hendelse {
     }
 
 
-    post > div {
+    post > .content {
         padding: 1.5em;
         font-size: 1.2em;
         margin-top: -10vh;

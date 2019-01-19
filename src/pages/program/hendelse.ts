@@ -7,6 +7,10 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
 import { HendelseProvider } from '../../providers/ukm/hendelse';
 import { InnslagProvider } from '../../providers/ukm/innslag';
 import { StorageProvider } from '../../providers/storage';
+import { InnslagDataProvider } from '../../providers/ukm/innslagdata';
+import { MonstringProgramProvider } from '../../providers/ukm/monstringprogram';
+import { MonstringProvider } from '../../providers/ukm/monstring';
+import { InnslagDataCollectionProvider } from '../../providers/ukm/innslagdata.collection';
 
 @Component({
 	selector: 'page-hendelse',
@@ -23,7 +27,6 @@ export class HendelsePage {
         private hendelseProvider: HendelseProvider,
         public innslagProvider: InnslagProvider,
         private storageProvider: StorageProvider
-        //private browserTab: BrowserTab
 	) {
         let id = this.navParams.get('id');
         
@@ -56,20 +59,30 @@ export class HendelsePage {
     templateUrl: 'innslag.html'
 })
 export class InnslagPage {
-
+    private innslag_id: Number;
     public innslag = null;
     
     constructor(
         private navParams: NavParams,
-        private innslagProvider: InnslagProvider,
+        private monstringProvider: MonstringProvider,
         private streamingMedia: StreamingMedia,
     ) {
-        let innslag_id = this.navParams.get('id');
-        console.error('Logging innslag_id', innslag_id);
+        this.innslag_id = this.navParams.get('id');
+        console.error('Logging innslag_id', this.innslag_id);
+    }
 
-        this.innslagProvider.get(innslag_id).then(data => {
-            this.innslag = data;
-            console.error('Logging data from innslagPage', data);
-        })
+    ngOnInit() {
+        let self = this;
+
+        this.monstringProvider.getInnslagDataCollectionProvider().then(
+            (innslagDataCollectionProvider: InnslagDataCollectionProvider) => {
+                innslagDataCollectionProvider.get( self.innslag_id ).then(
+                    (data) => {
+                        console.error('Logging data from innslagPage', data);
+                        self.innslag = data;
+                    }
+                )
+            }
+        );
     }
 }

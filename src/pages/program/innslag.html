@@ -1,12 +1,5 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>
-            {{ innslag.navn }}
-        </ion-title>
-    </ion-navbar>
-</ion-header>
 <ion-content>
-    <ion-card>
+    <ion-card *ngIf="innslag">
         <div *ngIf="innslag.bilder">
             <ion-slides #slider (ionWillChange)="slideWillChange()">
                 <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>

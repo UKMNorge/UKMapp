@@ -39,6 +39,7 @@ import { MittProgramProvider } from '../providers/app/mittprogram';
 import { ComponentsModule } from '../components/components.module';
 import { Calendar } from '@ionic-native/calendar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { StreamingMedia } from '@ionic-native/streaming-media';
 
 
 
@@ -102,6 +103,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     MittProgramProvider,
     Calendar,
     InAppBrowser,
+    StreamingMedia,
   ]
 })
 export class AppModule {}

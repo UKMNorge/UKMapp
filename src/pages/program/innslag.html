@@ -15,14 +15,21 @@
             {{ innslag.beskrivelse | showrest: 90 }}
         </span>
     </p>
-    <div class="filmer" *ngIf="innslag.filmer">
-        <ion-content overflow-scroll="true" *ngFor="let film of innslag.filmer">
-            <video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline"
-                class="videoPlayer">
-                <source [src]="film.url" type="video/mp4" />
-            </video>
-        </ion-content>
-    </div>
+
+    <ion-grid *ngIf="innslag.personer" class="personvisning">
+        <h2 class="heading">Personer i {{ innslag.navn }}</h2>
+        <ion-row *ngFor="let person of innslag.personer">
+            <ion-col class="navn">{{person.fornavn}} {{person.etternavn}}, {{person.alder}}</ion-col>
+            <ion-col class="rolle">{{person.rolle}}</ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="innslag.titler" class="personvisning">
+            <h2 class="heading">Titler i {{ innslag.navn }}</h2>
+            <ion-row *ngFor="let tittel of innslag.titler">
+                <ion-col class="navn">{{tittel.navn}}</ion-col>
+                <ion-col class="rolle">{{innslag.tid.human_short}}</ion-col>
+            </ion-row>
+        </ion-grid>
 
     <ion-card *ngIf="innslag.bilder">
         <div>
@@ -33,23 +40,21 @@
             </ion-slides>
         </div>
     </ion-card>
-    <ion-card>
-        <ion-card-content>
-            <ion-item>
-
-            </ion-item>
-        </ion-card-content>
-    </ion-card>
 
     <ion-card *ngIf="innslag.filmer">
         <ion-card-title>
-            <h1>Videoer av {{ innslag.navn }}</h1>
+            <h1 class="heading">Videoer av {{ innslag.navn }}</h1>
         </ion-card-title>
         <div *ngFor="let video of innslag.filmer;" #slide>
             <ion-item>
+
                 <img src="{{video.bilde.url}}" (click)="spillFilm(video.fil.mobil, video.navn)">
                 <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon>
             </ion-item>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </ion-card>
 </ion-content>

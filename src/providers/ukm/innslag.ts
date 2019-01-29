@@ -11,13 +11,21 @@ export interface Innslag {
   navn: string;
   type: string;
   beskrivelse: string;
-  kommune:any; // TODO spesifiser kommune
+  kommune: any; // TODO spesifiser kommune
   kategori: string;
   sjanger: string;
   kategori_og_sjanger: string;
   bilde: any; // TODO spesifiser bilde
   bilder: any;
   filmer: any;
+  personer: any;
+  titler: any;
+  tid: {
+    sekunder: number;
+    human: string;
+    human_short: string;
+    human_long: string;
+  }
 }
 
 @Injectable()
@@ -32,7 +40,6 @@ export class InnslagProvider extends ObjectWithoutApiProvider {
       StorageProvider,
       Events
     );
-    console.log('Morning! I\'m InnslagProvider');
   }
 
   init() {}

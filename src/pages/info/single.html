@@ -5,6 +5,6 @@
   
 <ion-content>
   <h1 padding *ngIf="loading">Laster inn... 😬</h1>
-  <h1 padding *ngIf="this.post">{{ this.post.navn }}</h1>
+  <h1 padding *ngIf="this.post">{{ this.title }}</h1>
   <post *ngIf="this.post" pid="{{this.post.id}}"></post>
 </ion-content>

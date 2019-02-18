@@ -2,59 +2,56 @@
     <div *ngIf='innslag.bilde' class="header">
         <div class="headerimg" [style.background-image]="'url(' + innslag.bilde.url + ')'"></div>
     </div>
+
     <h1>
         {{ innslag.navn }}
     </h1>
-    <div class="center-div">
-        <ion-badge><span class="blueback">{{ innslag.type.navn }}</span></ion-badge>
-        <ion-badge><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
-    </div>
-    <p id='description' (click)="showRest()">
-        {{innslag.beskrivelse | shorten: 90}}<span id="followingdots" class="visible">...</span>
-        <span id="restofdescription" class="hidden">
-            {{ innslag.beskrivelse | showrest: 90 }}
-        </span>
-    </p>
+    <div class="stinesmarger">
 
-    <ion-grid *ngIf="innslag.personer" class="personvisning">
-        <h2 class="heading">Personer i {{ innslag.navn }}</h2>
-        <ion-row *ngFor="let person of innslag.personer">
-            <ion-col class="navn">{{person.fornavn}} {{person.etternavn}}, {{person.alder}}</ion-col>
-            <ion-col class="rolle">{{person.rolle}}</ion-col>
-        </ion-row>
-    </ion-grid>
-    <ion-grid *ngIf="innslag.titler" class="personvisning">
-            <h2 class="heading">Titler i {{ innslag.navn }}</h2>
+        <div class="center-div">
+            <ion-badge><span class="blueback">{{ innslag.sjanger }}</span></ion-badge>
+            <ion-badge><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
+            <!-- <ion-badge><span class="blueback">Dovre, Lesja, Lom, Sjåk, Sel, Vågå</span></ion-badge> -->
+        </div>
+        <ion-grid *ngIf="innslag.titler" class="tittelvisning">
             <ion-row *ngFor="let tittel of innslag.titler">
-                <ion-col class="navn">{{tittel.navn}}</ion-col>
-                <ion-col class="rolle">{{innslag.tid.human_short}}</ion-col>
+                <ion-col class="navn">&laquo;{{tittel.navn}}&raquo;</ion-col>
             </ion-row>
         </ion-grid>
 
-    <ion-card *ngIf="innslag.bilder">
-        <div>
-            <ion-slides #slider (ionWillChange)="slideWillChange()">
-                <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>
-                    <img src="{{ bilde.url }}" />
-                </ion-slide>
-            </ion-slides>
-        </div>
-    </ion-card>
+        <p id='description' (click)="showRest()">
+            {{innslag.beskrivelse | shorten: 140}}<span id="followingdots" class="visible">...</span>
+            <span id="restofdescription" class="hidden">
+                {{ innslag.beskrivelse | showrest: 140 }}
+            </span>
+        </p>
+        <ion-grid *ngIf="innslag.personer" class="personvisning">
+            <ion-row *ngFor="let person of innslag.personer">
+                <ion-col class="navn">{{person.fornavn}} {{person.etternavn}} ({{person.alder.replace(' år', '')}}),
+                    {{person.rolle | lowercase}}</ion-col>
+            </ion-row>
+        </ion-grid>
 
-    <ion-card *ngIf="innslag.filmer">
-        <ion-card-title>
-            <h1 class="heading">Videoer av {{ innslag.navn }}</h1>
-        </ion-card-title>
-        <div *ngFor="let video of innslag.filmer;" #slide>
-            <ion-item>
+
+        <ion-card *ngIf="innslag.bilder">
+            <div>
+                <ion-slides #slider (ionWillChange)="slideWillChange()">
+                    <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>
+                        <img src="{{ bilde.url }}" />
+                    </ion-slide>
+                </ion-slides>
+            </div>
+        </ion-card>
+
+        <ion-card *ngIf="innslag.filmer">
+            <ion-card-title>
+                <h1 class="heading">Videoer av {{ innslag.navn }}</h1>
+            </ion-card-title>
+            <div *ngFor="let video of innslag.filmer;" #slide>
 
                 <img src="{{video.bilde.url}}" (click)="spillFilm(video.fil.mobil, video.navn)">
-                <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon>
-            </ion-item>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-    </ion-card>
+                <!-- <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon> -->
+            </div>
+        </ion-card>
+    </div>
 </ion-content>

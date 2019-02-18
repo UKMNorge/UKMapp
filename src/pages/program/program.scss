@@ -2,20 +2,22 @@ page-program {
     .segment .segment-button, 
     .segment-ios .segment-button {
         border: none !important;
-        font-size: 1.4rem;
+        font-size: 1.8rem;
         font-family: 'AvantGardeBold';
         line-height: 3rem;
     }
     
     ion-segment-button.segment-button {
         background-color: $ukm_blaa !important;
-        color: $ukm_rosa !important;
+        color: white; //$ukm_rosa !important;
+        text-transform: uppercase;
         transition: 300ms all ease;
     
     }
     ion-segment-button.segment-button.segment-activated {
-        color: $ukm_rosa;
-        font-size: 2rem;
+        color: white; //$ukm_rosa;
+        text-transform: uppercase;
+        font-size: 2.4rem;
     }    
 
     #velgProgram {
@@ -35,6 +37,10 @@ page-hendelse {
             font-size: 2.1em;
             text-transform: uppercase;
             margin-bottom: 1em;
+            font-family: 'AvantGardeBold';
+        }
+        p {
+            font-family: 'AvantGarde';
         }
     }
 
@@ -58,14 +64,23 @@ page-hendelse {
             position: relative;
             bottom: 0;
             left: 0;
-            font-size: 2.2rem;
+            font-size: .6rem;
             padding: .1em;
             line-height: 1.2em;
+        }
+        .innslagheader {
+            font-size: 1.2em;
+            font-family: 'AvantGardeBold';
+            z-index: 2;
+            position: relative;
         }
     }
     .innslag.hasImage {
         h3 > span {
-            background: rgba(255, 18, 139, .8);
+            //background: rgba(255, 18, 139, .8);
+            z-index: 2;
+            position: relative;
+            color: $ukm_blaa;
         }
     }
 
@@ -76,6 +91,26 @@ page-hendelse {
         margin-top: -10vh;
         line-height: 1.35em;
     }
+
+    .overlay {
+        width: 46.2vw;
+        height: 94.4%;
+        position: absolute;
+        top: .5rem;
+        left: .5rem;
+        z-index: 1;
+    }    
+    .overlay.rosa {
+        background: rgba($ukm_rosa, 0.85);
+        color: $ukm_blaa;
+        z-index: 1;
+    }
+    .overlay.gul {
+        background: rgba($ukm_gul, 0.85);
+        color: $ukm_blaa;
+        z-index: 1;
+    }
+        //background: rgba($ukm_rosa, 0.85)  //linear-gradient(to top, rgba($ukm_rosa, 0.9) 40%, rgba($ukm_rosa, 0.4)); 
 }
 
 page-innslag {
@@ -95,7 +130,7 @@ page-innslag {
     
     h1 {
         text-align: center;
-        padding-top: 10rem;
+        padding-top: 2rem;
         font-size: 2.2em;
         text-transform: uppercase;
     }
@@ -115,6 +150,10 @@ page-innslag {
             display: none;
         }
     }
+    .stinesmarger {
+        width: 95vw;
+        margin: 0 auto;
+    }
 
     .heading {
         color: white;
@@ -130,8 +169,15 @@ page-innslag {
         ion-badge {
             background: $ukm_gul;
             color: $ukm_blaa;
+            margin: .2rem;
+
         }
     }
+
+    .innslag_slide_bilde {
+        width: 100% !important;
+    }
+
 
     .personvisning {
         .rolle {
@@ -144,5 +190,9 @@ page-innslag {
         .top-line {
             border-color: $ukm_gul;
         }
+    }
+    .tittelvisning {
+        text-align: center;
+        margin-top: 1.2rem;
     }
 }

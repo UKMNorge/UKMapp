@@ -52,23 +52,23 @@
 		<br>
 		<br>
 
-
-
-		<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
-			<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
-				<h3>
-					<span>{{ nyhet.title}}</span>
-				</h3>
+		<!-- Legg inn marger på disse. -->
+		<div> 
+			<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
+				<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+					<h3>
+						<span>{{ nyhet.title}}</span>
+					</h3>
+				</div>
+			</div>
+			<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
+				<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+					<h3>
+						<span id="sakto">{{ nyhet.title}}</span>
+					</h3>
+				</div>
 			</div>
 		</div>
-		<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
-			<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
-				<h3>
-					<span id="sakto">{{ nyhet.title}}</span>
-				</h3>
-			</div>
-		</div>
-
 		<br>
 		<br>
 		<br>

@@ -1,14 +1,58 @@
 page-info {
     ion-content {
+        font-family: 'AvantGardeBold';
         background: $ukm_blaa !important;
         min-height: 100vh;
+        
+    }
+
+    .accordion-head {
+        text-transform: uppercase;
+        padding: 0 0 .5rem 0;
     }
 
     .kontaktpersoner {
         margin-top: 3vh;
     }
 
-    .kontaktpersoner .kontakt-info {
+    .kontakt-info {
+        margin-top: -1.4rem;
         text-align: center;
+        .fornavn {
+            font-size: 1.8rem;
+            font-family: 'AvantGardeBold';
+        }
+        .tittel {
+            font-family: 'AvantGarde';
+            font-size: 1.4rem;
+            text-transform: lowercase;
+            margin-top: -.6rem;
+        }
+        .telefon {
+            margin-top: .4rem;
+        }
+        .telefon, .epost {
+            font-family: 'AvantGarde';
+            font-size: 1.2rem;
+            line-height: .4rem;
+            text-transform: lowercase;
+        }
+        .epost {
+            font-size: .8rem;
+            margin-top: 0;
+        }
+        
+    }
+
+    .item-info h4 {
+        margin-top: 1rem;
+        font-family: 'Arial';
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        text-transform: initial;
+    }
+    .info-list {
+        margin-top: 1rem;
+        margin-bottom: 0;
     }
 }

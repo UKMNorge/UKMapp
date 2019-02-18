@@ -19,11 +19,11 @@ ukm-knapp {
 
 ukm-knapp.wide {
     width: calc( 100% - 2em );
-    margin: 2.2em 1em;
+    margin: 1.1em 1em;
     text-align: left;
 
     .text-container {
-        padding: .25em;
+        padding: .14em ;
     }
 
     h2 {
@@ -38,12 +38,16 @@ ukm-knapp.wide {
     }
 
     morph-icon {
-        font-size: 2em;
+        font-size: 2.5em;
+        color: $ukm_rosa;
     }
 }
 
 ukm-knapp.wide.rosa h2 {
     color: $ukm_gul;
+}
+ukm-knapp.wide.white {
+    color: white;
 }
 
 

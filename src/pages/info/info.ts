@@ -42,7 +42,7 @@ export class InfoPage {
       storage.get('monstring').then(
         (monstring_id) => {
           self.setMonstringId(monstring_id);
-
+          
           // 
           self.monstringProvider.getKontaktCollectionProvider().then(
             (kontaktCollectionProvider: KontaktCollectionProvider) => {

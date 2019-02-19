@@ -82,23 +82,6 @@ export abstract class ObjectProvider extends ObjectWithoutApiProvider {
       }
     );
   }
-
-
-  /**
-   * 
-   * @param id 
-   * @param data 
-   */
-  public set(id, data) {
-    //console.info('ObjectProvider('+ this.title +')::set('+ id +')');
-    // Send to permanent storage
-    this.storage.set( id, data );
-    // Add / update in collection
-    this.data.set( id, data );
-    // Notify the world of the great updated new object
-    this._publish( 'update:'+id, data );
-    return data;
-  }
   
   
   /**

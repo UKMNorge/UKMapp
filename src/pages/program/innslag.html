@@ -1,25 +1,74 @@
 <ion-content *ngIf="innslag">
+    <div class="container">
+        <div *ngIf="!innslag.bilde.isPlaceholder" class="containerimg" [style.background-image]="'url(' + innslag.bilde.url + ')'"></div>
+        <div *ngIf="innslag.bilde.isPlaceholder" class="containerimg placeholder"></div>
+        <div class="header">
+            <div *ngIf="!innslag.bilde.isPlaceholder" class="headerimg" [style.background-image]="'url(' + innslag.bilde.url + ')'"></div>
+            <div *ngIf="innslag.bilde.isPlaceholder" class="headerimg placeholder"></div>
+        </div>
+        <div class="contentbox">
+            <div class="content">
+                <h1>{{innslag.navn}}</h1>
+                <div class="tags">
+                    <ion-badge *ngIf="innslag.sjanger"><span class="blueback">{{ innslag.sjanger }}</span></ion-badge>
+                    <ion-badge *ngIf="innslag.kommune.navn"><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
+                </div>
+                <div *ngIf="innslag.titler">
+                    <div *ngFor="let tittel of innslag.titler">
+                        <p class="title">&laquo;{{ tittel.navn }}&raquo;</p>
+                    </div>
+                </div>
+                <p *ngIf="innslag.beskrivelse" class="description" (click)="showRest()">
+                    {{innslag.beskrivelse | shorten: 140}}<span id="followingdots" class="visible">...</span>
+                    <span id="restofdescription" class="hidden">
+                        {{ innslag.beskrivelse | showrest: 140 }}
+                    </span>
+                </p>
+
+                <ion-grid *ngIf="innslag.personer" class="personvisning">
+                    <ion-row *ngFor="let person of innslag.personer">
+                        <ion-col class="navn">{{person.fornavn}} {{person.etternavn}} ({{person.alder.replace(' år','')}}), {{person.rolle | lowercase}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+
+
+                <ion-card *ngIf="innslag.bilder">
+                    <div>
+                        <ion-slides #slider zoom=true (ionWillChange)="slideWillChange()" pager=true>
+                            <ion-slide *ngFor="let bilde of innslag.bilder;" #slide>
+                                <div class="swiper-zoom-container" *ngIf="bilde">
+                                    <div class="innslag_slide_bilde" [style.background-image]="'url('+ bilde.url + ')'">
+                                    </div>
+                                </div>
+                            </ion-slide>
+                        </ion-slides>
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
     <div *ngIf='innslag.bilde' class="header">
         <div class="headerimg" [style.background-image]="'url(' + innslag.bilde.url + ')'"></div>
     </div>
+    <div class="header">
+        <h1>
+            {{ innslag.navn }}
+        </h1>
 
-    <h1>
-        {{ innslag.navn }}
-    </h1>
-    <div class="stinesmarger">
-
-        <div class="center-div">
-            <ion-badge><span class="blueback">{{ innslag.sjanger }}</span></ion-badge>
-            <ion-badge><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
-            <!-- <ion-badge><span class="blueback">Dovre, Lesja, Lom, Sjåk, Sel, Vågå</span></ion-badge> -->
+            <div class="center-div">
+                <ion-badge><span class="blueback">{{ innslag.sjanger }}</span></ion-badge>
+                <ion-badge><span class="blueback">{{ innslag.kommune.navn }}</span></ion-badge>
+            </div>
+            <ion-grid *ngIf="innslag.titler" class="tittelvisning">
+                <ion-row *ngFor="let tittel of innslag.titler">
+                    <ion-col class="navn">&laquo;{{tittel.navn}}&raquo;</ion-col>
+                </ion-row>
+            </ion-grid>
         </div>
-        <ion-grid *ngIf="innslag.titler" class="tittelvisning">
-            <ion-row *ngFor="let tittel of innslag.titler">
-                <ion-col class="navn">&laquo;{{tittel.navn}}&raquo;</ion-col>
-            </ion-row>
-        </ion-grid>
-
-        <p id='description' (click)="showRest()">
+        <p *ngIf="innslag.beskrivelse" id='description' (click)="showRest()">
             {{innslag.beskrivelse | shorten: 140}}<span id="followingdots" class="visible">...</span>
             <span id="restofdescription" class="hidden">
                 {{ innslag.beskrivelse | showrest: 140 }}
@@ -35,9 +84,12 @@
 
         <ion-card *ngIf="innslag.bilder">
             <div>
-                <ion-slides #slider (ionWillChange)="slideWillChange()">
-                    <ion-slide class="innslag_slide_bilde" *ngFor="let bilde of innslag.bilder;" #slide>
-                        <img src="{{ bilde.url }}" />
+                <ion-slides #slider zoom=true (ionWillChange)="slideWillChange()" pager=true>
+                    <ion-slide *ngFor="let bilde of innslag.bilder;" #slide>
+                        <div class="swiper-zoom-container" *ngIf="bilde">
+                            <div class="innslag_slide_bilde" [style.background-image]="'url('+ bilde.url + ')'">
+                            </div>
+                        </div>
                     </ion-slide>
                 </ion-slides>
             </div>
@@ -50,8 +102,7 @@
             <div *ngFor="let video of innslag.filmer;" #slide>
 
                 <img src="{{video.bilde.url}}" (click)="spillFilm(video.fil.mobil, video.navn)">
-                <!-- <ion-icon ios="ios-play" md="md-play" class="innslag_video_play"></ion-icon> -->
             </div>
         </ion-card>
-    </div>
+    -->
 </ion-content>

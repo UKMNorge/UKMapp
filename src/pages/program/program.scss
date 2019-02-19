@@ -114,15 +114,123 @@ page-hendelse {
 }
 
 page-innslag {
+    .containerimg {
+        background-position: center center;
+        background-attachment: sticky;
+        background-size: contain;
+        height: 35vh;
+        filter: blur(6px);
+        width: 100vw;
+        top: 0;
+        position: absolute;
+        transform: scale(1.1);
+        
+    }
+    .placeholder {
+        background: linear-gradient(-30deg, $ukm_gul, $ukm_rosa);
+    }
 
     .header {
+        width: 100vw;
+        height: 100vh;
+        top: 30vh;
+        /* border-top-left-radius: 60% 8%; */
+        /* border-top-right-radius: 60% 8%; */
+        background: #00004c;
+        position: absolute;
+    }
+
+    .headerimg {
+        width: 30vw;
+        height: 30vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: 4px solid rgba(255, 18, 139, 0.8);
+        margin: 0 auto;
+        position: relative;
+        margin-top: -6rem;
+        border-radius: 50%;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    .contentbox {
+        width: 100vw;
+        position: relative;
+        margin-top: 40vh;
+    }
+
+    .content {
+        color: white;
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: normal;
+            font-size: 3.2rem;
+            font-family: 'AvantGardeBold';
+        }
+        .tags {
+            width: max-content;
+            margin: 0 auto;
+
+            ion-badge {
+                background: $ukm_gul;
+                color: $ukm_blaa;
+            }
+        }
+        .title {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+        .description {
+            width: 95vw;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.2rem;
+            display: block;
+    
+            .visible {
+                display: initial;
+            }
+    
+            .hidden {
+                display: none;
+            }
+        }
+        .personvisning {
+            margin-top: 2.5rem;
+            .rolle {
+                text-align: right;
+                font-size: 1.2rem;
+            }
+            ion-row:nth-child(odd) {
+                color: $ukm_gul;
+            }
+            .top-line {
+                border-color: $ukm_gul;
+            }
+        }
+        ion-slides {
+            .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+                button {
+                    background: $ukm_rosa;
+                    padding: 8px;
+                }
+            }
+            .innslag_slide_bilde {
+                width: 100%;
+                height: 56vw;
+                background-size: cover;
+                background-position: center center;
+            }
+        }
+    }
+ /*
+    .header {
         font-size: 1.2em;
-        text-align: center;
-        //background-color: $ukm_rosa;
-        height: 33vh;
+        padding: 0;
     }
     .headerimg {
-        height: 100%;
+        height: 57vh;
+        margin-top: -4rem;
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
@@ -137,7 +245,8 @@ page-innslag {
     p#description {
         padding-top: 1em;
         padding-bottom: 4em;
-        width: 90vw;
+        width: 95vw;
+        text-align: justify;
         font-size: 1.2rem;
         margin: 0 auto;
         display: block;
@@ -171,10 +280,19 @@ page-innslag {
         }
     }
 
-    .innslag_slide_bilde {
-        width: 100% !important;
+    ion-slides {
+        .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+            button {
+                background: $ukm_rosa;
+            }
+        }
+        .innslag_slide_bilde {
+            width: 100%;
+            height: 56vw;
+            background-size: cover;
+            background-position: center center;
+        }
     }
-
 
     .personvisning {
         .rolle {
@@ -191,8 +309,10 @@ page-innslag {
     .tittelvisning {
         text-align: center;
         margin-top: 1.2rem;
-    }
+    }*/
 }
+
+//Global
 .stinesmarger {
     width: 95vw;
     margin: 0 auto;

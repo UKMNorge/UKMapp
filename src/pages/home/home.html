@@ -59,27 +59,37 @@
 				</ion-slide>
 			</ion-slides>
 		</div>
-		<div class="stinesmarger">
-			<div class="toppsaker">
-				<div *ngFor='let nyhet of nyheter.getAll(); index as i;'>
-					<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
-						<h3>
-							<span>{{ nyhet.title}}</span>
-						</h3>
-					</div>
-					<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
-						<h3>
-							<span id="sakto">{{ nyhet.title}}</span>
-						</h3>
-					</div>
+		<div class="toppsaker">
+			<div *ngFor='let nyhet of nyheter.getAll(); index as i;'>
+				<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+					<h3>
+						<span>{{ nyhet.title}}</span>
+					</h3>
+				</div>
+				<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+					<h3>
+						<span id="sakto">{{ nyhet.title}}</span>
+					</h3>
 				</div>
 			</div>
 		</div>
-		<div class="stinesmarger">
 
-		<div class="video-spot" *ngIf="film" >
-			<div class="video" [style.background-image]="'url(' + film.bilde.url + ')'" (click)='spillVideo(film.fil.mobil)'></div>
-		</div>
+
+		<div class="video-spot" *ngIf="filmer != null">
+			<ion-slides zoom="true">
+				<ion-slide *ngFor="let film of filmer.getAll(); let i = index;" (click)='spillVideo(film.fil.mobil)'>
+					<div class="swiper-zoom-container">
+						<div class="video-container">
+							<div class="video" [style.background-image]="'url(' + film.bilde.url + ')'">
+								<ion-icon ios="ios-play" md="md-play"></ion-icon>
+							</div>
+							<h5>{{film.navn}}</h5>
+
+						</div>
+					</div>
+				</ion-slide>
+			</ion-slides>
+
 		</div>
 		<ion-grid>
 			<ion-row align-items-stretch>

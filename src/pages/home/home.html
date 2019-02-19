@@ -44,42 +44,43 @@
 		<br>
 		<br>
 		<br>
-		<div class="home-innslag-scroll">
+		<div class="home-innslag-scroll" *ngIf="innslag != null">
 			<br>
-			<h5>Navn Innslag</h5>
-		</div>
-		<br>
-		<br>
-		<br>
+			<ion-slides zoom="true" slidesPerView="3">
+				<ion-slide *ngFor="let j of innslag.getAll(); let i = index;" (click)='visInnslag( j.id )'>
+					<div class="swiper-zoom-container" *ngIf="j.bilde">
+						<img *ngIf="!j.bilde.isPlaceholder" src="{{j.bilde.url}}">
+						<div class="overlay" *ngIf="!j.bilde.isPlaceholder"></div>
 
-		<!-- Legg inn marger på disse. -->
-		<div> 
-			<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
-				<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
-					<h3>
-						<span>{{ nyhet.title}}</span>
-					</h3>
-				</div>
-			</div>
-			<div *ngFor="let nyhet of nyheter.getAll(); index as i;">
-				<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
-					<h3>
-						<span id="sakto">{{ nyhet.title}}</span>
-					</h3>
+						<div *ngIf="j.bilde.isPlaceholder" class="placeholderThumbnail {{ i % 4 == 0 ? 'gul' : 'rosa' }} {{ i % 7 == 0 ? 'gronn' : '' }}"></div>
+						<div class="overlay" *ngIf="j.bilde.isPlaceholder"></div>
+					</div>
+					<h4 class="innslagnavn">{{j.navn}}</h4>
+				</ion-slide>
+			</ion-slides>
+		</div>
+		<div class="stinesmarger">
+			<div class="toppsaker">
+				<div *ngFor='let nyhet of nyheter.getAll(); index as i;'>
+					<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+						<h3>
+							<span>{{ nyhet.title}}</span>
+						</h3>
+					</div>
+					<div *ngIf="i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
+						<h3>
+							<span id="sakto">{{ nyhet.title}}</span>
+						</h3>
+					</div>
 				</div>
 			</div>
 		</div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="video-spot" *ngIf="film">
-			<img [src]="film.bilde.url" alt="" (click)='spillVideo(film.fil.mobil)'>
+		<div class="stinesmarger">
+
+		<div class="video-spot" *ngIf="film" >
+			<div class="video" [style.background-image]="'url(' + film.bilde.url + ')'" (click)='spillVideo(film.fil.mobil)'></div>
 		</div>
-		<br>
-		<br>
-		<br>
-		<br>
+		</div>
 		<ion-grid>
 			<ion-row align-items-stretch>
 				<ion-col col-6 *ngFor='let nyhet of nyheter.getAll(); index as i' (click)='visNyhet( nyhet)'>

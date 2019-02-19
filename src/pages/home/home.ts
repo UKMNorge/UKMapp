@@ -7,6 +7,7 @@ import { MonstringProvider } from '../../providers/ukm/monstring';
 import { WordpressProvider } from '../../providers/wordpress';
 import { SingleInfoPage } from '../info/single';
 import { StreamingMedia } from '@ionic-native/streaming-media';
+import { InnslagCollectionProvider } from '../../providers/ukm/innslag.collection';
 
 @Component({
 	selector: 'page-home',
@@ -16,6 +17,7 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
 export class HomePage {
 	public monstring = null;
 	public nyheter = null;
+	public innslag = null;
 	public singlenyhet = null;
 	public film = {
 		fil: {
@@ -44,7 +46,6 @@ export class HomePage {
 				}
 			)
 		}
-
 		this.nyheter = this.wordpressProvider.getCategoryProvider('nyheter');
 
 	}
@@ -82,5 +83,20 @@ export class HomePage {
 
 	spillVideo(url) {
 		this.sm.playVideo(url);
+	}
+
+
+
+	ngOnInit() {
+		let self = this;
+		console.warn('HELOOOOOOOOO');
+		this.monstringProvider.getInnslagCollectionProvider().then(
+			(innslagCollectionProvider: InnslagCollectionProvider) => {
+				console.warn('HELOOOOOOOOO TADA');
+				self.innslag = innslagCollectionProvider;
+				self.innslag.load();
+				console.log( innslagCollectionProvider );
+			}
+		);
 	}
 }

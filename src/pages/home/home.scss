@@ -8,6 +8,53 @@ page-home {
         margin-top: -3vh;
     }
 
+    .swiper-zoom-container {
+        padding-top: 0;
+        margin-top: 0;
+        .placeholderThumbnail {
+            width: 28vw;
+            height: 28vw;
+            border-radius: 50%;
+            position: relative;
+            
+        }
+        .gul {
+            background: $ukm_gul;
+        }
+        .rosa {
+            background: $ukm_rosa;
+        }
+        .gronn {
+            background: $ukm_gronn;
+        }
+        .overlay {
+            background: linear-gradient(to top, rgba(black, 0.6) 20%, rgba($ukm_rosa, 0.4));
+            width: 28vw;
+            height: 28vw;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+        }
+        img {
+            position: relative;
+            z-index: 1;
+            border-radius: 50%;            
+            width: 28vw;
+            height: 28vw;
+            border: 2px solid $ukm_rosa;
+        }
+        
+    }
+    .innslagnavn {
+        margin-top: -1.4em;
+        font-size: 1.4rem;
+        font-weight: bold;
+        position:relative;
+        z-index: 3;
+
+    }
+
+
 
     .top-nyhet-image {
         width: 100%;
@@ -16,9 +63,10 @@ page-home {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-        margin-bottom: -.5em; // For å hindre rosa strek i bunn (but whyyy?)
+        margin-bottom: -3em; // For å hindre rosa strek i bunn (but whyyy?)
         color: rgba(0, 0, 76, 1);
         position: relative;
+        padding: 0;
 
         h2 {
             position: absolute;
@@ -34,31 +82,47 @@ page-home {
             background: rgba(255, 18, 139, .8);
         }
     }
-
-    .dual-spot-sak {
-        width: 50vw;
-        height: 36vw;
+    .toppsaker {
+        width: 100%;
+        display: block;
         float: left;
-        text-align: left;
-        font-size: 1.6rem;
-        background-size: cover;
-        background-position: center center;
-
-        h3 {
-            margin-top: .4em;
-            padding: 0 .4em;
-            line-height: 1.26em;
-        }
-
-        h3 > span {
-            background: rgba($ukm_blaa, .8);
-            color: $ukm_gul;
-        }
-        h3 > #sakto {
-            background: rgba($ukm_blaa, .8);
-            color: white;
+        .dual-spot-sak {
+            width: 47.5vw;
+            height: 36vw;
+            float: left;
+            font-size: 1.6rem;
+            background-size: cover;
+            background-position: center center;
+    
+            h3 {
+                margin-top: .4em;
+                padding: 0 .4em;
+                line-height: 1.26em;
+            }
+    
+            h3 > span {
+                background: rgba($ukm_blaa, .8);
+                color: $ukm_gul;
+            }
+            h3 > #sakto {
+                background: rgba($ukm_blaa, .8);
+                color: white;
+            }
         }
     }
+    .video-spot {
+        width: 100%;
+        background: red;
+        float: left;
+        height: 55vw;
+        .video {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    
     .nyhetsrute {
         background: rgba(255, 18, 139, 1);
         background-position: center center;

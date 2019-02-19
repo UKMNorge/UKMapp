@@ -41,6 +41,7 @@ import { Calendar } from '@ionic-native/calendar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { PipesModule } from '../pipes/pipes.module';
+import { InnslagCollectionProvider } from '../providers/ukm/innslag.collection';
 
 
 
@@ -96,6 +97,7 @@ import { PipesModule } from '../pipes/pipes.module';
     HendelseProvider,
     InnslagProvider,
     WordpressProvider,
+    InnslagCollectionProvider,
     BrowserTab,
     MittProgramProvider,
     Calendar,

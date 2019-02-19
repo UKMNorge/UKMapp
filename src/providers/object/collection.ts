@@ -19,7 +19,7 @@ export abstract class ObjectCollectionProvider extends ObjectCollectionWithoutAp
     private _title, 
     public objectProvider, 
     private _http: HttpClient,
-    _storageProvider: StorageProvider,
+    _storageProvider: StorageProvider
   ) {
     super(
       _title,

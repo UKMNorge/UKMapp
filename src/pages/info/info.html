@@ -16,13 +16,36 @@
   <div *ngIf="kontaktpersoner == null">
     <h1>Laster inn kontaktpersoner</h1>
   </div>
-  <div *ngIf="kontaktpersoner != null">
-    <ukm-knapp class="wide white rosa-rosa">
-      <accordion visibleText="Kontaktpersoner" isShowing=false>
-        <ion-grid *ngIf='kontaktpersoner != null'>
+  <div *ngIf="kontaktpersoner != null" class="kontaktpersoner">
+    <h1>Kontaktpersoner</h1>
+    <!-- <ukm-knapp class="wide white rosa-rosa"> -->
+    <!-- <accordion visibleText="" isShowing=false> -->
+    <div class="kontaktpersoner-scroll">
+      <br>
+      <ion-slides zoom="true" slidesPerView="3">
+        <ion-slide *ngFor="let j of kontaktpersoner.getAll(); let i = index;">
+          <div class="swiper-zoom-container" *ngIf="j.bilde">
+            <div class="placeholder" *ngIf="!j.bilde.url"></div>
+            <div *ngIf="j.bilde.url" [style.background-image]="'url(' + j.bilde.url + ')'" class="kontaktbilde"></div>
+          </div>
+          <div class="kontakt-info">
+              <h1 class="fornavn">{{j.fornavn}}</h1>
+              <h1 class="tittel">{{j.tittel}}</h1>
+              <h3 *ngIf="j.telefon != '0'" class="telefon" (click)="ringKontakt(j.telefon)">{{j.telefon}}</h3>
+              <h4 class="epost">{{j.epost}}</h4>
+            </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <!-- <ion-grid *ngIf='kontaktpersoner != null'>
           <ion-row align-items-stretch>
-            <ion-col col-6 *ngFor='let kontakt of kontaktpersoner.getAll()'>
-              <ukm-bobla-hvit></ukm-bobla-hvit>
+            <ion-col col-4 *ngFor='let kontakt of kontaktpersoner.getAll()'>
+              <div class="placeholder" *ngIf="!kontakt.bilde.url"></div>
+
+              <div *ngIf="kontakt.bilde.url" [style.background-image]="'url(' + kontakt.bilde.url + ')'" class="kontaktbilde"></div>
+              <div *ngIf="kontakt.bilde.url" class="kontaktbildeoverlay"></div>
+              
               <div class="kontakt-info">
                 <h1 class="fornavn">{{kontakt.fornavn}}</h1>
                 <h1 class="tittel">{{kontakt.tittel}}</h1>
@@ -31,12 +54,12 @@
               </div>
             </ion-col>
           </ion-row>
-        </ion-grid>
+        </ion-grid> -->
 
 
 
 
-        <!-- <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()" class="kontaktpersoner">
+    <!-- <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()" class="kontaktpersoner">
           <ukm-bobla-hvit></ukm-bobla-hvit>
           <div class="kontakt-info">
             <h1>{{kontakt.fornavn}} {{kontakt.etternavn}}</h1>
@@ -45,11 +68,12 @@
             <hr>
           </div>
         </ion-list> -->
-      </accordion>
-    </ukm-knapp>
+    <!-- </accordion> -->
+    <!-- </ukm-knapp> -->
 
   </div>
   <div *ngIf="info != null">
+    <h1 class="info-overskrift">Informasjon</h1>
     <ion-list *ngFor="let item of info.getAll()" class="info-list">
       <ukm-knapp class="wide white rosa-rosa">
         <accordion visibleText="{{item.title}}" isShowing=false class="ukm-gradient-rosa-gul">

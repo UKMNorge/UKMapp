@@ -12,8 +12,67 @@ page-info {
     }
 
     .kontaktpersoner {
+        h1 {
+            text-align: center;
+        }
+        width: 90vw;
         margin-top: 3vh;
+        display: block;
+        margin: 0 auto;
+
+        .kontaktpersoner-scroll {
+            margin-left: -5vw;
+            width: 100vw;
+
+            ion-slides {
+                ion-slide {
+                    margin-right: -1.3rem;
+                }
+
+                ion-slide:last-of-type {
+                    right: 0;
+                }
+
+                ion-slide:first-of-type {
+                    margin-left: 1.2rem;
+
+                }
+            }
+        }
+
+        .placeholder {
+            width: 22vw;
+            height: 22vw;
+            display: block;
+            margin: 0 auto;
+            background: linear-gradient(-30deg, rgba($ukm_rosa, 1), rgba($ukm_gul, 1));
+            border-radius: 50%;
+            border: 2px solid $ukm_rosa;
+            position: relative;
+            z-index: 1;
+        }
     }
+    .kontaktbilde {
+        width: 22vw;
+        height: 22vw;
+        display: block;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: center center;
+        background-color: rgba($ukm_rosa, 0.4);
+        background-blend-mode: screen;
+        border-radius: 50%;
+        border: 2px solid $ukm_rosa;
+        position: relative;
+        z-index: 1;
+    }
+    /*.kontaktbildeoverlay {
+        width: 35vw;
+        height: 35vw;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+    }*/
 
     .kontakt-info {
         margin-top: -1.4rem;
@@ -38,6 +97,7 @@ page-info {
             text-transform: lowercase;
         }
         .epost {
+            display: none;
             font-size: .8rem;
             margin-top: 0;
         }
@@ -54,6 +114,11 @@ page-info {
     .info-list {
         margin-top: 1rem;
         margin-bottom: 0;
+    }
+
+    .info-overskrift {
+        text-align: center;
+        padding-bottom: 1.2rem;
     }
 }
 

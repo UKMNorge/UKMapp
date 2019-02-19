@@ -28,7 +28,7 @@ export class MonstringProvider extends ObjectProvider {
   constructor( 
     _http:HttpClient, 
     storageProvider:StorageProvider, 
-    events: Events,
+    events: Events
   ) {
     super( 'Monstring', _http, storageProvider, events );
     console.log('Hello, I\'m MonstringProvider');

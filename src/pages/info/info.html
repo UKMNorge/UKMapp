@@ -26,7 +26,7 @@
               <div class="kontakt-info">
                 <h1 class="fornavn">{{kontakt.fornavn}}</h1>
                 <h1 class="tittel">{{kontakt.tittel}}</h1>
-                <h3 class="telefon">{{kontakt.telefon}}</h3>
+                <h3 *ngIf="kontakt.telefon != '0'" class="telefon" (click)="ringKontakt(kontakt.telefon)">{{kontakt.telefon}}</h3>
                 <h4 class="epost">{{kontakt.epost}}</h4>
               </div>
             </ion-col>

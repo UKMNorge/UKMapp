@@ -39,6 +39,7 @@ import { MittProgramProvider } from '../providers/app/mittprogram';
 
 import { ComponentsModule } from '../components/components.module';
 import { Calendar } from '@ionic-native/calendar';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { PipesModule } from '../pipes/pipes.module';
@@ -101,6 +102,7 @@ import { PipesModule } from '../pipes/pipes.module';
     BrowserTab,
     MittProgramProvider,
     Calendar,
+    CallNumber,
     InAppBrowser,
     StreamingMedia,
   ]

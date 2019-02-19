@@ -5,6 +5,7 @@ import { WordpressProvider } from '../../providers/wordpress';
 import { MonstringProvider } from '../../providers/ukm/monstring';
 import { StorageProvider } from '../../providers/storage';
 import { KontaktCollectionProvider } from '../../providers/ukm/kontakt.collection';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 /**
@@ -30,7 +31,8 @@ export class InfoPage {
     public navParams: NavParams,
     private storageProvider: StorageProvider,
     private monstringProvider: MonstringProvider,
-    public wordpressProvider: WordpressProvider
+    public wordpressProvider: WordpressProvider,
+    private callNumber: CallNumber
   ) {
 
     let self = this;
@@ -79,5 +81,11 @@ export class InfoPage {
         item: item
       }
     )
+  }
+
+  ringKontakt(nummer) {
+    this.callNumber.callNumber(nummer, true)
+    .then(res=>console.log('Launched dialer!', res))
+    .catch(err => console.log('Error launching dialer', err));
   }
 }

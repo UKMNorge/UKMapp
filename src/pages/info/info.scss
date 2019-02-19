@@ -56,3 +56,15 @@ page-info {
         margin-bottom: 0;
     }
 }
+
+page-single-info {
+    h1 {
+        padding-top: 40vh;
+        text-align: center;
+        font-size: 3rem;
+        
+        span {
+            font-size: 10rem;
+        }
+    }
+}

@@ -19,7 +19,6 @@ export abstract class ObjectMonstringAwareProvider extends ObjectProvider {
         events:Events
     ) {
         super(
-
             title+'|'+monstring_id,
             http,
             storageProvider,

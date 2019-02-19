@@ -27,7 +27,8 @@
 
                 <ion-grid *ngIf="innslag.personer" class="personvisning">
                     <ion-row *ngFor="let person of innslag.personer">
-                        <ion-col class="navn">{{person.fornavn}} {{person.etternavn}} ({{person.alder.replace(' år','')}}), {{person.rolle | lowercase}}</ion-col>
+                        <ion-col class="navn">{{person.fornavn}} {{person.etternavn}} ({{person.alder.replace('
+                            år','')}}), {{person.rolle | lowercase}}</ion-col>
                     </ion-row>
                 </ion-grid>
 
@@ -44,6 +45,21 @@
                         </ion-slides>
                     </div>
                 </ion-card>
+
+                <div class="video-spot" *ngIf="innslag.filmer != null">
+                    <ion-slides zoom="true">
+                        <ion-slide *ngFor="let film of innslag.filmer let i = index;" (click)='spillVideo(film.fil.mobil)'>
+                            <div class="swiper-zoom-container">
+                                <div class="video-container">
+                                    <div class="video" [style.background-image]="'url(' + film.bilde.url + ')'">
+                                        <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                                    </div>
+                                    <h5 [innerHTML]="film.navn"></h5>
+                                </div>
+                            </div>
+                        </ion-slide>
+                    </ion-slides>
+                </div>
             </div>
         </div>
     </div>

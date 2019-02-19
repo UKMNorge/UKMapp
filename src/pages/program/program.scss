@@ -245,6 +245,41 @@ page-innslag {
             }
         }
     }
+    .video-spot {
+        display: block;
+        margin-bottom: .5rem;
+        ion-slides {
+            ion-slide {
+                .video-container {
+                    padding: 2px;
+                    background: $ukm_gronn;
+                    color: $ukm_blaa;
+                    .video {
+                        height: 56vw;
+                        width: 93.5vw;
+                        background-size: cover;
+                        background-position: center center;
+                        margin: 0;
+                        line-height: calc(56vw);
+                        ion-icon {
+                            color: $ukm_gronn;
+                            margin-left: 1.5rem;
+                            font-size: 6rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+            .swiper-slide.swiper-slide-active {
+                width: 95vw;
+                left: 0rem;
+            }
+            .swiper-slide.swiper-slide-next {
+                margin-left: -1.2rem;
+            }
+        }
+        
+    }
  /*
     .header {
         font-size: 1.2em;

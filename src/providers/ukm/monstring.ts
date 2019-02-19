@@ -7,6 +7,7 @@ import { ObjectProvider } from '../object/object';
 import { KontaktCollectionProvider } from './kontakt.collection';
 import { InnslagDataCollectionProvider } from './innslagdata.collection';
 import { InnslagProvider } from './innslag';
+import { InnslagCollectionProvider } from './innslag.collection';
 
 export interface Monstring {
   id: number;
@@ -24,6 +25,7 @@ export class MonstringProvider extends ObjectProvider {
 
   private kontaktCollectionProvider:KontaktCollectionProvider;
   private innslagDataCollectionProvider: InnslagDataCollectionProvider;
+  private innslagCollectionProvider: InnslagCollectionProvider;
 
   constructor( 
     _http:HttpClient, 
@@ -99,8 +101,34 @@ export class MonstringProvider extends ObjectProvider {
     );
   }
 
+  public getInnslagCollectionProvider() {
+    let self = this;
+    return new Promise( 
+      function( resolve ) {
+        if( self.innslagCollectionProvider != null ) {
+          resolve( self.innslagCollectionProvider );
+          return;
+        }
+
+        self.getMonstring().then(
+          monstring_id =>
+          {
+            self.innslagCollectionProvider = new InnslagCollectionProvider( 
+                monstring_id, 
+                self.getHttp(), 
+                self.getStorageProvider(), 
+                self.getEvents()
+            );
+            resolve( self.innslagCollectionProvider );
+          }
+        );
+      }
+    );
+  }
+
   public clear() {
     this.kontaktCollectionProvider = null;
+    this.innslagCollectionProvider = null;
     super.clear();
   }
 

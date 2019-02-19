@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Events } from 'ionic-angular';
 
 import { StorageProvider } from '../../providers/storage';
-import { ObjectProvider } from '../object/object';
 import { ObjectWithoutApiProvider } from '../object/object_noapi';
+import { ObjectProvider } from '../object';
+
 
 export interface Innslag {
   id: number;
@@ -30,10 +31,10 @@ export interface Innslag {
 
 @Injectable()
 export class InnslagProvider extends ObjectWithoutApiProvider {
-  constructor( 
-    _http:HttpClient, 
-    StorageProvider:StorageProvider, 
-    Events: Events 
+  constructor(
+    _http: HttpClient,
+    StorageProvider: StorageProvider,
+    Events: Events
   ) {
     super(
       'Innslag',
@@ -42,13 +43,13 @@ export class InnslagProvider extends ObjectWithoutApiProvider {
     );
   }
 
-  init() {}
-  
-  public validate( data:Innslag ) {
+  init() { }
+
+  public validate(data: Innslag) {
     return data;
   }
 
-  public filterLoadData( data ) {
+  public filterLoadData(data) {
     return data;
   }
 }

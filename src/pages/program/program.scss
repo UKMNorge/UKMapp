@@ -48,6 +48,26 @@ page-hendelse {
         margin-bottom: 3vh;
     }
 
+    .bigemoji {
+        margin-top: -3rem;
+        text-align: center;
+        font-size: 4em;
+    }
+    .internhendelse {
+        font-family: 'Arial';
+        font-weight: bold;
+        font-size: 1.4rem;
+        background: $ukm_gul;
+        color: $ukm_blaa;
+        text-transform: uppercase;
+    }
+
+    .ikketilgjengelig {
+        text-align: center;
+        font-size: 1.8rem;
+        font-family: 'AvantGarde';
+    }
+
     .innslag {
         background: rgba(255, 18, 139, 1);
         background-position: center center;
@@ -170,8 +190,10 @@ page-innslag {
         .tags {
             width: max-content;
             margin: 0 auto;
+            font-family: 'Arial';
 
             ion-badge {
+                padding: 4px 6px 4px 6px;
                 background: $ukm_gul;
                 color: $ukm_blaa;
             }

@@ -8,12 +8,14 @@
 		<p class="lead">
 			<span *ngIf='hendelse.type == "category"'> - er en kategori</span>
 			<span *ngIf='hendelse.type == "post"'> - er en post</span>
-			<span *ngIf='hendelse.type == "default"'>{{hendelse.start | date}} || {{hendelse.sted}}</span>
+			<span *ngIf='hendelse.type == "default"'>{{hendelse.start | date}} <span *ngIf="hendelse.sted">|| </span>{{hendelse.sted}}
+					<br><ion-badge class="internhendelse" *ngIf="hendelse.intern">Kun for deltakere</ion-badge>
+			</span>
 		</p>
 	</div>
 	
 	<post *ngIf='hendelse && hendelse.type == "post"' pid="{{hendelse.post_id}}" [style.margin-top]="'-10vh'"></post>
-	<ion-grid *ngIf='hendelse && hendelse.type == "default"'>
+	<ion-grid *ngIf='hendelse && hendelse.type == "default" && hendelse.detaljer'>
 		<ion-row align-items-stretch>
 			<ion-col col-6 *ngFor='let innslag of hendelse.innslag; let i = index;' (click)='visInnslag( innslag.id )'>
 				
@@ -34,6 +36,10 @@
 			</ion-col>
 		</ion-row>
 	</ion-grid>
+	<div *ngIf='hendelse && hendelse.type == "default" && !hendelse.detaljer'>
+		<h1 class="bigemoji">😬</h1>
+		<h1 class="ikketilgjengelig">Programmet for denne hendelsen er ikke tilgjengelig ennå...</h1>
+	</div>
 
 	<div style="margin-bottom: 4em;"></div>
 

@@ -63,7 +63,7 @@ export class InnslagPage {
         private navParams: NavParams,
         private monstringProvider: MonstringProvider,
         private navCtrl: NavController,
-        private streamingMedia: StreamingMedia,
+		private sm: StreamingMedia,
     ) {
         this.innslag_id = this.navParams.get('id');
     }
@@ -84,6 +84,10 @@ export class InnslagPage {
             }
         );
     }
+
+    spillVideo(url) {
+		this.sm.playVideo(url);
+	}
 
     showRest() {
         let dots = document.getElementById('followingdots');

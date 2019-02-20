@@ -32,7 +32,7 @@ export class InfoPage {
     private storageProvider: StorageProvider,
     private monstringProvider: MonstringProvider,
     public wordpressProvider: WordpressProvider,
-    private callNumber: CallNumber
+    public callNumber: CallNumber
   ) {
 
     let self = this;
@@ -83,9 +83,9 @@ export class InfoPage {
     )
   }
 
-  ringKontakt(nummer) {
+  ringKontakt(nummer: string) {
     this.callNumber.callNumber(nummer, true)
     .then(res=>console.log('Launched dialer!', res))
-    .catch(err => console.log('Error launching dialer', err));
+    .catch(err => console.log('Error launching dialer', err));  
   }
 }

@@ -1,30 +1,4 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title *ngIf="!this.monstring">UKM</ion-title>
-		<ion-title *ngIf="this.monstring">{{ monstring.navn }}</ion-title>
-	</ion-navbar>
-</ion-header> -->
-
 <ion-content>
-
-	<!-- <div *ngIf="this.monstring">
-		
-		<ion-list>
-			<ion-item>
-				<ion-icon name="pin" item-start></ion-icon>
-				<small>
-					{{ monstring.sted }}
-				</small>
-			</ion-item>
-	
-			<ion-item>
-				<ion-icon name="calendar" item-start></ion-icon>
-				<small (click)="addToCalendar();">
-					{{ monstring.start|date:'d. MMM \k\l. HH:mm' }} - {{ monstring.stop|date:'d. MMM \k\l. HH:mm' }}
-				</small>
-			</ion-item>
-		</ion-list>
-	</div> -->
 	<div *ngIf="!nyheter">
 		<h1>Laster inn nyhetssaker</h1>
 	</div>
@@ -40,24 +14,21 @@
 			</div>
 		</div>
 
-		<br>
-		<br>
-		<br>
 		<div class="home-innslag-scroll" *ngIf="innslag != null">
-			<br>
-			<ion-slides zoom="true" slidesPerView="3">
+			<ion-slides slidesPerView="3">
 				<ion-slide *ngFor="let j of innslag.getAll(); let i = index;" (click)='visInnslag( j.id )'>
 					<div class="swiper-zoom-container" *ngIf="j.bilde">
-						<img *ngIf="!j.bilde.isPlaceholder" src="{{j.bilde.url}}">
-						<div class="overlay" *ngIf="!j.bilde.isPlaceholder"></div>
+						<img *ngIf="j.bilde.isPlaceholder == false" src="{{j.bilde.url}}">
+						<div class="overlay" *ngIf="j.bilde.isPlaceholder == false"></div>
 
-						<div *ngIf="j.bilde.isPlaceholder" class="placeholderThumbnail {{ i % 4 == 0 ? 'gul' : 'rosa' }} {{ i % 7 == 0 ? 'gronn' : '' }}"></div>
-						<div class="overlay" *ngIf="j.bilde.isPlaceholder"></div>
+						<div *ngIf="j.bilde.isPlaceholder == true" class="placeholderThumbnail {{ i % 4 == 0 ? 'gul' : 'rosa' }} {{ i % 7 == 0 ? 'gronn' : '' }}"></div>
+						<div class="overlay" *ngIf="j.bilde.isPlaceholder == true"></div>
 					</div>
 					<h4 class="innslagnavn">{{j.navn}}</h4>
 				</ion-slide>
 			</ion-slides>
 		</div>
+
 		<div class="toppsaker">
 			<div *ngFor='let nyhet of nyheter.getAll(); index as i;'>
 				<div *ngIf="i == 1" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak" (click)='visNyhet(nyhet)'>
@@ -75,11 +46,10 @@
 			</div>
 		</div>
 
-
 		<div class="video-spot" *ngIf="filmer != null">
 			<ion-slides zoom="true">
 				<ion-slide *ngFor="let film of filmer.getAll(); let i = index;" (click)='spillVideo(film.fil.mobil)'>
-					<div class="swiper-zoom-container">
+					<div class="swiper-zoom-container" *ngIf="film.bilde">
 						<div class="video-container">
 							<div class="video" [style.background-image]="'url(' + film.bilde.url + ')'">
 								<ion-icon ios="ios-play" md="md-play"></ion-icon>
@@ -89,8 +59,8 @@
 					</div>
 				</ion-slide>
 			</ion-slides>
-
 		</div>
+
 		<ion-grid>
 			<ion-row align-items-stretch>
 				<ion-col col-6 *ngFor='let nyhet of nyheter.getAll() | slice: 3; index as i' (click)='visNyhet( nyhet)'>
@@ -110,24 +80,5 @@
 			</ion-row>
 		</ion-grid>
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-
-		<!-- <ion-list> 
-			<ion-item *ngFor="let nyhet of nyheter.getAll()" (click)="visNyhet(nyhet)">
-				<ion-thumbnail item-start>
-					<img src="{{nyhet.image}}">
-				</ion-thumbnail>
-				<h1>{{ nyhet.title }}</h1>
-				<p>{{ nyhet.lead}}</p>
-			</ion-item>
-		</ion-list> -->
 	</div>
 </ion-content>

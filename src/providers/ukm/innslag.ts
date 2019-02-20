@@ -18,6 +18,7 @@ export interface Innslag {
   kategori_og_sjanger: string;
   bilde: any; // TODO spesifiser bilde
   bilder: any;
+  artikler: any;
   filmer: any;
   personer: any;
   titler: any;

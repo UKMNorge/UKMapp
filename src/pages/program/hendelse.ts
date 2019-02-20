@@ -11,35 +11,35 @@ import { InnslagDataProvider } from '../../providers/ukm/innslagdata';
 import { MonstringProgramProvider } from '../../providers/ukm/monstringprogram';
 import { MonstringProvider } from '../../providers/ukm/monstring';
 import { InnslagDataCollectionProvider } from '../../providers/ukm/innslagdata.collection';
+import { SingleInfoPage } from '../info/single';
 
 @Component({
-	selector: 'page-hendelse',
+    selector: 'page-hendelse',
     templateUrl: 'hendelse.html'
 })
 export class HendelsePage {
 
     public hendelse = null;
 
-	constructor(
+    constructor(
         private navParams: NavParams,
         public navCtrl: NavController,
         private hendelseProvider: HendelseProvider,
         public innslagProvider: InnslagProvider,
         private storageProvider: StorageProvider
-	) {
+    ) {
         let id = this.navParams.get('id');
-        
-        let self = this;        
-        this.hendelseProvider.load( id ).then(
-            (hendelse) => 
-            {
-                self.hendelse = hendelse;                
+
+        let self = this;
+        this.hendelseProvider.load(id).then(
+            (hendelse) => {
+                self.hendelse = hendelse;
             }
         );
     }
-	
-    
-    visInnslag( id ) {
+
+
+    visInnslag(id) {
         this.storageProvider.unit('APP').get('monstring').then(e => {
             this.navCtrl.push(
                 InnslagPage,
@@ -55,13 +55,14 @@ export class HendelsePage {
     selector: 'page-innslag',
     templateUrl: 'innslag.html'
 })
-export class InnslagPage {
+export class InnslagPage {
     private innslag_id: Number;
     public innslag = null;
-    
+
     constructor(
         private navParams: NavParams,
         private monstringProvider: MonstringProvider,
+        private navCtrl: NavController,
         private streamingMedia: StreamingMedia,
     ) {
         this.innslag_id = this.navParams.get('id');
@@ -72,9 +73,12 @@ export class InnslagPage {
 
         this.monstringProvider.getInnslagDataCollectionProvider().then(
             (innslagDataCollectionProvider: InnslagDataCollectionProvider) => {
-                innslagDataCollectionProvider.get( self.innslag_id ).then(
+                innslagDataCollectionProvider.get(self.innslag_id).then(
                     (data) => {
+                        console.log(data);
+
                         self.innslag = data;
+
                     }
                 )
             }
@@ -82,17 +86,23 @@ export class InnslagPage {
     }
 
     showRest() {
-        console.log('Hello from the showRest function!');
         let dots = document.getElementById('followingdots');
         let rest = document.getElementById('restofdescription');
-        if(dots.className.indexOf('hidden') == -1 ) {
-            dots.className = dots.className.replace('visible', '').replace('  ','') + ' hidden'
-            rest.className = rest.className.replace('hidden', '').replace('  ','') + ' visible'
-        } else if(dots.className.indexOf('visible') == -1 ) {
-            dots.className = dots.className.replace('hidden', '').replace('  ','') + ' visible'
-            rest.className = rest.className.replace('visible', '').replace('  ','') + ' hidden'
+        if (dots.className.indexOf('hidden') == -1) {
+            dots.className = dots.className.replace('visible', '').replace('  ', '') + ' hidden'
+            rest.className = rest.className.replace('hidden', '').replace('  ', '') + ' visible'
+        } else if (dots.className.indexOf('visible') == -1) {
+            dots.className = dots.className.replace('hidden', '').replace('  ', '') + ' visible'
+            rest.className = rest.className.replace('visible', '').replace('  ', '') + ' hidden'
         }
-        console.log(rest);
-        
+    }
+
+    visArtikkel(item) {
+        this.navCtrl.push(
+            SingleInfoPage,
+            {
+                item: item
+            }
+        )
     }
 }

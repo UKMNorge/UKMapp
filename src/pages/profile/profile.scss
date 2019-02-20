@@ -1,3 +1,48 @@
-page-profile {
+.profile-page-container {
+    background-color: $ukm_blaa !important;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
 
+.boble-container {
+    position: relative;
+    margin: 0 auto;
+    width: 85vw;
+    margin-top: 10vh;
+    margin-bottom: 8vh;
+}
+
+
+.boble-container #monstring_navn {
+    position: absolute;
+    top: 26.3vh;
+    left: 22.8vw;
+    color: $ukm_blaa;
+
+}
+
+#monstring_navn_container {
+    width: 100vw;
+    font-family: 'AvantGardeBold';
+}
+
+#monstring_navn {
+    position: absolute;
+    top: 212px;
+    left: 100px;
+    color: $ukm_blaa;
+}
+
+
+#logg_inn {
+    margin: 1em auto;
+}
+
+#bytt_monstring {
+    margin: 1em auto;
+}
+
+#knappetest {
+    margin: 1em auto;
 }

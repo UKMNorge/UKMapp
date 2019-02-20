@@ -1,0 +1,19 @@
+<ion-header>
+  <base [href]="base_url">
+</ion-header>
+
+
+<ion-content>
+  <h1 padding *ngIf="loading">
+    <br>
+    <br>
+    <br>
+
+    <span>🙈</span>
+    <br>
+    <br>
+    Laster inn...
+  </h1>
+  <h1 padding *ngIf="this.post" [innerHTML]="this.title"></h1>
+  <post *ngIf="this.post" pid="{{this.post.id}}"></post>
+</ion-content>

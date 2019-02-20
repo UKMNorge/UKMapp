@@ -1,15 +1,6 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Program
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
-
 	<div padding>
-		<ion-segment [(ngModel)]="test">
+		<ion-segment [(ngModel)]="valgtProgramModus" id="velgProgram">
 			<ion-segment-button value="public">
 				Program
 			</ion-segment-button>
@@ -18,30 +9,19 @@
 			</ion-segment-button>
 		</ion-segment>
 
-		<div [ngSwitch]="test">
-			<p *ngSwitchCase="'public'">
-				Programmet for hele festivalen.
-			</p>
-	
-			<p *ngSwitchCase="'mine'">
-				Ditt eget festivalprogram.
-			</p>
-	
+		<div *ngIf="program != null">
+			<div *ngFor="let hendelse of program.getAll()">
+				<ukm-knapp class="wide white rosa-rosa">
+					<div float-right>
+						<morph-icon startIcon="plus" stopIcon="check"></morph-icon>
+						 <!-- (click)="updateMittprogram(hendelse.id)" -->
+					</div>
+					<h2 (click)="visHendelse( hendelse.id );">
+						{{ hendelse.navn }}
+					</h2>
+					<p>kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}</p>
+				</ukm-knapp>
+			</div>
 		</div>
-
 	</div>
-	
-
-	<ion-list *ngFor="let dag of programProvider.data">
-		<ion-list-header>{{ dag.dato|date:'EEEE d. MMM' }}</ion-list-header>
-		<ion-item *ngFor="let hendelse of dag.hendelser">
-			<ion-toggle checked="false"></ion-toggle>
-			<ion-label (click)="visDetaljProgram(hendelse.id);">
-			  <h2>
-			    {{ hendelse.navn }}
-			  </h2>
-			  <p>kl. {{ hendelse.start|date:'HH:mm' }} | {{ hendelse.sted }}</p>
-			</ion-label>
-		</ion-item>
-	</ion-list>
 </ion-content>

@@ -1,0 +1,133 @@
+page-info {
+    ion-content {
+        font-family: 'AvantGardeBold';
+        background: $ukm_blaa !important;
+        min-height: 100vh;
+        
+    }
+
+    .accordion-head {
+        text-transform: uppercase;
+        padding: 0 0 .5rem 0;
+    }
+
+    .kontaktpersoner {
+        h1 {
+            text-align: center;
+        }
+        h6 {
+            text-align: center;
+            margin-top: -.8rem;
+            font-size: 1.2rem;
+        }
+        width: 90vw;
+        margin-top: 3vh;
+        display: block;
+        margin: 0 auto;
+
+        .kontaktpersoner-scroll {
+            margin-left: -5vw;
+            width: 100vw;
+
+            ion-slides {
+                ion-slide {
+                    margin-right: -1.3rem;
+                }
+
+                ion-slide:last-of-type {
+                    right: 0;
+                }
+
+                ion-slide:first-of-type {
+                    margin-left: 1.2rem;
+
+                }
+            }
+        }
+
+        .placeholder {
+            width: 22vw;
+            height: 22vw;
+            display: block;
+            margin: 0 auto;
+            background: linear-gradient(-30deg, rgba($ukm_rosa, 1), rgba($ukm_gul, 1));
+            border-radius: 50%;
+            border: 2px solid $ukm_rosa;
+            position: relative;
+            z-index: 1;
+        }
+    }
+    .kontaktbilde {
+        width: 22vw;
+        height: 22vw;
+        display: block;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: center center;
+        background-color: rgba($ukm_rosa, 0.4);
+        background-blend-mode: screen;
+        border-radius: 50%;
+        border: 2px solid $ukm_rosa;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .kontakt-info {
+        margin-top: -1.4rem;
+        text-align: center;
+        .fornavn {
+            font-size: 1.8rem;
+            font-family: 'AvantGardeBold';
+        }
+        .tittel {
+            font-family: 'AvantGarde';
+            font-size: 1.4rem;
+            text-transform: lowercase;
+            margin-top: -.6rem;
+        }
+        .telefon {
+            margin-top: .4rem;
+        }
+        .telefon, .epost {
+            font-family: 'AvantGarde';
+            font-size: 1.2rem;
+            line-height: .4rem;
+            text-transform: lowercase;
+        }
+        .epost {
+            display: none;
+            font-size: .8rem;
+            margin-top: 0;
+        }
+        
+    }
+
+    .item-info h4 {
+        margin-top: 1rem;
+        font-family: 'Arial';
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        text-transform: initial;
+    }
+    .info-list {
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
+    .info-overskrift {
+        text-align: center;
+        padding-bottom: 1.2rem;
+    }
+}
+
+page-single-info {
+    h1 {
+        padding-top: 40vh;
+        text-align: center;
+        font-size: 2rem;
+        
+        span {
+            font-size: 10rem;
+        }
+    }
+}

@@ -1,30 +1,32 @@
 <ion-content padding>
-	
-	
+	<img src="assets/imgs/bolgetopp.png" id="bolgetopp" />
+
 	<ion-grid>
 		<ion-row>
 			<ion-col col-8 offset-2 col-md-4 offset-md-0 offset-lg-1>
-				<img src="https://grafikk.ukm.no/profil/logoer/UKM_logo_sort_0500.png" id="selectLogo" />
 
 				<div align="center">
-					<button ion-button outline round icon-start id="selectPosition" (click)="brukPosisjon()">
+					<img src="https://grafikk.ukm.no/profil/logoer/UKM_logo_hvit_0500.png" id="selectLogo" />
+
+					<!-- <ukm-knapp class="rosa" id="selectPosition" (click)="brukPosisjon()">
 						<ion-icon name="locate"></ion-icon>
 						Bruk posisjon
-					</button>
+					</ukm-knapp> -->
 				</div>
-
 			</ion-col>
 
 			<ion-col col-12 col-md-7 col-lg-6 offset-md-1>
 				<div *ngIf="!loading">
 					<ion-list>
-						<ion-list-header>eller velg ditt fylke</ion-list-header>
-						<ion-item *ngFor="let fylke of fylker.getAll()" (click)="valgtFylke( fylke )">
-							{{ fylke.name }}
-						</ion-item>
+						<ion-list-header>velg ditt fylke</ion-list-header>
+						<ion-list>
+							<ion-item *ngFor="let monstring of monstringerProvider.getAll()" (click)="velgMonstring( monstring )">
+								{{ monstring.navn.replace('UKM-festivalen i ', '').replace('Fylkesmønstringen i ', '') }}
+							</ion-item>
+						</ion-list>
 					</ion-list>
 				</div>
-			
+
 				<div *ngIf="loading">
 					Vennligst vent, laster inn...
 				</div>

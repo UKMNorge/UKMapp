@@ -1,18 +1,48 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>
       Min profil
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item (click)="unsetFylke();">
-      <ion-icon name="star-outline" item-start></ion-icon>
-      Dette er ikke min festival
-    </ion-item>
+<ion-content class="profile-page-container">
 
-  </ion-list>
+  <div class="boble-container">
+    <img *ngIf="monstring != null" src="../../assets/imgs/fylkesbobler/{{monstring.url.split('/')[3]}}.png" alt="">
+      <!-- <div id="monstring_navn_container" *ngIf="monstring">
+        <h4 class="profile-page" id="monstring_navn">{{monstring.navn}}</h4>
+      </div> -->
+  </div>
+
+  
+
+
+  <ukm-knapp class="rosa" id="bytt_monstring" (click)="unsetFylke();">
+    Bytt mønstring 
+  </ukm-knapp>
+  
+  <!--
+    
+    <ukm-knapp class="ukm-knapp-gul" id="logg_inn">
+    Logg Inn
+  </ukm-knapp>
+  
+  <ukm-knapp class="ukm-knapp-gronn" id="knappetest">
+    Knappetest
+  </ukm-knapp>
+  <ukm-knapp class="ukm-knapp-blaa">
+  </ukm-knapp>
+
+    
+    <button ion-button class="profile-page" class="profile-page-btn">
+    Logg inn
+  </button>
+
+
+
+  <button ion-button (click)="unsetFylke();" class="profile-page-btn">
+    Bytt festival
+  </button> -->
+
 </ion-content>

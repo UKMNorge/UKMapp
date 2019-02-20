@@ -3,9 +3,8 @@ import { NavController, Events } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
 
-import { Globals } from '../../providers/app/globals';
-
-import { Fylker } from '../../providers/ukmnorge/fylker';
+import { MonstringerProvider } from '../../providers/ukm/monstringer.collection';
+import { StorageProvider } from "../../providers/storage/storage";
 
 @Component({
   selector: 'page-select',
@@ -13,26 +12,35 @@ import { Fylker } from '../../providers/ukmnorge/fylker';
 })
 export class SelectPage {
 	
-	fylker: Fylker;
 	loading = false;
 
-	constructor(public navCtrl: NavController, public events: Events, public alertCtrl: AlertController, public globals: Globals ) {
-		this.fylker = new Fylker();
+	constructor(
+		public navCtrl: NavController, 
+		public events: Events, 
+		public alertCtrl: AlertController, 
+		public monstringerProvider: MonstringerProvider,
+		private storageProvider: StorageProvider
+	) {
+		this.monstringerProvider.load();
 	}
 	
 	brukPosisjon() {
+		console.log( this.monstringerProvider.data );
+		//this.monstringProvider.load(4897, 'TEST ME');
 		let alert = this.alertCtrl.create({
 			title: 'Oh nooo!',
-			subTitle: 'Denne funksjonen finnes ikke enda',
+			subTitle: 'Denne funksjonen finnes ikke enda 🤫',
 			buttons: ['OK']
 		});
 		alert.present();
 	}
 
-	valgtFylke( fylke ) {
-		console.log('SelectPage:valgtFylke', fylke);
+	velgMonstring( monstring ) {
+		console.log('SelectPage:velgMonstring', monstring);
 		this.loading = true;
-		this.globals.set('fylke', fylke);
+		console.warn( this.storageProvider );
+		console.log( this.storageProvider.unit('APP') );
+		this.storageProvider.unit('APP').set('monstring', monstring.id);
 		this.loading = false;
 	}
 }

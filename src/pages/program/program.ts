@@ -1,76 +1,70 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { NavParams } from 'ionic-angular';
-
-import { Globals } from '../../providers/app/globals';
-
-import { ProgramProvider } from '../../providers/ukmnorge/program';
-
-import { BrowserTab } from '@ionic-native/browser-tab';
+import { MonstringProgramProvider } from '../../providers/ukm/monstringprogram';
+import { ProgramProvider } from '../../providers/ukm/program';
+import { StorageProvider } from '../../providers/storage';
+import { HendelsePage } from './hendelse';
+import { MittProgramProvider } from '../../providers/app/mittprogram';
 
 @Component({
-	selector: 'page-hendelse',
-	templateUrl: 'hendelse.html',
-	providers: [BrowserTab]
-})
-export class HendelsePage {
-	constructor(
-		private navParams: NavParams,
-		public navCtrl: NavController,
-		public globals: Globals,
-		public programProvider: ProgramProvider,
-		private browserTab: BrowserTab
-	) {
-		let id = this.navParams.get('id');
-
-		this.programProvider.getProgram( id ).then( (data) => {
-			console.log(data);
-		});
-	}
-	
-	visInnslag( id ) {
-		let url = 'https://ukm.no/'+ this.globals.get('fylke').link +'/pameldte/'+ id +'/';
-
-		this.browserTab.isAvailable()
-		.then(isAvailable => {
-			if (isAvailable) {
-				this.browserTab.openUrl( url );
-			} else {
-			// open URL with InAppBrowser instead or SafariViewController
-			console.log('bah');
-			alert('dooo something');
-			}
-		});
-	}
-
-}
-
-
-
-
-@Component({
-  selector: 'page-program',
-  templateUrl: 'program.html'
+	selector: 'page-program',
+	templateUrl: 'program.html'
 })
 export class ProgramPage {
 
+	//public mittprogram = ['12908', '12909', '12910', '12922', '12920'];//, 12921];
+
+	public valgtProgramModus = 'public';
+
+	public program: MonstringProgramProvider = null;
+
 	constructor(
 		public navCtrl: NavController,
-		public globals: Globals,
-		public programProvider: ProgramProvider
+		private programProvider: ProgramProvider,
+		private storageProvider: StorageProvider,
+		private mittprogram: MittProgramProvider
 	) {
+
+		this.storageProvider.unit('APP').get('monstring').then(
+			(monstring_id) => {
+				console.error('Load program!');
+				this.program = this.programProvider.getMonstring(monstring_id);
+				console.log(this.program);
+			}
+		);
 		console.info('Program-load');
-		this.programProvider.get().then( (data) => {
-			console.log(data);
-		});
 	}
 
-	visDetaljProgram( id ) {
+	visHendelse(id) {
 		this.navCtrl.push(
 			HendelsePage,
+			{
+				id: id
+			}
+		)
+	}
+
+	visDetaljProgram(id) {
+		/*
+		this.navCtrl.push(
+			InnslagPage,
 			{
 				id: id,
 			}
 		);
+		*/
+		alert('Show InnslagPage( ' + id + ' )');
+	}
+
+	updateMittprogram(hendelse_id, e) {
+		var isChecked = e.checked;
+		if(isChecked == true) {
+			this.mittprogram.add(hendelse_id)
+		} else if(isChecked == false) {
+			this.mittprogram.remove(hendelse_id);
+		}
+		console.log(this.mittprogram);
+		
 	}
 }
+

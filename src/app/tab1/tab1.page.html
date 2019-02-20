@@ -1,0 +1,109 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Tab One
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<h1 *ngIf="data">{{ data.navn }}</h1>
+	<h1 *ngIf="!data">Laster inn</h1>
+	<p>Hello theah</p>
+
+
+	<ion-list lines="none" *ngIf="monstringer">
+		<ion-list-header>
+			<ion-label>MØNSTRINGER</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let monstring of monstringer">
+			<ion-label> {{ monstring.navn }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="infopages">
+		<ion-list-header>
+			<ion-label>INFOSIDER</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let post of infopages">
+			<ion-label>{{ post.title }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="postDetails">
+		<ion-list-header>
+			<ion-label>ONE POST DETAIL</ion-label>
+		</ion-list-header>
+		<ion-item>
+			<ion-label>{{ postDetails.lead }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="posts">
+		<ion-list-header>
+			<ion-label>ONE POST</ion-label>
+		</ion-list-header>
+		<ion-item>
+			<ion-label>{{ post.title }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="posts">
+		<ion-list-header>
+			<ion-label>POSTS</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let post of posts">
+			<ion-label>{{ post.title }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="innslaget">
+		<ion-list-header>
+			<ion-label>PERSONER I {{ innslaget.id }}</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let person of innslaget.personer">
+			<ion-label>{{ person.navn }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+
+
+	<ion-list lines="none" *ngIf="hendelsen">
+		<ion-list-header>
+			<ion-label>PROGRAM FOR HENDELSE 12-etellerannet</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let innslag of hendelsen">
+			<ion-label>{{ innslag.navn }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="alle_kontakter">
+		<ion-list-header>
+			<ion-label>KONTAKTPERSONER</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let kontakt of alle_kontakter">
+			<ion-label>{{ kontakt.navn }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="alle_innslag">
+		<ion-list-header>
+			<ion-label>INNSLAG</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let innslag of alle_innslag">
+			<ion-label>{{ innslag.navn }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list lines="none" *ngIf="alle_hendelser">
+		<ion-list-header>
+			<ion-label>HENDELSER</ion-label>
+		</ion-list-header>
+		<ion-item *ngFor="let hendelse of alle_hendelser">
+			<ion-label>{{ hendelse.navn }}</ion-label>
+		</ion-item>
+	</ion-list>
+
+
+
+</ion-content>

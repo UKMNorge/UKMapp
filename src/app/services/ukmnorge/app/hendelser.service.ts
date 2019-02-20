@@ -25,7 +25,6 @@ export class HendelserService {
 		);
 	}
 	
-
 	public getMonstringProgram() {
 		return this.hendelseApi.getMonstringProgram();
 	}

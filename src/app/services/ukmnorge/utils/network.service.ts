@@ -21,6 +21,10 @@ export class NetworkService {
 		return this.status.asObservable();
 	}
 
+	public getStatus() {
+		return this.status;
+	}
+
 	public goOnline() {
 		this.status.next( ConnectionStatus.Online );
 	}

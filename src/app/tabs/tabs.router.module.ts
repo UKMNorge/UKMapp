@@ -4,48 +4,58 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'app',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'hjem',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../pages/hjem/hjem.module#HjemPageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'program',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../pages/program/program.module#ProgramPageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'info',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../pages/info/info.module#InfoPageModule'
           }
         ]
-      },
+	  },
+	  {
+        path: 'innstillinger',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pages/innstillinger/innstillinger.module#InnstillingerPageModule'
+          }
+        ]
+	  }
+	  ,
       {
-        path: '',
-        redirectTo: '/tabs/tab1',
+        path: 'app',
+        redirectTo: '/app/hjem',
         pathMatch: 'full'
-      }
+	  }
     ]
-  },
+  }/*,
   {
     path: '',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
-  }
+  }*/
 ];
 
 @NgModule({

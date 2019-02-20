@@ -24,7 +24,6 @@ export class InnslagService {
 			_networkService
 		);
 	}
-	
 
 	public getMonstringInnslag() {
 		return this.innslagApi.getMonstringInnslag();

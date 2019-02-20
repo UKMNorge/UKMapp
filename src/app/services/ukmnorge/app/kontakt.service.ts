@@ -24,7 +24,6 @@ export class KontaktService {
 			_networkService
 		);
 	}
-	
 
 	public getMonstring() {
 		return this.kontaktApi.getMonstring();

@@ -34,6 +34,10 @@ export class MonstringService extends Events {
 		this.path = path;
 	}
 
+	public removeId() {
+		console.warn('MonstringService:: REMOVE ID (howto?)');
+	}
+
 	/**
 	 * Henter data om mønstringen
 	 * 

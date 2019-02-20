@@ -59,5 +59,11 @@ export class InnslagDetaljer extends PlaceholderInnslagDetaljer {
 		this.filmer = data.bilder;
 		this.personer = data.personer;
 		this.titler = data.titler;
+
+		this.fixArtikkelTitle();
+	}
+
+	private fixArtikkelTitle() {
+		// TODO @mester890 : iterer alle artikler, og sett artikkel.title = artikkel.navn
 	}
 }

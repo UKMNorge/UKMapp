@@ -15,7 +15,6 @@
 		</div>
 
 		<div class="home-innslag-scroll" *ngIf="innslag != null">
-			<br>
 			<ion-slides zoom="true" slidesPerView="3">
 				<ion-slide *ngFor="let j of innslag.getAll(); let i = index;" (click)='visInnslag( j.id )'>
 					<div class="swiper-zoom-container" *ngIf="j.bilde">
@@ -60,8 +59,8 @@
 					</div>
 				</ion-slide>
 			</ion-slides>
-
 		</div>
+
 		<ion-grid>
 			<ion-row align-items-stretch>
 				<ion-col col-6 *ngFor='let nyhet of nyheter.getAll() | slice: 3; index as i' (click)='visNyhet( nyhet)'>
@@ -81,24 +80,5 @@
 			</ion-row>
 		</ion-grid>
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-
-		<!-- <ion-list> 
-			<ion-item *ngFor="let nyhet of nyheter.getAll()" (click)="visNyhet(nyhet)">
-				<ion-thumbnail item-start>
-					<img src="{{nyhet.image}}">
-				</ion-thumbnail>
-				<h1>{{ nyhet.title }}</h1>
-				<p>{{ nyhet.lead}}</p>
-			</ion-item>
-		</ion-list> -->
 	</div>
 </ion-content>

@@ -15,14 +15,14 @@
 		</div>
 
 		<div class="home-innslag-scroll" *ngIf="innslag != null">
-			<ion-slides zoom="true" slidesPerView="3">
+			<ion-slides slidesPerView="3">
 				<ion-slide *ngFor="let j of innslag.getAll(); let i = index;" (click)='visInnslag( j.id )'>
 					<div class="swiper-zoom-container" *ngIf="j.bilde">
-						<img *ngIf="!j.bilde.isPlaceholder" src="{{j.bilde.url}}">
-						<div class="overlay" *ngIf="!j.bilde.isPlaceholder"></div>
+						<img *ngIf="j.bilde.isPlaceholder == false" src="{{j.bilde.url}}">
+						<div class="overlay" *ngIf="j.bilde.isPlaceholder == false"></div>
 
-						<div *ngIf="j.bilde.isPlaceholder" class="placeholderThumbnail {{ i % 4 == 0 ? 'gul' : 'rosa' }} {{ i % 7 == 0 ? 'gronn' : '' }}"></div>
-						<div class="overlay" *ngIf="j.bilde.isPlaceholder"></div>
+						<div *ngIf="j.bilde.isPlaceholder == true" class="placeholderThumbnail {{ i % 4 == 0 ? 'gul' : 'rosa' }} {{ i % 7 == 0 ? 'gronn' : '' }}"></div>
+						<div class="overlay" *ngIf="j.bilde.isPlaceholder == true"></div>
 					</div>
 					<h4 class="innslagnavn">{{j.navn}}</h4>
 				</ion-slide>

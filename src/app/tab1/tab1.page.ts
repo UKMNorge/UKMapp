@@ -80,8 +80,6 @@ export class Tab1Page {
 		// Hent info om en hendelse
 		this.monstringService.getServ('innslag').getHendelse("12908").subscribe(
 			(data) => {
-				console.log('PAGECONTROLLER GOT HENDELSE INNSLAG COLLECTION DATA');
-				console.log(data);
 				self.hendelsen = data;
 			}
 		);
@@ -89,8 +87,6 @@ export class Tab1Page {
 		// Hent alle kontakter for mønstringen
 		this.monstringService.getServ('kontakter').getMonstring().subscribe(
 			(data) => {
-				console.log('PAGECONTROLLER GOT KONTAKTER COLLECTION DATA');
-				console.log(data);
 				self.alle_kontakter = data;
 			}
 		);
@@ -98,8 +94,6 @@ export class Tab1Page {
 		// Hent alle innslag i en hendelse
 		this.monstringService.getServ('hendelser').getMonstringProgram().subscribe(
 			(data) => {
-				console.log('PAGECONTROLLER GOT HENDELSER COLLECTION DATA');
-				console.log(data);
 				self.alle_hendelser = data;
 			}
 		);
@@ -107,8 +101,6 @@ export class Tab1Page {
 		// Hent alle innslag på mønstringen
 		this.monstringService.getServ('innslag').getMonstringInnslag().subscribe(
 			(data) => {
-				console.log('PAGECONTROLLER GOT INNSLAG COLLECTION DATA');
-				console.log(data);
 				self.alle_innslag = data;
 			}
 		);

@@ -40,7 +40,6 @@ export class MonstringService extends Events {
 	 * @returns observable
 	 */
 	public getData() {
-		console.log('MonstringService::getData()');
 		return this.monstringApi.getData(this.id);
 	}
 
@@ -71,7 +70,6 @@ export class MonstringService extends Events {
 	 * @param id 
 	 */
 	private _initService(id) {
-		console.log('MonstringService::_initService(' + id + ')');
 		let service = null;
 		switch (id) {
 			case 'hendelser':

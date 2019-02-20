@@ -7,6 +7,8 @@ import { ObjectProvider } from '../object/object';
 import { KontaktCollectionProvider } from './kontakt.collection';
 import { InnslagDataCollectionProvider } from './innslagdata.collection';
 import { InnslagProvider } from './innslag';
+import { InnslagCollectionProvider } from './innslag.collection';
+import { FilmCollectionProvider } from './film.collection';
 
 export interface Monstring {
   id: number;
@@ -24,6 +26,8 @@ export class MonstringProvider extends ObjectProvider {
 
   private kontaktCollectionProvider:KontaktCollectionProvider;
   private innslagDataCollectionProvider: InnslagDataCollectionProvider;
+  private innslagCollectionProvider: InnslagCollectionProvider;
+  private filmCollectionProvider: FilmCollectionProvider;
 
   constructor( 
     _http:HttpClient, 
@@ -99,8 +103,60 @@ export class MonstringProvider extends ObjectProvider {
     );
   }
 
+  public getInnslagCollectionProvider() {
+    let self = this;
+    return new Promise( 
+      function( resolve ) {
+        if( self.innslagCollectionProvider != null ) {
+          resolve( self.innslagCollectionProvider );
+          return;
+        }
+
+        self.getMonstring().then(
+          monstring_id =>
+          {
+            self.innslagCollectionProvider = new InnslagCollectionProvider( 
+                monstring_id, 
+                self.getHttp(), 
+                self.getStorageProvider(), 
+                self.getEvents()
+            );
+            resolve( self.innslagCollectionProvider );
+          }
+        );
+      }
+    );
+  }
+
+  public getFilmCollectionProvider() {
+    let self = this;
+    return new Promise( 
+      function( resolve ) {
+        if( self.filmCollectionProvider != null ) {
+          resolve( self.filmCollectionProvider );
+          return;
+        }
+
+        self.getMonstring().then(
+          monstring_id =>
+          {
+            self.filmCollectionProvider = new FilmCollectionProvider( 
+                monstring_id, 
+                self.getHttp(), 
+                self.getStorageProvider(), 
+                self.getEvents()
+            );
+            resolve( self.filmCollectionProvider );
+          }
+        );
+      }
+    );
+  }
+
   public clear() {
     this.kontaktCollectionProvider = null;
+    this.innslagCollectionProvider = null;
+    this.filmCollectionProvider = null;
     super.clear();
   }
 

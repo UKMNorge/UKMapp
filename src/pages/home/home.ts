@@ -7,6 +7,9 @@ import { MonstringProvider } from '../../providers/ukm/monstring';
 import { WordpressProvider } from '../../providers/wordpress';
 import { SingleInfoPage } from '../info/single';
 import { StreamingMedia } from '@ionic-native/streaming-media';
+import { InnslagCollectionProvider } from '../../providers/ukm/innslag.collection';
+import { FilmCollectionProvider } from '../../providers/ukm/film.collection';
+import { InnslagPage } from '../program/hendelse';
 
 @Component({
 	selector: 'page-home',
@@ -16,15 +19,9 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
 export class HomePage {
 	public monstring = null;
 	public nyheter = null;
+	public innslag = null;
 	public singlenyhet = null;
-	public film = {
-		fil: {
-			mobil: 'https://video.ukm.no/ukmno/videos/2019/5493/innslag/2019_5493_innslag_157165_cron_17643_mobile.mp4'
-		},
-		bilde: {
-			url: 'https://video.ukm.no/ukmno/videos/2019/5493/innslag/2019_5493_innslag_157165_cron_17643.jpg'
-		}
-	}
+	public filmer = null;
 
 	constructor(
 		public navCtrl: NavController,
@@ -44,7 +41,6 @@ export class HomePage {
 				}
 			)
 		}
-
 		this.nyheter = this.wordpressProvider.getCategoryProvider('nyheter');
 
 	}
@@ -82,5 +78,33 @@ export class HomePage {
 
 	spillVideo(url) {
 		this.sm.playVideo(url);
+	}
+
+	visInnslag( id ) {
+        this.storageProvider.unit('APP').get('monstring').then(e => {
+            this.navCtrl.push(
+                InnslagPage,
+                {
+                    id
+                }
+            )
+        });
+    }
+
+
+	ngOnInit() {
+		let self = this;
+		this.monstringProvider.getInnslagCollectionProvider().then(
+			(innslagCollectionProvider: InnslagCollectionProvider) => {
+				self.innslag = innslagCollectionProvider;
+				self.innslag.load();
+			}
+		);
+		this.monstringProvider.getFilmCollectionProvider().then(
+			(filmCollectionProvider: FilmCollectionProvider) => {
+				self.filmer = filmCollectionProvider;
+				self.filmer.load();	
+			}
+		);
 	}
 }

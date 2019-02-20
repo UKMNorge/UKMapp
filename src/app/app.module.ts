@@ -33,11 +33,13 @@ import { StorageProvider } from '../providers/storage/storage';
 import { ProgramProvider } from '../providers/ukm/program';
 import { HendelseProvider } from '../providers/ukm/hendelse';
 import { InnslagProvider } from '../providers/ukm/innslag';
+import { FilmProvider } from '../providers/ukm/film';
 import { WordpressProvider } from '../providers/wordpress';
 import { MittProgramProvider } from '../providers/app/mittprogram';
 
 import { ComponentsModule } from '../components/components.module';
 import { Calendar } from '@ionic-native/calendar';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { PipesModule } from '../pipes/pipes.module';
@@ -95,10 +97,12 @@ import { PipesModule } from '../pipes/pipes.module';
     ProgramProvider,
     HendelseProvider,
     InnslagProvider,
+    FilmProvider,
     WordpressProvider,
     BrowserTab,
     MittProgramProvider,
     Calendar,
+    CallNumber,
     InAppBrowser,
     StreamingMedia,
   ]

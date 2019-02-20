@@ -80,4 +80,19 @@ export class InnslagPage {
             }
         );
     }
+
+    showRest() {
+        console.log('Hello from the showRest function!');
+        let dots = document.getElementById('followingdots');
+        let rest = document.getElementById('restofdescription');
+        if(dots.className.indexOf('hidden') == -1 ) {
+            dots.className = dots.className.replace('visible', '').replace('  ','') + ' hidden'
+            rest.className = rest.className.replace('hidden', '').replace('  ','') + ' visible'
+        } else if(dots.className.indexOf('visible') == -1 ) {
+            dots.className = dots.className.replace('hidden', '').replace('  ','') + ' visible'
+            rest.className = rest.className.replace('visible', '').replace('  ','') + ' hidden'
+        }
+        console.log(rest);
+        
+    }
 }

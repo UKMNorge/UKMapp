@@ -9,17 +9,17 @@
 <ion-content class="profile-page-container">
 
   <div class="boble-container">
-      <ukm-bobla-hvit></ukm-bobla-hvit>
-      <div id="monstring_navn_container" *ngIf="monstring">
+    <img *ngIf="monstring != null" src="../../assets/imgs/fylkesbobler/{{monstring.url.split('/')[3]}}.png" alt="">
+      <!-- <div id="monstring_navn_container" *ngIf="monstring">
         <h4 class="profile-page" id="monstring_navn">{{monstring.navn}}</h4>
-      </div>
+      </div> -->
   </div>
 
   
 
 
   <ukm-knapp class="rosa" id="bytt_monstring" (click)="unsetFylke();">
-    Bytt mønstring
+    Bytt mønstring 
   </ukm-knapp>
   
   <!--

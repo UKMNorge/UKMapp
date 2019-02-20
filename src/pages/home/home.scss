@@ -7,18 +7,80 @@ page-home {
         padding: 0;
         margin-top: -3vh;
     }
+    .home-innslag-scroll {
+        ion-slides {
+            ion-slide {
+                margin-right: -1.5rem;
+            }
+            ion-slide:last-of-type {
+                right: 0;
+            }
+        }
+
+        .swiper-zoom-container {
+            padding-top: 0;
+            margin-top: 0;
+        
+        
+            .placeholderThumbnail {
+                width: 28vw;
+                height: 28vw;
+                border-radius: 50%;
+                position: relative;
+                
+            }
+            .gul {
+                background: $ukm_gul;
+            }
+            .rosa {
+                background: $ukm_rosa;
+            }
+            .gronn {
+                background: $ukm_gronn;
+            }
+            .overlay {
+                background: linear-gradient(to top, rgba(black, 0.6) 20%, rgba($ukm_rosa, 0.4));
+                width: 28vw;
+                height: 28vw;
+                border-radius: 50%;
+                position: absolute;
+                z-index: 2;
+            }
+            img {
+                position: relative;
+                z-index: 1;
+                border-radius: 50%;            
+                width: 28vw;
+                height: 28vw;
+                border: 2px solid $ukm_rosa;
+            }
+            
+        }
+        .innslagnavn {
+            margin-top: -1.6em;
+            font-size: 1.4rem;
+            font-weight: bold;
+            position:relative;
+            z-index: 3;
+            font-family: 'AvantGardeBold';
+            padding: 0 .5rem;
+
+        }
+    }
 
 
     .top-nyhet-image {
+        top: -4rem;
         width: 100%;
-        height: 100vw;
+        height: 57vh;
         background: rgba(255, 18, 139, 1);
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-        margin-bottom: -.5em; // For å hindre rosa strek i bunn (but whyyy?)
+        margin-bottom: -4.5em; // For å hindre rosa strek i bunn (but whyyy?)
         color: rgba(0, 0, 76, 1);
         position: relative;
+        padding: 0;
 
         h2 {
             position: absolute;
@@ -34,31 +96,70 @@ page-home {
             background: rgba(255, 18, 139, .8);
         }
     }
-
-    .dual-spot-sak {
-        width: 50vw;
-        height: 36vw;
+    .toppsaker {
+        margin-top: 2rem;
+        width: 100%;
+        display: block;
         float: left;
-        text-align: left;
-        font-size: 1.6rem;
-        background-size: cover;
-        background-position: center center;
-
-        h3 {
-            margin-top: .4em;
-            padding: 0 .4em;
-            line-height: 1.26em;
-        }
-
-        h3 > span {
-            background: rgba($ukm_blaa, .8);
-            color: $ukm_gul;
-        }
-        h3 > #sakto {
-            background: rgba($ukm_blaa, .8);
-            color: white;
+        margin-bottom: 1.5rem;
+        .dual-spot-sak {
+            display: block;
+            margin: .8rem .1rem .8rem 1rem;
+            width: 46%;
+            height: 36vw;
+            float: left;
+            background-size: cover;
+            background-position: center center;
+            
+            h3 {
+                margin-top: .4em;
+                padding: 0 .4em;
+                font-size: 1.8rem;
+                line-height: 1.26em;
+            }
+    
+            h3 > span {
+                background: rgba($ukm_blaa, .8);
+                color: $ukm_gul;
+            }
         }
     }
+    .video-spot {
+        display: block;
+        margin-bottom: .5rem;
+        ion-slides {
+            ion-slide {
+                .video-container {
+                    padding: 2px;
+                    background: $ukm_gronn;
+                    color: $ukm_blaa;
+                    .video {
+                        height: 56vw;
+                        width: 93.5vw;
+                        background-size: cover;
+                        background-position: center center;
+                        margin: 0;
+                        line-height: calc(56vw);
+                        ion-icon {
+                            color: $ukm_gronn;
+                            margin-left: 1.5rem;
+                            font-size: 6rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+            .swiper-slide.swiper-slide-active {
+                width: 95vw;
+                left: 0rem;
+            }
+            .swiper-slide.swiper-slide-next {
+                margin-left: -1.2rem;
+            }
+        }
+        
+    }
+    
     .nyhetsrute {
         background: rgba(255, 18, 139, 1);
         background-position: center center;

@@ -6,8 +6,8 @@ import { WordpressProvider } from '../../providers/wordpress';
 
 
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html'
+	selector: 'page-profile',
+	templateUrl: 'profile.html'
 })
 export class ProfilePage {
 

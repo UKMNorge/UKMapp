@@ -35,11 +35,10 @@ export class SingleInfoPage {
                 self.post = content;
                 self.loading = false;
                 self.base_url = san.bypassSecurityTrustResourceUrl(self.wordpressProvider.getMonstringUrl());
-        
             }
         );
-        
     }
+    
     handleClick(event) {
         if (event.target.tagName == "A") {
             console.log(event.target.href);

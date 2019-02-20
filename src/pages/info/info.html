@@ -1,29 +1,14 @@
-<!--
-  Generated template for the InfoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>InfoPage</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
-
 <ion-content>
   <div *ngIf="kontaktpersoner == null">
     <h1>Laster inn kontaktpersoner</h1>
   </div>
   <div *ngIf="kontaktpersoner != null" class="kontaktpersoner">
     <h1>Kontaktpersoner</h1>
-    <!-- <ukm-knapp class="wide white rosa-rosa"> -->
-    <!-- <accordion visibleText="" isShowing=false> -->
+    <h6>Trykk på bildet for å ta kontakt</h6>
     <div class="kontaktpersoner-scroll">
       <br>
       <ion-slides zoom="true" slidesPerView="3">
-        <ion-slide *ngFor="let j of kontaktpersoner.getAll(); let i = index;">
+        <ion-slide *ngFor="let j of kontaktpersoner.getAll(); let i = index;" (click)="ringKontakt(j.telefon)">
           <div class="swiper-zoom-container" *ngIf="j.bilde">
             <div class="placeholder" *ngIf="!j.bilde.url"></div>
             <div *ngIf="j.bilde.url" [style.background-image]="'url(' + j.bilde.url + ')'" class="kontaktbilde"></div>
@@ -31,46 +16,12 @@
           <div class="kontakt-info">
               <h1 class="fornavn">{{j.fornavn}}</h1>
               <h1 class="tittel">{{j.tittel}}</h1>
-              <h3 *ngIf="j.telefon != '0'" class="telefon" (click)="ringKontakt(j.telefon)">{{j.telefon}}</h3>
+              <h3 *ngIf="j.telefon != '0'" class="telefon">{{j.telefon}}</h3>
               <h4 class="epost">{{j.epost}}</h4>
             </div>
         </ion-slide>
       </ion-slides>
     </div>
-
-    <!-- <ion-grid *ngIf='kontaktpersoner != null'>
-          <ion-row align-items-stretch>
-            <ion-col col-4 *ngFor='let kontakt of kontaktpersoner.getAll()'>
-              <div class="placeholder" *ngIf="!kontakt.bilde.url"></div>
-
-              <div *ngIf="kontakt.bilde.url" [style.background-image]="'url(' + kontakt.bilde.url + ')'" class="kontaktbilde"></div>
-              <div *ngIf="kontakt.bilde.url" class="kontaktbildeoverlay"></div>
-              
-              <div class="kontakt-info">
-                <h1 class="fornavn">{{kontakt.fornavn}}</h1>
-                <h1 class="tittel">{{kontakt.tittel}}</h1>
-                <h3 *ngIf="kontakt.telefon != '0'" class="telefon" (click)="ringKontakt(kontakt.telefon)">{{kontakt.telefon}}</h3>
-                <h4 class="epost">{{kontakt.epost}}</h4>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid> -->
-
-
-
-
-    <!-- <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()" class="kontaktpersoner">
-          <ukm-bobla-hvit></ukm-bobla-hvit>
-          <div class="kontakt-info">
-            <h1>{{kontakt.fornavn}} {{kontakt.etternavn}}</h1>
-            <h3>{{kontakt.telefon}}</h3>
-            <h4>{{kontakt.epost}}</h4>
-            <hr>
-          </div>
-        </ion-list> -->
-    <!-- </accordion> -->
-    <!-- </ukm-knapp> -->
-
   </div>
   <div *ngIf='info != false'>
     <h1 class="info-overskrift">Informasjon</h1>
@@ -85,40 +36,4 @@
       </ukm-knapp>
     </ion-list>
   </div>
-
-
-  <!-- <ion-list>
-    <accordion visibleText="Testing testing Again" isShowing=false>
-      Testing Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Natus alias dignissimos dolore, at cum illum totam deserunt voluptatem molestiae aliquam. Illum laudantium
-      error
-      dignissimos quo libero nesciunt maxime, eveniet neque.
-    </accordion>
-  </ion-list> -->
-
-  <!-- <div *ngIf="kontaktpersoner == null">
-    <h1>Laster inn kontaktpersoner</h1>
-  </div>
-  <div *ngIf="kontaktpersoner != null">
-    <ion-list *ngFor="let kontakt of kontaktpersoner.getAll()">
-      <ion-item>
-        <ion-thumbnail *ngIf="kontakt.bilde"><img src="{{kontakt.bilde.url}}"></ion-thumbnail>
-        {{kontakt.fornavn}}
-        {{kontakt.etternavn}}
-        {{kontakt.telefon}}
-        {{kontakt.epost}}
-      </ion-item>
-    </ion-list>
-  </div>
-  <div *ngIf="info != null">
-    <ion-list>
-      <ion-item *ngFor="let item of info.getAll()" (click)="visInfo( item )">
-        <ion-thumbnail item-start>
-          <img src="{{item.image}}">
-        </ion-thumbnail>
-        <h1>{{ item.title }}</h1>
-        <p>{{ item.lead }}</p>
-      </ion-item>
-    </ion-list>
-  </div> -->
 </ion-content>

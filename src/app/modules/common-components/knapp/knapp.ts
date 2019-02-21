@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ukm-knapp',
-  templateUrl: './ukm-knapp.html',
-  styleUrls: ['./ukm-knapp.scss'],
+  templateUrl: './knapp.html',
+  styleUrls: ['./knapp.scss'],
 })
 export class UkmKnappComponent implements OnInit {
 
   text: string;
+
+  @Input('title') title
+  @Input('description') description
 
   constructor() {
     console.log('Hello UkmKnappComponent Component');

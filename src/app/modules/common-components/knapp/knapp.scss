@@ -1,0 +1,61 @@
+:host {
+	--color-background: #00004c; //$ukm_bla_hex;
+	--color-left: #ff128b; //$ukm_rosa_hex;
+	--color-right: #ff128b; //$ukm_rosa_hex;
+	--color-font: #ffffff;
+	--color-icon: #ff128b; //$ukm_rosa_hex;
+
+	margin: 0 auto;
+    display: block;
+    width: 60vw;
+    border-radius: 5px;
+	padding: 4px;
+	
+	background: linear-gradient(-30deg, var(--color-left), var(--color-background), var(--color-right));
+	color: var(--color-font);
+}
+
+.text-container {
+	background: var(--color-background);
+	border-radius: .25em;
+}
+
+.text {
+	padding: .62em 1.24em;
+	text-transform: uppercase;
+	font-family: 'AvantGardeBold';
+
+	morph-icon.morph-icon {
+		color: #00ff00; 
+		font-size: 2.5em;
+	}
+}
+
+:host.wide {
+    width: calc( 100% - 2em );
+    margin: 1.1em 1em;
+    text-align: left;
+
+    .text-container {
+		padding: .14em;
+	}
+	
+	h2 {
+        margin: 0;
+        font-size: 1.35em;
+		line-height: 1em;
+    }
+
+    p {
+        font-size: .85em;
+        margin: .15em 0 0 0;
+	}
+
+	//::slotted(morph-icon) {
+	//::shadow morph-icon {
+	///deep/ morph-icon {
+	::ng-deep morph-icon {
+		color: var( --color-icon ); 
+		font-size: 2.5em;
+	}
+}

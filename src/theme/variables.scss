@@ -2,20 +2,20 @@
 // http://ionicframework.com/docs/theming/
 
 //Variables
-$ukm_blaa:  rgba(0, 0, 76, 1);
-$ukm_blaa_hex: #00004c;
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
 
 $ukm_rosa:  rgb(255, 18, 139);
 $ukm_rosa_hex: #ff128b;
 
-$ukm_gul:   rgba(255, 240, 86, 1);
+$ukm_gul:   rgb(255, 240, 86);
 $ukm_gul_hex: #fff056;
 
-$ukm_gronn: rgba(0, 255, 137, 1);
+$ukm_gronn: rgb(0, 255, 137);
 $ukm_gronn_hex: #00ff89;
 
 $ukm_farger_navn: 'bla', 'rosa', 'gul', 'gronn';
-$ukm_farger: $ukm_blaa, $ukm_rosa, $ukm_gul, $ukm_gronn;
+$ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
 
 $grade_shade: 10.8;
 $grade_tint: 5.6;
@@ -26,19 +26,22 @@ $grade_tint: 5.6;
 	secondary:  $ukm_gul,
 	danger:     $ukm_gronn,
 	light:      #f4f4f4,
-	dark:       $ukm_blaa,
+	dark:       $ukm_bla,
 	lightdark:  $ukm_gul,
 	);
-	$ukm_blaa_light: rgba(107,189,249,1);
-	$ukm_blaa_light_opac_2: rgba(107,189,249, .2);// lighten( $ukm_blaa, 10 );
+	$ukm_bla_light: rgba(107,189,249,1);
+	$ukm_bla_light_opac_2: rgba(107,189,249, .2);// lighten( $ukm_bla, 10 );
 */
 
 /** Ionic CSS Variables **/
 :root {
 
-	--UKM-color-blaa: $ukm_blaa;
-	--UKM-color-rosa: $ukm_rosa;
-	--UKM-color-gul: $ukm_gul;
+	--UKM-rgb-bla: $ukm_bla;
+	--UKM-hex-bla: $ukm_bla_hex;
+	--UKM-rgb-rosa: $ukm_rosa;
+	--UKM-hex-rosa: $ukm_rosa_hex;
+	--UKM-rgb-gul: $ukm_gul;
+	--UKM-hex-gul: $ukm_gul_hex;
 	/*
 	 * BACKGROUND COLORS
 	 * See stepped color variables generator
@@ -116,12 +119,12 @@ $grade_tint: 5.6;
 	--ion-color-danger-shade: #d33939;
 	--ion-color-danger-tint: #f25454;
   
-	--ion-color-dark: $ukm_blaa;
+	--ion-color-dark: $ukm_bla;
 	--ion-color-dark-rgb: 34,34,34;
 	--ion-color-dark-contrast: #ffffff;
 	--ion-color-dark-contrast-rgb: 255,255,255;
-	--ion-color-dark-shade: darken( $ukm_blaa, $grade_shade );
-	--ion-color-dark-tint: lighten( $ukm_blaa, $grade_tint );
+	--ion-color-dark-shade: darken( $ukm_bla, $grade_shade );
+	--ion-color-dark-tint: lighten( $ukm_bla, $grade_tint );
   
 	--ion-color-medium: #989aa2;
 	--ion-color-medium-rgb: 152,154,162;
@@ -138,13 +141,13 @@ $grade_tint: 5.6;
 	--ion-color-light-tint: #f5f5f5;
 
 	--ion-background-color: #00004c;
-	--ion-background-color-rgb: $ukm_blaa;
+	--ion-background-color-rgb: $ukm_bla;
 	/**
 	 * TABS
 	**/
 	.tabs .tabbar,
 	.tabs-ios .tabbar {
-		//background-color: $ukm_blaa !important;
+		//background-color: $ukm_bla !important;
 		border-top: 2px solid rgba(107,189,249, .2) !important;
 		padding-top: 4px;
 		padding-bottom: 6px;
@@ -152,7 +155,7 @@ $grade_tint: 5.6;
 	
 	.tabs-md ion-icon.tab-button-icon,
 	.tab-button .tab-button-text {
-		color: #ccc;//$ukm_blaa_light;
+		color: #ccc;//$ukm_bla_light;
 	}
 	
 	.tab-button[aria-selected="true"] .tab-button-text {
@@ -176,3 +179,6 @@ ion-list-header.list-header {
 	border-bottom: none;
 	font-weight: bold;
 }
+
+@import "./hovstad.css";
+@import "./icomoon.css";

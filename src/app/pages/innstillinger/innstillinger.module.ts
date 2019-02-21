@@ -4,15 +4,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InnstillingerPage } from './innstillinger.page';
-import { UkmKnappComponent } from 'src/app/components/ukm-knapp/ukm-knapp';
-import { TestComponent } from 'src/app/components/test/test.component';
+import { CommonComponentsModule } from 'src/app/modules/common-components/common-components.module';
 
 @NgModule({
 	imports: [
 		IonicModule,
 		CommonModule,
 		FormsModule,
-		RouterModule.forChild([{ path: '', component: InnstillingerPage }])
+		RouterModule.forChild([{ path: '', component: InnstillingerPage }]),
+		CommonComponentsModule
 	],
 	declarations: [InnstillingerPage]
 })

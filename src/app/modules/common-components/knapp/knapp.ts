@@ -6,17 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./knapp.scss'],
 })
 export class UkmKnappComponent implements OnInit {
-
-  text: string;
-
   @Input('title') title
   @Input('description') description
 
-  constructor() {
-    console.log('Hello UkmKnappComponent Component');
-  }
-
-  public ngOnInit() {
-  }
-
+  constructor() {}
+  public ngOnInit() {}
 }

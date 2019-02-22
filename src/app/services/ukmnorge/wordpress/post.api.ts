@@ -42,7 +42,7 @@ export class WpPostApi extends ApiService {
 	}
 
 	public getDetaljer( id ) {
-		return this._requestObject( id, 'Detaljer|'+id, 'post/'+ id );
+		return this._requestObject( id, 'Detaljer|'+id, 'content/'+ id );
 	}
 
 	public getFrontlist() {

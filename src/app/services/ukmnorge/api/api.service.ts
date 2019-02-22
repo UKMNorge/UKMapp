@@ -188,13 +188,15 @@ export abstract class ApiService extends Events {
 		if (apiResponse.getType() == 'collection') {
 			let list = [];
 			let childClassStorageUnit = self.storageService.create(apiResponse.getApi());
-			data.forEach(
-				(objectData) => {
-					objectData = self.validate( objectData );
-					list.push(objectData.id);
-					childClassStorageUnit.set(objectData.id, objectData);
-				}
-			)
+			if( Array.isArray( data ) ) {
+				data.forEach(
+					(objectData) => {
+						objectData = self.validate( objectData );
+						list.push(objectData.id);
+						childClassStorageUnit.set(objectData.id, objectData);
+					}
+				);
+			}
 			self.storageUnit.set(apiResponse.getId(), list);
 		}
 		// If object, store object data

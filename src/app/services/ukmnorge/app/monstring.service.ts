@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
 import { KontaktService } from './kontakt.service';
 import { WpPostService } from './post.service';
+import { Hendelse } from '../api/hendelse.models';
 
 
 @Injectable({
@@ -66,6 +67,22 @@ export class MonstringService extends Events {
 			return this.services.get(id);
 		}
 		return this._initService(id);
+	}
+
+	public getHendelser(): HendelserService {
+		return this.getServ('hendelser');
+	}
+
+	public getInnslag(): InnslagService {
+		return this.getServ('innslag');
+	}
+
+	public getKontakter(): KontaktService {
+		return this.getServ('kontakter');
+	}
+
+	public getPosts(): WpPostService {
+		return this.getServ('posts');
 	}
 
 	/**

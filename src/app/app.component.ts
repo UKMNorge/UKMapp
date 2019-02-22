@@ -30,20 +30,25 @@ export class AppComponent {
 	initializeApp() {
 		this.platform.ready().then(() => {
 			this.statusBar.styleDefault();
-			this.splashScreen.hide();
-			this._initStorage();
+			this._loadStart();
 		});
 	}
 
-	private _initStorage() {
+	ngOnInit() {
+	}
+
+	private _loadStart() {
+		let self = this;
 		this.app_storage = this.storageService.create('APP');
 		// Load from storage
 		this.app_storage.get('monstring').then(
 			(selected_data) => {
 				if( selected_data && selected_data.id ) {
-					this.activeService.showApp( selected_data.id, selected_data.path );
+					self.activeService.showApp( selected_data.id, selected_data.path );
+					self.splashScreen.hide();
 				} else {
-					this.activeService.showSelect();
+					self.activeService.showSelect();
+					self.splashScreen.hide();
 				}
 			}
 		);

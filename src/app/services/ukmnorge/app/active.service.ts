@@ -29,10 +29,10 @@ export class ActiveService {
 		if (this.active == 'app') {
 			return true;
 		}
-
 		// TODO: @mariusmandal Vis loader-ish page
 
 		// Set data for mønstringService
+		this.app_storage.set('monstring', {id: id, path: path});
 		this.monstringService.setId(id, path);
 		// Hent mønstringen og vis siden
 

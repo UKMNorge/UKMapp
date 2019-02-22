@@ -1,9 +1,68 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      HJEM
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content></ion-content>
+	<!-- TOPPSAKEN -->
+	<div class="home-top-nyhet" *ngIf="nyheter && nyheter.length > 0">
+		<div class="top-nyhet-image" [style.background-image]="'url(' + nyheter[0].image + ')'"
+			(click)='visNyhet(nyheter[0].id)'>
+			<h2 [innerHTML]="nyheter[0].title"></h2>
+		</div>
+	</div>
+
+	<!-- ALLE INNSLAG -->
+	<div class="home-innslag-scroll" *ngIf="alle_innslag && alle_innslag.length > 0">
+		<ion-slides slidesPerView="3">
+			<ion-slide *ngFor="let innslag of alle_innslag; let i = index;" (click)='visInnslag( innslag.id )'>
+				<div class="innslag">
+					<div class="swiper-zoom-container">
+						<img *ngIf="!innslag.bilde.isPlaceholder" src="{{innslag.bilde.url}}">
+						<div *ngIf="innslag.bilde.isPlaceholder"
+							class="placeholderThumbnail {{ i % 4 == 0 ? 'gul' : 'rosa' }} {{ i % 7 == 0 ? 'gronn' : '' }}">
+						</div>
+						<div class="overlay"></div>
+					</div>
+					<h4 class="innslagnavn">{{innslag.navn}}</h4>
+				</div>
+			</ion-slide>
+		</ion-slides>
+	</div>
+
+	<!-- TOPPSAKER (#2 og #3) -->
+	<div class="toppsaker" *ngIf="nyheter && nyheter.length > 0">
+		<div *ngFor='let nyhet of nyheter; index as i;'>
+			<div *ngIf="i == 1 || i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak"
+				(click)='visNyhet(nyhet)'>
+				<h3 [innerHTML]="nyhet.title"></h3>
+			</div>
+		</div>
+	</div>
+
+	<!-- SISTE FILMER FRA UKM-TV -->
+	<div class="video-spot" *ngIf="filmer && filmer.length > 0">
+		<ion-slides zoom="true">
+			<ion-slide *ngFor="let film of filmer; let i = index;" (click)='spillVideo(film.fil.mobil)'>
+				<div class="swiper-zoom-container">
+					<div class="video-container">
+						<div class="video" [style.background-image]="film.bilde ? 'url(' + film.bilde.url + ')' : ''">
+							<ion-icon ios="ios-play" md="md-play"></ion-icon>
+						</div>
+						<h5 [innerHTML]="film.navn"></h5>
+					</div>
+				</div>
+			</ion-slide>
+		</ion-slides>
+	</div>
+
+	<!-- ØVRIGE NYHETER-->
+	<ion-grid *ngIf="nyheter && nyheter.length > 0 ">
+		<ion-row align-items-stretch>
+			<ion-col size="6" *ngFor='let nyhet of nyheter | slice: 3; index as i' (click)='visNyhet( nyhet.id )'>
+				<div *ngIf="nyhet.image" class="nyhetsrute {{ nyhet.image ? 'hasImage' : '' }}"
+					[style.background-image]="nyhet.image ? 'url('+ nyhet.image + ')' : ''">
+					<h3 [innerHTML]="nyhet.title">
+					</h3>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

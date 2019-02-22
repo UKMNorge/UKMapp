@@ -5,13 +5,16 @@ import { IonicModule } from '@ionic/angular';
 import { MorphIconComponent } from './morph-icon/morph-icon';
 import { AccordionComponent } from './accordion/accordion';
 import { PostComponent } from './post/post';
+import { ShortenPipe, ShowRestPipe } from './pipes/shorten/shorten';
 
 @NgModule({
   declarations: [
 	  UkmKnappComponent,
 	  MorphIconComponent,
 	  AccordionComponent,
-	  PostComponent
+	  PostComponent,
+	  ShortenPipe,
+	  ShowRestPipe
   ],
   imports: [
 	CommonModule,
@@ -21,7 +24,9 @@ import { PostComponent } from './post/post';
 	  UkmKnappComponent,
 	  MorphIconComponent,
 	  AccordionComponent,
-	  PostComponent
+	  PostComponent,
+	  ShortenPipe,
+	  ShowRestPipe
   ]
 })
 export class CommonComponentsModule { }

@@ -17,7 +17,6 @@ export class UkmKnappComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.text = 'Hello World';
   }
 
 }

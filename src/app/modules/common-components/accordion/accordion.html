@@ -1,0 +1,8 @@
+<div (click)="toggleContent()">
+	<h2 class="head">{{title}}</h2>
+	<div *ngIf="!isShowing">
+		<ng-content></ng-content>
+	</div>
+	<div *ngIf="isShowing">
+	</div>
+</div>

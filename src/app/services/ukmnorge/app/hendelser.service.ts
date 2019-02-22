@@ -28,4 +28,8 @@ export class HendelserService {
 	public getMonstringProgram() {
 		return this.hendelseApi.getMonstringProgram();
 	}
+
+	public get( id ) {
+		return this.hendelseApi.get( id );
+	}
 }

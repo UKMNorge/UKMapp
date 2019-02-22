@@ -4,7 +4,7 @@ import { StorageService } from '../utils/storage/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
 import { ApiRequest } from './api.models';
-import { Innslag, InnslagDetaljer, PlaceholderInnslagDetaljer } from './innslag.models';
+import { Innslag, InnslagDetaljer, PlaceholderInnslagDetaljer, PlaceholderInnslag } from './innslag.models';
 
 @Injectable({
 	providedIn: 'root'
@@ -64,14 +64,29 @@ export class InnslagApi extends ApiService {
 		);
 	}
 
+
+	/**
+	 * Hent basisinfo for gitt innslag
+	 */
+	public get( id ) {
+		return this.request(
+			new ApiRequest(
+				'object',
+				id,
+				this.urlObject.replace('#monstring_id', this.monstring_id.toString() ).replace('#id', id),
+				this.title,
+				new PlaceholderInnslag()
+			)
+		);
+	}
+
 	/**
 	 * Hent detaljer for ett gitt innslag
 	 * Endpoint returnerer blant annet UKM-TV, bilder og artikler i tillegg til annen data.
-	 * Dette strippes ut her.
+	 * Basis-data strippes ut fra dette objektet (@see get()).
 	 * 
 	 * @param id 
 	 */
-
 	public getDetaljer( id ) {
 		return this.request(
 			new ApiRequest(

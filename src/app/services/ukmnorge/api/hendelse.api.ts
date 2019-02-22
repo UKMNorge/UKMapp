@@ -4,7 +4,7 @@ import { StorageService } from '../utils/storage/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
 import { ApiRequest } from './api.models';
-import { Hendelse } from './hendelse.models';
+import { Hendelse, PlaceholderHendelse } from './hendelse.models';
 
 @Injectable({
 	providedIn: 'root'
@@ -38,6 +38,18 @@ export class HendelseApi extends ApiService {
 				this.urlCollection.replace('#monstring_id', this.monstring_id.toString() ),
 				this.title,
 				[]
+			)
+		);
+	}
+
+	public get( id ) {
+		return this.request(
+			new ApiRequest(
+				'object',
+				id,
+				this.urlObject.replace('#monstring_id', this.monstring_id.toString() ).replace('#id', id),
+				this.title,
+				new PlaceholderHendelse()
 			)
 		);
 	}

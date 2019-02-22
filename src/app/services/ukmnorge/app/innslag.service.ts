@@ -33,6 +33,10 @@ export class InnslagService {
 		return this.innslagApi.getHendelse( id );
 	}
 
+	public get( id ) {
+		return this.innslagApi.get( id );
+	}
+	
 	public getDetaljer( id ) {
 		return this.innslagApi.getDetaljer( id );
 	}

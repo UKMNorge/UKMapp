@@ -33,6 +33,15 @@ $grade_tint: 5.6;
 	$ukm_bla_light_opac_2: rgba(107,189,249, .2);// lighten( $ukm_bla, 10 );
 */
 
+@font-face {
+	font-family: 'AvantGardeBold';
+	src: url("../assets/fonts/ag-bold.otf") format("opentype");
+  }
+  @font-face {
+	font-family: 'AvantGarde';
+	src: url("../assets/fonts/ag-regular.otf") format("opentype");
+  }
+
 /** Ionic CSS Variables **/
 :root {
 

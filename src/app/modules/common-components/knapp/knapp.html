@@ -1,7 +1,7 @@
 <div class="text-container">
 	<div class="text">
-		<ng-content slot="content"></ng-content>
-		<h2>{{ title }}</h2>
-		<p>{{ description }}</p>
+		<ng-content></ng-content>
+		<h2 *ngIf="title">{{ title }}</h2>
+		<p *ngIf="description">{{ description }}</p>
 	</div>
 </div>

@@ -29,6 +29,6 @@ export class SelectPage {
 
 	velgMonstring(monstring) {
 		console.log('SelectPage:velgMonstring', monstring);
-		this.activeService.showApp( monstring.id, monstring.path );
+		this.activeService.showApp( monstring.id, monstring.url );
 	}
 }

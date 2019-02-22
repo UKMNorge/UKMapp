@@ -8,20 +8,27 @@ import { NetworkService, ConnectionStatus } from 'src/app/services/ukmnorge/util
 	styleUrls: ['innstillinger.page.scss']
 })
 export class InnstillingerPage {
-	public showOfflineButton = ConnectionStatus.Online;
+	public showOfflineButton;
+	public path = null;
 
 	constructor(
 		private activeService: ActiveService,
-		private network: NetworkService
+		private networkService: NetworkService
 	) {
-
+		let self = this;
+		this.path = this.activeService.getPath();
+		this.networkService.change().subscribe(
+			status => {
+				self.showOfflineButton = status;
+			}
+		)
 	}
 
 	public networkToggle() {
-		if( ConnectionStatus.Online ) {
-			this.network.goOffline();
+		if ( this.networkService.isOnline() ) {
+			this.networkService.goOffline();
 		} else {
-			this.network.goOnline();
+			this.networkService.goOnline();
 		}
 	}
 

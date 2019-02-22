@@ -1,13 +1,9 @@
 <ion-content class="profile-page-container">
 	<div class="boble-container">
-		<img *ngIf="monstring != null" src="../../assets/imgs/fylkesbobler/{{monstring.url.split('/')[3]}}.png" alt="">
+		<img *ngIf="path" src="../../assets/imgs/fylkesbobler/{{path.split('/')[3]}}.png" alt="">
 	</div>
 
-	<ukm-knapp class="wide" id="bytt_monstring" (click)="unsetFylke();" title="Bytt mønstring" description="For å lese mer">
-		<div float-right>
-			<morph-icon class="morph-icon" startIcon="plus" stopIcon="check"></morph-icon>
-		</div>
-	</ukm-knapp>
+	<ukm-knapp  id="bytt_monstring" (click)="unsetFylke();">Bytt mønstring</ukm-knapp>
 
 	<ukm-knapp id="networkToggle" (click)="networkToggle();">
 		Gå {{ showOfflineButton ? 'off' : 'on' }}line

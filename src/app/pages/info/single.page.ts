@@ -24,7 +24,7 @@ export class SinglePage {
 			(queryParams: ParamMap) => {
 				self.post_id = queryParams.get('id');
 			}
-		)
+		);
 	}
 
 	ngOnInit() {

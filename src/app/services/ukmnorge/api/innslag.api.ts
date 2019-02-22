@@ -13,7 +13,7 @@ export class InnslagApi extends ApiService {
 	private title: String;
 	public urlCollection = 'https://api.ukm.no/2.0/monstring-#monstring_id/innslag/';
 	public urlObject = this.urlCollection +'/#id';
-	public urlObjectBasis = this.urlCollection +'/basisinfo/#id';
+	public urlObjectBasis = this.urlCollection +'basisinfo/#id';
 	public urlProgram = 'https://api.ukm.no/2.0/monstring-#monstring_id/program/#id'
 
 	constructor(

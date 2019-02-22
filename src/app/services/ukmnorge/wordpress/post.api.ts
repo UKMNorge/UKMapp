@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
 import { ApiService } from '../api/api.service';
 import { ApiRequest } from '../api/api.models';
+import { PlaceholderWpPostDetaljer, PlaceholderWpPost } from './post.models';
 
 @Injectable({
 	providedIn: 'root'
@@ -38,11 +39,11 @@ export class WpPostApi extends ApiService {
 	}
 
 	public get( id ) {
-		return this._requestObject( id, id, 'post/'+ id );
+		return this._requestObject( id, 'post/'+id, new PlaceholderWpPost() );
 	}
 
 	public getDetaljer( id ) {
-		return this._requestObject( id, 'Detaljer|'+id, 'content/'+ id );
+		return this._requestObject( 'Detaljer|'+id, 'content/'+id, new PlaceholderWpPostDetaljer() );
 	}
 
 	public getFrontlist() {
@@ -53,14 +54,14 @@ export class WpPostApi extends ApiService {
 		return this._requestList( 'informasjon' );
 	}
 
-	private _requestObject( id, dbId, endpoint ) {
+	private _requestObject( id, endpoint, placeholder ) {
 		return this.request(
 			new ApiRequest(
 				'object',
 				id,
 				this.endpointUKM + endpoint,
 				this.title,
-				[]
+				placeholder
 			)
 		);
 	}

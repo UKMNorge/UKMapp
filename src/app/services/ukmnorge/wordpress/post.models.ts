@@ -1,9 +1,3 @@
-export interface WpPostDetaljer {
-	id: number;
-	content: string;
-	leade: string;
-}
-
 export interface WpPost {
 	id: number;
 	date: any;
@@ -11,4 +5,26 @@ export interface WpPost {
 	lead: string;
 	url: string;	
 	title: string;
+	contenturl: string;
+}
+
+export class PlaceholderWpPost{
+	public id = 0;
+	public date = '';
+	public image = '';
+	public lead = '';
+	public url = '';
+	public title = '';
+}
+
+export interface WpPostDetaljer {
+	id: number;
+	content: string;
+	lead: string;
+}
+
+export class PlaceholderWpPostDetaljer {
+	public id = 0;
+	public content = '';
+	public lead = '';
 }

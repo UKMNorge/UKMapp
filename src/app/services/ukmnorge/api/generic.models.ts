@@ -15,3 +15,21 @@ export interface Kommune {
 	navn: String;
 	fylke: Fylke;
 }
+
+export class PlaceholderTid {
+	public sekunder = 0;
+	public human = '';
+	public human_short = '';
+	public human_long = '';
+}
+
+export class PlaceholderFylke {
+	public id = 0;
+	public navn = '';
+}
+
+export class PlaceholderKommune {
+	public id = 0;
+	public navn = '';
+	public fylke = new PlaceholderFylke();
+}

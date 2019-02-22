@@ -12,7 +12,8 @@ import { Innslag, InnslagDetaljer, PlaceholderInnslagDetaljer, PlaceholderInnsla
 export class InnslagApi extends ApiService {
 	private title: String;
 	public urlCollection = 'https://api.ukm.no/2.0/monstring-#monstring_id/innslag/';
-	public urlObject = this.urlCollection +'#id';
+	public urlObject = this.urlCollection +'/#id';
+	public urlObjectBasis = this.urlCollection +'/basisinfo/#id';
 	public urlProgram = 'https://api.ukm.no/2.0/monstring-#monstring_id/program/#id'
 
 	constructor(
@@ -73,7 +74,7 @@ export class InnslagApi extends ApiService {
 			new ApiRequest(
 				'object',
 				id,
-				this.urlObject.replace('#monstring_id', this.monstring_id.toString() ).replace('#id', id),
+				this.urlObjectBasis.replace('#monstring_id', this.monstring_id.toString() ).replace('#id', id),
 				this.title,
 				new PlaceholderInnslag()
 			)

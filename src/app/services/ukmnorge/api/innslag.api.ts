@@ -79,7 +79,7 @@ export class InnslagApi extends ApiService {
 				'Detaljer|'+id,
 				this.urlObject.replace('#monstring_id', this.monstring_id.toString() ).replace('#id', id),
 				this.title,
-				[]
+				new PlaceholderInnslagDetaljer()
 			)
 		);
 	}

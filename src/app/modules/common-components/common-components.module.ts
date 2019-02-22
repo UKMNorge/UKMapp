@@ -4,12 +4,14 @@ import { UkmKnappComponent } from './knapp/knapp';
 import { IonicModule } from '@ionic/angular';
 import { MorphIconComponent } from './morph-icon/morph-icon';
 import { AccordionComponent } from './accordion/accordion';
+import { PostComponent } from './post/post';
 
 @NgModule({
   declarations: [
 	  UkmKnappComponent,
 	  MorphIconComponent,
-	  AccordionComponent
+	  AccordionComponent,
+	  PostComponent
   ],
   imports: [
 	CommonModule,
@@ -18,7 +20,8 @@ import { AccordionComponent } from './accordion/accordion';
   exports: [
 	  UkmKnappComponent,
 	  MorphIconComponent,
-	  AccordionComponent
+	  AccordionComponent,
+	  PostComponent
   ]
 })
 export class CommonComponentsModule { }

@@ -1,0 +1,22 @@
+<ion-header>
+	<base [href]="base_url">
+</ion-header>
+
+<div class="content" padding>
+	<h1 padding *ngIf="!loaded">
+		<br>
+		<br>
+		<br>
+
+		<span>🙈</span>
+		<br>
+		<br>
+		Laster inn...
+	</h1>
+	
+	<div *ngIf="loaded">
+		<h1 *ngIf="title">{{title}}</h1>
+		<p class="lead">{{post.lead}}</p>
+		<div *ngIf="content" [innerHTML]="content"></div>
+	</div>
+</div>

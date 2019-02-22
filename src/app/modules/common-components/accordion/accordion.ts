@@ -29,10 +29,6 @@ export class AccordionComponent implements OnInit {
 		this._isShowing = (isShowing) || false;
 	}
 
-
-
-
-
 	get visibleText(): Number { return this._visibleText }
 	get isShowing(): boolean { return this._isShowing }
 

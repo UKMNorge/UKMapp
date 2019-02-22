@@ -6,7 +6,7 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
 import { NavController } from '@ionic/angular';
 
 @Component({
-	selector: 'app-page-program-innslag',
+	selector: 'app-page-innslag',
 	templateUrl: 'innslag.page.html',
 	styleUrls: ['innslag.page.scss']
 })
@@ -71,6 +71,6 @@ export class InnslagPage {
     }
 
     visArtikkel(id) {
-		this.navCtrl.navigateForward('app/app/program/'+ this.hendelse +'/'+ this.id +'/artikkel/'+ id);
+		this.navCtrl.navigateForward('festival/program/artikkel/'+ id);
     }
 }

@@ -6,29 +6,31 @@ import { FormsModule } from '@angular/forms';
 import { ProgramPage } from './program.page';
 import { CommonComponentsModule } from 'src/app/modules/common-components/common-components.module';
 import { HendelsePage } from './hendelse.page';
-import { InnslagPage } from './innslag.page';
-import { ArtikkelPage } from './artikkel.page';
+import { InnslagPage } from '../innslag/innslag.page';
+import { InnslagPageModule } from '../innslag/innslag.module';
+import { PostPage } from '../post/post.page';
+import { PostPageModule } from '../post/post.module';
 
 @NgModule({
 	imports: [
 		IonicModule,
 		CommonModule,
 		FormsModule,
+		InnslagPageModule,
+		PostPageModule,
 		RouterModule.forChild(
 			[
 				{ path: '', component: ProgramPage },
 				{ path: ':hendelse', component: HendelsePage },
 				{ path: ':hendelse/:innslag', component: InnslagPage },
-				{ path: ':hendelse/:innslag/artikkel/:artikkel', component: ArtikkelPage}
+				{ path: 'artikkel/:post_id', component: PostPage}
 			]
 		),
 		CommonComponentsModule
 	],
 	declarations: [
 		ProgramPage,
-		HendelsePage,
-		InnslagPage,
-		ArtikkelPage
+		HendelsePage
 	]
 })
 export class ProgramPageModule { }

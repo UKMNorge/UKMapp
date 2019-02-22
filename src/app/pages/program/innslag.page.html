@@ -27,7 +27,7 @@
 					<ion-badge>
 						<span class="blueback">{{ innslag.sjanger_eller_kategori }}</span>
 					</ion-badge>
-					<ion-badge *ngIf="innslag.kommune.navn">
+					<ion-badge *ngIf="innslag.kommune">
 						<span class="blueback">{{ innslag.kommune.navn }}</span>
 					</ion-badge>
 				</div>
@@ -82,7 +82,7 @@
 							(click)='spillVideo(film.fil.mobil)'>
 							<div class="swiper-zoom-container">
 								<div class="video-container">
-									<div class="video" [style.background-image]="'url(' + film.bilde.url + ')'">
+									<div class="video" [style.background-image]="film.bilde ? 'url(' + film.bilde.url + ')' : ''">
 										<ion-icon ios="ios-play" md="md-play"></ion-icon>
 									</div>
 									<h5 [innerHTML]="film.navn"></h5>
@@ -96,7 +96,7 @@
 				<div *ngIf="detaljer.artikler.length > 0" class="artikler">
 					<h1>Artikler</h1>
 					<div *ngFor="let artikkel of detaljer.artikler">
-						<h4 padding><a (click)="visArtikkel(artikkel)">{{artikkel.navn}}</a></h4>
+						<h4 padding><a (click)="visArtikkel(artikkel.id)">{{artikkel.navn}}</a></h4>
 					</div>
 				</div>
 

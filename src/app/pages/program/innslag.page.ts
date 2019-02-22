@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.service';
-import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
-import { Hendelse } from 'src/app/services/ukmnorge/api/hendelse.models';
-import { NavController } from '@ionic/angular';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Innslag, InnslagDetaljer } from 'src/app/services/ukmnorge/api/innslag.models';
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
+import { NavController } from '@ionic/angular';
 
 @Component({
 	selector: 'app-page-program-innslag',
@@ -14,16 +13,21 @@ import { Innslag, InnslagDetaljer } from 'src/app/services/ukmnorge/api/innslag.
 export class InnslagPage {
 
 	private id = null;
+	private hendelse = null;
+
 	public innslag = null;
 	public detaljer = null;
 
 	constructor(
 		private monstringService: MonstringService,
-		private activatedRoute: ActivatedRoute
+		private activatedRoute: ActivatedRoute,
+		private streamingMedia: StreamingMedia,
+		private navCtrl: NavController
 	) {
 		let self = this;
 		this.activatedRoute.paramMap.subscribe(
 			(queryParams: ParamMap) => {
+				self.hendelse = queryParams.get('hendelse');
 				self.id = queryParams.get('innslag');
 			}
 		);
@@ -32,15 +36,41 @@ export class InnslagPage {
 	ngOnInit() {
 		let self = this;
 		this.monstringService.getInnslag().get( this.id ).subscribe(
-			(innslag) => {
+			(innslag: Innslag) => {
 				self.innslag = innslag;
 			}
 		);
-
 		this.monstringService.getInnslag().getDetaljer( this.id ).subscribe(
 			(innslagDetaljer: InnslagDetaljer) => {
 				self.detaljer = innslagDetaljer;
 			}
 		);
 	}
+
+	spillVideo(url) {
+		let options: StreamingVideoOptions = {
+//			successCallback: () => { console.log('Video played') },
+//			errorCallback: (e) => { console.log('Error streaming') },
+			orientation: 'landscape',
+//			shouldAutoClose: true,
+//			controls: false
+		  };
+		this.streamingMedia.playVideo(url, options);
+	}
+
+    showRest() {
+        let dots = document.getElementById('followingdots');
+        let rest = document.getElementById('restofdescription');
+        if (dots.className.indexOf('hidden') == -1) {
+            dots.className = dots.className.replace('visible', '').replace('  ', '') + ' hidden'
+            rest.className = rest.className.replace('hidden', '').replace('  ', '') + ' visible'
+        } else if (dots.className.indexOf('visible') == -1) {
+            dots.className = dots.className.replace('hidden', '').replace('  ', '') + ' visible'
+            rest.className = rest.className.replace('visible', '').replace('  ', '') + ' hidden'
+        }
+    }
+
+    visArtikkel(id) {
+		this.navCtrl.navigateForward('app/app/program/'+ this.hendelse +'/'+ this.id +'/artikkel/'+ id);
+    }
 }

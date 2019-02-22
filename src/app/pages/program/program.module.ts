@@ -7,6 +7,7 @@ import { ProgramPage } from './program.page';
 import { CommonComponentsModule } from 'src/app/modules/common-components/common-components.module';
 import { HendelsePage } from './hendelse.page';
 import { InnslagPage } from './innslag.page';
+import { ArtikkelPage } from './artikkel.page';
 
 @NgModule({
 	imports: [
@@ -17,7 +18,8 @@ import { InnslagPage } from './innslag.page';
 			[
 				{ path: '', component: ProgramPage },
 				{ path: ':hendelse', component: HendelsePage },
-				{ path: ':hendelse/:innslag', component: InnslagPage }
+				{ path: ':hendelse/:innslag', component: InnslagPage },
+				{ path: ':hendelse/:innslag/artikkel/:artikkel', component: ArtikkelPage}
 			]
 		),
 		CommonComponentsModule
@@ -25,7 +27,8 @@ import { InnslagPage } from './innslag.page';
 	declarations: [
 		ProgramPage,
 		HendelsePage,
-		InnslagPage
+		InnslagPage,
+		ArtikkelPage
 	]
 })
 export class ProgramPageModule { }

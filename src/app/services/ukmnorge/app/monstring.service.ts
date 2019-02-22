@@ -9,6 +9,7 @@ import { NetworkService } from '../utils/network.service';
 import { KontaktService } from './kontakt.service';
 import { WpPostService } from './post.service';
 import { Hendelse } from '../api/hendelse.models';
+import { FilmerService } from './filmer.service';
 
 
 @Injectable({
@@ -53,7 +54,6 @@ export class MonstringService extends Events {
 		return this.monstringApi.getMonstringer();
 	}
 
-
 	/**
 	 * Hent en collection for mønstringen
 	 * 
@@ -83,6 +83,10 @@ export class MonstringService extends Events {
 
 	public getPosts(): WpPostService {
 		return this.getServ('posts');
+	}
+
+	public getFilmer(): FilmerService {
+		return this.getServ('filmer');
 	}
 
 	/**
@@ -121,6 +125,14 @@ export class MonstringService extends Events {
 				service = new WpPostService(
 					this.id,
 					this.path,
+					this.storageService,
+					this.http,
+					this.networkService
+				);
+				break;
+			case 'filmer':
+				service = new FilmerService(
+					this.id,
 					this.storageService,
 					this.http,
 					this.networkService

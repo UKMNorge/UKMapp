@@ -17,6 +17,8 @@
 	<div *ngIf="loaded">
 		<h1 *ngIf="title">{{title}}</h1>
 		<p class="lead">{{post.lead}}</p>
+
+		<div *ngIf="!content">Vennligst vent mens vi henter resten av teksten..</div>
 		<div *ngIf="content" [innerHTML]="content"></div>
 	</div>
 </div>

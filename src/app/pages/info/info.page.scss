@@ -1,1 +1,148 @@
+//Variables
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
 
+$ukm_rosa:  rgb(255, 18, 139);
+$ukm_rosa_hex: #ff128b;
+
+$ukm_gul:   rgb(255, 240, 86);
+$ukm_gul_hex: #fff056;
+
+$ukm_gronn: rgb(0, 255, 137);
+$ukm_gronn_hex: #00ff89;
+
+// PARENT CONTAINER (tidl ionic-content?)
+:host {
+	--UKM-rgb-bla: $ukm_bla;
+	--UKM-hex-bla: $ukm_bla_hex;
+	--UKM-rgb-rosa: $ukm_rosa;
+	--UKM-hex-rosa: $ukm_rosa_hex;
+	--UKM-rgb-gul: $ukm_gul;
+	--UKM-hex-gul: $ukm_gul_hex;
+	padding: 0;
+    margin: 0;
+	width: 100vw;
+	min-height: 100vh;
+}
+
+// ALT FOR KONTAKTPERSONER
+.kontaktpersoner {
+	h1 {
+		text-align: center;
+	}
+	h6 {
+		text-align: center;
+		margin-top: -.8rem;
+		font-size: 1.2rem;
+	}
+	width: 90vw;
+	margin-top: 3vh;
+	display: block;
+	margin: 0 auto;
+
+	.kontaktpersoner-scroll {
+		margin-left: -5vw;
+		width: 100vw;
+
+		// TODO: @mester890 Usikker på om disse slår til som de skal.
+		ion-slides {
+			ion-slide {
+				margin-right: -1.3rem;
+			}
+
+			ion-slide:last-of-type {
+				right: 0;
+			}
+
+			ion-slide:first-of-type {
+				margin-left: 1.2rem;
+
+			}
+		}
+	}
+
+	.kontaktperson {
+		font-size: .5em;
+
+		.bilde {
+			width: 22vw;
+			height: 22vw;
+			display: block;
+			margin: 0 auto;
+			background: linear-gradient(-30deg, rgba( $ukm_rosa, 1), rgba( $ukm_gul, 1));
+			border-radius: 50%;
+			border: 2px solid $ukm_rosa;
+			position: relative;
+			z-index: 1;
+		}
+		.bilde:not(.placeholder) {
+			background-size: cover;
+			background-position: center center;
+			background-color: rgba( $ukm_rosa, 0.4);
+			background-blend-mode: screen;
+		}
+		
+		.info {
+			font-family: 'AvantGarde';
+			text-align: center;
+			margin-top: -1.4em;
+
+			.fornavn {
+				font-family: 'AvantGardeBold';
+				font-size: 1.8em;
+			}
+			.tittel {
+				text-transform: lowercase;
+				font-size: 1.4em;
+				margin-top: -.6em;
+			}
+			.telefon {
+				margin-top: .4em;
+			}
+			.telefon, .epost {
+				text-transform: lowercase;
+				font-size: 1.2em;
+				line-height: .4em;
+			}
+			.epost {
+				font-size: .8em;
+				margin-top: 0;
+				display: none;
+			}
+		}
+	}
+}
+
+
+// ALT OM INFORMASJON
+.informasjon {
+	margin-top: 1rem;
+	margin-bottom: 0;
+
+	.overskrift {
+		text-align: center;
+		padding-bottom: 1.2rem;
+	}
+
+	.item-content {
+		margin-top: 1rem;
+		font-family: 'Arial';
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+		text-transform: initial;
+	}
+
+	
+
+	page-single-info {
+		h1 {
+			padding-top: 40vh;
+			text-align: center;
+			font-size: 2rem;
+			
+			span {
+				font-size: 10rem;
+			}
+		}
+	}
+}

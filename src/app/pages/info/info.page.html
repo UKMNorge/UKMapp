@@ -1,12 +1,45 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      INFO
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
-
+	<div *ngIf="!kontaktpersoner">
+		<h1>Laster inn kontaktpersoner</h1>
+	</div>
+	<div *ngIf="kontaktpersoner && kontaktpersoner.length > 0" class="kontaktpersoner">
+		<h1>Kontaktpersoner</h1>
+		<h6>Trykk på bildet for å ta kontakt</h6>
+		<div class="kontaktpersoner-scroll">
+			<br>
+			<ion-slides zoom="true" slidesPerView="3">
+				<ion-slide *ngFor="let kontaktperson of kontaktpersoner; let i = index;">
+					<div class="kontaktperson">
+						<div class="swiper-zoom-container" *ngIf="kontaktperson.bilde"
+							(click)="ringKontakt('kontaktperson.telefon')">
+							<div class="bilde placeholder" *ngIf="!kontaktperson.bilde.url"></div>
+							<div class="bilde" *ngIf="kontaktperson.bilde.url"
+								[style.background-image]="'url(' + kontaktperson.bilde.url + ')'"></div>
+						</div>
+						<div class="info">
+							<h1 class="fornavn">{{kontaktperson.fornavn}}</h1>
+							<h1 class="tittel">{{kontaktperson.tittel}}</h1>
+							<h3 *ngIf="kontaktperson.telefon != '0'" class="telefon">{{kontaktperson.telefon}}</h3>
+							<h4 class="epost">{{kontaktperson.epost}}</h4>
+						</div>
+					</div>
+				</ion-slide>
+			</ion-slides>
+		</div>
+	</div>
+	
+	
+	<div *ngIf="info && info.length > 0">
+		<h1 class="info-overskrift">Informasjon</h1>
+		<ion-list *ngFor="let page of info" class="informasjon">
+			<ukm-knapp class="wide white rosa-rosa">
+				<accordion title="{{page.title}}" isShowing=false class="ukm-gradient-rosa-gul">
+					<div class="item-info">
+						<p>{{page.lead}}</p>
+						<div class="ukm-text-gul" (click)="visInfo( page.id )"><span class="hovstad hovstad-arrow"></span></div>
+					</div>
+				</accordion>
+			</ukm-knapp>
+		</ion-list>
+	</div>
 </ion-content>

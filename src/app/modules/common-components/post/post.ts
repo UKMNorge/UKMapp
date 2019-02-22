@@ -3,6 +3,7 @@ import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.servic
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { WpPost, WpPostDetaljer } from '../../../services/ukmnorge/wordpress/post.models';
 
 @Component({
 	selector: 'post',
@@ -30,14 +31,14 @@ export class PostComponent implements OnInit {
 	ngOnInit() {
 		let self = this;
 		this.monstringService.getPosts().get(this.post_id).subscribe(
-			post => {
+			(post: WpPost) => {
 				self.title = post.title;
 				self.post = post;
 				self.loaded = true;
 			}
 		);
 		this.monstringService.getPosts().getDetaljer( this.post_id ).subscribe(
-			postData => {
+			(postData: WpPostDetaljer) => {
 				self.content = postData.content;
 			}
 		)

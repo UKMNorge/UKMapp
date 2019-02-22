@@ -5,7 +5,7 @@
         line-height: 1.35em;
     }
 
-    img {
+    ::ng-deep img {
         display: block;
         margin: 0 auto;
         max-width: 100%;

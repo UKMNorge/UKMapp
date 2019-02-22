@@ -1,0 +1,46 @@
+<ion-content>
+
+	<img src="assets/imgs/bolgetopp.png" id="bolgetopp" />
+	<div *ngIf='hendelse' class="header {{ hendelse ? hendelse.type : '' }}">
+		<h1>
+			{{ hendelse.navn }}
+		</h1>
+		<p class="lead">
+			{{hendelse.start | date}}
+			<span *ngIf="hendelse.sted">| {{hendelse.sted}}</span>
+			<br />
+			<ion-badge class="internhendelse" *ngIf="hendelse.intern">Kun for deltakere</ion-badge>
+		</p>
+	</div>
+
+	<post *ngIf='hendelse && hendelse.type == "post"' post_id="{{hendelse.post_id}}" [style.margin-top]="'-10vh'">
+	</post>
+
+
+	<ion-grid *ngIf='hendelse && hendelse.type == "default" && innslag && innslag.length > 0'>
+		<ion-row align-items-stretch>
+			<ion-col size="6" *ngFor='let innslag of innslag; let i = index;' (click)='visInnslag( innslag.id )'>
+				<!-- Hvis har bilde: sett background-image + addClass( hasImage )-->
+				<!-- Hvis ikke bilde: set tom background-image -->
+				<div class="innslag"
+					[style.background-image]="innslag.bilde && !innslag.bilde.isPlaceholder ? 'url('+ innslag.bilde.url + ')' : ''"
+					class="innslag {{innslag.bilde && !innslag.bilde.isPlaceholder ? 'hasImage':''}}">
+					
+					<div class="overlay {{ i % 5 == 0 ? 'gul' : 'rosa' }}"></div>
+					<h3 class="innslagheader">
+						<span>{{ innslag.navn}}</span>
+					</h3>
+					
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<div *ngIf='hendelse && hendelse.type == "default" && !innslag'>
+		<h1 class="bigemoji">😬</h1>
+		<h1 class="ikketilgjengelig">Programmet for denne hendelsen er ikke tilgjengelig ennå...</h1>
+	</div>
+
+	<div style="margin-bottom: 4em;"></div>
+
+</ion-content>

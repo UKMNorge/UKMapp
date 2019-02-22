@@ -1,0 +1,180 @@
+//Variables
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
+
+$ukm_rosa:  rgb(255, 18, 139);
+$ukm_rosa_hex: #ff128b;
+
+$ukm_gul:   rgb(255, 240, 86);
+$ukm_gul_hex: #fff056;
+
+$ukm_gronn: rgb(0, 255, 137);
+$ukm_gronn_hex: #00ff89;
+
+$ukm_farger_navn: 'bla', 'rosa', 'gul', 'gronn';
+$ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
+
+
+:host {
+    .containerimg {
+        background-position: center center;
+        background-attachment: sticky;
+        background-size: contain;
+        height: 35vh;
+        filter: blur(6px);
+        width: 100vw;
+        top: 0;
+        position: absolute;
+        transform: scale(1.1);
+        
+    }
+    .placeholder {
+        background: linear-gradient(-30deg, $ukm_gul, $ukm_rosa);
+    }
+
+    .header {
+        width: 100vw;
+        height: 100vh;
+        top: 30vh;
+        /* border-top-left-radius: 60% 8%; */
+        /* border-top-right-radius: 60% 8%; */
+        background: #00004c;
+        position: absolute;
+    }
+
+    .headerimg {
+        width: 30vw;
+        height: 30vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: 4px solid rgba(255, 18, 139, 0.8);
+        margin: 0 auto;
+        position: relative;
+        margin-top: -6rem;
+        border-radius: 50%;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    .contentbox {
+        width: 100vw;
+        position: relative;
+        margin-top: 40vh;
+    }
+
+    .content {
+        color: white;
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: normal;
+            font-size: 3.2rem;
+            font-family: 'AvantGardeBold';
+        }
+        .tags {
+            width: max-content;
+            margin: 0 auto;
+            font-family: 'Arial';
+
+            ion-badge {
+                padding: 4px 6px 4px 6px;
+                background: $ukm_gul;
+                color: $ukm_bla;
+            }
+        }
+        .title {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+        .description {
+            width: 95vw;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.2rem;
+            display: block;
+    
+            .visible {
+                display: initial;
+            }
+    
+            .hidden {
+                display: none;
+            }
+        }
+        .personvisning {
+            margin-top: 2.5rem;
+            .rolle {
+                text-align: right;
+                font-size: 1.2rem;
+            }
+            ion-row:nth-child(odd) {
+                color: $ukm_gul;
+            }
+            .top-line {
+                border-color: $ukm_gul;
+            }
+        }
+        .bilder-spot {
+            display: block;
+            margin-bottom: .5rem;
+            ion-slides {
+                ion-slide {
+                    .bilde-container {
+                        padding: 2px;
+                        background: $ukm_rosa;
+                        color: $ukm_bla;
+                        .bilde {
+                            height: 56vw;
+                            width: 93.5vw;
+                            background-size: cover;
+                            background-position: center center;
+                            margin: 0;
+                        }
+                    }
+                }
+                .swiper-slide.swiper-slide-active {
+                    width: 95vw;
+                    left: 0rem;
+                }
+                .swiper-slide.swiper-slide-next {
+                    margin-left: -1.2rem;
+                }
+            }
+        }
+    }
+    .video-spot {
+        display: block;
+        margin-bottom: .5rem;
+        ion-slides {
+            ion-slide {
+                .video-container {
+                    padding: 2px;
+                    background: $ukm_gronn;
+                    color: $ukm_bla;
+                    .video {
+                        height: 56vw;
+                        width: 93.5vw;
+                        background-size: cover;
+                        background-position: center center;
+                        margin: 0;
+                        line-height: calc(56vw);
+                        ion-icon {
+                            color: $ukm_gronn;
+                            margin-left: 1.5rem;
+                            font-size: 6rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+            .swiper-slide.swiper-slide-active {
+                width: 95vw;
+                left: 0rem;
+            }
+            .swiper-slide.swiper-slide-next {
+                margin-left: -1.2rem;
+            }
+        }
+    }
+    .artikler {
+        margin-bottom: 20rem;
+    }
+}

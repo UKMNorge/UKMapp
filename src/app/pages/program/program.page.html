@@ -1,9 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      PROGRAM
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding>
 
-<ion-content></ion-content>
+	<ion-segment [(ngModel)]="valgtProgramModus" id="velgProgram">
+		<ion-segment-button value="public">
+			Program
+		</ion-segment-button>
+		<ion-segment-button value="mine">
+			Mitt program
+		</ion-segment-button>
+	</ion-segment>
+
+	<div *ngIf="program && program.length > 0">
+		<div *ngFor="let hendelse of program">
+			<ukm-knapp class="wide" title="{{ hendelse.navn }}" description="kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}" (click)="visHendelse($event, hendelse.id )">
+				<div float-right>
+					<morph-icon startIcon="plus" stopIcon="check"></morph-icon>
+				</div>
+			</ukm-knapp>
+		</div>
+	</div>
+</ion-content>

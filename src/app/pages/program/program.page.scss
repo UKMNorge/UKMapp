@@ -1,1 +1,45 @@
+//Variables
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
 
+$ukm_rosa:  rgb(255, 18, 139);
+$ukm_rosa_hex: #ff128b;
+
+$ukm_gul:   rgb(255, 240, 86);
+$ukm_gul_hex: #fff056;
+
+$ukm_gronn: rgb(0, 255, 137);
+$ukm_gronn_hex: #00ff89;
+
+$ukm_farger_navn: 'bla', 'rosa', 'gul', 'gronn';
+$ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
+
+:host {
+	--program-button-color-background: var( --UKM-hex-bla, $ukm_bla );
+}
+
+.segment .segment-button, 
+.segment-ios .segment-button {
+	border: none !important;
+	font-size: 1.8rem;
+	font-family: 'AvantGardeBold';
+	line-height: 3rem;
+}
+
+ion-segment-button.segment-button {
+	background-color: var( --program-button-color-background ) !important;
+	color: white; //$ukm_rosa !important;
+	text-transform: uppercase;
+	transition: 300ms all ease;
+
+}
+ion-segment-button.segment-button.segment-activated {
+	color: white; //$ukm_rosa;
+	text-transform: uppercase;
+	font-size: 2.4rem;
+}    
+
+#velgProgram {
+	margin-top: 3em;
+	margin-bottom: 4.5em;
+}

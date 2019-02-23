@@ -30,7 +30,7 @@
 	<div class="toppsaker" *ngIf="nyheter && nyheter.length > 0">
 		<div *ngFor='let nyhet of nyheter; index as i;'>
 			<div *ngIf="i == 1 || i == 2" [style.background-image]="'url(' + nyhet.image + ')'" class="dual-spot-sak"
-				(click)='visNyhet(nyhet)'>
+				(click)='visNyhet(nyhet.id)'>
 				<h3 [innerHTML]="nyhet.title"></h3>
 			</div>
 		</div>

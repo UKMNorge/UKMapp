@@ -19,9 +19,9 @@ import { InnslagPageModule } from '../innslag/innslag.module';
 		PostPageModule,
 		RouterModule.forChild(
 			[
-				{ path: '', component: HjemPage },
-				{ path: 'nyhet/:post_id', component: PostPage },
-				{ path: 'innslag/:innslag', component: InnslagPage}
+				{ path: '', component: HjemPage, pathMatch: 'full' },
+				{ path: 'innslag/:innslag', component: InnslagPage, pathMatch: 'full' },
+				//{ path: 'innslag/:innslag/post/:post_id', component: PostPage, pathMatch: 'full'}
 			]
 		),
 		CommonComponentsModule

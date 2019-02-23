@@ -14,7 +14,7 @@ const routes: Routes = [
             path: '',
             loadChildren: '../pages/hjem/hjem.module#HjemPageModule'
           }
-        ]
+		],
       },
       {
         path: 'program',
@@ -45,7 +45,7 @@ const routes: Routes = [
 	  }
 	  ,
       {
-        path: 'app',
+        path: '',
         redirectTo: '/app/hjem',
         pathMatch: 'full'
 	  }

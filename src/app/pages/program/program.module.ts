@@ -20,10 +20,10 @@ import { PostPageModule } from '../post/post.module';
 		PostPageModule,
 		RouterModule.forChild(
 			[
-				{ path: '', component: ProgramPage },
-				{ path: ':hendelse', component: HendelsePage },
-				{ path: ':hendelse/:innslag', component: InnslagPage },
-				{ path: 'artikkel/:post_id', component: PostPage}
+				{ path: '', component: ProgramPage, pathMatch: 'full' },
+				{ path: 'hendelse/:hendelse', component: HendelsePage, pathMatch: 'full' },
+				{ path: 'hendelse/:hendelse/innslag/:innslag', component: InnslagPage, pathMatch: 'full' },
+				{ path: 'hendelse/:hendelse/innslag/:innslag/post/:post_id', component: PostPage, pathMatch: 'full'}
 			]
 		),
 		CommonComponentsModule

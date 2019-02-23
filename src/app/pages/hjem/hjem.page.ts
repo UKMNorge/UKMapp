@@ -61,7 +61,7 @@ export class HjemPage {
 	visNyhet( id ) {
 		console.log('VIS NYHET'+ id );
 		this.navCtrl.navigateForward(
-			'app/app/hjem/nyhet/'+ id
+			'app/app/hjem/post/'+ id
 		);
 	}
 

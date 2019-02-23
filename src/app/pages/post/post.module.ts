@@ -11,7 +11,12 @@ import { PostPage } from './post.page';
 		IonicModule,
 		CommonModule,
 		FormsModule,
-		RouterModule.forChild([]),
+		RouterModule.forChild([
+			{
+				path: 'post/:post_id',
+				component: PostPage
+			}
+		]),
 		CommonComponentsModule
 	],
 	declarations: [PostPage]

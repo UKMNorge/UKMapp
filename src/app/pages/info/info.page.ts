@@ -36,7 +36,7 @@ export class InfoPage {
 
 	visInfo(id) {
 		this.navCtrl.navigateForward(
-			'app/app/info/single/'+ id
+			'app/app/info/post/'+ id
 		);
 	}
 

@@ -16,8 +16,8 @@ import { PostPageModule } from '../post/post.module';
 		PostPageModule,
 		RouterModule.forChild(
 			[
-				{ path: '', component: InfoPage },
-				{ path: 'single/:id', component: PostPage }
+				{ path: '', component: InfoPage, pathMatch: 'full' }//,
+				//{ path: 'single/:id', component: PostPage, pathMatch: 'full' }
 			]
 		),
 		CommonComponentsModule

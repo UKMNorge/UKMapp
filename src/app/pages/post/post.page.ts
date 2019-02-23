@@ -30,7 +30,7 @@ export class PostPage {
 		let self = this;
 		this.activatedRoute.paramMap.subscribe(
 			(queryParams: ParamMap) => {
-				self.post_id = queryParams.get('id');
+				self.post_id = queryParams.get('post_id');
 			}
 		);
 	}

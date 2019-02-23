@@ -31,7 +31,7 @@ export class ProgramPage {
 	visHendelse( event, id ) {
 		// Såfremt brukeren ikke trykket på ikonet, vis hendelsen
 		if( !event.target.classList.contains('ukmico') ) {
-			this.navCtrl.navigateForward('app/app/program/'+ id);
+			this.navCtrl.navigateForward('app/app/program/hendelse/'+ id);
 		}
 	}
 }

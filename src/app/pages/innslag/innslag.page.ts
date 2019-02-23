@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Innslag, InnslagDetaljer } from 'src/app/services/ukmnorge/api/innslag.models';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 import { NavController } from '@ionic/angular';
@@ -22,7 +22,8 @@ export class InnslagPage {
 		private monstringService: MonstringService,
 		private activatedRoute: ActivatedRoute,
 		private streamingMedia: StreamingMedia,
-		private navCtrl: NavController
+		private navCtrl: NavController,
+		private router: Router
 	) {
 		let self = this;
 		this.activatedRoute.paramMap.subscribe(
@@ -71,6 +72,6 @@ export class InnslagPage {
     }
 
     visArtikkel(id) {
-		this.navCtrl.navigateForward('festival/program/artikkel/'+ id);
+		this.navCtrl.navigateForward( this.router.url + '/post/'+ id);
     }
 }

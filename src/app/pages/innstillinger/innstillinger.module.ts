@@ -11,7 +11,7 @@ import { CommonComponentsModule } from 'src/app/modules/common-components/common
 		IonicModule,
 		CommonModule,
 		FormsModule,
-		RouterModule.forChild([{ path: '', component: InnstillingerPage }]),
+		RouterModule.forChild([{ path: '', component: InnstillingerPage, pathMatch: 'full' }]),
 		CommonComponentsModule
 	],
 	declarations: [InnstillingerPage]

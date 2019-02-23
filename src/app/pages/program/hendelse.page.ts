@@ -49,6 +49,6 @@ export class HendelsePage {
 	}
 
 	visInnslag(id) {
-		this.navCtrl.navigateForward('app/app/program/'+ this.id +'/'+ id);
+		this.navCtrl.navigateForward('app/app/program/hendelse/'+ this.id +'/innslag/'+ id);
     }
 }

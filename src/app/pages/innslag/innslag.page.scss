@@ -78,7 +78,10 @@ $ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
                 padding: 4px 6px 4px 6px;
                 background: $ukm_gul;
                 color: $ukm_bla;
-            }
+			}
+			ion-badge + ion-badge {
+				margin: 0px .41em;
+			}
         }
         .title {
             text-align: center;

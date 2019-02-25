@@ -1,192 +1,221 @@
+//Variables
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
 
-page-home {
+$ukm_rosa:  rgb(255, 18, 139);
+$ukm_rosa_hex: #ff128b;
+
+$ukm_gul:   rgb(255, 240, 86);
+$ukm_gul_hex: #fff056;
+
+$ukm_gronn: rgb(0, 255, 137);
+$ukm_gronn_hex: #00ff89;
+
+$ukm_farger_navn: 'bla', 'rosa', 'gul', 'gronn';
+$ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
+
+:host {
     padding: 0;
     margin: 0;
     width: 100vw;
 
-    ion-content {
-        padding: 0;
-        margin-top: -3vh;
-    }
+	--UKM-rgb-bla: $ukm_bla;
+	--UKM-hex-bla: $ukm_bla_hex;
+	--UKM-rgb-rosa: $ukm_rosa;
+	--UKM-hex-rosa: $ukm_rosa_hex;
+	--UKM-rgb-gul: $ukm_gul;
+	--UKM-hex-gul: $ukm_gul_hex;
+}
 
-    .home-innslag-scroll {
-        margin-top: 6rem;
-        ion-slides {
-            ion-slide {
-                margin-right: -1.5rem;
-            }
-            ion-slide:last-of-type {
-                right: 0;
-            }
-        }
+ion-content {
+	padding: 0;
+	margin-top: -3vh;
+}
 
-        .swiper-zoom-container {
-            padding-top: 0;
-            margin-top: 0;
+span.background {
+	background: rgba(255, 18, 139, .8);
+	box-decoration-break: clone;
+	padding-left: .15em;
+	padding-right: .15em;
+}
 
-            .placeholderThumbnail {
-                width: 28vw;
-                height: 28vw;
-                border-radius: 50%;
-                position: relative;
-                
-            }
+.topp-sak {
+	.image {
+		top: -2vh;
+		width: 100%;
+		height: 58vh;
+		background: rgba(255, 18, 139, 1);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: rgba(0, 0, 76, 1);
+		position: relative;
+		padding: 0;
 
-            @each $color in $ukm_farger {
-                $index: index($ukm_farger, $color);
-                $navn: nth($ukm_farger_navn, $index); 
-                .#{$navn} { background: $color; }
-            }
-
-            .overlay {
-                background: linear-gradient(to top, rgba(black, 0.6) 20%, rgba($ukm_rosa, 0.4));
-                width: 28vw;
-                height: 28vw;
-                border-radius: 50%;
-                position: absolute;
-                z-index: 2;
-            }
-            img {
-                position: relative;
-                z-index: 1;
-                border-radius: 50%;            
-                width: 28vw;
-                height: 28vw;
-                border: 2px solid $ukm_rosa;
-            }
-            
-        }
-        .innslagnavn {
-            margin-top: -1.6em;
-            font-size: 1.4rem;
-            font-weight: bold;
-            position:relative;
-            z-index: 3;
-            font-family: 'AvantGardeBold';
-            padding: 0 .5rem;
-
-        }
-    }
-
-
-    .top-nyhet-image {
-        top: -4rem;
-        width: 100%;
-        height: 57vh;
-        background: rgba(255, 18, 139, 1);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin-bottom: -4.5em; // For å hindre rosa strek i bunn (but whyyy?)
-        color: rgba(0, 0, 76, 1);
-        position: relative;
-        padding: 0;
-
-        h2 {
-            position: absolute;
-            left: 0;
-            bottom: -1rem;
-            font-size: 3rem;
-            text-align: end;
-            line-height: 1.26em;
-            padding: .1em;
-        }
-
-        h2 > span {
-            background: rgba(255, 18, 139, .8);
-        }
-    }
-    .toppsaker {
-        margin-top: 2rem;
-        width: 100%;
-        display: block;
-        float: left;
-        margin-bottom: 1.5rem;
-        .dual-spot-sak {
-            display: block;
-            margin: .8rem .1rem .8rem 1rem;
-            width: 46%;
-            height: 36vw;
-            float: left;
-            background-size: cover;
-            background-position: center center;
-            
-            h3 {
-                margin-top: .4em;
-                padding: 0 .4em;
-                font-size: 1.8rem;
-                line-height: 1.26em;
-            }
-    
-            h3 > span {
-                background: rgba($ukm_blaa, .8);
-                color: $ukm_gul;
-            }
-        }
-    }
-    .video-spot {
-        display: block;
-        margin-bottom: .5rem;
-        ion-slides {
-            ion-slide {
-                .video-container {
-                    padding: 2px;
-                    background: $ukm_gronn;
-                    color: $ukm_blaa;
-                    .video {
-                        height: 56vw;
-                        width: 93.5vw;
-                        background-size: cover;
-                        background-position: center center;
-                        margin: 0;
-                        line-height: calc(56vw);
-                        ion-icon {
-                            color: $ukm_gronn;
-                            margin-left: 1.5rem;
-                            font-size: 6rem;
-                            vertical-align: middle;
-                        }
-                    }
-                }
-            }
-            .swiper-slide.swiper-slide-active {
-                width: 95vw;
-                left: 0rem;
-            }
-            .swiper-slide.swiper-slide-next {
-                margin-left: -1.2rem;
-            }
-        }
-        
-    }
-    
-    .nyhetsrute {
-        background: rgba(255, 18, 139, 1);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        color: rgba(0, 0, 76, 1);
-        margin: .05em;
-        margin-bottom: -.5em; // For å hindre rosa strek i bunn (but whyyy?)
-        padding: .8em;
-        padding-top: 5em;
-        height: 100%;
-
-        .h3 {
-            position: relative;
-            bottom: 0;
-            left: 0;
-            font-size: 2.2rem;
-            padding: .1em;
-            line-height: 1.2em;
-        }
-    }
-    .nyhetsrute.hasImage {
-        h3 > span {
-            background: rgba(255, 18, 139, 1);
-        }
-    }
+		h2 {
+			position: absolute;
+			left: 0;
+			bottom: 0px;
+			font-size: 1.9rem;
+			text-align: end;
+			line-height: 1.26em;
+			padding: .1em;
+			margin-bottom: 0px;
+		}
+	}
 }
 
 
+.innslag-scroll {
+	margin-top: 1.2em;
+	margin-bottom: 1.2em;
 
+	ion-slides {
+		ion-slide {
+			margin-right: -1.5rem;
+		}
+		ion-slide:last-of-type {
+			right: 0;
+		}
+	}
+
+	.swiper-zoom-container {
+		padding-top: 0;
+		margin-top: 0;
+
+		.bilde {
+			position: relative;
+			z-index: 1;
+			border-radius: 50%;            
+			width: 28vw;
+			height: 28vw;
+			border: 2px solid $ukm_rosa;
+		}
+
+		.bilde.placeholder {
+			width: 28vw;
+			height: 28vw;
+			border-radius: 50%;
+			position: relative;
+		}
+
+		@each $color in $ukm_farger {
+			$index: index($ukm_farger, $color);
+			$navn: nth($ukm_farger_navn, $index); 
+			.#{$navn} { background: $color; }
+		}
+
+		.overlay {
+			background: linear-gradient(to top, rgba(black, 0.6) 20%, rgba($ukm_rosa, 0.4));
+			width: 28vw;
+			height: 28vw;
+			border-radius: 50%;
+			position: absolute;
+			z-index: 2;
+		}
+		
+	}
+	.navn {
+		margin-top: -1.6em;
+		font-size: .88rem;
+		text-rendering: optimizeLegibility;
+		font-weight: bold;
+		position:relative;
+		z-index: 3;
+		font-family: 'AvantGardeBold';
+		padding: .5rem;
+	}
+}
+
+.nyheter {
+	margin-top: 0px;
+
+	.dual-spot-sak {
+		background: rgba(255, 18, 139, 1);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		margin: 0px .05em;
+		padding: .8em;
+		padding-top: 5em;
+		height: 100%;
+		position: relative;
+
+		min-height: 44vw;
+
+		h3 {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			margin-top: .4em;
+			padding: 0 .4em;
+			font-size: 1.15em;
+			line-height: 1.26em;
+
+			span.background {
+				color: rgba(0, 0, 76, 1);
+				background: rgba(255, 18, 139, 1);
+			}
+		}
+	}
+}
+.nyheter.toppsaker {
+	margin-bottom: -.65em; // Henger sammen med .video-spot top-margin
+
+	.dual-spot-sak h3 span.background {
+		background: rgba($ukm_bla, .8);
+		color: $ukm_gul;
+	}
+}
+
+
+.video-spot {
+	display: block;
+	
+	margin-top: 1.45em; // 0.8 + 0.65 (margin @ .nyheter.toppsaker)
+	margin-bottom: .8em;
+	
+	ion-slides {
+		ion-slide {
+			.swiper-zoom-container {
+				padding-top: 0;
+				margin-top: 0;
+				
+			}
+
+			.video-container {
+				width: 94vw;
+				min-height: "calc( 56vw + 1.22em )"; // videosize + 1 line of text
+				padding: 2px;
+				background: $ukm_gronn;
+				color: $ukm_bla;
+				
+				.video {
+					height: 56vw;
+					width: "calc( 56vw - 4px )";
+					background-size: cover;
+					background-position: center center;
+					margin: 2px;
+					line-height: calc(56vw);
+
+					ion-icon {
+						color: $ukm_gronn;
+						font-size: 4em;
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+
+		.swiper-slide.swiper-slide-active {
+			width: 95.5vw;
+			left: 0px;
+		}
+
+		.swiper-slide.swiper-slide-next {
+			margin-left: -4vw;
+		}
+	}
+	
+}

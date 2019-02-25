@@ -8,10 +8,9 @@ import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-page-hjem',
   templateUrl: 'hjem.page.html',
-  styleUrls: []//'hjem.page.scss']
+  styleUrls: ['hjem.page.scss']
 })
 export class HjemPage {
-
 	public nyheter = null;
 	public alle_innslag = null;
 	public filmer = null;

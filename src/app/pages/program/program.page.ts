@@ -24,10 +24,10 @@ export class ProgramPage {
 		let self = this;
 		this.monstringService.getHendelser().getMonstringProgram().subscribe(
 			(hendelser: Hendelse[]) => {
-				this.program = hendelser;
+				self.program = hendelser;
 
-				if( hendelser.length == 0 ) {
-					this.monstringService.getInfo().subscribe(
+				if( !Array.isArray( hendelser ) || ( Array.isArray(hendelser) && hendelser.length == 0 )) {
+					self.monstringService.getInfo().subscribe(
 						(monstring: Monstring) => {
 							self.monstring = monstring;
 						}

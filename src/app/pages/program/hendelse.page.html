@@ -25,22 +25,20 @@
 				<div class="innslag"
 					[style.background-image]="innslag.bilde && !innslag.bilde.isPlaceholder ? 'url('+ innslag.bilde.url + ')' : ''"
 					class="innslag {{innslag.bilde && !innslag.bilde.isPlaceholder ? 'hasImage':''}}">
-					
 					<div class="overlay {{ i % 5 == 0 ? 'gul' : 'rosa' }}"></div>
-					<h3 class="innslagheader">
-						<span>{{ innslag.navn}}</span>
+					<h3>
+						<span class="background">{{ innslag.navn}}</span>
 					</h3>
-					
 				</div>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
 
-	<div *ngIf='hendelse && hendelse.type == "default" && !innslag'>
+	<post-grid *ngIf="hendelse && hendelse.type == 'category' && posts && posts.length > 0" [posts]="posts"
+		(onVisNyhet)="visNyhet( $event[0] )" class="alle_saker"></post-grid>
+
+	<div *ngIf='(hendelse && (hendelse.type == "default" && !innslag)) || (hendelse && !hendelse.detaljer)' class="ait">
 		<h1 class="bigemoji">😬</h1>
-		<h1 class="ikketilgjengelig">Programmet for denne hendelsen er ikke tilgjengelig ennå...</h1>
+		<p>Programmet for denne hendelsen er ikke tilgjengelig ennå...</p>
 	</div>
-
-	<div style="margin-bottom: 4em;"></div>
-
 </ion-content>

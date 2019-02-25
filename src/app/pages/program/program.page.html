@@ -10,7 +10,7 @@
 	</ion-segment>
 
 	<div *ngIf="program && program.length > 0">
-		<div *ngFor="let hendelse of program">
+		<div *ngFor="let hendelse of program" class="program">
 			<ukm-knapp class="wide" title="{{ hendelse.navn }}" description="kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}" (click)="visHendelse($event, hendelse.id )">
 				<div float-right>
 					<morph-icon startIcon="plus" stopIcon="check"></morph-icon>

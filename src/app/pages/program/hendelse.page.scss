@@ -16,44 +16,38 @@ $ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
 
 :host {
     .header {
-        margin-top: 28vh;
+        margin-top: -18vh;
         margin-bottom: 14vh;
-        font-size: 1.5em;
         text-align: center;
 
         h1 {
-            font-size: 2.1em;
+            font-size: 2.75em;
             text-transform: uppercase;
             margin-bottom: 1em;
             font-family: 'AvantGardeBold';
         }
         p {
+			font-size: 1.3em;
             font-family: 'AvantGarde';
-        }
+		}
+		
+		ion-badge.internhendelse {
+			margin-top: .7em;
+			
+			font-size: .675em;
+			text-transform: uppercase;
+			
+			font-family: 'Arial';
+			font-weight: bold;
+			
+			background: $ukm_gul;
+			color: $ukm_bla;
+		}
     }
 
+	// Hvis hendelsen er av typen post, gi litt ekstra luft før artikkelen
     .header.post {
         margin-bottom: 3vh;
-    }
-
-    .bigemoji {
-        margin-top: -3rem;
-        text-align: center;
-        font-size: 4em;
-    }
-    .internhendelse {
-        font-family: 'Arial';
-        font-weight: bold;
-        font-size: 1.4rem;
-        background: $ukm_gul;
-        color: $ukm_bla;
-        text-transform: uppercase;
-    }
-
-    .ikketilgjengelig {
-        text-align: center;
-        font-size: 1.8rem;
-        font-family: 'AvantGarde';
     }
 
     .innslag {
@@ -62,30 +56,45 @@ $ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
         background-repeat: no-repeat;
         background-size: cover;
         color: rgba(0, 0, 76, 1);
-        margin: .05em;
-        margin-bottom: -.5em; // For å hindre rosa strek i bunn (but whyyy?)
-        padding: .8em;
-        padding-top: 6em;
-        height: 100%;
+		position: relative;
+		min-height: 44vw;
+		margin-top: -1.65em;
+		
+        h3 {
+            position: relative;
 
-        .h3 {
-            position: relative;
-            bottom: 0;
-            left: 0;
-            font-size: .6rem;
-            padding: .1em;
-            line-height: 1.2em;
-        }
-        .innslagheader {
-            font-size: 1.2em;
-            font-family: 'AvantGardeBold';
-            z-index: 2;
-            position: relative;
-        }
+			font-family: 'AvantGardeBold';
+        	font-size: 1.2em;
+		    line-height: 1.2em;
+		
+			padding: .5em;
+			
+			z-index: 2;
+		}
+		
+		ion-badge + ion-badge {
+			margin: 0px .41em;
+		}
+
+		.overlay {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 1;
+		}    
+		.overlay.rosa {
+			background: rgba($ukm_rosa, 0.85);
+			color: $ukm_bla;
+			z-index: 1;
+		}
+		.overlay.gul {
+			background: rgba($ukm_gul, 0.85);
+			color: $ukm_bla;
+			z-index: 1;
+		}
     }
     .innslag.hasImage {
         h3 > span {
-            //background: rgba(255, 18, 139, .8);
             z-index: 2;
             position: relative;
             color: $ukm_bla;
@@ -98,25 +107,21 @@ $ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
         font-size: 1.2em;
         margin-top: -10vh;
         line-height: 1.35em;
-    }
+	}
+}
 
-    .overlay {
-        width: 46.2vw;
-        height: 94.4%;
-        position: absolute;
-        top: .5rem;
-        left: .5rem;
-        z-index: 1;
-    }    
-    .overlay.rosa {
-        background: rgba($ukm_rosa, 0.85);
-        color: $ukm_bla;
-        z-index: 1;
-    }
-    .overlay.gul {
-        background: rgba($ukm_gul, 0.85);
-        color: $ukm_bla;
-        z-index: 1;
-    }
-        //background: rgba($ukm_rosa, 0.85)  //linear-gradient(to top, rgba($ukm_rosa, 0.9) 40%, rgba($ukm_rosa, 0.4)); 
+.ait {
+	text-align: center;
+	/*font-size: 1.8em;*/
+	font-family: 'AvantGarde';
+
+	h1.bigemoji {
+        text-align: center;
+		font-size: 3em;
+		margin-bottom: 0px;
+	}
+
+	p {
+		margin-top: 0px;
+	}
 }

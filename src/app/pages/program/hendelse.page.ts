@@ -16,6 +16,7 @@ export class HendelsePage {
 	private id = null;
 	public innslag = null;
 	public hendelse = null;
+	public posts = null;
 
 
 	constructor(
@@ -38,6 +39,15 @@ export class HendelsePage {
 		this.monstringService.getHendelser().get( this.id ).subscribe(
 			(hendelse: Hendelse) => {
 				self.hendelse = hendelse;
+				
+				// Hvis det er en kategori, last inn alle posts
+				if( hendelse.type == 'category' ) {
+					self.monstringService.getPosts().getCategory( hendelse.category_id ).subscribe(
+						(list) => {
+							self.posts = list;
+						}
+					)
+				}
 			}
 		);
 
@@ -50,5 +60,9 @@ export class HendelsePage {
 
 	visInnslag(id) {
 		this.navCtrl.navigateForward('app/app/program/hendelse/'+ this.id +'/innslag/'+ id);
-    }
+	}
+
+	visNyhet( id ) {
+		this.navCtrl.navigateForward('app/app/program/hendelse/'+ this.id +'/post/' + id);
+	}
 }

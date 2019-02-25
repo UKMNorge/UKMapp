@@ -23,7 +23,8 @@ import { PostPageModule } from '../post/post.module';
 				{ path: '', component: ProgramPage, pathMatch: 'full' },
 				{ path: 'hendelse/:hendelse', component: HendelsePage, pathMatch: 'full' },
 				{ path: 'hendelse/:hendelse/innslag/:innslag', component: InnslagPage, pathMatch: 'full' },
-				{ path: 'hendelse/:hendelse/innslag/:innslag/post/:post_id', component: PostPage, pathMatch: 'full'}
+				{ path: 'hendelse/:hendelse/innslag/:innslag/post/:post_id', component: PostPage, pathMatch: 'full'},
+				{ path: 'hendelse/:hendelse/post/:post_id', component: PostPage, pathMatch: 'full'}
 			]
 		),
 		CommonComponentsModule

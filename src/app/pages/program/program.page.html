@@ -1,17 +1,26 @@
 <ion-content padding>
 
-	<ion-segment [(ngModel)]="valgtProgramModus" id="velgProgram">
-		<ion-segment-button value="public">
-			Program
-		</ion-segment-button>
-		<ion-segment-button value="mine">
-			Mitt program
-		</ion-segment-button>
-	</ion-segment>
+	<div *ngIf="!program || (program && program.length == 0)" class="comingsoon">
+		<h1>
+			Programmet er ikke klart
+		</h1>
+		<p class="lead" *ngIf="monstring">{{ monstring.navn }} starter {{ monstring.start | date: "\kl. hh:mm dd. MMM" }}</p>
+	</div>
 
 	<div *ngIf="program && program.length > 0">
+		<ion-segment [(ngModel)]="valgtProgramModus" id="velgProgram">
+			<ion-segment-button value="public">
+				Program
+			</ion-segment-button>
+			<ion-segment-button value="mine">
+				Mitt program
+			</ion-segment-button>
+		</ion-segment>
+
 		<div *ngFor="let hendelse of program" class="program">
-			<ukm-knapp class="wide" title="{{ hendelse.navn }}" description="kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}" (click)="visHendelse($event, hendelse.id )">
+			<ukm-knapp class="wide" title="{{ hendelse.navn }}"
+				description="kl. {{ hendelse.start|date:'HH:mm' }} {{ hendelse.sted }}"
+				(click)="visHendelse($event, hendelse.id )">
 				<div float-right>
 					<morph-icon startIcon="plus" stopIcon="check"></morph-icon>
 				</div>

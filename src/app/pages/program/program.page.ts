@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.service';
 import { Hendelse } from 'src/app/services/ukmnorge/api/hendelse.models';
 import { NavController } from '@ionic/angular';
+import { Monstring } from 'src/app/services/ukmnorge/api/monstring.models';
 
 @Component({
   selector: 'app-page-program',
@@ -11,6 +12,7 @@ import { NavController } from '@ionic/angular';
 export class ProgramPage {
 
 	public program = null;
+	public monstring = null;
 
 	constructor(
 		private monstringService: MonstringService,
@@ -19,9 +21,18 @@ export class ProgramPage {
 	}
 
 	ngOnInit() {
+		let self = this;
 		this.monstringService.getHendelser().getMonstringProgram().subscribe(
 			(hendelser: Hendelse[]) => {
 				this.program = hendelser;
+
+				if( hendelser.length == 0 ) {
+					this.monstringService.getInfo().subscribe(
+						(monstring: Monstring) => {
+							self.monstring = monstring;
+						}
+					)
+				}
 			}
 		)
 	}

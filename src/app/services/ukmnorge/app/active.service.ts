@@ -25,10 +25,6 @@ export class ActiveService {
 	public showApp(id, path) {
 		this.monstring_id = id;
 		this.monstring_path = path;
-		// TODO: @mariusmandal Sjekk med router om vi er her eller ikke, for dette funker ikke @ refresh
-		if (this.active == 'app') {
-			return true;
-		}
 		// TODO: @mariusmandal Vis loader-ish page
 
 		// Set data for mønstringService
@@ -58,17 +54,11 @@ export class ActiveService {
 	}
 
 	public showSelect() {
-		console.log('showselect');
-		if (this.active == 'select') {
-			return true;
-		}
-		console.log('showing');
-
 		// TODO: @mariusmandal Vis loader-ish page (?)
 
 		this.navCtrl.navigateRoot('/');
 		this.monstringService.removeId();
-		this.app_storage.clear();
+		this.storageService.clear();
 		this.active = 'select';
 	}
 }

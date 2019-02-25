@@ -29,7 +29,9 @@ export class InfoPage {
 
 		this.monstringService.getPosts().getInfo().subscribe(
 			pages => {
-				self.info = pages;
+				if( Array.isArray( pages ) ) {
+					self.info = pages;
+				}
 			}
 		)
 	}
@@ -41,7 +43,7 @@ export class InfoPage {
 	}
 
 	ringKontakt(nummer: string) {
-		console.error('TODO: @mariusmandal IMPLEMENT THIS')
+		console.error('TODO: @mester890 IMPLEMENT THIS')
 		/*
 		this.callNumber.callNumber(nummer, true)
 			.then(res => console.log('Launched dialer!', res))

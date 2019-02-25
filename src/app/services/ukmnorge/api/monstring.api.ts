@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { StorageService } from '../utils/storage/storage.service';
 import { HttpClient } from '@angular/common/http';
-import { PlaceholderMonstring } from './monstring.models';
+import { PlaceholderMonstring, Monstring } from './monstring.models';
 import { NetworkService } from '../utils/network.service';
 import { ApiRequest } from './api.models';
 
@@ -53,12 +53,12 @@ export class MonstringApi extends ApiService {
 		);
 	}
 
-	public validate( data ) {
-		var now = new Date();
-		data.navn = data.navn + ' @ '+ now.getHours() +':'+ now.getMinutes() +':'+ now.getSeconds();
+	public validate( data: Monstring ) {
+		data.start = new Date( data.start );
+		data.stop = new Date( data.stop );
 		return data;
 	}
-	public validateCollection( data ) {
+	public validateCollection( data: Monstring[] ) {
 		return data;
 	}
 }

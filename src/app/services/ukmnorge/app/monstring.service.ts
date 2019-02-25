@@ -34,6 +34,7 @@ export class MonstringService extends Events {
 		console.log('MonstringService::setPath(' + path + ')');
 		this.id = id;
 		this.path = path;
+		this.services = new Map(); // Reloader alle services
 	}
 
 	public removeId() {
@@ -45,6 +46,9 @@ export class MonstringService extends Events {
 	 * 
 	 * @returns observable
 	 */
+	public getInfo() {
+		return this.getData();
+	}
 	public getData() {
 		return this.monstringApi.getData(this.id);
 	}

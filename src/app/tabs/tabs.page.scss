@@ -1,1 +1,8 @@
+ion-tab-bar {
+	--color: rgb(255,255,255);
+	--ion-tab-bar-color-activated: rgb(255, 18, 139);
 
+	border-top: 2px solid rgba(107,189,249, .2) !important;
+	padding-top: 4px;
+	padding-bottom: 6px;
+}

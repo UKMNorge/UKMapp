@@ -32,6 +32,30 @@ ion-content {
 	margin-top: -3vh;
 }
 
+.noNews {
+    margin-top: 2em;
+
+	text-align: center;
+	
+	font-size: 2em;
+
+	p {
+		font-family: 'AvantGarde';
+		margin-bottom: 0px;
+	}
+
+	h1 {
+		margin-top: 0px;
+		margin-bottom: 1.5em;
+
+		font-family: 'AvantGardeBold';
+		font-size: 2em;
+
+		text-transform: uppercase;
+	}
+	
+}
+
 span.background {
 	background: rgba(255, 18, 139, .8);
 	box-decoration-break: clone;

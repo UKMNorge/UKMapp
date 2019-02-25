@@ -4,6 +4,8 @@ import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.servic
 import { Innslag } from 'src/app/services/ukmnorge/api/innslag.models';
 import { UKMTV } from 'src/app/services/ukmnorge/api/filmer.models';
 import { NavController } from '@ionic/angular';
+import { Monstring } from 'src/app/services/ukmnorge/api/monstring.models';
+import { WpPost } from 'src/app/services/ukmnorge/wordpress/post.models';
 
 @Component({
   selector: 'app-page-hjem',
@@ -11,6 +13,10 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['hjem.page.scss']
 })
 export class HjemPage {
+
+	private loadedMonstring = false;
+
+	public monstring = null;
 	public nyheter = null;
 	public alle_innslag = null;
 	public filmer = null;
@@ -27,10 +33,13 @@ export class HjemPage {
 		
 		// Last inn nyheter
 		this.monstringService.getPosts().getFrontlist().subscribe(
-			(nyheter) => {
-				console.log('GOT NEWS');
-				console.log( nyheter );
+			(nyheter: WpPost[]) => {
 				self.nyheter = nyheter;
+
+				if( !self.loadedMonstring && (!Array.isArray( nyheter ) || ( Array.isArray(nyheter) && nyheter.length == 0 ))) {
+					self.loadedMonstring = true;
+					self._loadMonstringData();
+				}
 			}
 		);
 
@@ -49,6 +58,13 @@ export class HjemPage {
 		);
 	}
 
+	private _loadMonstringData() {
+		this.monstringService.getInfo().subscribe(
+			(monstring: Monstring) => {
+				this.monstring = monstring;
+			}
+		);
+	}
 
 	spillVideo(url) {
 		let options: StreamingVideoOptions = {

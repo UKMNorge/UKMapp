@@ -1,5 +1,11 @@
 <ion-content>
 
+	<!-- FYLKER UTEN NYHETER (wow, sad ) -->
+	<div *ngIf="nyheter && nyheter.length == 0 && monstring" class="noNews">
+		<p>{{ monstring.navn.replace( monstring.fylke.navn, '') }}</p>
+		<h1>{{ monstring.fylke.navn }}</h1>
+	</div>
+
 	<!-- TOPPSAKEN -->
 	<div class="topp-sak" *ngIf="nyheter && nyheter.length > 0">
 		<div class="image" [style.background-image]="'url(' + nyheter[0].image + ')'" (click)='visNyhet(nyheter[0].id)'>

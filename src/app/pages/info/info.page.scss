@@ -27,13 +27,17 @@ $ukm_gronn_hex: #00ff89;
 
 // ALT FOR KONTAKTPERSONER
 .kontaktpersoner {
-	h1 {
-		text-align: center;
-	}
-	h6 {
-		text-align: center;
-		margin-top: -.8rem;
-		font-size: 1.2rem;
+	.header {
+		h1 {
+			font-family: 'AvantGardeBold';
+			text-align: center;
+		}
+		p {
+			font-family: 'AvantGardeBold';
+			text-align: center;
+			margin-top: -.8em;
+			font-size: .8em;
+		}
 	}
 	width: 90vw;
 	margin-top: 3vh;
@@ -118,21 +122,38 @@ $ukm_gronn_hex: #00ff89;
 .informasjon {
 	margin-top: 1rem;
 	margin-bottom: 0;
-
+	
+	ukm-knapp.wide {
+		margin: 1em;
+	}
+	
 	.overskrift {
+		font-family: 'AvantGardeBold';
 		text-align: center;
 		padding-bottom: 1.2rem;
+		margin-top: 1.4em;
+		margin-bottom: -0em;
 	}
 
-	.item-content {
-		margin-top: 1rem;
-		font-family: 'Arial';
-		font-size: 1.4rem;
-		line-height: 1.8rem;
+	::ng-deep .item-info p {
+		margin-top: 0px;
+
+		font-family: 'AvantGarde';
+		font-size: .9em;
+		line-height: 1.35em;
 		text-transform: initial;
 	}
 
-	
+	::ng-deep .hovstad-arrow {
+		color: $ukm_gul;
+	}
+
+	::ng-deep ukm-knapp accordion h2.head {
+		font-size: 1.3em;
+		margin: .4em;
+	}
+}
+/*
 
 	page-single-info {
 		h1 {
@@ -146,3 +167,4 @@ $ukm_gronn_hex: #00ff89;
 		}
 	}
 }
+*/

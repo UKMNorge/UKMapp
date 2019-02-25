@@ -158,7 +158,7 @@ export class InnslagDetaljer extends PlaceholderInnslagDetaljer {
 		this.id = data.id;
 		this.artikler = data.artikler;
 		this.bilder = data.bilder;
-		this.filmer = data.bilder;
+		this.filmer = data.filmer;
 		this.personer = data.personer;
 		this.titler = data.titler;
 

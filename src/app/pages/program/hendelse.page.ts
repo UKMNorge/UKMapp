@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.service';
-import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Hendelse } from 'src/app/services/ukmnorge/api/hendelse.models';
 import { Innslag } from 'src/app/services/ukmnorge/api/innslag.models';
@@ -20,7 +19,6 @@ export class HendelsePage {
 
 
 	constructor(
-		private activeService: ActiveService,
 		private monstringService: MonstringService,
 		private activatedRoute: ActivatedRoute,
 		private navCtrl: NavController

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.service';
-import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
 import { Hendelse } from 'src/app/services/ukmnorge/api/hendelse.models';
 import { NavController } from '@ionic/angular';
 
@@ -14,7 +13,6 @@ export class ProgramPage {
 	public program = null;
 
 	constructor(
-		private activeService: ActiveService,
 		private monstringService: MonstringService,
 		private navCtrl: NavController
 	) {

@@ -6,6 +6,7 @@ import { MorphIconComponent } from './morph-icon/morph-icon';
 import { AccordionComponent } from './accordion/accordion';
 import { PostComponent } from './post/post';
 import { ShortenPipe, ShowRestPipe } from './pipes/shorten/shorten';
+import { PostGridComponent } from './post-grid/post-grid';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ShortenPipe, ShowRestPipe } from './pipes/shorten/shorten';
 	  MorphIconComponent,
 	  AccordionComponent,
 	  PostComponent,
+	  PostGridComponent,
 	  ShortenPipe,
 	  ShowRestPipe
   ],
@@ -25,6 +27,7 @@ import { ShortenPipe, ShowRestPipe } from './pipes/shorten/shorten';
 	  MorphIconComponent,
 	  AccordionComponent,
 	  PostComponent,
+	  PostGridComponent,
 	  ShortenPipe,
 	  ShowRestPipe
   ]

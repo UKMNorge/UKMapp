@@ -127,46 +127,16 @@ span.background {
 	}
 }
 
-.nyheter {
-	margin-top: 0px;
 
-	.dual-spot-sak {
-		background: rgba(255, 18, 139, 1);
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		margin: 0px .05em;
-		padding: .8em;
-		padding-top: 5em;
-		height: 100%;
-		position: relative;
-
-		min-height: 44vw;
-
-		h3 {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-
-			margin-top: .4em;
-			padding: 0 .4em;
-			font-size: 1.15em;
-			line-height: 1.26em;
-
-			span.background {
-				color: rgba(0, 0, 76, 1);
-				background: rgba(255, 18, 139, 1);
-			}
-		}
-	}
-}
-.nyheter.toppsaker {
+post-grid.toppsaker {
 	margin-bottom: -.65em; // Henger sammen med .video-spot top-margin
+	--post-grid-color-background: rgba(0, 0, 76, .8);
+	--post-grid-color-text: rgb(255, 240, 86);
+	--text-position: top;
+}
 
-	.dual-spot-sak h3 span.background {
-		background: rgba($ukm_bla, .8);
-		color: $ukm_gul;
-	}
+post-grid.alle_saker {
+	margin-bottom: 10vh;
 }
 
 

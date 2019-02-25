@@ -43,4 +43,8 @@ export class WpPostService extends Events {
 	public getInfo() {
 		return this.postApi.getInfo();
 	}
+
+	public getCategory( id ) {
+		return this.postApi.getCategory( id );
+	}
 }

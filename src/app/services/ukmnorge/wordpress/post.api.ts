@@ -11,7 +11,7 @@ import { PlaceholderWpPostDetaljer, PlaceholderWpPost } from './post.models';
 })
 export class WpPostApi extends ApiService {
 	private title: String;
-	private endpointUKM: String;
+	private endpoint: String;
 
 	constructor(
 		private monstring_id: Number,
@@ -27,7 +27,7 @@ export class WpPostApi extends ApiService {
 			_networkService
 		);
 		this.title = super.getId();
-		this.endpointUKM = this.monstring_path+ 'wp-json/UKM/';
+		this.endpoint = this.monstring_path+ 'wp-json/UKM/';
 	}
 
 	public validate( data ) {
@@ -54,12 +54,16 @@ export class WpPostApi extends ApiService {
 		return this._requestList( 'informasjon' );
 	}
 
+	public getCategory( id ) {
+		return this._requestWpList( id );
+	}
+
 	private _requestObject( id, endpoint, placeholder ) {
 		return this.request(
 			new ApiRequest(
 				'object',
 				id,
-				this.endpointUKM + endpoint,
+				this.endpoint + endpoint,
 				this.title,
 				placeholder
 			)
@@ -71,7 +75,19 @@ export class WpPostApi extends ApiService {
 			new ApiRequest(
 				'collection',
 				id[0].toUpperCase() + id.substring(1),
-				this.endpointUKM + id,
+				this.endpoint + id,
+				this.title,
+				[]
+			)
+		);
+	}
+
+	private _requestWpList( id ) {
+		return this.request(
+			new ApiRequest(
+				'collection',
+				'CategoryId|'+ id,
+				this.endpoint + 'kategori/' + id,
 				this.title,
 				[]
 			)

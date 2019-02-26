@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 import { StorageUnit } from './unit';
+import { Observable, BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
 	providedIn: 'root'
 })
 export class StorageService {
 	private units = new Map();
+	private status: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 	/**
 	 * Storage unit delegator(?)
@@ -17,6 +20,9 @@ export class StorageService {
 	constructor(
 		private storage: Storage
 	) {
+		this.storage.ready().then(() => {
+			this.status.next(true);
+		});
 		console.log('Dobrý den, I\'m StorageService for your units');
 	}
 
@@ -29,13 +35,17 @@ export class StorageService {
 	 */
 	public create(id: string) {
 		this.units.set(
-			id, 
+			id,
 			new StorageUnit(
-				id, 
+				id,
 				this.storage
 			)
 		);
 		return this.units.get(id);
+	}
+
+	public getStatus(): Observable<boolean> {
+		return this.status.asObservable();
 	}
 
 	/**

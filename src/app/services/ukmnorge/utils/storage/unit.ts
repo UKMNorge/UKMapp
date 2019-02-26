@@ -50,11 +50,13 @@ export class StorageUnit extends Events {
 
         return new Promise(
             (resolve) => {
-                // Value stored in JS map
+				// Value stored in JS map
+				/*
                 if (self.data.has(key)) {
                     console.info('StorageUnit(' + self.id + ')::get #hasInMap resolve:', self.data.get(key));
                     resolve(self.data.get(key));
-                }
+				}
+				*/
 
                 // Update key to prefixed key
                 key = self._key(key);
@@ -64,17 +66,17 @@ export class StorageUnit extends Events {
                     (val) => {
                         // Value not in storage, resolve null
                         if (null == val || undefined == val) {
-                            console.warn('StorageUnit(' + self.id + ')::get #notInStorage resolve:', null);
+                            console.warn('StorageUnit(' + self.id + ')::get('+ key +') #notInStorage resolve:', null);
                             resolve(null);
                         }
                         try {
                             // Value is JSON, resolve as object
                             let jsondata = JSON.parse(val);
-                            console.warn('StorageUnit(' + self.id + ')::get #JSONsuccess resolve:', jsondata);
+                            console.warn('StorageUnit(' + self.id + ')::get('+ key +') #JSONsuccess resolve:', jsondata);
                             resolve(jsondata);
                         } catch {
                             // Value was not JSON-data, resolve string, object, whatevva
-                            console.warn('StorageUnit(' + self.id + ')::get #JSONerror ('+ typeof (val) +') resolve:', val);
+                            console.warn('StorageUnit(' + self.id + ')::get('+ key +') #JSONerror ('+ typeof (val) +') resolve:', val);
                             resolve(val);
                         }
                     }

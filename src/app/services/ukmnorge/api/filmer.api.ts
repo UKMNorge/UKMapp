@@ -4,7 +4,7 @@ import { StorageService } from '../utils/storage/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
 import { ApiRequest } from './api.models';
-import { UKMTV } from './filmer.models';
+import { UKMTV, PlaceholderUKMTV } from './filmer.models';
 
 @Injectable({
 	providedIn: 'root'
@@ -35,7 +35,7 @@ export class FilmerApi extends ApiService {
 				'Monstring',
 				this.url,
 				this.title,
-				[]
+				new PlaceholderUKMTV()
 			)
 		);
 	}
@@ -47,7 +47,7 @@ export class FilmerApi extends ApiService {
 				'MonstringSiste',
 				this.url +'siste/',
 				this.title,
-				[]
+				new PlaceholderUKMTV()
 			)
 		);
 	}

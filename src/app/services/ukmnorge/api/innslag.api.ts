@@ -43,7 +43,7 @@ export class InnslagApi extends ApiService {
 				'Monstring',
 				this.urlCollection.replace('#monstring_id', this.monstring_id.toString() ),
 				this.title,
-				[]
+				new PlaceholderInnslag()
 			)
 		);
 	}
@@ -60,7 +60,7 @@ export class InnslagApi extends ApiService {
 				'Hendelse|'+id,
 				this.urlProgram.replace('#monstring_id', this.monstring_id.toString() ).replace('#id', id),
 				this.title,
-				[]
+				new PlaceholderInnslag()
 			)
 		);
 	}

@@ -32,6 +32,12 @@ export class ApiRequest {
 	}
 
 	public getPlaceholder() {
+		if( this.getType() == 'collection' ) {
+			return [];
+		}
+		return this.placeholder;
+	}
+	public getRealPlaceholder() {
 		return this.placeholder;
 	}
 

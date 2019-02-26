@@ -4,7 +4,7 @@ import { StorageService } from '../utils/storage/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
 import { ApiRequest } from './api.models';
-import { Kontakt } from './kontakt.models';
+import { Kontakt, PlaceholderKontakt } from './kontakt.models';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,7 +37,7 @@ export class KontaktApi extends ApiService {
 				'Monstring',
 				this.urlCollection.replace('#monstring_id', this.monstring_id.toString() ),
 				this.title,
-				[]
+				new PlaceholderKontakt()
 			)
 		);
 	}

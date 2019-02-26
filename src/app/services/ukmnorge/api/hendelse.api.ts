@@ -37,7 +37,7 @@ export class HendelseApi extends ApiService {
 				'Monstring',
 				this.urlCollection.replace('#monstring_id', this.monstring_id.toString() ),
 				this.title,
-				[]
+				new PlaceholderHendelse()
 			)
 		);
 	}

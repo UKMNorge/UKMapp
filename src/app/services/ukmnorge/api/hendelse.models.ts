@@ -1,3 +1,5 @@
+import { BasicPlaceholder } from './api.models';
+
 export interface Hendelse {
 	id: number;
 	navn: string;
@@ -10,9 +12,7 @@ export interface Hendelse {
 	category_id: number;
   }
   
-  export class PlaceholderHendelse {
-	constructor(){}
-  
+  export class PlaceholderHendelse extends BasicPlaceholder {
 	public id = 0;
 	public navn = 'Ikke tilgjengelig offline';
 	public sted = '';

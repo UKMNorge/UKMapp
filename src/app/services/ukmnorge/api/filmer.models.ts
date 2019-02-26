@@ -1,3 +1,5 @@
+import { BasicPlaceholder } from './api.models';
+
 /* UKM-TV */
 export interface UKMTVData {
 	url: string;
@@ -37,7 +39,7 @@ export interface UKMTV {
 	kategori: UKMTVData;
 	fil: UKMTVFil;
 }
-export class PlaceholderUKMTV {
+export class PlaceholderUKMTV extends BasicPlaceholder {
 	public id = 0;
 	public bilde = new PlaceholderUKMTVBilde();
 	public url = '';

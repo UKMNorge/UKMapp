@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StorageService } from '../utils/storage/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { NetworkService } from '../utils/network.service';
-import { KontaktApi } from '../api/kontakt.service';
+import { KontaktApi } from '../api/kontakt.api';
 
 @Injectable({
 	providedIn: 'root'

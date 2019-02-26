@@ -1,3 +1,5 @@
+import { BasicPlaceholder } from './api.models';
+
 export interface Kontakt {
 	id: Number,
 	fornavn: String;
@@ -10,7 +12,7 @@ export interface Kontakt {
 	bilde;
 }
 
-export class PlaceholderKontakt {
+export class PlaceholderKontakt extends BasicPlaceholder {
 	public id = 0;
 	public fornavn = '';
 	public etternavn = '';

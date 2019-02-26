@@ -1,3 +1,5 @@
+import { BasicPlaceholder } from './api.models';
+
 export interface Monstring {
 	id: number;
 	navn: string;
@@ -8,7 +10,7 @@ export interface Monstring {
 	url: string;
   }
 
-export class PlaceholderMonstring {
+export class PlaceholderMonstring extends BasicPlaceholder {
 	public id = 0;
 	public navn = 'Laster inn navn...';
 	public sted = 'Du må være online for å vise mer informasjon';

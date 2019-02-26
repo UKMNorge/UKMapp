@@ -49,3 +49,12 @@ export class ApiRequest {
 		return this.data;
 	}
 }
+
+
+export abstract class BasicPlaceholder {
+	public id: number;
+	
+	public isPlaceholder() {
+		return this.id == 0;
+	}
+}

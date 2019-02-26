@@ -1,3 +1,5 @@
+import { BasicPlaceholder } from './api.models';
+
 export interface Tid {
 	sekunder: Number;
 	human: String;
@@ -23,12 +25,12 @@ export class PlaceholderTid {
 	public human_long = '';
 }
 
-export class PlaceholderFylke {
+export class PlaceholderFylke extends BasicPlaceholder {
 	public id = 0;
 	public navn = '';
 }
 
-export class PlaceholderKommune {
+export class PlaceholderKommune extends BasicPlaceholder {
 	public id = 0;
 	public navn = '';
 	public fylke = new PlaceholderFylke();

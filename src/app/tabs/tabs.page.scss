@@ -1,3 +1,17 @@
+//Variables
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
+
+$ukm_rosa:  rgb(255, 18, 139);
+$ukm_rosa_hex: #ff128b;
+
+$ukm_gul:   rgb(255, 240, 86);
+$ukm_gul_hex: #fff056;
+
+$ukm_gronn: rgb(0, 255, 137);
+$ukm_gronn_hex: #00ff89;
+
+
 ion-tab-bar {
 	--color: rgb(255,255,255);
 	--ion-tab-bar-color-activated: rgb(255, 18, 139);
@@ -5,4 +19,16 @@ ion-tab-bar {
 	border-top: 2px solid rgba(107,189,249, .2) !important;
 	padding-top: 4px;
 	padding-bottom: 6px;
+}
+
+#offline {
+	background: $ukm_rosa;
+    width: 1.35em;
+    height: 1.35em;
+    color: $ukm_bla;
+    font-size: .95em;
+    margin-top: -.35em;
+    border-radius: 50%;
+    margin-left: -.3em;
+    padding-top: .1em;
 }

@@ -1,5 +1,6 @@
 import { Kommune, PlaceholderKommune, PlaceholderTid } from './generic.models';
 import { UKMTV } from './filmer.models';
+import { BasicPlaceholder } from './api.models';
 
 /* INNSLAG TYPE  */
 export interface InnslagType {
@@ -47,9 +48,7 @@ export interface Innslag {
 	kategori_og_sjanger: String;
 	sjanger_eller_kategori: String;
 }
-export class PlaceholderInnslag {
-	constructor() { }
-
+export class PlaceholderInnslag  extends BasicPlaceholder {
 	public id = 0;
 	public navn = 'Ikke tilgjengelig offline';
 	public beskrivelse = '';
@@ -77,7 +76,7 @@ export interface Person {
 	rolle: string;
 }
 
-export class PlaceholderPerson {
+export class PlaceholderPerson extends BasicPlaceholder {
 	public id = 0;
 	public navn = '';
 	public fornavn = '';
@@ -91,7 +90,7 @@ export interface Tittel {
 	id: number;
 	navn: string;
 }
-export class PlaceholderTittel {
+export class PlaceholderTittel extends BasicPlaceholder {
 	public id = 0;
 	public navn = '';
 }
@@ -101,7 +100,7 @@ export interface ArtikkelMonstring {
 	type: string;
 	sesong: string;
 }
-export class PlaceholderArtikkelMonstring {
+export class PlaceholderArtikkelMonstring extends BasicPlaceholder {
 	public type = '';
 	public sesong = '';
 }
@@ -110,7 +109,7 @@ export interface ArtikkelBlogg {
 	id: number;
 	url: string;
 }
-export class PlaceholderArtikkelBlogg {
+export class PlaceholderArtikkelBlogg extends BasicPlaceholder {
 	public id = 0;
 	public url = '';
 }
@@ -124,7 +123,7 @@ export interface Artikkel {
 	monstring: ArtikkelMonstring;
 	blog: ArtikkelBlogg;
 }
-export class PlaceholderArtikkel {
+export class PlaceholderArtikkel extends BasicPlaceholder {
 	public id = 0;
 	public navn = '';
 	public title = this.navn;
@@ -142,7 +141,7 @@ export interface InnslagDetaljer {
 	personer: Person[];
 	titler: Tittel[];
 }
-export class PlaceholderInnslagDetaljer {
+export class PlaceholderInnslagDetaljer extends BasicPlaceholder {
 	public id = 0;
 	public artikler = [];
 	public bilder = [];

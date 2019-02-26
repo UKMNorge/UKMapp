@@ -1,3 +1,10 @@
+export abstract class BasicPlaceholder {
+	public id: number;
+
+	public isPlaceholder() {
+		return this.id == 0;
+	}
+}
 export class ApiRequest {
 
 	private resolve = null;

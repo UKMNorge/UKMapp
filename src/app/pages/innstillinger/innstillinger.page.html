@@ -6,7 +6,7 @@
 	<ukm-knapp  id="bytt_monstring" (click)="unsetFylke();">Bytt mønstring</ukm-knapp>
 
 	<ukm-knapp id="networkToggle" (click)="networkToggle();">
-		Gå {{ showOfflineButton ? 'off' : 'on' }}line
+		Gå {{ networkService.isOnline() ? 'off' : 'on' }}line
 	</ukm-knapp>
 
 </ion-content>

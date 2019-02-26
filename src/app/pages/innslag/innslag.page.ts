@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Innslag, InnslagDetaljer } from 'src/app/services/ukmnorge/api/innslag.models';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 import { NavController } from '@ionic/angular';
+import { NetworkService } from 'src/app/services/ukmnorge/utils/network.service';
 
 @Component({
 	selector: 'app-page-innslag',
@@ -23,7 +24,8 @@ export class InnslagPage {
 		private activatedRoute: ActivatedRoute,
 		private streamingMedia: StreamingMedia,
 		private navCtrl: NavController,
-		private router: Router
+		private router: Router,
+		private networkService: NetworkService
 	) {
 		let self = this;
 		this.activatedRoute.paramMap.subscribe(

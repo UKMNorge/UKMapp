@@ -48,6 +48,10 @@
 				</p>
 			</div>
 
+
+			<!-- VIS AT VI TRENGER OFFLINE FOR RESTEN AV HENTINGEN -->
+			<offline *ngIf="!detaljer || detaljer.isPlaceholder()"></offline>
+
 			<!-- DETALJER OM INNSLAGET (eget API-kall) -->
 			<div class="content" *ngIf="detaljer">
 				<!-- PERSONER -->

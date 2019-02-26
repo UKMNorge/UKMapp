@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Hendelse } from 'src/app/services/ukmnorge/api/hendelse.models';
 import { Innslag } from 'src/app/services/ukmnorge/api/innslag.models';
 import { NavController } from '@ionic/angular';
+import { NetworkService } from 'src/app/services/ukmnorge/utils/network.service';
 
 @Component({
   selector: 'app-page-program-hendelse',
@@ -21,7 +22,8 @@ export class HendelsePage {
 	constructor(
 		private monstringService: MonstringService,
 		private activatedRoute: ActivatedRoute,
-		private navCtrl: NavController
+		private navCtrl: NavController,
+		private networkService: NetworkService
 	) {
 		let self = this;
 		this.activatedRoute.paramMap.subscribe(

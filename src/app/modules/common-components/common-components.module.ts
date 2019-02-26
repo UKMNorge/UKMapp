@@ -7,6 +7,7 @@ import { AccordionComponent } from './accordion/accordion';
 import { PostComponent } from './post/post';
 import { ShortenPipe, ShowRestPipe } from './pipes/shorten/shorten';
 import { PostGridComponent } from './post-grid/post-grid';
+import { OfflineComponent } from './offline/offline';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PostGridComponent } from './post-grid/post-grid';
 	  AccordionComponent,
 	  PostComponent,
 	  PostGridComponent,
+	  OfflineComponent,
 	  ShortenPipe,
 	  ShowRestPipe
   ],
@@ -28,6 +30,7 @@ import { PostGridComponent } from './post-grid/post-grid';
 	  AccordionComponent,
 	  PostComponent,
 	  PostGridComponent,
+	  OfflineComponent,
 	  ShortenPipe,
 	  ShowRestPipe
   ]

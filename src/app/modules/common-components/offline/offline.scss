@@ -1,0 +1,32 @@
+//Variables
+$ukm_bla:  rgb(0, 0, 76);
+$ukm_bla_hex: #00004c;
+
+$ukm_rosa:  rgb(255, 18, 139);
+$ukm_rosa_hex: #ff128b;
+
+$ukm_gul:   rgb(255, 240, 86);
+$ukm_gul_hex: #fff056;
+
+$ukm_gronn: rgb(0, 255, 137);
+$ukm_gronn_hex: #00ff89;
+
+:host {
+	.container {
+		margin-top: 3em;
+		text-align: center;
+		border: 3px solid rgba(107,189,249, .2);
+		border-radius: 9px;
+		padding: 1em;
+		background: rgba(107,189,249, .2);
+	}
+
+	.icon-container {
+		font-size: 2em;
+		color: $ukm_gul;
+	}
+
+	ion-icon {
+		transform: rotate(50deg);
+	}
+}

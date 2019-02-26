@@ -6,6 +6,7 @@ import { Events } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { NetworkService, ConnectionStatus } from '../utils/network.service';
 import { ApiRequest } from './api.models';
+import { isRegExp } from 'util';
 
 
 @Injectable({
@@ -66,6 +67,9 @@ export abstract class ApiService extends Events {
 		return new Observable(observer => {
 			self.requestStorage(apiRequest).then(
 				(data) => {
+					if( apiRequest.getType() == 'object' ) {
+						data = Object.assign( apiRequest.getPlaceholder(), data);
+					}
 					observer.next(data);
 
 					self.requestApi(apiRequest).then(

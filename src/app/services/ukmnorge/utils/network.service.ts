@@ -30,9 +30,6 @@ export class NetworkService {
 		return this.status.value;
 	}
 
-	public connected() {
-		return this.isOnline();
-	}
 	public isOnline() {
 		return this.getStatus();
 	}

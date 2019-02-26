@@ -4,7 +4,7 @@
 		<h1>
 			Programmet er ikke klart
 		</h1>
-		<p class="lead" *ngIf="monstring && !monstring.isPlaceholder()">{{ monstring.navn }} starter {{ monstring.start | date: "\kl. hh:mm dd. MMM" }}</p>
+		<p class="lead" *ngIf="monstring">{{ monstring.navn }} starter {{ monstring.start | date: "\kl. hh:mm dd. MMM" }}</p>
 	</div>
 
 	<div *ngIf="program && program.length > 0">
@@ -27,6 +27,4 @@
 			</ukm-knapp>
 		</div>
 	</div>
-
-	<offline *ngIf="!program || program.length == 0"></offline>
 </ion-content>

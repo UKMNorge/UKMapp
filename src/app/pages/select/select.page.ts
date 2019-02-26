@@ -11,14 +11,25 @@ import { NetworkService, ConnectionStatus } from 'src/app/services/ukmnorge/util
 export class SelectPage {
 
 	public monstringer = null;
+	public connected = false;
 
 	constructor(
 		private monstringService: MonstringService,
 		private activeService: ActiveService,
 		private networkService: NetworkService
 	) {
+		this.bindConnectionStatus();
 	}
 
+	public bindConnectionStatus() {
+		let self = this;
+		this.networkService.change().subscribe(
+			connectionStatus => {
+				console.log('CONNECTED == '+ (connectionStatus == ConnectionStatus.Online ? 'true' : 'false'));
+				self.connected = connectionStatus == ConnectionStatus.Online;
+			}
+		);
+	}
 	ngOnInit() {
 		let self = this;
 		// Hent alle mønstringer

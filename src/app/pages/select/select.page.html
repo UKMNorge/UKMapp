@@ -21,12 +21,12 @@
 				</div>
 
 				<div *ngIf="!monstringer || (monstringer && monstringer.length == 0)">
-					<div *ngIf="networkService.isOffline()" class="pleaseDoConnectMe">
+					<div *ngIf="!connected" class="pleaseDoConnectMe">
 						Appen trenger litt internett
 						<br />
 						for å komme videre.
 					</div>
-					<div *ngIf="networkService.isOnline()">
+					<div *ngIf="connected">
 						Henter alle fylkesfestivaler...
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
-import { NetworkService, ConnectionStatus } from 'src/app/services/ukmnorge/utils/network.service';
+import { NetworkService } from 'src/app/services/ukmnorge/utils/network.service';
 
 @Component({
 	selector: 'app-page-innstillinger',
@@ -8,6 +8,7 @@ import { NetworkService, ConnectionStatus } from 'src/app/services/ukmnorge/util
 	styleUrls: ['innstillinger.page.scss']
 })
 export class InnstillingerPage {
+	public showOfflineButton;
 	public path = null;
 
 	constructor(
@@ -16,6 +17,11 @@ export class InnstillingerPage {
 	) {
 		let self = this;
 		this.path = this.activeService.getPath();
+		this.networkService.change().subscribe(
+			status => {
+				self.showOfflineButton = status;
+			}
+		)
 	}
 
 	public networkToggle() {

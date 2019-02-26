@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.service';
 import { NavController } from '@ionic/angular';
-import { NetworkService } from 'src/app/services/ukmnorge/utils/network.service';
 
 @Component({
 	selector: 'app-page-info',
@@ -14,8 +13,7 @@ export class InfoPage {
 
 	constructor(
 		private monstringService: MonstringService,
-		private navCtrl: NavController,
-		private networkService: NetworkService
+		private navCtrl: NavController
 	) {
 
 	}

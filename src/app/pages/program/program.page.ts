@@ -3,7 +3,6 @@ import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.servic
 import { Hendelse } from 'src/app/services/ukmnorge/api/hendelse.models';
 import { NavController } from '@ionic/angular';
 import { Monstring } from 'src/app/services/ukmnorge/api/monstring.models';
-import { NetworkService, ConnectionStatus } from 'src/app/services/ukmnorge/utils/network.service';
 
 @Component({
   selector: 'app-page-program',
@@ -14,22 +13,11 @@ export class ProgramPage {
 
 	public program = null;
 	public monstring = null;
-	public connected = null;
+
 	constructor(
 		private monstringService: MonstringService,
-		private navCtrl: NavController,
-		private networkService: NetworkService
+		private navCtrl: NavController
 	) {
-		this.bindConnectionStatus();
-	}
-
-	public bindConnectionStatus() {
-		let self = this;
-		this.networkService.change().subscribe(
-			connectionStatus => {
-				self.connected = connectionStatus == ConnectionStatus.Online;
-			}
-		);
 	}
 
 	ngOnInit() {

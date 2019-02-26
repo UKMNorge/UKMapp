@@ -8,9 +8,7 @@
 
 	<!-- OFFLINE-WARNING FOR NYHETER -->
 	<!-- Varsler ikke om innhenting av innslag, det er bonus-feature so-to-speak -->
-	<div *ngIf="!nyheter || nyheter.length == 0" padding>
-		<offline></offline>
-	</div>
+	<offline *ngIf="!nyheter"></offline>
 
 	<!-- TOPPSAKEN -->
 	<div class="topp-sak" *ngIf="nyheter && nyheter.length > 0">

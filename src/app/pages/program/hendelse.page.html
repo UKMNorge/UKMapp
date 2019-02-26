@@ -39,6 +39,6 @@
 
 	<div *ngIf='(hendelse && (hendelse.type == "default" && (!innslag || (innslag && innslag.length == 0))) || !hendelse.detaljer)' class="ait">
 		<h1 class="bigemoji">😬</h1>
-		<p>Programmet for denne hendelsen er ikke tilgjengelig ennå<span *ngIf="networkService.isOffline()">, men det kan også være fordi du er offline akkurat nå</span>...</p>
+		<p>Programmet for denne hendelsen er ikke tilgjengelig ennå...</p>
 	</div>
 </ion-content>

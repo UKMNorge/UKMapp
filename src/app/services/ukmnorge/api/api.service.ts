@@ -37,6 +37,9 @@ export abstract class ApiService extends Events {
 		this.networkService.change().subscribe(
 			status => {
 				self.setConnectionStatus( status == ConnectionStatus.Online );
+				if( self.hasNetworkConnection() ) {
+					self.next();
+				}
 			}
 		)
 	}
@@ -226,12 +229,11 @@ export abstract class ApiService extends Events {
 	 */
 	public next() {
 		let self = this;
-		/*
-		DEVELOP: bypass offline
+		
 		if( !this.hasNetworkConnection() ) {
 			return;
 		}
-		*/
+		
 		self.queue.forEach(
 			(requestData, id, map) => {
 				let apiRequest = new ApiRequest(

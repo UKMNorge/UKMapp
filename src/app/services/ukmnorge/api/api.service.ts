@@ -127,6 +127,9 @@ export abstract class ApiService extends Events {
 		for (let i = 0; i < collection.length; i++) {
 			await objectStorage.get(collection[i]).then(
 				object_data => {
+					if( null == object_data ) {
+						object_data = apiRequest.getPlaceholder();
+					}
 					list.push(object_data);
 				}
 			);

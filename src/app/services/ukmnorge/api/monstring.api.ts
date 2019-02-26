@@ -36,7 +36,7 @@ export class MonstringApi extends ApiService {
 				'Alle',
 				this.urlMonstringer,
 				this.title,
-				new PlaceholderMonstring()
+				[]
 			)
 		);
 	}

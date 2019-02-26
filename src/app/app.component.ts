@@ -30,7 +30,16 @@ export class AppComponent {
 	initializeApp() {
 		this.platform.ready().then(() => {
 			this.statusBar.styleDefault();
-			this._loadStart();
+			
+			console.log('STORAGE MONITOR READY');
+			this.storageService.getStatus().subscribe(
+				(storageIsReady) => {
+					console.log('STORAGE APP GOT STATUS:', storageIsReady);
+					if( storageIsReady ) {
+						this._loadStart();
+					}
+				}
+			);
 		});
 	}
 
@@ -39,9 +48,9 @@ export class AppComponent {
 
 	private _loadStart() {
 		let self = this;
-		this.app_storage = this.storageService.create('APP');
+		self.app_storage = self.storageService.create('APP');
 		// Load from storage
-		this.app_storage.get('monstring').then(
+		self.app_storage.get('monstring').then(
 			(selected_data) => {
 				if( selected_data && selected_data.id ) {
 					self.activeService.showApp( selected_data.id, selected_data.path );

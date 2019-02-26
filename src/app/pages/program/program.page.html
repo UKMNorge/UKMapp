@@ -27,4 +27,10 @@
 			</ukm-knapp>
 		</div>
 	</div>
+
+	<offline *ngIf="!program || (program && program.length == 0)">
+		<p>
+			Fordi du er offline kan det være endringer i programmet som ikke er synlig i appen din.
+		</p>
+	</offline>
 </ion-content>

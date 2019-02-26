@@ -20,15 +20,15 @@
 					</ion-list>
 				</div>
 
-				<div *ngIf="!monstringer || (monstringer && monstringer.length == 0)">
-					<div *ngIf="!connected" class="pleaseDoConnectMe">
+				<div *ngIf="!monstringer || (monstringer && monstringer.length == 0)" class="pleaseDoConnectMe">
+					<offline>
 						Appen trenger litt internett
 						<br />
 						for å komme videre.
-					</div>
-					<div *ngIf="connected">
+					</offline>
+					<online>
 						Henter alle fylkesfestivaler...
-					</div>
+					</online>
 				</div>
 			</ion-col>
 		</ion-row>

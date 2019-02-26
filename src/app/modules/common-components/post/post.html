@@ -14,8 +14,10 @@
 		<h1 *ngIf="title">{{title}}</h1>
 		<p class="lead">{{post.lead}}</p>
 
-		<offline *ngIf="!content"></offline>
-		<div *ngIf="!content && connected ">Vennligst vent mens vi henter resten av teksten..</div>
+		<div *ngIf="!content">
+			<offline>Uten internett kan vi ikke vise resten av siden 😞</offline>
+			<online>Vennligst vent mens vi henter resten av teksten..</online>
+		</div>
 		<div *ngIf="content" [innerHTML]="content"></div>
 	</div>
 </div>

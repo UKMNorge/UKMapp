@@ -1,7 +1,20 @@
 <ion-content>
-	<div *ngIf="!kontaktpersoner">
-		<h1>Laster inn kontaktpersoner</h1>
+	<!-- INNLASTING / ERROR -->
+	<div *ngIf="!kontaktpersoner || (kontaktpersoner && kontaktpersoner.length == 0)">
+		<div class="header" padding>
+			<offline>
+				<h1>Desperate for internet 😰</h1>
+				<p>
+					Fordi du er offline kan vi ikke vise deg kontaktpersoner og annen info.
+				</p>
+			</offline>
+			<online>
+				<h1>Laster inn kontaktpersoner...</h1>
+			</online>
+		</div>
 	</div>
+
+	<!-- ALLE KONTAKTPERSONER -->
 	<div *ngIf="kontaktpersoner && kontaktpersoner.length > 0" class="kontaktpersoner">
 		<div class="header">
 			<h1>Kontaktpersoner</h1>
@@ -29,17 +42,18 @@
 			</ion-slides>
 		</div>
 	</div>
-	
-	
+
+	<!-- ALLE INFOSIDER -->
 	<div *ngIf="info && info.length > 0" class="informasjon">
 		<h1 class="overskrift">Informasjon</h1>
-		
+
 		<ion-list>
 			<ukm-knapp class="wide white rosa-rosa" *ngFor="let page of info">
 				<accordion title="{{page.title}}" isShowing=false class="ukm-gradient-rosa-gul">
 					<div class="item-info">
 						<p>{{page.lead}}</p>
-						<div class="ukm-text-gul" (click)="visInfo( page.id )"><span class="hovstad hovstad-arrow"></span></div>
+						<div class="ukm-text-gul" (click)="visInfo( page.id )"><span
+								class="hovstad hovstad-arrow"></span></div>
 					</div>
 				</accordion>
 			</ukm-knapp>

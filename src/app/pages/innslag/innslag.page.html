@@ -49,6 +49,14 @@
 			</div>
 
 			<!-- DETALJER OM INNSLAGET (eget API-kall) -->
+
+			<offline *ngIf="!detaljer || (detaljer && detaljer.isPlaceholder())">
+				<p class="description" padding style="margin-top:1em;">
+					Det kan hende at vi har bilder, filmer og tekster om {{ innslag.navn }}, 
+					men appen trenger internett for å hente det inn..
+				</p>
+			</offline>
+
 			<div class="content" *ngIf="detaljer">
 				<!-- PERSONER -->
 				<ion-grid *ngIf="detaljer.personer.length > 0" class="personvisning">

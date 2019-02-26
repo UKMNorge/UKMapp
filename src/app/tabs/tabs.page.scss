@@ -27,8 +27,18 @@ ion-tab-bar {
     height: 1.35em;
     color: $ukm_bla;
     font-size: .95em;
-    margin-top: -.35em;
     border-radius: 50%;
-    margin-left: -.3em;
-    padding-top: .1em;
+    margin-top: -.1em;
+    margin-left: -.1em;
+	padding-top: 0em;
+	padding-left: 0.51em;
+	
+	/* THIS I DONT LIKE
+	Skjønner ikke hvorfor det er rotert +90deg i utgangspunktet
+	Måtte også flytte margin-top og margin-left på container fra -.35em
+	*/
+	ion-icon {
+		transform: rotate(-90deg);
+    	margin-left: -.4em;
+	}
 }

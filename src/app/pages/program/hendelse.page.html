@@ -6,7 +6,7 @@
 			{{ hendelse.navn }}
 		</h1>
 		<p class="lead">
-			{{hendelse.start | date}}
+			{{hendelse.start | date('d.M H:i')}}
 			<span *ngIf="hendelse.sted">| {{hendelse.sted}}</span>
 			<br />
 			<ion-badge class="internhendelse" *ngIf="hendelse.intern">Kun for deltakere</ion-badge>
@@ -37,7 +37,7 @@
 	</ion-grid>
 
 	<!-- OFFLINE, SKULLE HATT INNSLAG -->
-	<div *ngIf='(hendelse && hendelse.type == "default" && (!innslag || (innslag && innslag.length == 0))) || (hendelse && !hendelse.detaljer)'
+	<div *ngIf='hendelse && ( (hendelse.type == "default" && (!innslag || (innslag && innslag.length == 0))) || (hendelse.type == "category" && (!posts || (posts && posts.length == 0) )))'
 		class="ait">
 		<h1 class="bigemoji">😬</h1>
 		<p>Programmet for denne hendelsen er ikke tilgjengelig ennå...</p>

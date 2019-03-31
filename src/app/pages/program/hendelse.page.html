@@ -6,7 +6,7 @@
 			{{ hendelse.navn }}
 		</h1>
 		<p class="lead">
-			{{hendelse.start | date('d.M H:i')}}
+			{{hendelse.start | date:'d.MMM \kl. HH:mm' }}
 			<span *ngIf="hendelse.sted">| {{hendelse.sted}}</span>
 			<br />
 			<ion-badge class="internhendelse" *ngIf="hendelse.intern">Kun for deltakere</ion-badge>

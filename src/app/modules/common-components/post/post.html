@@ -11,7 +11,7 @@
 	</h1>
 	
 	<div *ngIf="loaded">
-		<h1 *ngIf="title">{{title}}</h1>
+		<h1 *ngIf="title" [innerHTML]="title"></h1>
 		<p class="lead">{{post.lead}}</p>
 
 		<div *ngIf="!content">

@@ -103,13 +103,30 @@ export abstract class ApiService extends Events {
 			(resolve) => {
 				this.storageUnit.get(apiRequest.getId()).then(
 					(data) => {
+						
+						// If null, return placeholder
 						if (null == data) {
 							resolve(apiRequest.getPlaceholder());
 						}
+
+						// If collection, load children before returning list with objects
 						if (apiRequest.getType() == 'collection' && Array.isArray(data)) {
-							data = self.loadAllOfCollection(apiRequest, data);
+							self.loadAllOfCollection(apiRequest, data).then(
+								(list) => {
+									resolve(list);
+								}
+							).catch(
+								(err) => {
+									console.log('LIST HAS ERR');
+									console.log(err);
+								}
+							);
 						}
-						resolve(data);
+
+						// If object, return placeholder with data (aka object)
+						else {
+							resolve( Object.assign( apiRequest.getPlaceholder(), data) );
+						}
 					}
 				);
 			}
@@ -122,21 +139,24 @@ export abstract class ApiService extends Events {
 	 * @param apiRequest 
 	 * @param collection 
 	 */
-	async loadAllOfCollection(apiRequest, collection) {
+	public loadAllOfCollection(apiRequest, collection) {
 		let list = [];
 		let objectStorage = this.storageService.create(apiRequest.getApi());
 
+		let promises = [];
 		for (let i = 0; i < collection.length; i++) {
-			await objectStorage.get(collection[i]).then(
-				object_data => {
-					if( null == object_data ) {
-						object_data = apiRequest.getPlaceholder();
+			promises.push(
+				objectStorage.get(collection[i]).then(
+					object_data => {
+						if (undefined == object_data || null == object_data) {
+							return false; //object_data = apiRequest.getRealPlaceholder();
+						}
+						list.push(object_data);
 					}
-					list.push(object_data);
-				}
+				)
 			);
 		}
-		return list;
+		return Promise.all(promises).then(resolve => { return list });
 	}
 
 	/**
@@ -190,7 +210,6 @@ export abstract class ApiService extends Events {
 			data = self.validate(apiResponse.getData());
 		}
 		console.log('ApiService::requestApi(' + apiResponse.getUrl() + ') promised to return', data);
-		console.log(apiResponse.getType());
 
 		// If collection, build an ID list, and store both ID list and object data
 		if (apiResponse.getType() == 'collection') {

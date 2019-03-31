@@ -1,5 +1,5 @@
 import { BasicPlaceholder } from './api.models';
-import { Fylke } from './generic.models';
+import { Fylke, PlaceholderFylke } from './generic.models';
 
 export interface Monstring {
 	id: number;
@@ -20,4 +20,5 @@ export class PlaceholderMonstring extends BasicPlaceholder {
 	public stop = null;
 	public type = '';
 	public url = '';
+	public fylke = new PlaceholderFylke();
 }

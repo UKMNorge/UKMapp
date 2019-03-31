@@ -21,7 +21,7 @@ export class StorageUnit extends Events {
         private storage: Storage
     ) {
         super();
-        console.log('Nei Ho! I\'m StorageUnit ' + this.id + ', and I\'m here to safeguard stuff');
+        //console.log('Nei Ho! I\'m StorageUnit ' + this.id + ', and I\'m here to safeguard stuff');
     }
 
     /**
@@ -67,17 +67,17 @@ export class StorageUnit extends Events {
                     (val) => {
                         // Value not in storage, resolve null
                         if (null == val || undefined == val) {
-                            console.warn('StorageUnit(' + self.id + ')::get('+ key +') #notInStorage resolve:', null);
+                            //console.warn('StorageUnit(' + self.id + ')::get('+ key +') #notInStorage resolve:', null);
                             resolve(null);
                         }
                         try {
                             // Value is JSON, resolve as object
                             let jsondata = JSON.parse(val);
-                            console.warn('StorageUnit(' + self.id + ')::get('+ key +') #JSONsuccess resolve:', jsondata);
+                            //console.warn('StorageUnit(' + self.id + ')::get('+ key +') #JSONsuccess resolve:', jsondata);
                             resolve(jsondata);
                         } catch {
                             // Value was not JSON-data, resolve string, object, whatevva
-                            console.warn('StorageUnit(' + self.id + ')::get('+ key +') #JSONerror ('+ typeof (val) +') resolve:', val);
+                            //console.warn('StorageUnit(' + self.id + ')::get('+ key +') #JSONerror ('+ typeof (val) +') resolve:', val);
                             resolve(val);
                         }
                     }

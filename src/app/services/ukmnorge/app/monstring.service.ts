@@ -38,7 +38,7 @@ export class MonstringService extends Events {
 	}
 
 	public removeId() {
-		console.warn('MonstringService:: REMOVE ID (howto?)');
+		//console.warn('MonstringService:: REMOVE ID (howto?)');
 	}
 
 	/**

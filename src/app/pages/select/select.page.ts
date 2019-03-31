@@ -25,7 +25,7 @@ export class SelectPage {
 		let self = this;
 		this.networkService.change().subscribe(
 			connectionStatus => {
-				console.log('CONNECTED == '+ (connectionStatus == ConnectionStatus.Online ? 'true' : 'false'));
+				//console.log('CONNECTED == '+ (connectionStatus == ConnectionStatus.Online ? 'true' : 'false'));
 				self.connected = connectionStatus == ConnectionStatus.Online;
 			}
 		);
@@ -36,13 +36,13 @@ export class SelectPage {
 		this.monstringService.getMonstringer().subscribe(
 			data => {
 				self.monstringer = data;
-				console.log('DATA WAS', data);
+				//console.log('DATA WAS', data);
 			}
 		);
 	}
 
 	velgMonstring(monstring) {
-		console.log('SelectPage:velgMonstring', monstring);
+		//console.log('SelectPage:velgMonstring', monstring);
 		this.activeService.showApp( monstring.id, monstring.url );
 	}
 }

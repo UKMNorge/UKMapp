@@ -11,7 +11,7 @@ export class AccordionComponent implements OnInit {
 	private _isShowing = false;
 
 	constructor() {
-		console.log('Hello AccordionComponent');
+		//console.log('Hello AccordionComponent');
 	}
 
 	public ngOnInit() {

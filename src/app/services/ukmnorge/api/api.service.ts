@@ -61,7 +61,7 @@ export abstract class ApiService extends Events {
 	 */
 	public request(apiRequest) {
 		let self = this;
-		console.log('ApiService::request(' + apiRequest.getId() + ': ' + apiRequest.getUrl() + ')');
+		//console.log('ApiService::request(' + apiRequest.getId() + ': ' + apiRequest.getUrl() + ')');
 		return new Observable(observer => {
 			self.requestStorage(apiRequest).then(
 				(data) => {
@@ -93,7 +93,7 @@ export abstract class ApiService extends Events {
 	 * @return Promise
 	 */
 	public requestStorage(apiRequest) {
-		console.log('ApiService::requestStorage(' + apiRequest.getId() + ')');
+		//console.log('ApiService::requestStorage(' + apiRequest.getId() + ')');
 
 		let self = this;
 		// DEVELOPMENT (fake offline, and fire requests after a couple of seconds)
@@ -117,8 +117,8 @@ export abstract class ApiService extends Events {
 								}
 							).catch(
 								(err) => {
-									console.log('LIST HAS ERR');
-									console.log(err);
+									//console.log('LIST HAS ERR');
+									//console.log(err);
 								}
 							);
 						}
@@ -169,7 +169,7 @@ export abstract class ApiService extends Events {
 	 */
 	public requestApi(apiRequest) {
 		let self = this;
-		console.log('ApiService::requestApi(' + apiRequest.getId() + ': ' + apiRequest.getUrl() + ')');
+		//console.log('ApiService::requestApi(' + apiRequest.getId() + ': ' + apiRequest.getUrl() + ')');
 		return new Promise(
 			(resolve) => {
 				apiRequest.setResolve(resolve);
@@ -209,7 +209,7 @@ export abstract class ApiService extends Events {
 		} else {
 			data = self.validate(apiResponse.getData());
 		}
-		console.log('ApiService::requestApi(' + apiResponse.getUrl() + ') promised to return', data);
+		//console.log('ApiService::requestApi(' + apiResponse.getUrl() + ') promised to return', data);
 
 		// If collection, build an ID list, and store both ID list and object data
 		if (apiResponse.getType() == 'collection') {
@@ -269,7 +269,7 @@ export abstract class ApiService extends Events {
 				);
 				apiRequest.setResolve(requestData.resolve);
 
-				console.log('ApiService::next(' + apiRequest.getUrl() + ')');
+				//console.log('ApiService::next(' + apiRequest.getUrl() + ')');
 				self.fireApiRequest(apiRequest)
 				map.delete(apiRequest.getId());
 			}

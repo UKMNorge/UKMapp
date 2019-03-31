@@ -23,7 +23,7 @@ export class StorageService {
 		this.storage.ready().then(() => {
 			this.status.next(true);
 		});
-		console.log('Dobrý den, I\'m StorageService for your units');
+		//console.log('Dobrý den, I\'m StorageService for your units');
 	}
 
 	/**

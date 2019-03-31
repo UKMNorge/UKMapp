@@ -30,8 +30,8 @@ export class MonstringService extends Events {
 	}
 
 	public setId(id: Number, path: String) {
-		console.log('MonstringService::setId(' + id + ')');
-		console.log('MonstringService::setPath(' + path + ')');
+		//console.log('MonstringService::setId(' + id + ')');
+		//console.log('MonstringService::setPath(' + path + ')');
 		this.id = id;
 		this.path = path;
 		this.services = new Map(); // Reloader alle services

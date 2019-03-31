@@ -33,6 +33,7 @@ export class StorageUnit extends Events {
      * @return void
      */
     public set(key: string, value: any) {
+		//value = JSON.stringify( value );
         this.storage.set(this._key(key), value);
         this.data.set(key, value);
         this.publish('set:' + key, value);

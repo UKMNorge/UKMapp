@@ -16,7 +16,7 @@ export class PostGridComponent implements OnInit {
 	@Output() onVisNyhet: EventEmitter<any> = new EventEmitter();
 
     iWasClicked( id ): void {
-		console.log('INTERNAL: VIS NYHET'+ id );
+		//console.log('INTERNAL: VIS NYHET'+ id );
         this.onVisNyhet.emit([id]);
 	}
 	

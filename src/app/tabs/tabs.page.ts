@@ -28,11 +28,11 @@ export class TabsPage {
 
 
 	public showWarning() {
-		console.log('INFO SHOW LABEL WARNING');
+		//console.log('INFO SHOW LABEL WARNING');
 		this.infoWarning = true;
 	}
 	public hideWarning() {
-		console.log('INFO HIDE LABEL WARNING');
+		//console.log('INFO HIDE LABEL WARNING');
 		this.infoWarning = false;
 	}
 }

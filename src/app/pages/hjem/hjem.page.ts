@@ -74,14 +74,14 @@ export class HjemPage {
 	}
 
 	visNyhet( id ) {
-		console.log('VIS NYHET'+ id );
+		//console.log('VIS NYHET'+ id );
 		this.navCtrl.navigateForward(
 			'app/app/hjem/post/'+ id
 		);
 	}
 
 	visInnslag( id ) {
-		console.log('VIS INNSLAG'+ id );
+		//console.log('VIS INNSLAG'+ id );
 		this.navCtrl.navigateForward(
 			'app/app/hjem/innslag/'+ id
 		);

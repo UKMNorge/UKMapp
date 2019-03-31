@@ -46,10 +46,10 @@ export class PostComponent implements OnInit {
 
 	handleClick(event) {
         if (event.target.tagName == "A") {
-            console.log(event.target.href);
+            //console.log(event.target.href);
 
             if (event.target.href.substring(0, 5) != 'https' || event.target.href.substring(0, 4) != 'http') {
-                console.log("Fant uegnet url");
+                //console.log("Fant uegnet url");
 
                 this.inAppBrowser.create(event.target.href, "_system");
                 return false;

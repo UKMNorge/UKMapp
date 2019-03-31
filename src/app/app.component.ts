@@ -31,10 +31,10 @@ export class AppComponent {
 		this.platform.ready().then(() => {
 			this.statusBar.styleDefault();
 			
-			console.log('STORAGE MONITOR READY');
+			//console.log('STORAGE MONITOR READY');
 			this.storageService.getStatus().subscribe(
 				(storageIsReady) => {
-					console.log('STORAGE APP GOT STATUS:', storageIsReady);
+					//console.log('STORAGE APP GOT STATUS:', storageIsReady);
 					if( storageIsReady ) {
 						this._loadStart();
 					}

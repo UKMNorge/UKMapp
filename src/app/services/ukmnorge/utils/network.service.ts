@@ -17,7 +17,7 @@ export class NetworkService {
 	constructor() {	
 		this.status.subscribe(
 			status => {
-				console.log('NETWORK MONITOR: Now '+ (this.getStatus() ? 'online' : 'offline'));
+				//console.log('NETWORK MONITOR: Now '+ (this.getStatus() ? 'online' : 'offline'));
 			}
 		)
 	}

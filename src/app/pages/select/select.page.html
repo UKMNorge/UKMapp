@@ -14,7 +14,7 @@
 						<ion-list-header>velg ditt fylke</ion-list-header>
 						<ion-list>
 							<ion-item *ngFor="let monstring of monstringer" (click)="velgMonstring( monstring )">
-								{{ monstring.navn.replace('UKM-festivalen i ', '').replace('Fylkesmønstringen i ', '') }}
+								{{ monstring.fylke.navn }}
 							</ion-item>
 						</ion-list>
 					</ion-list>

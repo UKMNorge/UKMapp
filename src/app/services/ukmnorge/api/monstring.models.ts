@@ -1,4 +1,5 @@
 import { BasicPlaceholder } from './api.models';
+import { Fylke } from './generic.models';
 
 export interface Monstring {
 	id: number;
@@ -8,6 +9,7 @@ export interface Monstring {
 	stop: Date;
 	type: string;
 	url: string;
+	fylke: Fylke
   }
 
 export class PlaceholderMonstring extends BasicPlaceholder {

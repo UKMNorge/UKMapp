@@ -6,8 +6,6 @@ import { Events } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { NetworkService, ConnectionStatus } from '../utils/network.service';
 import { ApiRequest } from './api.models';
-import { isRegExp } from 'util';
-
 
 @Injectable({
 	providedIn: 'root'
@@ -37,15 +35,15 @@ export abstract class ApiService extends Events {
 		let self = this;
 		this.networkService.change().subscribe(
 			status => {
-				self.setConnectionStatus( status == ConnectionStatus.Online );
-				if( self.hasNetworkConnection() ) {
+				self.setConnectionStatus(status == ConnectionStatus.Online);
+				if (self.hasNetworkConnection()) {
 					self.next();
 				}
 			}
 		)
 	}
 
-	private setConnectionStatus( status: boolean ) {
+	private setConnectionStatus(status: boolean) {
 		this.hasTheInternet = status;
 	}
 
@@ -67,8 +65,8 @@ export abstract class ApiService extends Events {
 		return new Observable(observer => {
 			self.requestStorage(apiRequest).then(
 				(data) => {
-					if( apiRequest.getType() == 'object' ) {
-						data = Object.assign( apiRequest.getPlaceholder(), data);
+					if (apiRequest.getType() == 'object') {
+						data = Object.assign(apiRequest.getPlaceholder(), data);
 					}
 					observer.next(data);
 
@@ -186,10 +184,10 @@ export abstract class ApiService extends Events {
 	 */
 	public handleApiResponse(self, apiResponse) {
 		let data = null;
-		if( apiResponse.getType() == 'collection' ) {
+		if (apiResponse.getType() == 'collection') {
 			data = self.validateCollection(apiResponse.getData());
 		} else {
-			data = self.validate( apiResponse.getData() );
+			data = self.validate(apiResponse.getData());
 		}
 		console.log('ApiService::requestApi(' + apiResponse.getUrl() + ') promised to return', data);
 		console.log(apiResponse.getType());
@@ -198,10 +196,10 @@ export abstract class ApiService extends Events {
 		if (apiResponse.getType() == 'collection') {
 			let list = [];
 			let childClassStorageUnit = self.storageService.create(apiResponse.getApi());
-			if( Array.isArray( data ) ) {
+			if (Array.isArray(data)) {
 				data.forEach(
 					(objectData) => {
-						objectData = self.validate( objectData );
+						objectData = self.validate(objectData);
 						list.push(objectData.id);
 						childClassStorageUnit.set(objectData.id, objectData);
 					}
@@ -236,11 +234,11 @@ export abstract class ApiService extends Events {
 	 */
 	public next() {
 		let self = this;
-		
-		if( !this.hasNetworkConnection() ) {
+
+		if (!this.hasNetworkConnection()) {
 			return;
 		}
-		
+
 		self.queue.forEach(
 			(requestData, id, map) => {
 				let apiRequest = new ApiRequest(

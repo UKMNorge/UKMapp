@@ -3,7 +3,6 @@ import { MonstringService } from 'src/app/services/ukmnorge/app/monstring.servic
 import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
 import { NetworkService, ConnectionStatus } from 'src/app/services/ukmnorge/utils/network.service';
 import { AlertController } from '@ionic/angular';
-import { userInfo } from 'os';
 import { PlaceholderUser } from 'src/app/services/ukmnorge/api/user.model';
 
 @Component({

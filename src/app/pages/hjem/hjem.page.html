@@ -6,6 +6,8 @@
 		<h1>{{ monstring.fylke.navn }}</h1>
 	</div>
 
+	Du er fra {{ getUser().fylke.navn }}
+
 	<!-- TOPPSAKEN -->
 	<div class="topp-sak" *ngIf="nyheter && nyheter.length > 0">
 		<div class="image" [style.background-image]="'url(' + nyheter[0].image + ')'" (click)='visNyhet(nyheter[0].id)'>

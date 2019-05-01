@@ -6,6 +6,7 @@ import { UKMTV } from 'src/app/services/ukmnorge/api/filmer.models';
 import { NavController } from '@ionic/angular';
 import { Monstring } from 'src/app/services/ukmnorge/api/monstring.models';
 import { WpPost } from 'src/app/services/ukmnorge/wordpress/post.models';
+import { ActiveService } from 'src/app/services/ukmnorge/app/active.service';
 
 @Component({
   selector: 'app-page-hjem',
@@ -24,10 +25,14 @@ export class HjemPage {
 	constructor(
 		private streamingMedia: StreamingMedia,
 		private monstringService: MonstringService,
-		private navCtrl: NavController
+		private navCtrl: NavController,
+		private activeService: ActiveService
 	) {		
 	}
 
+	getUser() {
+		return this.activeService.getUser();
+	}
 	ngOnInit() {
 		let self = this;
 		

@@ -26,6 +26,7 @@ export class ActiveService {
 
 	public setUser( user: User ) {
 		this.user = user;
+		this.app_storage.set('user', user);
 	}
 	public getUser(): User {
 		return this.user;

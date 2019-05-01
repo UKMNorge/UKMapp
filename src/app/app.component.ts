@@ -5,8 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService } from './services/ukmnorge/utils/storage/storage.service';
 import { Router } from '@angular/router';
-import { MonstringService } from './services/ukmnorge/app/monstring.service';
 import { ActiveService } from './services/ukmnorge/app/active.service';
+import { PlaceholderUser } from './services/ukmnorge/api/user.model';
 
 @Component({
 	selector: 'app-root',
@@ -50,6 +50,7 @@ export class AppComponent {
 		let self = this;
 		self.app_storage = self.storageService.create('APP');
 		// Load from storage
+		// Load mønstring
 		self.app_storage.get('monstring').then(
 			(selected_data) => {
 				if( selected_data && selected_data.id ) {
@@ -58,6 +59,18 @@ export class AppComponent {
 				} else {
 					self.activeService.showSelect();
 					self.splashScreen.hide();
+				}
+			}
+		);
+
+		// Load user
+		self.app_storage.get('user').then(
+			(selected_data) => {
+				if( selected_data && selected_data.type && selected_data.fylke ) {
+					let user = new PlaceholderUser();
+					user.fylke = selected_data.fylke;
+					user.type = selected_data.type;
+					this.activeService.setUser( user );
 				}
 			}
 		);

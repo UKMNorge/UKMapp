@@ -20,6 +20,19 @@ $ukm_farger: $ukm_bla, $ukm_rosa, $ukm_gul, $ukm_gronn;
 $grade_shade: 10.8;
 $grade_tint: 5.6;
 
+
+.stinesmarger {
+    width: 95vw;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
 /*
 	$colors: (
 	primary:    $ukm_rosa,
@@ -57,7 +70,7 @@ $grade_tint: 5.6;
 	 * https://ionicframework.com/docs/theming/advanced#stepped-colors
 	*/
 	--ion-background-color: #00004c;
-	--ion-background-color-rgb: 0,0,76;
+	--ion-background-color-rgb: $ukm_bla;
 
 	--ion-text-color: #ffffff;
 	--ion-text-color-rgb: 255,255,255;
@@ -150,26 +163,12 @@ $grade_tint: 5.6;
 	--ion-color-light-tint: #f5f5f5;
 
 	font-size: 16px;
-	/**
-	 * TABS
-	**/
-	.tabs .tabbar,
-	.tabs-ios .tabbar {
-		//background-color: $ukm_bla !important;
-		border-top: 2px solid rgba(107,189,249, .2) !important;
-		padding-top: 4px;
-		padding-bottom: 6px;
-	}
-	
-	.tabs-md ion-icon.tab-button-icon,
-	.tab-button .tab-button-text {
-		color: #ccc;//$ukm_bla_light;
-	}
-	
-	.tab-button[aria-selected="true"] .tab-button-text {
-		color: $ukm_rosa;
-	}
 }
+
+.bottom-spacer {
+	height: 7vh;
+}
+
 /**
 	* LISTER
 **/

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from '../utils/storage/storage.service';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { MonstringService } from './monstring.service';
+import { User } from '../api/user.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,15 +13,23 @@ export class ActiveService {
 
 	private monstring_id: Number = null;
 	private monstring_path: String = null;
+	private user: User = null;
 
 	constructor(
 		private storageService: StorageService,
 		private navCtrl: NavController,
 		private monstringService: MonstringService,
+		private alertController: AlertController
 	) {
 		this.app_storage = this.storageService.create('APP');
 	}
 
+	public setUser( user: User ) {
+		this.user = user;
+	}
+	public getUser(): User {
+		return this.user;
+	}
 
 	public showApp(id, path) {
 		this.monstring_id = id;
@@ -34,10 +43,13 @@ export class ActiveService {
 
 		let self = this;
 		this.monstringService.getData().subscribe(
-			(monstring) => {
+			async (monstring) => {
 				if (monstring == null || monstring == undefined) {
-					throw new Error('Beklager, klarte ikke å hente mønstringens url');
-					// TODO: @mariusmandal Håndter denne i GUI
+					const alert = await this.alertController.create( {
+						header: 'Oh, trøbbel! 😢',
+						message: 'Beklager, klarte ikke å hente mønstringens url.'
+					});
+					await alert.present();
 				}
 				self.navCtrl.navigateForward('app/app/hjem');
 				self.active = 'app';

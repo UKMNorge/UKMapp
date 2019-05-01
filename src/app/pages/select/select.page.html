@@ -10,14 +10,31 @@
 
 			<ion-col size="12" size-md="7" size-lg="6" offset-md="1">
 				<div *ngIf="monstringer && monstringer.length > 0">
-					<ion-list lines="none" class="UKMlist">
-						<ion-list-header>velg ditt fylke</ion-list-header>
-						<ion-list>
-							<ion-item *ngFor="let monstring of monstringer" (click)="velgMonstring( monstring )">
-								{{ monstring.fylke.navn }}
-							</ion-item>
-						</ion-list>
-					</ion-list>
+
+					<ion-item>
+						<ion-label>Fylke</ion-label>
+						<ion-select placeholder="Velg.." interface="action-sheet" (ionChange)="velgFylke($event.detail.value)">
+							<ion-select-option *ngFor="let monstring of monstringer" value="{{ monstring.fylke.id }}">
+								{{ monstring.fylke.navn}}
+							</ion-select-option>
+						</ion-select>
+					</ion-item>
+
+					<div *ngIf="innslag_typer && innslag_typer.length > 0">
+						<ion-item>
+							<ion-label>Type deltaker</ion-label>
+							<ion-select placeholder="Velg.." interface="action-sheet" (ionChange)="velgType($event.detail.value)">
+								<ion-select-option *ngFor="let type of innslag_typer" value="{{ type.key }}">
+									{{ type.navn}}
+								</ion-select-option>
+								<ion-select-option value="0">Publikum 🏅</ion-select-option>
+							</ion-select>
+						</ion-item>
+
+
+						<ion-button color="primary" expand="block" (click)="thisIsMe()">Take me there
+						</ion-button>
+					</div>
 				</div>
 
 				<div *ngIf="!monstringer || (monstringer && monstringer.length == 0)" class="pleaseDoConnectMe">
@@ -27,7 +44,7 @@
 						for å komme videre.
 					</offline>
 					<online>
-						Henter alle fylkesfestivaler...
+						Henter informasjon...
 					</online>
 				</div>
 			</ion-col>

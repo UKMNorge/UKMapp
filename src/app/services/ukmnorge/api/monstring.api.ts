@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { PlaceholderMonstring, Monstring } from './monstring.models';
 import { NetworkService } from '../utils/network.service';
 import { ApiRequest } from './api.models';
+import { PlaceholderInnslagType } from './innslag.models';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,6 +15,7 @@ export class MonstringApi extends ApiService {
 	public url = 'https://api.ukm.no/2.0/monstringer/#monstring_id';
 	public urlInnslag = 'https://api.ukm.no/2.0/monstring-#monstring_id/innslag/'
 	public urlMonstringer = 'https://api.ukm.no/2.0/monstringer/';
+	public urlInnslagTyper = 'https://api.ukm.no/2.0/innslagtype/';
 
 	constructor(
 		private _storageService: StorageService,
@@ -37,6 +39,19 @@ export class MonstringApi extends ApiService {
 				this.urlMonstringer,
 				this.title,
 				new PlaceholderMonstring()
+			)
+		);
+	}
+
+	public getInnslagTyper() {
+		// TODO: Denne burde hente fra mønstringen, ikke fra alle
+		return this.request(
+			new ApiRequest(
+				'collection',
+				'InnslagTyper',
+				this.urlInnslagTyper,
+				'InnslagType',
+				new PlaceholderInnslagType()
 			)
 		);
 	}

@@ -53,9 +53,16 @@ export class MonstringService extends Events {
 		return this.monstringApi.getData(this.id);
 	}
 
-
 	public getMonstringer() {
 		return this.monstringApi.getMonstringer();
+	}
+
+	public getMonstringLand() {
+		return this.monstringApi.getData( 'land-' + new Date().getFullYear() );
+	}
+
+	public getInnslagTyper() {
+		return this.monstringApi.getInnslagTyper();
 	}
 
 	/**

@@ -135,7 +135,8 @@ export class SelectPage {
 		let user = this.getUser();
 		user.fylke = this.selectedFylke;
 		user.type = this.selectedType;
-		this.velgMonstring(this.monstring_land, this.user);
+		this.velgMonstring(this.selectedFylke, this.user);
+//		this.velgMonstring(this.monstring_land, this.user);
 		return true;
 	}
 

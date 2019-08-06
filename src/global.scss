@@ -9,3 +9,29 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+
+.daySelectorBar {
+	background: #ff00ff;
+	color: #ffff00;
+	text-align: center;
+	margin-bottom: .5em;
+
+	.day {		
+		.name, .full {
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.3em;
+		}
+		.date {
+			text-transform: lowercase;
+			font-size: .7em;
+		}
+	}
+
+	.day.active {
+		.name, .full {
+			border-bottom: 2px solid #fff;
+		}
+	}
+}
